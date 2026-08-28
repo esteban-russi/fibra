@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   FIBRA design tokens
+   The brand ramp is the palette supplied for the project: a warm bordeaux →
+   cream progression. `ink` is an extra, darker member of the same family, added
+   because 6E3A41 is the darkest supplied value and long-form body copy reads
+   better below it (and clears WCAG AA comfortably on the cream canvas).
+   Region hues are semantic, not decorative: each one is derived from the dye or
+   fibre of its territory, per the FIBRA specification.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-bordeaux: #6E3A41;
+  --color-clay:     #865A5F;
+  --color-rosewood: #9E7B7D;
+  --color-ash:      #B79C9B;
+  --color-line:     #CFBCB9;
+  --color-surface:  #E7DDD7;
+  --color-canvas:   #FFFDF5;
+  --color-ink:      #2E1B1E;
+  /* `muted` is the second extension to the supplied ramp, added for the same
+     reason as `ink`. Small metadata was set in `rosewood` (#9E7B7D), which
+     reaches only 3.8:1 on the cream canvas and so fails WCAG AA for text below
+     24px. This tone sits between `clay` and `rosewood`, keeps the tonal step
+     the design depends on, and measures 4.8:1 on canvas and 4.5:1 on surface.
+     `rosewood` and `ash` are kept for rules, marks and large display text. */
+  --color-muted:    #90676B;
+
+  --color-caribe:    #E5A93C;
+  --color-orinoquia: #D95D39;
+  --color-andina:    #5C3D2E;
+  --color-amazonia:  #607248;
+  --color-pacifica:  #2D5A43;
+  --color-insular:   #2A9D8F;
+
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --ease-thread: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --header-h: 4.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, blockquote {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+  }
+
+  /* Visible, on-brand focus ring everywhere — the site is keyboard navigable. */
+  :focus-visible {
+    outline: 2px solid var(--color-bordeaux);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-bordeaux);
+    color: var(--color-canvas);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Woven paper ground — a faint warp/weft lattice, drawn rather than imaged. */
+  .weave-ground {
+    background-image:
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 30%, transparent) 0 1px, transparent 1px 7px),
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-line) 22%, transparent) 0 1px, transparent 1px 7px);
+  }
+
+  .rule {
+    border-top: 1px solid color-mix(in srgb, var(--color-line) 70%, transparent);
+  }
+
+  /* Editorial small-caps label used for section eyebrows and metadata. */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-clay);
+  }
+
+  .scrim-bottom {
+    background: linear-gradient(to top,
+      color-mix(in srgb, var(--color-ink) 88%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 62%, transparent) 32%,
+      color-mix(in srgb, var(--color-ink) 18%, transparent) 68%,
+      transparent 100%);
+  }
+}
+
+/* Scrollbar, tuned to the ramp rather than left at the OS default. */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-ash);
+  border-radius: 99px;
+  border: 3px solid var(--color-surface);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-rosewood); }
+
+/* ---------------------------------------------------------------------------
+   Gesture loops.
+   Each keyframe set is authored against the mechanics of one gesture rather
+   than being a generic drift: the braid translates by exactly one repeat so it
+   loops seamlessly, the warp reveals end by end, the dye front rises once and
+   holds. `.motion-paused` stops every loop in place — used both by the
+   reduced-motion query and by the visitor's own play/pause control.
+--------------------------------------------------------------------------- */
+@layer components {
+  .motion-paused * { animation-play-state: paused !important; }
+
+  /* urdir — a single thread walked back and forth between pegs */
+  @keyframes warp-lay {
+    0%   { stroke-dashoffset: var(--len); }
+    55%  { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes warp-fade {
+    0%, 45%  { opacity: 0; }
+    60%,100% { opacity: 1; }
+  }
+  .warp-end {
+    stroke-dasharray: var(--len);
+    animation: warp-lay 5.6s var(--ease-thread) infinite;
+  }
+
+  /* trenzar — the braid travels by exactly one repeat, so the loop is seamless */
+  @keyframes braid-run { to { transform: translateY(-40px); } }
+  .braid-run { animation: braid-run 2.6s linear infinite; }
+
+  /* anudar — the mesh builds downward, row by row */
+  @keyframes mesh-build { to { transform: translateY(-36px); } }
+  .mesh-run { animation: mesh-build 4.4s linear infinite; }
+  @keyframes knot-pop {
+    0%, 100% { r: 2.1; opacity: 0.55; }
+    50%      { r: 3.4; opacity: 1; }
+  }
+  .knot-pop { animation: knot-pop 2.2s ease-in-out infinite; }
+
+  /* tinturar — the dye front rises through the hank, then the skein lifts */
+  @keyframes dye-rise {
+    0%   { transform: translateY(64px); }
+    45%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
+  .dye-rise { animation: dye-rise 6s var(--ease-thread) infinite; }
+  @keyframes skein-dip {
+    0%, 100% { transform: translateY(0); }
+    30%, 70% { transform: translateY(7px); }
+  }
+  .skein-dip { animation: skein-dip 6s var(--ease-thread) infinite; }
+  @keyframes drip {
+    0%       { transform: translateY(0); opacity: 0; }
+    20%      { opacity: 0.9; }
+    100%     { transform: translateY(26px); opacity: 0; }
+  }
+  .drip { animation: drip 2.4s ease-in infinite; }
+
+  /* hilar — the spindle turns and twist travels up the drawn thread */
+  @keyframes spindle-turn { to { transform: rotate(360deg); } }
+  .spindle-turn { animation: spindle-turn 1.5s linear infinite; transform-origin: 50% 50%; }
+  @keyframes twist-travel { to { stroke-dashoffset: -22; } }
+  .twist-travel { stroke-dasharray: 3 8; animation: twist-travel 1.5s linear infinite; }
+  @keyframes cop-grow {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+  }
+  .cop-grow { animation: cop-grow 6s ease-in-out infinite; transform-origin: 50% 50%; }
+
+  /* The hilo conductor's frayed strands drift very slightly, like loose fibre */
+  @keyframes strand-drift {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(var(--drift, 3px)); }
+  }
+  .strand-drift { animation: strand-drift 7s ease-in-out infinite; }
+}

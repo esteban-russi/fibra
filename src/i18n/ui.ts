@@ -1,0 +1,458 @@
+/**
+ * UI string table. English is authored first and its keys become the contract:
+ * `es` is typed as Record<UIKey, string>, so a missing Spanish translation is a
+ * compile error rather than a silent English leak at runtime.
+ * Content strings (region prose, artisan chronicles) live in src/content — this
+ * file is only chrome: navigation, labels, controls, guidance copy.
+ */
+
+const en = {
+  // --- Brand / global -------------------------------------------------------
+  'brand.name': 'FIBRA',
+  'brand.tagline': 'Colombian textile memory, told by the hands that keep it',
+  'skip.content': 'Skip to main content',
+  'lang.label': 'Language',
+  'lang.en': 'English',
+  'lang.es': 'Spanish',
+  'lang.switchTo': 'Cambiar a español',
+
+  // --- Navigation -----------------------------------------------------------
+  'nav.home': 'Home',
+  'nav.atlas': 'About the Weave',
+  'nav.gestures': 'Gestures',
+  'nav.artisans': 'Artisans',
+  'nav.commission': 'Commissioning',
+  'nav.credits': 'Credits',
+  'nav.menu': 'Menu',
+  'nav.open': 'Open menu',
+  'nav.close': 'Close menu',
+  'nav.primary': 'Primary',
+
+  // --- Home -----------------------------------------------------------------
+  'home.eyebrow': 'A living archive of Colombian weaving',
+  'home.hero.curatorial':
+    'Fibra is two things at once: the filament a hand pulls from a plant or an animal, and the place feeling is kept — the fibres we say a story touches. This is not a shop. It is a permanent room where the weaver stands as author.',
+  'home.hero.scroll': 'Follow the thread',
+  'home.hero.cta': 'Read a chronicle',
+  'home.hero.credit': 'Photograph',
+  'home.thread.note': 'A single thread runs the length of this page. Midway down it frays — and each strand leads somewhere.',
+  'home.paths.eyebrow': 'The thread divides',
+  'home.paths.title': 'Two ways in',
+  'home.paths.lede':
+    'There is no correct order. You can enter through the act of making, or through the ground the material comes from.',
+  'home.path.gestures.title': 'The Path of Gestures',
+  'home.path.gestures.desc':
+    'Warping, braiding, knotting, dyeing, spinning. Five movements of the hand, each one a whole body of knowledge.',
+  'home.path.gestures.cta': 'Enter through the hand',
+  'home.path.territory.title': 'The Path of Territory',
+  'home.path.territory.desc':
+    'Six chromatic regions, each colour drawn from the dye or fibre that grows there. A tapestry rather than a map.',
+  'home.path.territory.cta': 'Enter through the ground',
+  'home.stance.eyebrow': 'What FIBRA is not',
+  'home.stance.title': 'No cart, no commission, no middle',
+  'home.stance.body':
+    'There is nothing here to add to a basket. When a piece moves you, you speak to the workshop directly — by message or by voice. FIBRA takes no percentage of that conversation and never has. The platform exists to make the author visible, not to stand between you and them.',
+  'home.stance.a.t': 'The maker is an author',
+  'home.stance.a.b': 'Not a supplier, not a line in a catalogue. Every piece carries a name and a community.',
+  'home.stance.b.t': 'The story is in the cloth',
+  'home.stance.b.b': 'The narrative is not marketing added afterwards. Territory and cosmology are knotted into the weave itself.',
+  'home.stance.c.t': 'The contact is direct',
+  'home.stance.c.b': 'Message the workshop. Agree your own terms, your own time, your own price.',
+  'home.artisans.eyebrow': 'Chronicles',
+  'home.artisans.title': 'Five acts, one voice',
+  'home.artisans.lede': 'Each profile is read as a single continuous scroll — a chronicle, not a product page.',
+
+  // --- Atlas ----------------------------------------------------------------
+  'atlas.eyebrow': 'About the Weave',
+  'atlas.title': 'Textile Atlas of Colombia',
+  'atlas.lede':
+    'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
+  'atlas.hint': 'Select a region to open its panel',
+  'atlas.hint.touch': 'Tap a band to open its panel',
+  'atlas.legend': 'Regions',
+  'atlas.map.label': 'Textile regions of Colombia',
+  'atlas.region.select': 'Open the {name} region panel',
+  'atlas.note':
+    'The six bands are a chromatic reading of the country, not a survey boundary. Regional borders in Colombia are drawn differently by different institutions, and craft traditions cross all of them.',
+
+  // --- Region drawer --------------------------------------------------------
+  'drawer.close': 'Close region panel',
+  'drawer.region': 'Region',
+  'drawer.synthesis': 'The weave here',
+  'drawer.materials': 'Materials and extraction',
+  'drawer.techniques': 'Techniques',
+  'drawer.communities': 'Peoples and workshops',
+  'drawer.artisans': 'Chronicles from this region',
+  'drawer.noArtisans': 'No chronicle has been published from this region yet. Profiles are added only once the workshop has reviewed and approved its own page.',
+  'drawer.viewProfile': 'Read the chronicle',
+
+  // --- Gestures -------------------------------------------------------------
+  'gestures.eyebrow': 'The Path of Gestures',
+  'gestures.title': 'Navigation by the act of making',
+  'gestures.lede':
+    'A technique is not a category — it is a movement a body learned from another body. These five gestures cut across every region: the same knot is tied on the Guajira peninsula and in the Chocó rainforest, and it means something different in each place.',
+  'gestures.motion': 'Motion study',
+  'gestures.reduced': 'Motion is paused because your system asks for reduced motion.',
+  'gestures.play': 'Play motion study',
+  'gestures.pause': 'Pause motion study',
+  'gestures.materials': 'Worked in',
+  'gestures.regions': 'Practised in',
+  'gestures.tempo': 'Tempo',
+  'gestures.select': 'Show the {name} gesture',
+
+  // --- Artisans -------------------------------------------------------------
+  'artisans.eyebrow': 'Chronicles',
+  'artisans.title': 'The weavers',
+  'artisans.lede':
+    'Each chronicle runs in five acts and is read as one continuous descent. Nothing here is a tab, because a life is not a tab.',
+  'artisan.back': 'All chronicles',
+  'artisan.acts': 'Acts',
+  'artisan.act': 'Act',
+  'artisan.progress': 'Chronicle progress',
+  'artisan.community': 'Community',
+  'artisan.territory': 'Territory',
+  'artisan.craft': 'Craft',
+  'artisan.region': 'Region',
+
+  // --- Traceability seal ----------------------------------------------------
+  'seal.title': 'Traceability Seal',
+  'seal.authorship': 'Individual authorship',
+  'seal.affiliation': 'Community affiliation',
+  'seal.origin': 'Geographic origin',
+  'seal.material': 'Raw material',
+  'seal.material.value': '100% natural fibre',
+  'seal.consent': 'Informed community consent',
+  'seal.consent.value': 'Recorded and renewable',
+  'seal.what': 'What this seal states',
+  'seal.explain':
+    'The seal names the individual who made the piece and the collective the knowledge belongs to. Both matter: authorship without affiliation erases the lineage, affiliation without authorship erases the person.',
+
+  // --- Acts -----------------------------------------------------------------
+  'act.1.roman': 'I',
+  'act.1.title': 'The Trace and the Voice',
+  'act.2.roman': 'II',
+  'act.2.title': 'Territory and Memory',
+  'act.3.roman': 'III',
+  'act.3.title': 'Material and Gesture',
+  'act.4.roman': 'IV',
+  'act.4.title': 'Works of the Workshop',
+  'act.5.roman': 'V',
+  'act.5.title': 'Direct Contact and Ethical Commission',
+
+  // --- Act III modules ------------------------------------------------------
+  'zoom.title': 'Sensory translation',
+  'zoom.lede':
+    'A screen has no touch. What it can do is get close enough that twist, irregularity and density become legible — the things a hand would have told you in a second.',
+  'zoom.instruction': 'Drag, or use the slider, to move through the fibre.',
+  'zoom.level': 'Magnification',
+  'zoom.reset': 'Reset magnification',
+  'zoom.in': 'Zoom in',
+  'zoom.out': 'Zoom out',
+  'zoom.reading': 'What you are looking at',
+
+  'hotspots.title': 'Reading the pattern',
+  'hotspots.lede':
+    'Geometric figures in these traditions are not ornament. They name animals, paths, kinship and weather. Select a marker to read what the figure carries.',
+  'hotspots.instruction': 'Select a marker on the cloth. Use Tab to move between markers and Enter to open one.',
+  'hotspots.marker': 'Figure {n}: {name}',
+  'hotspots.close': 'Close figure note',
+  'hotspots.meaning': 'What it carries',
+  'hotspots.glossary': 'Semiotic glossary',
+  'hotspots.communityHeld': 'Community-held knowledge',
+  'hotspots.markersLabel': 'markers on this cloth. Tab between them, Enter to open.',
+  'hotspots.term': 'Term',
+
+  'gesturevideo.title': 'The rhythm of the hands',
+  'gesturevideo.lede': 'Silent loops. No music, no voiceover — the tempo of the work is the point.',
+
+  // --- Act IV ---------------------------------------------------------------
+  'works.technique': 'Technique',
+  'works.materials': 'Materials',
+  'works.time': 'Time invested',
+  'works.scale': 'Real scale',
+  'works.context': 'In use',
+  'works.note':
+    'These are not listings. There is no price on this page, because a price agreed in advance by a platform is a price the maker did not set.',
+
+  // --- Act V ----------------------------------------------------------------
+  'contact.eyebrow': 'Act V',
+  'contact.title': 'Speak to the workshop',
+  'contact.lede':
+    'From here the conversation is yours. FIBRA does not sit in the middle of it, does not read it, and takes nothing from what you agree.',
+  'contact.whatsapp': 'Message on WhatsApp',
+  'contact.call': 'Call the workshop',
+  'contact.prefilled': 'Your message will open pre-written, and you can change every word of it:',
+  'contact.hours': 'Best hours to write',
+  'contact.language': 'Languages spoken',
+  'contact.nocommission': 'FIBRA charges no commission on this conversation.',
+  'contact.demoNote':
+    'This is a demonstration contact. The number is a placeholder and will not reach a real workshop.',
+
+  'guide.title': 'Guide to a Conscious Commission',
+  'guide.lede':
+    'Most friction between a workshop and a first-time client comes from one place: industrial expectations applied to a handmade object. These are the things worth knowing before you write.',
+  'guide.open': 'Read the full guide',
+  'guide.step': 'Point',
+
+  // --- Credits / provenance -------------------------------------------------
+  'credits.eyebrow': 'Provenance',
+  'credits.title': 'Credits and content provenance',
+  'credits.lede':
+    'A platform about authorship has to be able to account for its own material. Every photograph here is listed with its author and licence, and everything that is not yet documented is named as such.',
+  'credits.images': 'Photography',
+  'credits.images.lede':
+    'Openly licensed photographs sourced from Wikimedia Commons and used unmodified, at reduced delivery resolution. Attribution and licence as required by each licensor.',
+  'credits.author': 'Photographer',
+  'credits.licence': 'Licence',
+  'credits.source': 'Source',
+  'credits.depicts': 'Depicts',
+  'credits.graphics': 'Drawn graphics',
+  'credits.graphics.lede':
+    'Weave structures, fibre studies, the regional cartography and the gesture loops on this site are drawn as vector graphics rather than photographed. They render real structural geometry — the interlacement of a plain weave, the topology of a three-strand braid, the pitch of a coil — so that the technique is legible rather than merely illustrated.',
+  'credits.content': 'Editorial content',
+  'credits.status': 'Status',
+
+  // --- Demonstration notice -------------------------------------------------
+  'demo.title': 'About this chronicle',
+  'demo.body':
+    'FIBRA publishes only what an artisan and their collective have supplied and approved. This profile is a demonstration of the five-act structure: the person, the quotations and the contact details are invented, and are marked as such throughout. The craft, materials, regions and techniques described are documented traditions, not invented ones.',
+  'demo.short': 'Demonstration profile — invented person, documented craft',
+  'demo.badge': 'Demonstration',
+
+  // --- Common ---------------------------------------------------------------
+  'common.readMore': 'Read more',
+  'common.close': 'Close',
+  'common.next': 'Next',
+  'common.previous': 'Previous',
+  'common.of': 'of',
+  'common.notFound.title': 'This thread runs out here',
+  'common.notFound.body': 'The page you asked for does not exist. The ways back in are below.',
+  'common.notFound.home': 'Return to the cover',
+  'footer.ethics': 'Standing commitments',
+  'footer.ethics.1': 'Everything published is supplied and validated by the artisans and their collectives.',
+  'footer.ethics.2': 'The curatorial voice accompanies first-person testimony; it never replaces it.',
+  'footer.ethics.3': 'No intermediary commission is charged on any conversation or commission.',
+  'footer.explore': 'Explore',
+  'footer.about': 'About',
+  'footer.rights': 'Craft knowledge belongs to the communities that keep it.',
+} as const
+
+export type UIKey = keyof typeof en
+
+const es: Record<UIKey, string> = {
+  'brand.name': 'FIBRA',
+  'brand.tagline': 'Memoria textil colombiana, contada por las manos que la guardan',
+  'skip.content': 'Ir al contenido principal',
+  'lang.label': 'Idioma',
+  'lang.en': 'Inglés',
+  'lang.es': 'Español',
+  'lang.switchTo': 'Switch to English',
+
+  'nav.home': 'Inicio',
+  'nav.atlas': 'Acerca del Tejido',
+  'nav.gestures': 'Gestos',
+  'nav.artisans': 'Artesanos',
+  'nav.commission': 'Encargo',
+  'nav.credits': 'Créditos',
+  'nav.menu': 'Menú',
+  'nav.open': 'Abrir menú',
+  'nav.close': 'Cerrar menú',
+  'nav.primary': 'Principal',
+
+  'home.eyebrow': 'Un archivo vivo del tejido colombiano',
+  'home.hero.curatorial':
+    'Fibra son dos cosas a la vez: el filamento que una mano extrae de una planta o de un animal, y el lugar donde se guarda lo que se siente — las fibras que decimos que un relato toca. Esto no es una tienda. Es una sala permanente donde quien teje está de pie como autor.',
+  'home.hero.scroll': 'Siga el hilo',
+  'home.hero.cta': 'Leer una crónica',
+  'home.hero.credit': 'Fotografía',
+  'home.thread.note': 'Un solo hilo recorre esta página. A media altura se deshilacha — y cada hebra lleva a algún lugar.',
+  'home.paths.eyebrow': 'El hilo se divide',
+  'home.paths.title': 'Dos maneras de entrar',
+  'home.paths.lede':
+    'No hay un orden correcto. Se puede entrar por el acto de hacer, o por la tierra de donde viene la materia.',
+  'home.path.gestures.title': 'La Ruta de los Gestos',
+  'home.path.gestures.desc':
+    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno un cuerpo entero de saber.',
+  'home.path.gestures.cta': 'Entrar por la mano',
+  'home.path.territory.title': 'La Ruta del Territorio',
+  'home.path.territory.desc':
+    'Seis regiones cromáticas, cada color tomado de la tintura o la fibra que allí crece. Un tapiz antes que un mapa.',
+  'home.path.territory.cta': 'Entrar por la tierra',
+  'home.stance.eyebrow': 'Lo que FIBRA no es',
+  'home.stance.title': 'Sin carrito, sin comisión, sin intermediario',
+  'home.stance.body':
+    'Aquí no hay nada que añadir a una cesta. Cuando una pieza le conmueve, usted habla directamente con el taller — por mensaje o por voz. FIBRA no toma ningún porcentaje de esa conversación y nunca lo ha hecho. La plataforma existe para hacer visible al autor, no para interponerse.',
+  'home.stance.a.t': 'Quien hace es autor',
+  'home.stance.a.b': 'No un proveedor ni una línea de catálogo. Cada pieza lleva un nombre y una comunidad.',
+  'home.stance.b.t': 'El relato está en la tela',
+  'home.stance.b.b': 'La narración no es publicidad añadida después. El territorio y la cosmogonía están anudados en la trama misma.',
+  'home.stance.c.t': 'El contacto es directo',
+  'home.stance.c.b': 'Escriba al taller. Acuerde sus propios términos, su propio tiempo, su propio precio.',
+  'home.artisans.eyebrow': 'Crónicas',
+  'home.artisans.title': 'Cinco actos, una voz',
+  'home.artisans.lede': 'Cada perfil se lee como un solo desplazamiento continuo — una crónica, no una ficha de producto.',
+
+  'atlas.eyebrow': 'Acerca del Tejido',
+  'atlas.title': 'Atlas Textil de Colombia',
+  'atlas.lede':
+    'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
+  'atlas.hint': 'Seleccione una región para abrir su panel',
+  'atlas.hint.touch': 'Toque una franja para abrir su panel',
+  'atlas.legend': 'Regiones',
+  'atlas.map.label': 'Regiones textiles de Colombia',
+  'atlas.region.select': 'Abrir el panel de la región {name}',
+  'atlas.note':
+    'Las seis franjas son una lectura cromática del país, no un límite catastral. Las fronteras regionales en Colombia se trazan de modo distinto según la institución, y las tradiciones artesanales las cruzan todas.',
+
+  'drawer.close': 'Cerrar el panel de la región',
+  'drawer.region': 'Región',
+  'drawer.synthesis': 'El tejido aquí',
+  'drawer.materials': 'Materiales y extracción',
+  'drawer.techniques': 'Técnicas',
+  'drawer.communities': 'Pueblos y talleres',
+  'drawer.artisans': 'Crónicas de esta región',
+  'drawer.noArtisans': 'Todavía no se ha publicado ninguna crónica de esta región. Los perfiles se añaden solo cuando el taller ha revisado y aprobado su propia página.',
+  'drawer.viewProfile': 'Leer la crónica',
+
+  'gestures.eyebrow': 'La Ruta de los Gestos',
+  'gestures.title': 'Navegación por el acto de hacer',
+  'gestures.lede':
+    'Una técnica no es una categoría — es un movimiento que un cuerpo aprendió de otro cuerpo. Estos cinco gestos atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
+  'gestures.motion': 'Estudio de movimiento',
+  'gestures.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
+  'gestures.play': 'Reproducir el estudio de movimiento',
+  'gestures.pause': 'Pausar el estudio de movimiento',
+  'gestures.materials': 'Se trabaja en',
+  'gestures.regions': 'Se practica en',
+  'gestures.tempo': 'Tempo',
+  'gestures.select': 'Mostrar el gesto de {name}',
+
+  'artisans.eyebrow': 'Crónicas',
+  'artisans.title': 'Quienes tejen',
+  'artisans.lede':
+    'Cada crónica transcurre en cinco actos y se lee como un solo descenso continuo. Nada aquí es una pestaña, porque una vida no es una pestaña.',
+  'artisan.back': 'Todas las crónicas',
+  'artisan.acts': 'Actos',
+  'artisan.act': 'Acto',
+  'artisan.progress': 'Avance de la crónica',
+  'artisan.community': 'Comunidad',
+  'artisan.territory': 'Territorio',
+  'artisan.craft': 'Oficio',
+  'artisan.region': 'Región',
+
+  'seal.title': 'Sello de Trazabilidad',
+  'seal.authorship': 'Autoría individual',
+  'seal.affiliation': 'Filiación comunitaria',
+  'seal.origin': 'Origen geográfico',
+  'seal.material': 'Materia prima',
+  'seal.material.value': 'Fibra 100% natural',
+  'seal.consent': 'Consentimiento informado de la comunidad',
+  'seal.consent.value': 'Registrado y renovable',
+  'seal.what': 'Qué declara este sello',
+  'seal.explain':
+    'El sello nombra a la persona que hizo la pieza y al colectivo al que pertenece el saber. Ambos importan: la autoría sin filiación borra el linaje; la filiación sin autoría borra a la persona.',
+
+  'act.1.roman': 'I',
+  'act.1.title': 'La Huella y la Voz',
+  'act.2.roman': 'II',
+  'act.2.title': 'El Territorio y la Memoria',
+  'act.3.roman': 'III',
+  'act.3.title': 'La Materia y el Gesto',
+  'act.4.roman': 'IV',
+  'act.4.title': 'Las Obras del Taller',
+  'act.5.roman': 'V',
+  'act.5.title': 'El Contacto Directo y el Encargo Ético',
+
+  'zoom.title': 'Traducción sensorial',
+  'zoom.lede':
+    'Una pantalla no tiene tacto. Lo que sí puede hacer es acercarse lo suficiente para que la torsión, la irregularidad y la densidad se vuelvan legibles — lo que una mano le habría dicho en un segundo.',
+  'zoom.instruction': 'Arrastre, o use el control, para recorrer la fibra.',
+  'zoom.level': 'Aumento',
+  'zoom.reset': 'Restablecer el aumento',
+  'zoom.in': 'Acercar',
+  'zoom.out': 'Alejar',
+  'zoom.reading': 'Lo que está viendo',
+
+  'hotspots.title': 'Leer el patrón',
+  'hotspots.lede':
+    'Las figuras geométricas en estas tradiciones no son ornamento. Nombran animales, caminos, parentesco y clima. Seleccione un marcador para leer lo que la figura carga.',
+  'hotspots.instruction': 'Seleccione un marcador sobre la tela. Use Tab para moverse entre marcadores y Enter para abrir uno.',
+  'hotspots.marker': 'Figura {n}: {name}',
+  'hotspots.close': 'Cerrar la nota de la figura',
+  'hotspots.meaning': 'Lo que carga',
+  'hotspots.glossary': 'Glosario semiótico',
+  'hotspots.communityHeld': 'Saber comunitario',
+  'hotspots.markersLabel': 'marcadores sobre esta tela. Tab para recorrerlos, Enter para abrir.',
+  'hotspots.term': 'Término',
+
+  'gesturevideo.title': 'El ritmo de las manos',
+  'gesturevideo.lede': 'Bucles mudos. Sin música, sin voz en off — el tempo del trabajo es lo que importa.',
+
+  'works.technique': 'Técnica',
+  'works.materials': 'Materiales',
+  'works.time': 'Tiempo invertido',
+  'works.scale': 'Escala real',
+  'works.context': 'En uso',
+  'works.note':
+    'Estas no son fichas de venta. En esta página no hay precio, porque un precio acordado de antemano por una plataforma es un precio que quien hace la pieza no fijó.',
+
+  'contact.eyebrow': 'Acto V',
+  'contact.title': 'Hable con el taller',
+  'contact.lede':
+    'De aquí en adelante la conversación es suya. FIBRA no se sitúa en medio de ella, no la lee, y no toma nada de lo que ustedes acuerden.',
+  'contact.whatsapp': 'Escribir por WhatsApp',
+  'contact.call': 'Llamar al taller',
+  'contact.prefilled': 'Su mensaje se abrirá ya redactado, y puede cambiar cada palabra:',
+  'contact.hours': 'Mejores horas para escribir',
+  'contact.language': 'Lenguas que se hablan',
+  'contact.nocommission': 'FIBRA no cobra comisión alguna sobre esta conversación.',
+  'contact.demoNote':
+    'Este es un contacto de demostración. El número es un marcador de posición y no llegará a ningún taller real.',
+
+  'guide.title': 'Guía de Encargo Consciente',
+  'guide.lede':
+    'Casi toda la fricción entre un taller y un cliente primerizo viene del mismo sitio: expectativas industriales aplicadas a un objeto hecho a mano. Esto es lo que conviene saber antes de escribir.',
+  'guide.open': 'Leer la guía completa',
+  'guide.step': 'Punto',
+
+  'credits.eyebrow': 'Procedencia',
+  'credits.title': 'Créditos y procedencia del contenido',
+  'credits.lede':
+    'Una plataforma sobre autoría tiene que poder dar cuenta de su propio material. Cada fotografía aquí aparece con su autor y su licencia, y todo lo que aún no está documentado se nombra como tal.',
+  'credits.images': 'Fotografía',
+  'credits.images.lede':
+    'Fotografías de licencia abierta obtenidas de Wikimedia Commons, usadas sin modificar y a resolución reducida para su entrega. Atribución y licencia según lo exige cada licenciante.',
+  'credits.author': 'Fotógrafo/a',
+  'credits.licence': 'Licencia',
+  'credits.source': 'Fuente',
+  'credits.depicts': 'Muestra',
+  'credits.graphics': 'Gráficos dibujados',
+  'credits.graphics.lede':
+    'Las estructuras de tejido, los estudios de fibra, la cartografía regional y los bucles de gestos de este sitio están dibujados como gráficos vectoriales en lugar de fotografiados. Representan geometría estructural real — el entrelazado de un tafetán, la topología de una trenza de tres cabos, el paso de un anillado — para que la técnica sea legible y no meramente ilustrada.',
+  'credits.content': 'Contenido editorial',
+  'credits.status': 'Estado',
+
+  'demo.title': 'Sobre esta crónica',
+  'demo.body':
+    'FIBRA publica únicamente lo que un artesano y su colectivo han provisto y aprobado. Este perfil es una demostración de la estructura en cinco actos: la persona, las citas y los datos de contacto son inventados, y así se señala en todo momento. El oficio, los materiales, las regiones y las técnicas descritas son tradiciones documentadas, no inventadas.',
+  'demo.short': 'Perfil de demostración — persona inventada, oficio documentado',
+  'demo.badge': 'Demostración',
+
+  'common.readMore': 'Leer más',
+  'common.close': 'Cerrar',
+  'common.next': 'Siguiente',
+  'common.previous': 'Anterior',
+  'common.of': 'de',
+  'common.notFound.title': 'Aquí se acaba el hilo',
+  'common.notFound.body': 'La página que pidió no existe. Abajo están las maneras de volver a entrar.',
+  'common.notFound.home': 'Volver a la portada',
+  'footer.ethics': 'Compromisos permanentes',
+  'footer.ethics.1': 'Todo lo publicado es provisto y validado por los artesanos y sus colectivos.',
+  'footer.ethics.2': 'La voz curatorial acompaña el testimonio en primera persona; nunca lo suplanta.',
+  'footer.ethics.3': 'No se cobra comisión intermediaria sobre ninguna conversación ni encargo.',
+  'footer.explore': 'Explorar',
+  'footer.about': 'Acerca de',
+  'footer.rights': 'El saber artesanal pertenece a las comunidades que lo guardan.',
+}
+
+export const UI = { en, es } as const
