@@ -34,7 +34,7 @@ Four top-level surfaces, navigated non-linearly:
    (`deshilachado`) at mid-page into multiple vector strands, branching to the
    two exploration routes below.
 2. **Atlas Textil de Colombia** — the territory route. Interactive map.
-3. **Gestos / Técnicas** — the transversal route, organized by the *act of
+3. **Técnicas** — the transversal route, organized by the *act of
    making*: urdir, anudar, tinturar, trenzar, hilar. Grid/carousel of looping
    hand-motion clips.
 4. **Artisan profiles** — sequential editorial chronicles.
@@ -73,7 +73,7 @@ A single continuous scroll, explicitly **not** tabs:
   pull quote in the artisan's own voice.
 - **II. El Territorio y la Memoria** — intergenerational transmission: who taught
   them, what the craft means in their setting.
-- **III. La Materia y el Gesto** — high-res macro of fibers, interactive diagrams
+- **III. La Materia y la Técnica** — high-res macro of fibers, interactive diagrams
   and a semiotic glossary decoding traditional patterns, silent micro-videos of
   hands working.
 - **IV. Las Obras del Taller** — finished pieces in use context, real scale, and

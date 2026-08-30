@@ -29,11 +29,11 @@ tokens in `src/index.css` and composed with utility classes.
 ```
 src/
   i18n/            LanguageProvider, and the UI string table (ui.ts)
-  content/         All editorial content, bilingual — regions, gestures,
+  content/         All editorial content, bilingual — regions, techniques,
                    artisan chronicles, the commission guide, the media registry
   components/
     graphics/      Drawn textile system: weave plates, fibre studies,
-                   gesture loops, the hilo conductor
+                   technique loops, the hilo conductor
     atlas/         The band cartography and the region drawer
     artisan/       Zoom lens, semiotic hotspots, traceability seal, contact
     ui/            Shared primitives
@@ -50,16 +50,17 @@ tools/             Verification harnesses — see below
    a woven cloth. Selecting one scales the map back and raises a bottom drawer
    to ~70% of the viewport. The open region lives in the URL, so panels are
    linkable and the Back button closes them.
-3. **Gestures** (`/gestures`, `/gestures/:gesture`) — the transversal route,
+3. **Techniques** (`/techniques`, `/techniques/:technique`) — the transversal route,
    organised by the act of making: urdir, trenzar, anudar, tinturar, hilar.
 4. **Chronicles** (`/artisans/:slug`) — five acts read as one continuous
    descent, explicitly not tabs.
 
-Plus `/commission` (the Guide to a Conscious Commission) and `/credits`.
+Plus `/credits`. The Guide to a Conscious Commission is no longer a route of
+its own; it lives inside Act V of each chronicle.
 
 ## Why the graphics are drawn rather than photographed
 
-Weave structures, fibre studies, the cartography and the gesture loops are
+Weave structures, fibre studies, the cartography and the technique loops are
 rendered as vector graphics carrying real structural geometry — the
 interlacement of a plain weave, the oblique crossing of a three-strand braid,
 the pitch of a coil, the ply angle of a two-ply cord. Three reasons:
