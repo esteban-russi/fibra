@@ -6,13 +6,11 @@ export function Footer() {
   const { t } = useI18n()
 
   const explore = [
-    { to: '/atlas', label: t('nav.atlas') },
-    { to: '/techniques', label: t('nav.techniques') },
     { to: '/artisans', label: t('nav.artisans') },
+    { to: '/techniques', label: t('nav.techniques') },
+    { to: '/atlas', label: t('nav.atlas') },
   ]
-  const about = [
-    { to: '/credits', label: t('credits.title') },
-  ]
+  const about = [{ to: '/credits', label: t('credits.title') }]
 
   return (
     <footer className="mt-24 border-t border-line bg-surface/55">

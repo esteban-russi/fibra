@@ -18,7 +18,7 @@ const en = {
 
   // --- Navigation -----------------------------------------------------------
   'nav.home': 'Home',
-  'nav.atlas': 'About the Weave',
+  'nav.atlas': 'Territories',
   'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
   'nav.credits': 'Credits',
@@ -59,10 +59,10 @@ const en = {
   'home.identity.c.b': 'A werregue vessel is weeks of counting. Making time is stated in hours and weeks rather than left out.',
   'home.artisans.eyebrow': 'Chronicles',
   'home.artisans.title': 'Five acts, one voice',
-  'home.artisans.lede': 'Each profile reads straight through, in five acts, from the weaver’s own voice to the door of the workshop.',
+  'home.artisans.lede': 'Each profile reads straight through, in five acts, from the weaver\u2019s own voice to the door of the workshop.',
 
   // --- Atlas ----------------------------------------------------------------
-  'atlas.eyebrow': 'About the Weave',
+  'atlas.eyebrow': 'Territories',
   'atlas.title': 'Textile Atlas of Colombia',
   'atlas.lede':
     'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
@@ -85,7 +85,7 @@ const en = {
   'drawer.noArtisans': 'No chronicle has been published from this region yet. Profiles are added only once the workshop has reviewed and approved its own page.',
   'drawer.viewProfile': 'Read the chronicle',
 
-  // --- Techniques -------------------------------------------------------------
+  // --- Techniques -----------------------------------------------------------
   'techniques.eyebrow': 'The Path of Techniques',
   'techniques.title': 'Navigation by the act of making',
   'techniques.lede':
@@ -246,7 +246,7 @@ const es: Record<UIKey, string> = {
   'lang.switchTo': 'Switch to English',
 
   'nav.home': 'Inicio',
-  'nav.atlas': 'Acerca del Tejido',
+  'nav.atlas': 'Territorios',
   'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
   'nav.credits': 'Créditos',
@@ -257,38 +257,38 @@ const es: Record<UIKey, string> = {
 
   'home.eyebrow': 'Donde el tejido vuelve a temblar',
   'home.hero.curatorial':
-    'FIBRA reúne las historias de quienes tejen en Colombia. Cada una se cuenta en primera persona, con el nombre de quien teje, la comunidad que le enseñó y la técnica que ha repetido durante generaciones.',
+    'FIBRA reúne las historias de quienes tejen en Colombia. Cada una se cuenta en primera persona, con el nombre de quien teje, la comunidad que le enseñó y la técnica que repite desde hace generaciones.',
   'home.hero.scroll': 'Siga el hilo',
   'home.hero.cta': 'Leer una crónica',
   'home.hero.credit': 'Fotografía',
   'home.thread.note': 'Un solo hilo recorre esta historia. A media altura se deshilacha, y cada hebra lleva a algún lugar.',
   'home.paths.eyebrow': 'El hilo se divide',
-  'home.paths.title': 'Dos puertas al oficio',
+  'home.paths.title': 'Dos puertas de entrada al oficio',
   'home.paths.lede':
-    'Desde la técnica que le da forma a la hebra, o desde el territorio donde crece la materia. Elija su propia ruta.',
+    'Desde la técnica que da forma a la hebra, o desde el territorio donde germina la materia. Elige tu propio recorrido.',
   'home.path.techniques.title': 'La Ruta de las Técnicas',
   'home.path.techniques.desc':
-    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno con sus propias herramientas y sus propios tiempos.',
+    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno con sus herramientas y sus tiempos.',
   'home.path.techniques.cta': 'Entrar por la mano',
   'home.path.territory.title': 'La Ruta del Territorio',
   'home.path.territory.desc':
-    'Seis regiones, cada una con el color de la tintura o la fibra que allí crece. Desde el amarillo de la bija en el norte hasta el verde del mangle en el litoral Pacífico.',
+    'Seis regiones, cada una con el color de la tintura o la fibra que allí crece. Del amarillo de la bija en el norte al verde del mangle en el litoral Pacífico.',
   'home.path.territory.cta': 'Entrar por la tierra',
   'home.identity.eyebrow': 'El nombre',
-  'home.identity.title': 'Entre el hilo y la fibra',
+  'home.identity.title': 'Entre el hilo y la emoción',
   'home.identity.body':
-    'Fibra es el filamento que una planta entrega y un animal ofrece. En español es también lo que se mueve en uno cuando algo de verdad nos alcanza: decimos que algo nos tocó la fibra cuando nos sacude o nos cautiva. FIBRA nace en ese cruce, y aquí cada historia es un tejido.',
-  'home.identity.a.t': 'La mano que anuda el saber heredado',
-  'home.identity.a.b': 'Cada pieza lleva el nombre de quien la hizo y la comunidad que le enseñó.',
-  'home.identity.b.t': 'La técnica repetida a lo largo de generaciones',
+    'Fibra es el filamento que entrega la planta y ofrece el animal. En nuestra lengua es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece o nos cautiva. FIBRA nace en ese cruce, y aquí cada historia es un tejido.',
+  'home.identity.a.t': 'La mano que anuda saberes heredados',
+  'home.identity.a.b': 'Cada pieza lleva el nombre de quien la hizo y la comunidad que se lo enseñó.',
+  'home.identity.b.t': 'La técnica repetida durante generaciones',
   'home.identity.b.b': 'Urdir, trenzar, anudar, tinturar, hilar. El mismo movimiento, sostenido durante siglos en un territorio.',
   'home.identity.c.t': 'La paciencia que convierte materia en memoria',
-  'home.identity.c.b': 'Una vasija de werregue son semanas de conteo. El tiempo de hacer se indica en horas y semanas, no se omite.',
+  'home.identity.c.b': 'Una vasija de werregue son semanas de conteo. El tiempo de elaboración se dice en horas y semanas, no se omite.',
   'home.artisans.eyebrow': 'Crónicas',
   'home.artisans.title': 'Cinco actos, una voz',
-  'home.artisans.lede': 'Cada perfil se lee de corrido, en cinco actos, desde la propia voz de quien teje hasta la puerta del taller.',
+  'home.artisans.lede': 'Cada perfil se lee de corrido, en cinco actos, desde la voz de quien teje hasta la puerta de su taller.',
 
-  'atlas.eyebrow': 'Acerca del Tejido',
+  'atlas.eyebrow': 'Territorios',
   'atlas.title': 'Atlas Textil de Colombia',
   'atlas.lede':
     'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
@@ -313,7 +313,7 @@ const es: Record<UIKey, string> = {
   'techniques.eyebrow': 'La Ruta de las Técnicas',
   'techniques.title': 'Navegación por el acto de hacer',
   'techniques.lede':
-    'Una técnica no es una categoría. Es un movimiento que un cuerpo aprendió de otro cuerpo. Estas cinco técnicas atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
+    'Una técnica no es una categoría. Es un movimiento que un cuerpo aprendió de otro cuerpo. Estas cinco atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
   'techniques.motion': 'Estudio de movimiento',
   'techniques.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
   'techniques.play': 'Reproducir el estudio de movimiento',

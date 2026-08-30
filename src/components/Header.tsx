@@ -7,9 +7,9 @@ import type { Lang } from '../i18n'
 import { useLockBodyScroll } from '../lib/hooks'
 
 const ROUTES = [
-  { to: '/atlas', key: 'nav.atlas' },
-  { to: '/techniques', key: 'nav.techniques' },
   { to: '/artisans', key: 'nav.artisans' },
+  { to: '/techniques', key: 'nav.techniques' },
+  { to: '/atlas', key: 'nav.atlas' },
 ] as const
 
 export function Header() {
