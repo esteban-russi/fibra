@@ -8,7 +8,7 @@ export function NotFound() {
   const ways = [
     { to: '/', label: t('common.notFound.home') },
     { to: '/atlas', label: t('nav.atlas') },
-    { to: '/gestures', label: t('nav.gestures') },
+    { to: '/techniques', label: t('nav.techniques') },
     { to: '/artisans', label: t('nav.artisans') },
   ]
 

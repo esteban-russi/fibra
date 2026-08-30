@@ -19,7 +19,7 @@ const en = {
   // --- Navigation -----------------------------------------------------------
   'nav.home': 'Home',
   'nav.atlas': 'About the Weave',
-  'nav.gestures': 'Gestures',
+  'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
   'nav.commission': 'Commissioning',
   'nav.credits': 'Credits',
@@ -40,10 +40,10 @@ const en = {
   'home.paths.title': 'Two ways in',
   'home.paths.lede':
     'There is no correct order. You can enter through the act of making, or through the ground the material comes from.',
-  'home.path.gestures.title': 'The Path of Gestures',
-  'home.path.gestures.desc':
-    'Warping, braiding, knotting, dyeing, spinning. Five movements of the hand, each one a whole body of knowledge.',
-  'home.path.gestures.cta': 'Enter through the hand',
+  'home.path.techniques.title': 'The Path of Techniques',
+  'home.path.techniques.desc':
+    'Warping, braiding, knotting, dyeing, spinning. Five movements of the hand, each with its own tools and its own timings.',
+  'home.path.techniques.cta': 'Enter through the hand',
   'home.path.territory.title': 'The Path of Territory',
   'home.path.territory.desc':
     'Six chromatic regions, each colour drawn from the dye or fibre that grows there. A tapestry rather than a map.',
@@ -86,19 +86,19 @@ const en = {
   'drawer.noArtisans': 'No chronicle has been published from this region yet. Profiles are added only once the workshop has reviewed and approved its own page.',
   'drawer.viewProfile': 'Read the chronicle',
 
-  // --- Gestures -------------------------------------------------------------
-  'gestures.eyebrow': 'The Path of Gestures',
-  'gestures.title': 'Navigation by the act of making',
-  'gestures.lede':
-    'A technique is not a category — it is a movement a body learned from another body. These five gestures cut across every region: the same knot is tied on the Guajira peninsula and in the Chocó rainforest, and it means something different in each place.',
-  'gestures.motion': 'Motion study',
-  'gestures.reduced': 'Motion is paused because your system asks for reduced motion.',
-  'gestures.play': 'Play motion study',
-  'gestures.pause': 'Pause motion study',
-  'gestures.materials': 'Worked in',
-  'gestures.regions': 'Practised in',
-  'gestures.tempo': 'Tempo',
-  'gestures.select': 'Show the {name} gesture',
+  // --- Techniques -------------------------------------------------------------
+  'techniques.eyebrow': 'The Path of Techniques',
+  'techniques.title': 'Navigation by the act of making',
+  'techniques.lede':
+    'A technique is not a category. It is a movement one body learned from another. These five cut across every region: the same knot is tied on the Guajira peninsula and in the Chocó rainforest, and it means something different in each place.',
+  'techniques.motion': 'Motion study',
+  'techniques.reduced': 'Motion is paused because your system asks for reduced motion.',
+  'techniques.play': 'Play motion study',
+  'techniques.pause': 'Pause motion study',
+  'techniques.materials': 'Worked in',
+  'techniques.regions': 'Practised in',
+  'techniques.tempo': 'Tempo',
+  'techniques.select': 'Show the {name} technique',
 
   // --- Artisans -------------------------------------------------------------
   'artisans.eyebrow': 'Chronicles',
@@ -133,7 +133,7 @@ const en = {
   'act.2.roman': 'II',
   'act.2.title': 'Territory and Memory',
   'act.3.roman': 'III',
-  'act.3.title': 'Material and Gesture',
+  'act.3.title': 'Material and Technique',
   'act.4.roman': 'IV',
   'act.4.title': 'Works of the Workshop',
   'act.5.roman': 'V',
@@ -162,8 +162,8 @@ const en = {
   'hotspots.markersLabel': 'markers on this cloth. Tab between them, Enter to open.',
   'hotspots.term': 'Term',
 
-  'gesturevideo.title': 'The rhythm of the hands',
-  'gesturevideo.lede': 'Silent loops. No music, no voiceover — the tempo of the work is the point.',
+  'techniquevideo.title': 'The rhythm of the hands',
+  'techniquevideo.lede': 'Silent loops. No music, no voiceover. The tempo of the work is the point.',
 
   // --- Act IV ---------------------------------------------------------------
   'works.technique': 'Technique',
@@ -208,7 +208,7 @@ const en = {
   'credits.depicts': 'Depicts',
   'credits.graphics': 'Drawn graphics',
   'credits.graphics.lede':
-    'Weave structures, fibre studies, the regional cartography and the gesture loops on this site are drawn as vector graphics rather than photographed. They render real structural geometry — the interlacement of a plain weave, the topology of a three-strand braid, the pitch of a coil — so that the technique is legible rather than merely illustrated.',
+    'Weave structures, fibre studies, the regional cartography and the technique loops on this site are drawn as vector graphics rather than photographed. They render real structural geometry — the interlacement of a plain weave, the topology of a three-strand braid, the pitch of a coil — so that the technique is legible rather than merely illustrated.',
   'credits.content': 'Editorial content',
   'credits.status': 'Status',
 
@@ -250,7 +250,7 @@ const es: Record<UIKey, string> = {
 
   'nav.home': 'Inicio',
   'nav.atlas': 'Acerca del Tejido',
-  'nav.gestures': 'Gestos',
+  'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
   'nav.commission': 'Encargo',
   'nav.credits': 'Créditos',
@@ -270,10 +270,10 @@ const es: Record<UIKey, string> = {
   'home.paths.title': 'Dos maneras de entrar',
   'home.paths.lede':
     'No hay un orden correcto. Se puede entrar por el acto de hacer, o por la tierra de donde viene la materia.',
-  'home.path.gestures.title': 'La Ruta de los Gestos',
-  'home.path.gestures.desc':
-    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno un cuerpo entero de saber.',
-  'home.path.gestures.cta': 'Entrar por la mano',
+  'home.path.techniques.title': 'La Ruta de las Técnicas',
+  'home.path.techniques.desc':
+    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno con sus propias herramientas y sus propios tiempos.',
+  'home.path.techniques.cta': 'Entrar por la mano',
   'home.path.territory.title': 'La Ruta del Territorio',
   'home.path.territory.desc':
     'Seis regiones cromáticas, cada color tomado de la tintura o la fibra que allí crece. Un tapiz antes que un mapa.',
@@ -314,18 +314,18 @@ const es: Record<UIKey, string> = {
   'drawer.noArtisans': 'Todavía no se ha publicado ninguna crónica de esta región. Los perfiles se añaden solo cuando el taller ha revisado y aprobado su propia página.',
   'drawer.viewProfile': 'Leer la crónica',
 
-  'gestures.eyebrow': 'La Ruta de los Gestos',
-  'gestures.title': 'Navegación por el acto de hacer',
-  'gestures.lede':
-    'Una técnica no es una categoría — es un movimiento que un cuerpo aprendió de otro cuerpo. Estos cinco gestos atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
-  'gestures.motion': 'Estudio de movimiento',
-  'gestures.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
-  'gestures.play': 'Reproducir el estudio de movimiento',
-  'gestures.pause': 'Pausar el estudio de movimiento',
-  'gestures.materials': 'Se trabaja en',
-  'gestures.regions': 'Se practica en',
-  'gestures.tempo': 'Tempo',
-  'gestures.select': 'Mostrar el gesto de {name}',
+  'techniques.eyebrow': 'La Ruta de las Técnicas',
+  'techniques.title': 'Navegación por el acto de hacer',
+  'techniques.lede':
+    'Una técnica no es una categoría. Es un movimiento que un cuerpo aprendió de otro cuerpo. Estas cinco técnicas atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
+  'techniques.motion': 'Estudio de movimiento',
+  'techniques.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
+  'techniques.play': 'Reproducir el estudio de movimiento',
+  'techniques.pause': 'Pausar el estudio de movimiento',
+  'techniques.materials': 'Se trabaja en',
+  'techniques.regions': 'Se practica en',
+  'techniques.tempo': 'Tempo',
+  'techniques.select': 'Mostrar la técnica de {name}',
 
   'artisans.eyebrow': 'Crónicas',
   'artisans.title': 'Quienes tejen',
@@ -357,7 +357,7 @@ const es: Record<UIKey, string> = {
   'act.2.roman': 'II',
   'act.2.title': 'El Territorio y la Memoria',
   'act.3.roman': 'III',
-  'act.3.title': 'La Materia y el Gesto',
+  'act.3.title': 'La Materia y la Técnica',
   'act.4.roman': 'IV',
   'act.4.title': 'Las Obras del Taller',
   'act.5.roman': 'V',
@@ -385,8 +385,8 @@ const es: Record<UIKey, string> = {
   'hotspots.markersLabel': 'marcadores sobre esta tela. Tab para recorrerlos, Enter para abrir.',
   'hotspots.term': 'Término',
 
-  'gesturevideo.title': 'El ritmo de las manos',
-  'gesturevideo.lede': 'Bucles mudos. Sin música, sin voz en off — el tempo del trabajo es lo que importa.',
+  'techniquevideo.title': 'El ritmo de las manos',
+  'techniquevideo.lede': 'Bucles mudos. Sin música, sin voz en off. El tempo del trabajo es lo que importa.',
 
   'works.technique': 'Técnica',
   'works.materials': 'Materiales',
@@ -428,7 +428,7 @@ const es: Record<UIKey, string> = {
   'credits.depicts': 'Muestra',
   'credits.graphics': 'Gráficos dibujados',
   'credits.graphics.lede':
-    'Las estructuras de tejido, los estudios de fibra, la cartografía regional y los bucles de gestos de este sitio están dibujados como gráficos vectoriales en lugar de fotografiados. Representan geometría estructural real — el entrelazado de un tafetán, la topología de una trenza de tres cabos, el paso de un anillado — para que la técnica sea legible y no meramente ilustrada.',
+    'Las estructuras de tejido, los estudios de fibra, la cartografía regional y los bucles de técnicas de este sitio están dibujados como gráficos vectoriales en lugar de fotografiados. Representan geometría estructural real — el entrelazado de un tafetán, la topología de una trenza de tres cabos, el paso de un anillado — para que la técnica sea legible y no meramente ilustrada.',
   'credits.content': 'Contenido editorial',
   'credits.status': 'Estado',
 

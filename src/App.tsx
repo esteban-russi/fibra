@@ -11,7 +11,7 @@ import { Home } from './routes/Home'
  * the atlas, the chronicles and the commission guide as well.
  */
 const Atlas = lazy(() => import('./routes/Atlas').then((m) => ({ default: m.Atlas })))
-const Gestures = lazy(() => import('./routes/Gestures').then((m) => ({ default: m.Gestures })))
+const Techniques = lazy(() => import('./routes/Techniques').then((m) => ({ default: m.Techniques })))
 const Artisans = lazy(() => import('./routes/Artisans').then((m) => ({ default: m.Artisans })))
 const ArtisanProfile = lazy(() =>
   import('./routes/ArtisanProfile').then((m) => ({ default: m.ArtisanProfile })),
@@ -79,8 +79,8 @@ function Shell() {
             <Route path="/" element={<Home />} />
             <Route path="/atlas" element={<Atlas />} />
             <Route path="/atlas/:slug" element={<Atlas />} />
-            <Route path="/gestures" element={<Gestures />} />
-            <Route path="/gestures/:slug" element={<Gestures />} />
+            <Route path="/techniques" element={<Techniques />} />
+            <Route path="/gestures/:slug" element={<Techniques />} />
             <Route path="/artisans" element={<Artisans />} />
             <Route path="/artisans/:slug" element={<ArtisanProfile />} />
             <Route path="/commission" element={<Commission />} />

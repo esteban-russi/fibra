@@ -26,7 +26,7 @@ export function Credits() {
       },
     },
     {
-      what: { en: 'The five gestures', es: 'Los cinco gestos' },
+      what: { en: 'The five techniques', es: 'Las cinco técnicas' },
       status: {
         en: 'Documented technique, described structurally.',
         es: 'Técnica documentada, descrita de manera estructural.',

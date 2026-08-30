@@ -8,7 +8,7 @@ import { useLockBodyScroll } from '../lib/hooks'
 
 const ROUTES = [
   { to: '/atlas', key: 'nav.atlas' },
-  { to: '/gestures', key: 'nav.gestures' },
+  { to: '/techniques', key: 'nav.techniques' },
   { to: '/artisans', key: 'nav.artisans' },
   { to: '/commission', key: 'nav.commission' },
 ] as const

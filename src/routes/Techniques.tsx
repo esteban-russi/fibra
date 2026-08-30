@@ -5,9 +5,9 @@ import { ArrowRight, Pause, Play } from 'lucide-react'
 import { cn } from '../lib/cn'
 import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
-import { GestureLoop } from '../components/graphics/GestureLoop'
+import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
 import { Prose, SectionHeading } from '../components/ui/primitives'
-import { GESTURES, GESTURE_BY_SLUG } from '../content/gestures'
+import { TECHNIQUES, TECHNIQUE_BY_SLUG } from '../content/techniques'
 import { REGIONS } from '../content/regions'
 
 /**
@@ -18,19 +18,19 @@ import { REGIONS } from '../content/regions'
  * people want the loops still without having set an OS preference, and the
  * drawings are legible in either state.
  */
-export function Gestures() {
+export function Techniques() {
   const { t, pick } = useI18n()
   const { slug } = useParams()
   const reduced = useReducedMotion()
   const [wanted, setWanted] = useState(true)
   const playing = wanted && !reduced
 
-  const focused = GESTURE_BY_SLUG.get(slug ?? '') ?? GESTURES[0]
+  const focused = TECHNIQUE_BY_SLUG.get(slug ?? '') ?? TECHNIQUES[0]
 
   return (
     <div className="mx-auto max-w-[86rem] px-5 pb-24 pt-[calc(var(--header-h)+3.5rem)] sm:px-8 sm:pb-32 sm:pt-[calc(var(--header-h)+5rem)]">
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeading eyebrow={t('gestures.eyebrow')} title={t('gestures.title')} lede={t('gestures.lede')} />
+        <SectionHeading eyebrow={t('techniques.eyebrow')} title={t('techniques.title')} lede={t('techniques.lede')} />
 
         <div className="flex flex-col items-start gap-2">
           <button
@@ -44,15 +44,15 @@ export function Gestures() {
             )}
           >
             {playing ? <Pause size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}
-            {playing ? t('gestures.pause') : t('gestures.play')}
+            {playing ? t('techniques.pause') : t('techniques.play')}
           </button>
-          {reduced && <p className="max-w-[16rem] text-xs leading-relaxed text-muted">{t('gestures.reduced')}</p>}
+          {reduced && <p className="max-w-[16rem] text-xs leading-relaxed text-muted">{t('techniques.reduced')}</p>}
         </div>
       </div>
 
       {/* The grid of motion studies. */}
       <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {GESTURES.map((g, i) => {
+        {TECHNIQUES.map((g, i) => {
           const active = g.slug === focused.slug
           return (
             <motion.li
@@ -63,7 +63,7 @@ export function Gestures() {
               transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link
-                to={`/gestures/${g.slug}`}
+                to={`/techniques/${g.slug}`}
                 aria-current={active ? 'true' : undefined}
                 className={cn(
                   'group flex h-full flex-col overflow-hidden rounded-sm border bg-canvas transition-colors',
@@ -71,11 +71,11 @@ export function Gestures() {
                 )}
               >
                 <div className="relative aspect-[5/4] border-b border-line bg-surface/60">
-                  <GestureLoop kind={g.id} playing={playing} label={pick(g.motionAlt)} />
+                  <TechniqueLoop kind={g.id} playing={playing} label={pick(g.motionAlt)} />
                   {/* Chipped rather than bare: the label sits over drawn line
                       work, and unbacked small caps lose contrast against it. */}
                   <span className="absolute left-3 top-3 rounded-full bg-canvas/85 px-2.5 py-1 text-[0.6875rem] uppercase tracking-[0.16em] text-clay backdrop-blur-[1px]">
-                    {t('gestures.motion')}
+                    {t('techniques.motion')}
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
@@ -95,24 +95,24 @@ export function Gestures() {
         })}
       </ul>
 
-      {/* The focused gesture, read in full. */}
+      {/* The focused technique, read in full. */}
       <article
-        id="gesture-detail"
-        aria-labelledby="gesture-detail-title"
+        id="technique-detail"
+        aria-labelledby="technique-detail-title"
         className="mt-20 grid gap-10 border-t border-line pt-14 lg:grid-cols-[1fr_1.25fr] lg:gap-16"
       >
         <div>
           <div className="sticky top-[calc(var(--header-h)+2rem)]">
             <div className="aspect-square overflow-hidden rounded-sm border border-line bg-surface/60">
-              <GestureLoop kind={focused.id} playing={playing} label={pick(focused.motionAlt)} />
+              <TechniqueLoop kind={focused.id} playing={playing} label={pick(focused.motionAlt)} />
             </div>
             <p className="mt-4 text-pretty text-[0.8125rem] leading-relaxed text-clay">{pick(focused.motionAlt)}</p>
           </div>
         </div>
 
         <div>
-          <p className="eyebrow">{t('gestures.eyebrow')}</p>
-          <h2 id="gesture-detail-title" className="mt-3 font-serif text-4xl text-bordeaux sm:text-5xl">
+          <p className="eyebrow">{t('techniques.eyebrow')}</p>
+          <h2 id="technique-detail-title" className="mt-3 font-serif text-4xl text-bordeaux sm:text-5xl">
             {focused.term}
           </h2>
           <p className="mt-2 font-serif text-xl italic text-muted">{pick(focused.gloss)}</p>
@@ -123,7 +123,7 @@ export function Gestures() {
 
           <dl className="mt-10 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
             <div>
-              <dt className="eyebrow mb-2">{t('gestures.materials')}</dt>
+              <dt className="eyebrow mb-2">{t('techniques.materials')}</dt>
               <dd className="space-y-1 text-sm text-ink/80">
                 {pick(focused.materials).map((m) => (
                   <p key={m}>{m}</p>
@@ -131,7 +131,7 @@ export function Gestures() {
               </dd>
             </div>
             <div>
-              <dt className="eyebrow mb-2">{t('gestures.regions')}</dt>
+              <dt className="eyebrow mb-2">{t('techniques.regions')}</dt>
               <dd className="flex flex-wrap gap-2">
                 {focused.regions.map((id) => {
                   const r = REGIONS.find((x) => x.id === id)
@@ -150,7 +150,7 @@ export function Gestures() {
               </dd>
             </div>
             <div>
-              <dt className="eyebrow mb-2">{t('gestures.tempo')}</dt>
+              <dt className="eyebrow mb-2">{t('techniques.tempo')}</dt>
               <dd className="text-sm italic text-ink/80">{pick(focused.tempo)}</dd>
             </div>
           </dl>

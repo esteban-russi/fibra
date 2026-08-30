@@ -1,15 +1,15 @@
 import { useMemo } from 'react'
 import { cn } from '../../lib/cn'
-import type { MotionKind } from '../../content/gestures'
+import type { MotionKind } from '../../content/techniques'
 
 /**
- * Silent, looping line studies of the five gestures.
+ * Silent, looping line studies of the five techniques.
  *
  * These are drawn rather than filmed. Each one is authored against the real
  * mechanics of the movement — the warp is laid end by end and crossed at the
  * peg, the braid crosses outer-over-centre in strict alternation, the spindle
  * adds twist that travels up into the drafted section — so that the loop is a
- * legible diagram of the gesture and not an ambient animation.
+ * legible diagram of the technique and not an ambient animation.
  *
  * `playing` is controlled by the caller, which combines the visitor's own
  * play/pause with their reduced-motion preference. When paused the drawing
@@ -26,7 +26,7 @@ type Props = {
   label: string
 }
 
-export function GestureLoop({ kind, playing, ink = '#6E3A41', accent = '#E5A93C', className, label }: Props) {
+export function TechniqueLoop({ kind, playing, ink = '#6E3A41', accent = '#E5A93C', className, label }: Props) {
   const drawing = useMemo(() => {
     switch (kind) {
       case 'urdir':

@@ -128,8 +128,8 @@
 ::-webkit-scrollbar-thumb:hover { background: var(--color-rosewood); }
 
 /* ---------------------------------------------------------------------------
-   Gesture loops.
-   Each keyframe set is authored against the mechanics of one gesture rather
+   Technique loops.
+   Each keyframe set is authored against the mechanics of one technique rather
    than being a generic drift: the braid translates by exactly one repeat so it
    loops seamlessly, the warp reveals end by end, the dye front rises once and
    holds. `.motion-paused` stops every loop in place — used both by the

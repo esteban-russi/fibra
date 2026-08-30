@@ -1,5 +1,5 @@
 import type { Localized } from '../i18n'
-import type { MotionKind } from './gestures'
+import type { MotionKind } from './techniques'
 
 /**
  * Artisan chronicles.
@@ -87,7 +87,7 @@ export type Artisan = {
   fibre: FibreReading
   hotspots: Hotspot[]
   glossary: GlossaryEntry[]
-  gestures: MotionKind[]
+  techniques: MotionKind[]
   patternPalette: string[]
 
   works: Work[]
@@ -235,7 +235,7 @@ export const ARTISANS: Artisan[] = [
         },
       },
     ],
-    gestures: ['trenzar', 'tinturar'],
+    techniques: ['trenzar', 'tinturar'],
     patternPalette: ['#E7DDD7', '#3A2420', '#E5A93C'],
     works: [
       {
@@ -428,7 +428,7 @@ export const ARTISANS: Artisan[] = [
         },
       },
     ],
-    gestures: ['urdir', 'anudar', 'hilar'],
+    techniques: ['urdir', 'anudar', 'hilar'],
     patternPalette: ['#FFFDF5', '#2A9D8F', '#E5A93C', '#6E3A41'],
     works: [
       {
@@ -606,7 +606,7 @@ export const ARTISANS: Artisan[] = [
         },
       },
     ],
-    gestures: ['tinturar', 'anudar'],
+    techniques: ['tinturar', 'anudar'],
     patternPalette: ['#F2E9DC', '#2B1B16', '#9E2B25', '#607248'],
     works: [
       {
@@ -784,7 +784,7 @@ export const ARTISANS: Artisan[] = [
         },
       },
     ],
-    gestures: ['hilar', 'urdir', 'tinturar'],
+    techniques: ['hilar', 'urdir', 'tinturar'],
     patternPalette: ['#E7DDD7', '#5C3D2E', '#B79C9B'],
     works: [
       {

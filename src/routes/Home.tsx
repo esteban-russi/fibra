@@ -5,10 +5,10 @@ import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
 import { ConductorThread } from '../components/graphics/ConductorThread'
 import { WeavePlate } from '../components/graphics/WeavePlate'
-import { GestureLoop } from '../components/graphics/GestureLoop'
+import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
 import { Eyebrow, SectionHeading, Testimony, ThreadRule } from '../components/ui/primitives'
 import { MEDIA } from '../content/media'
-import { GESTURES } from '../content/gestures'
+import { TECHNIQUES } from '../content/techniques'
 import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { cn } from '../lib/cn'
@@ -151,15 +151,15 @@ export function Home() {
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
             <motion.div {...rise}>
               <PathCard
-                to="/gestures"
-                title={t('home.path.gestures.title')}
-                desc={t('home.path.gestures.desc')}
-                cta={t('home.path.gestures.cta')}
+                to="/techniques"
+                title={t('home.path.techniques.title')}
+                desc={t('home.path.techniques.desc')}
+                cta={t('home.path.techniques.cta')}
                 visual={
                   <div className="grid h-full grid-cols-3 gap-px bg-line/40">
-                    {GESTURES.slice(0, 3).map((g) => (
+                    {TECHNIQUES.slice(0, 3).map((g) => (
                       <div key={g.id} className="flex items-center justify-center bg-surface p-3">
-                        <GestureLoop
+                        <TechniqueLoop
                           kind={g.id}
                           playing={!reduced}
                           label={pick(g.motionAlt)}

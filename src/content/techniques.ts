@@ -1,21 +1,21 @@
 import type { Localized } from '../i18n'
 
 /**
- * The five gestures — the transversal route through the archive.
+ * The five techniques: the transversal route through the archive.
  *
  * The Spanish verb is the identifier in both languages: `urdir` and `warping`
  * are not equivalents, and the craft vocabulary is the precise term. English
  * carries a gloss rather than a replacement.
  *
  * `motion` selects which drawn loop animates the card. Each loop is authored
- * against the real mechanics of the gesture rather than being decorative: the
+ * against the real mechanics of the technique rather than being decorative: the
  * warping loop lays parallel ends and returns, the braid loop crosses three
  * strands in strict alternation, the spin loop shows draft and twist entering
  * the fibre in opposite directions.
  */
 export type MotionKind = 'urdir' | 'trenzar' | 'anudar' | 'tinturar' | 'hilar'
 
-export type Gesture = {
+export type Technique = {
   id: MotionKind
   slug: string
   /** The craft term, kept in Spanish in both languages. */
@@ -30,7 +30,7 @@ export type Gesture = {
   motionAlt: Localized
 }
 
-export const GESTURES: Gesture[] = [
+export const TECHNIQUES: Technique[] = [
   {
     id: 'urdir',
     slug: 'urdir',
@@ -42,11 +42,11 @@ export const GESTURES: Gesture[] = [
     },
     body: {
       en: [
-        'Warping is the gesture that commits. The weaver walks a single thread back and forth between pegs, counting, and the number of passes fixes the width of the cloth while the distance between the pegs fixes its length. Nothing about this is visible in the finished piece, and everything about the finished piece is decided here.',
+        'Warping is the technique that commits. The weaver walks a single thread back and forth between pegs, counting, and the number of passes fixes the width of the cloth while the distance between the pegs fixes its length. Nothing about this is visible in the finished piece, and everything about the finished piece is decided here.',
         'The cross — the figure-eight where the threads swap order at one end — is the part that matters most and is easiest to lose. It keeps every end in sequence so the warp can be transferred to the loom without tangling. A warp is not measured in metres so much as in the patience required not to break the count while making it.',
       ],
       es: [
-        'Urdir es el gesto que compromete. Quien teje camina un solo hilo de ida y vuelta entre estacas, contando, y el número de pasadas fija el ancho de la tela mientras la distancia entre estacas fija su largo. Nada de esto es visible en la pieza terminada, y todo lo de la pieza terminada se decide aquí.',
+        'Urdir es la técnica que compromete. Quien teje camina un solo hilo de ida y vuelta entre estacas, contando, y el número de pasadas fija el ancho de la tela mientras la distancia entre estacas fija su largo. Nada de esto es visible en la pieza terminada, y todo lo de la pieza terminada se decide aquí.',
         'El cruce — la figura de ocho donde los hilos intercambian orden en un extremo — es la parte que más importa y la más fácil de perder. Mantiene cada cabo en secuencia para que la urdimbre pueda pasarse al telar sin enredarse. Una urdimbre no se mide tanto en metros como en la paciencia que exige no romper la cuenta mientras se hace.',
       ],
     },
@@ -74,11 +74,11 @@ export const GESTURES: Gesture[] = [
     body: {
       en: [
         'A braid has no warp and no weft — every element is doing both jobs at once, running obliquely through the structure. That is why it can be worked without any equipment, and why a braider can walk, talk and eat while making it. In the Zenú savannas the flat arrow-cane braid is produced this way in long continuous lengths and only afterwards coiled and stitched into a hat.',
-        'The count is the whole grammar. A braid of fifteen strands and a braid of twenty-seven are the same gesture at different resolutions, but the second takes several times as long, uses only the finest scraped fibre, and produces a cloth-like flexibility the coarser count cannot. When a Zenú braid is described by a number, that number is the specification.',
+        'The count is the whole grammar. A braid of fifteen strands and a braid of twenty-seven are the same technique at different resolutions, but the second takes several times as long, uses only the finest scraped fibre, and produces a cloth-like flexibility the coarser count cannot. When a Zenú braid is described by a number, that number is the specification.',
       ],
       es: [
         'Una trenza no tiene urdimbre ni trama — cada elemento hace las dos funciones a la vez, corriendo en oblicuo por la estructura. Por eso puede trabajarse sin equipo alguno, y por eso quien trenza puede caminar, hablar y comer mientras lo hace. En las sabanas zenúes la trenza plana de caña flecha se produce así en largos continuos y solo después se enrolla y se cose hasta formar un sombrero.',
-        'El conteo es toda la gramática. Una trenza de quince hebras y una de veintisiete son el mismo gesto en distinta resolución, pero la segunda toma varias veces más tiempo, usa solo la fibra raspada más fina y produce una flexibilidad de tela que el conteo grueso no alcanza. Cuando una trenza zenú se describe con un número, ese número es la especificación.',
+        'El conteo es toda la gramática. Una trenza de quince hebras y una de veintisiete son la misma técnica en distinta resolución, pero la segunda toma varias veces más tiempo, usa solo la fibra raspada más fina y produce una flexibilidad de tela que el conteo grueso no alcanza. Cuando una trenza zenú se describe con un número, ese número es la especificación.',
       ],
     },
     materials: {
@@ -88,8 +88,8 @@ export const GESTURES: Gesture[] = [
     regions: ['caribe', 'insular'],
     tempo: { en: 'Quick, even, conversational', es: 'Rápido, parejo, conversable' },
     motionAlt: {
-      en: 'Three strands cross over one another in alternation — outer over centre, then the other outer over the new centre — the braid growing steadily downward.',
-      es: 'Tres hebras se cruzan alternadamente — la exterior sobre la central, luego la otra exterior sobre la nueva central — y la trenza crece de manera sostenida hacia abajo.',
+      en: 'Three strands cross over one another in alternation: the outer over the centre, then the other outer over the new centre, and the braid grows steadily downward.',
+      es: 'Tres hebras se cruzan alternadamente: la exterior sobre la central, luego la otra exterior sobre la nueva central, y la trenza crece de manera sostenida hacia abajo.',
     },
   },
 
@@ -119,8 +119,8 @@ export const GESTURES: Gesture[] = [
     regions: ['amazonia', 'orinoquia', 'insular'],
     tempo: { en: 'Interruptible, patient, portable', es: 'Interrumpible, paciente, portátil' },
     motionAlt: {
-      en: 'A cord passes through the loop of the row above, draws closed into a knot, and moves on — a diamond mesh forming row by row.',
-      es: 'Un cordel pasa por el bucle de la vuelta superior, se cierra en un nudo y sigue — una malla en rombos que se forma vuelta a vuelta.',
+      en: 'A cord passes through the loop of the row above, draws closed into a knot, and moves on, forming a diamond mesh row by row.',
+      es: 'Un cordel pasa por el bucle de la vuelta superior, se cierra en un nudo y sigue, y así se forma una malla en rombos vuelta a vuelta.',
     },
   },
 
@@ -187,4 +187,4 @@ export const GESTURES: Gesture[] = [
   },
 ]
 
-export const GESTURE_BY_SLUG = new Map(GESTURES.map((g) => [g.slug, g]))
+export const TECHNIQUE_BY_SLUG = new Map(TECHNIQUES.map((g) => [g.slug, g]))

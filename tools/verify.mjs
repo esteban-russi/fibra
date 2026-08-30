@@ -127,14 +127,14 @@ for (const path of ['/', '/atlas/caribe', '/artisans/telar-wayuu', '/credits']) 
 /* ---------- 8. Internal links all resolve ---------- */
 await p.goto(BASE + '/', { waitUntil: 'networkidle2' })
 const hrefs = await p.$$eval('a[href^="/"]', (els) => [...new Set(els.map((e) => e.getAttribute('href')))])
-const routes = ['/', '/atlas', '/gestures', '/artisans', '/commission', '/credits']
+const routes = ['/', '/atlas', '/techniques', '/artisans', '/credits']
 const bad = []
 for (const h of hrefs) {
   const base = h.split('#')[0]
   const known =
     routes.includes(base) ||
     /^\/atlas\/[a-z]+$/.test(base) ||
-    /^\/gestures\/[a-z]+$/.test(base) ||
+    /^\/techniques\/[a-z]+$/.test(base) ||
     /^\/artisans\/[a-z-]+$/.test(base)
   if (!known) bad.push(h)
 }
@@ -142,17 +142,17 @@ ok('no unknown internal links on home', bad.length === 0, bad.join(', '))
 
 /* ---------- 9. Reduced motion ---------- */
 await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
-await p.goto(BASE + '/gestures', { waitUntil: 'networkidle2' })
+await p.goto(BASE + '/techniques', { waitUntil: 'networkidle2' })
 await new Promise((r) => setTimeout(r, 700))
 const paused = await p.$$eval('svg', (els) => els.some((e) => e.classList.contains('motion-paused')))
-ok('gesture loops pause under reduced motion', paused)
+ok('technique loops pause under reduced motion', paused)
 const toggleDisabled = await p.$eval('button[aria-pressed]', (el) => el.disabled)
 ok('motion toggle disabled under reduced motion', toggleDisabled === true)
 
 /* ---------- 10. Positioning: no commerce patterns ---------- */
 await p.emulateMediaFeatures([])
 const commerce = []
-for (const path of ['/', '/atlas', '/gestures', '/artisans', '/artisans/telar-wayuu', '/commission']) {
+for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/telar-wayuu']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const found = await p.evaluate(() => {

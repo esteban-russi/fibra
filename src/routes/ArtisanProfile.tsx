@@ -9,10 +9,10 @@ import { useActiveSection, useReducedMotion } from '../lib/hooks'
 import { ARTISAN_BY_SLUG } from '../content/artisans'
 import type { Artisan } from '../content/artisans'
 import { REGIONS } from '../content/regions'
-import { GESTURES } from '../content/gestures'
+import { TECHNIQUES } from '../content/techniques'
 import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
-import { GestureLoop } from '../components/graphics/GestureLoop'
+import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
 import { ZoomLens } from '../components/artisan/ZoomLens'
 import { PatternHotspots } from '../components/artisan/PatternHotspots'
 import { TraceabilitySeal } from '../components/artisan/TraceabilitySeal'
@@ -176,7 +176,7 @@ function Chronicle({ artisan }: { artisan: Artisan }) {
               </motion.div>
             </Act>
 
-            {/* =============== ACT III — material and gesture =============== */}
+            {/* =============== ACT III — material and technique =============== */}
             <Act id="act-3" index={2} accent={accent}>
               <motion.div {...rise}>
                 <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('zoom.title')}</h3>
@@ -206,20 +206,20 @@ function Chronicle({ artisan }: { artisan: Artisan }) {
               </motion.div>
 
               <motion.div {...rise} className="mt-20">
-                <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('gesturevideo.title')}</h3>
-                <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('gesturevideo.lede')}</p>
+                <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('techniquevideo.title')}</h3>
+                <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('techniquevideo.lede')}</p>
                 <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {artisan.gestures.map((id) => {
-                    const g = GESTURES.find((x) => x.id === id)
+                  {artisan.techniques.map((id) => {
+                    const g = TECHNIQUES.find((x) => x.id === id)
                     if (!g) return null
                     return (
                       <li key={id}>
                         <Link
-                          to={`/gestures/${g.slug}`}
+                          to={`/techniques/${g.slug}`}
                           className="group block overflow-hidden rounded-sm border border-line transition-colors hover:border-ash"
                         >
                           <div className="aspect-[5/4] border-b border-line bg-surface/60">
-                            <GestureLoop
+                            <TechniqueLoop
                               kind={g.id}
                               playing={!reduced}
                               label={pick(g.motionAlt)}

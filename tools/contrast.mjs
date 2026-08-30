@@ -128,7 +128,7 @@ const audit = () => {
 }
 
 let total = 0
-for (const path of ['/', '/atlas', '/atlas/caribe', '/gestures', '/artisans', '/artisans/werregue-wounaan', '/commission', '/credits']) {
+for (const path of ['/', '/atlas', '/atlas/caribe', '/techniques', '/artisans', '/artisans/werregue-wounaan', '/credits']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 1000))
   const issues = await p.evaluate(audit)
