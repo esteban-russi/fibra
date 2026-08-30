@@ -11,7 +11,6 @@ export function Footer() {
     { to: '/artisans', label: t('nav.artisans') },
   ]
   const about = [
-    { to: '/commission', label: t('guide.title') },
     { to: '/credits', label: t('credits.title') },
   ]
 

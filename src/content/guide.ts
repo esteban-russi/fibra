@@ -1,9 +1,9 @@
 import type { Localized } from '../i18n'
 
 /**
- * The Guide to a Conscious Commission. Reachable as a standalone route and
- * embedded in Act V of every chronicle, because the moment someone is about to
- * write to a workshop is the moment this is worth reading.
+ * The Guide to a Conscious Commission. Rendered inside Act V of every
+ * chronicle, because the moment someone is about to write to a workshop is the
+ * moment this is worth reading.
  */
 export type GuidePoint = {
   id: string

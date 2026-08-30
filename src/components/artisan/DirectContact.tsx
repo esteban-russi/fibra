@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { ChevronDown, MessageCircle, Phone } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { useI18n } from '../../i18n'
@@ -123,13 +122,6 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
             )
           })}
         </ul>
-
-        <Link
-          to="/commission"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-bordeaux underline-offset-4 hover:underline"
-        >
-          {t('guide.open')} <span aria-hidden="true">→</span>
-        </Link>
       </div>
     </div>
   )

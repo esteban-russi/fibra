@@ -10,7 +10,6 @@ const ROUTES = [
   { to: '/atlas', key: 'nav.atlas' },
   { to: '/techniques', key: 'nav.techniques' },
   { to: '/artisans', key: 'nav.artisans' },
-  { to: '/commission', key: 'nav.commission' },
 ] as const
 
 export function Header() {

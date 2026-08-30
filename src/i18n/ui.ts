@@ -21,7 +21,6 @@ const en = {
   'nav.atlas': 'About the Weave',
   'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
-  'nav.commission': 'Commissioning',
   'nav.credits': 'Credits',
   'nav.menu': 'Menu',
   'nav.open': 'Open menu',
@@ -191,8 +190,6 @@ const en = {
   'guide.title': 'Guide to a Conscious Commission',
   'guide.lede':
     'Most friction between a workshop and a first-time client comes from one place: industrial expectations applied to a handmade object. These are the things worth knowing before you write.',
-  'guide.open': 'Read the full guide',
-  'guide.step': 'Point',
 
   // --- Credits / provenance -------------------------------------------------
   'credits.eyebrow': 'Provenance',
@@ -252,7 +249,6 @@ const es: Record<UIKey, string> = {
   'nav.atlas': 'Acerca del Tejido',
   'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
-  'nav.commission': 'Encargo',
   'nav.credits': 'Créditos',
   'nav.menu': 'Menú',
   'nav.open': 'Abrir menú',
@@ -412,8 +408,6 @@ const es: Record<UIKey, string> = {
   'guide.title': 'Guía de Encargo Consciente',
   'guide.lede':
     'Casi toda la fricción entre un taller y un cliente primerizo viene del mismo sitio: expectativas industriales aplicadas a un objeto hecho a mano. Esto es lo que conviene saber antes de escribir.',
-  'guide.open': 'Leer la guía completa',
-  'guide.step': 'Punto',
 
   'credits.eyebrow': 'Procedencia',
   'credits.title': 'Créditos y procedencia del contenido',

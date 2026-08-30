@@ -8,7 +8,7 @@ import { Home } from './routes/Home'
 /**
  * The cover is bundled with the shell because it is where most visits start;
  * everything else is split, so arriving at FIBRA does not cost the weight of
- * the atlas, the chronicles and the commission guide as well.
+ * * the atlas and the chronicles as well.
  */
 const Atlas = lazy(() => import('./routes/Atlas').then((m) => ({ default: m.Atlas })))
 const Techniques = lazy(() => import('./routes/Techniques').then((m) => ({ default: m.Techniques })))
@@ -16,7 +16,6 @@ const Artisans = lazy(() => import('./routes/Artisans').then((m) => ({ default: 
 const ArtisanProfile = lazy(() =>
   import('./routes/ArtisanProfile').then((m) => ({ default: m.ArtisanProfile })),
 )
-const Commission = lazy(() => import('./routes/Commission').then((m) => ({ default: m.Commission })))
 const Credits = lazy(() => import('./routes/Credits').then((m) => ({ default: m.Credits })))
 const NotFound = lazy(() => import('./routes/NotFound').then((m) => ({ default: m.NotFound })))
 
@@ -83,7 +82,6 @@ function Shell() {
             <Route path="/gestures/:slug" element={<Techniques />} />
             <Route path="/artisans" element={<Artisans />} />
             <Route path="/artisans/:slug" element={<ArtisanProfile />} />
-            <Route path="/commission" element={<Commission />} />
             <Route path="/credits" element={<Credits />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
