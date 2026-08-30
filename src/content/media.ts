@@ -94,8 +94,8 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Tres vasijas redondeadas de werregue en primer plano. Sus paredes de fibra de palma anillada llevan figuras geométricas en franjas de rojo profundo, negro, oliva y crema.',
     },
     caption: {
-      en: 'Wounaan werregue vessels. The wall is built as a continuous coil and the figures are counted into it stitch by stitch — the pattern cannot be corrected afterwards.',
-      es: 'Vasijas wounaan en werregue. La pared se construye como un anillado continuo y las figuras se cuentan puntada a puntada — el patrón no se puede corregir después.',
+      en: 'Wounaan werregue vessels. The wall is built as a continuous coil and the figures are counted into it stitch by stitch. The pattern cannot be corrected afterwards.',
+      es: 'Vasijas wounaan en werregue. La pared se construye como un anillado continuo y las figuras se cuentan puntada a puntada. El patrón no se puede corregir después.',
     },
   },
 

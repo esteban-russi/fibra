@@ -6,24 +6,22 @@ import { useReducedMotion } from '../lib/hooks'
 import { ConductorThread } from '../components/graphics/ConductorThread'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
-import { Eyebrow, SectionHeading, Testimony, ThreadRule } from '../components/ui/primitives'
+import { SectionHeading } from '../components/ui/primitives'
 import { MEDIA } from '../content/media'
 import { TECHNIQUES } from '../content/techniques'
 import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
+import { HERO_VOICE } from '../content/voice'
 import { cn } from '../lib/cn'
 
 export function Home() {
   const { t, pick } = useI18n()
   const reduced = useReducedMotion()
-  // The cover pairs a photograph with a first-person quotation, so the two must
-  // agree and must not imply each other falsely. The chronicles are
-  // demonstrations with invented quotations, so the cover image is deliberately
-  // one of objects rather than of an identifiable person: no real individual is
-  // put next to words they never said. The image and the voice are also from
-  // the same tradition, which a mismatched pairing would quietly misrepresent.
+  // Objects, not a portrait: the cover photograph is of pieces, so the voice
+  // beside it is not read as a likeness of the person speaking. The credit line
+  // says what the photograph actually shows.
   const hero = MEDIA.werregueVasijas
-  const voice = ARTISANS[2]
+  const voice = HERO_VOICE
 
   const rise = reduced
     ? {}
@@ -36,9 +34,7 @@ export function Home() {
 
   return (
     <>
-      {/* ---------------------------------------------------------------
-          Act of arrival. A single human fragment, not a catalogue.
-      --------------------------------------------------------------- */}
+      {/* Cover: one voice, no catalogue. */}
       <section className="relative min-h-[92svh] overflow-hidden bg-ink text-canvas">
         <img
           src={hero.src}
@@ -64,17 +60,14 @@ export function Home() {
             <p className="eyebrow !text-canvas/65">{t('home.eyebrow')}</p>
 
             <div className="mt-7">
-              <span aria-hidden="true" className="block font-serif text-6xl leading-none text-canvas/25">&ldquo;</span>
-              <blockquote className="-mt-4 text-balance font-serif text-[2rem] italic leading-[1.16] text-canvas sm:text-[2.75rem] lg:text-[3.25rem]">
+              <span aria-hidden="true" className="block font-serif text-5xl leading-none text-canvas/25">&ldquo;</span>
+              <blockquote className="-mt-3 text-pretty font-serif text-[1.5rem] italic leading-[1.24] text-canvas sm:text-[2.125rem] sm:leading-[1.2] lg:text-[2.625rem]">
                 {pick(voice.quote)}
               </blockquote>
-              <p className="mt-5 text-sm text-canvas/70">
-                {voice.name} · {pick(voice.community)} ·{' '}
-                <span className="text-caribe/90">{pick(voice.quoteAttribution)}</span>
-              </p>
+              <p className="mt-5 text-sm text-canvas/70">{voice.name}</p>
             </div>
 
-            <p className="mt-9 max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-canvas/78 sm:text-base">
+            <p className="mt-8 max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-canvas/78 sm:text-base">
               {t('home.hero.curatorial')}
             </p>
 
@@ -102,7 +95,7 @@ export function Home() {
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
-                to={`/artisans/${voice.slug}`}
+                to="/artisans"
                 className="group inline-flex items-center gap-2.5 rounded-sm bg-canvas px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-caribe"
               >
                 {t('home.hero.cta')}
@@ -117,16 +110,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------
-          The thread runs the length of this block and frays at mid-height.
-      --------------------------------------------------------------- */}
+      {/* The thread runs the length of this block and frays at mid-height. */}
       <div className="relative">
         <ConductorThread frayAt={0.3} />
 
         <section className="relative mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
           <motion.div {...rise} className="mx-auto max-w-xl text-center">
-            {/* The page ground is painted behind this line so the thread passes
-                cleanly behind the text instead of crossing the letterforms. */}
+            {/* Ground painted behind the line so the thread passes behind the type. */}
             <p className="text-pretty bg-canvas px-6 py-3 font-serif text-xl italic leading-relaxed text-clay sm:text-2xl">
               {t('home.thread.note')}
             </p>
@@ -136,8 +126,6 @@ export function Home() {
         {/* The two routes the strands lead to. */}
         <section className="relative mx-auto max-w-[86rem] px-5 pb-24 sm:px-8 sm:pb-32">
           <motion.div {...rise}>
-            {/* Same knockout as the note above: the thread should pass behind
-                the type, never across the letterforms. */}
             <div className="mx-auto mb-14 w-fit max-w-3xl bg-canvas px-8 py-4">
               <SectionHeading
                 eyebrow={t('home.paths.eyebrow')}
@@ -196,24 +184,22 @@ export function Home() {
         </section>
       </div>
 
-      {/* ---------------------------------------------------------------
-          The stance. Said plainly, because it is the product decision.
-      --------------------------------------------------------------- */}
+      {/* What the name means, and the three ideas it carries. */}
       <section className="border-y border-line bg-surface/50">
         <div className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-28">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <motion.div {...rise}>
-              <SectionHeading eyebrow={t('home.stance.eyebrow')} title={t('home.stance.title')} />
+              <SectionHeading eyebrow={t('home.identity.eyebrow')} title={t('home.identity.title')} />
               <p className="mt-6 max-w-lg text-pretty text-[1.0625rem] leading-[1.75] text-ink/80">
-                {t('home.stance.body')}
+                {t('home.identity.body')}
               </p>
             </motion.div>
 
             <motion.dl {...rise} className="grid gap-px overflow-hidden rounded-sm bg-line sm:grid-cols-1">
               {[
-                { t: t('home.stance.a.t'), b: t('home.stance.a.b') },
-                { t: t('home.stance.b.t'), b: t('home.stance.b.b') },
-                { t: t('home.stance.c.t'), b: t('home.stance.c.b') },
+                { t: t('home.identity.a.t'), b: t('home.identity.a.b') },
+                { t: t('home.identity.b.t'), b: t('home.identity.b.b') },
+                { t: t('home.identity.c.t'), b: t('home.identity.c.b') },
               ].map((row, i) => (
                 <div key={row.t} className="bg-canvas px-6 py-7 sm:px-8">
                   <dt className="flex items-baseline gap-3 font-serif text-lg text-bordeaux">
@@ -230,9 +216,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------
-          Chronicles.
-      --------------------------------------------------------------- */}
+      {/* Chronicles. */}
       <section className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
         <motion.div {...rise}>
           <SectionHeading
@@ -287,13 +271,6 @@ export function Home() {
             )
           })}
         </ul>
-
-        <ThreadRule className="mt-20" />
-
-        <motion.div {...rise} className="mx-auto mt-16 max-w-2xl text-center">
-          <Eyebrow className="mb-4">{t('footer.ethics')}</Eyebrow>
-          <Testimony quote={t('footer.ethics.2')} />
-        </motion.div>
       </section>
     </>
   )
