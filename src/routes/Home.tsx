@@ -110,6 +110,63 @@ export function Home() {
         </div>
       </section>
 
+      {/* Chronicles. */}
+      <section className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
+        <motion.div {...rise}>
+          <SectionHeading
+            eyebrow={t('home.artisans.eyebrow')}
+            title={t('home.artisans.title')}
+            lede={t('home.artisans.lede')}
+            className="mb-14"
+          />
+        </motion.div>
+
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {ARTISANS.map((a) => {
+            const region = REGIONS.find((r) => r.id === a.regionId)
+            return (
+              <motion.li key={a.slug} {...rise}>
+                <Link
+                  to={`/artisans/${a.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-sm border border-line bg-canvas transition-colors hover:border-ash"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden bg-surface">
+                    {a.openingImage ? (
+                      <img
+                        src={MEDIA[a.openingImage].src}
+                        alt={pick(MEDIA[a.openingImage].alt)}
+                        width={MEDIA[a.openingImage].width}
+                        height={MEDIA[a.openingImage].height}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <WeavePlate kind="plain" palette={a.patternPalette} seed={a.slug} />
+                    )}
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-0 h-1.5 w-full"
+                      style={{ background: region?.colour }}
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="eyebrow">{pick(region?.name ?? { en: '', es: '' })}</p>
+                    <h3 className="mt-2 font-serif text-xl leading-snug text-bordeaux">{a.name}</h3>
+                    <p className="mt-1.5 text-sm text-clay">{pick(a.craft)}</p>
+                    <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-ink/70">{pick(a.standfirst)}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-bordeaux">
+                      {t('drawer.viewProfile')}
+                      <ArrowRight size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.li>
+            )
+          })}
+        </ul>
+      </section>
+
       {/* The thread runs the length of this block and frays at mid-height. */}
       <div className="relative">
         <ConductorThread frayAt={0.3} />
@@ -216,62 +273,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Chronicles. */}
-      <section className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
-        <motion.div {...rise}>
-          <SectionHeading
-            eyebrow={t('home.artisans.eyebrow')}
-            title={t('home.artisans.title')}
-            lede={t('home.artisans.lede')}
-            className="mb-14"
-          />
-        </motion.div>
-
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {ARTISANS.map((a) => {
-            const region = REGIONS.find((r) => r.id === a.regionId)
-            return (
-              <motion.li key={a.slug} {...rise}>
-                <Link
-                  to={`/artisans/${a.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-sm border border-line bg-canvas transition-colors hover:border-ash"
-                >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-surface">
-                    {a.openingImage ? (
-                      <img
-                        src={MEDIA[a.openingImage].src}
-                        alt={pick(MEDIA[a.openingImage].alt)}
-                        width={MEDIA[a.openingImage].width}
-                        height={MEDIA[a.openingImage].height}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                      />
-                    ) : (
-                      <WeavePlate kind="plain" palette={a.patternPalette} seed={a.slug} />
-                    )}
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-0 top-0 h-1.5 w-full"
-                      style={{ background: region?.colour }}
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="eyebrow">{pick(region?.name ?? { en: '', es: '' })}</p>
-                    <h3 className="mt-2 font-serif text-xl leading-snug text-bordeaux">{a.name}</h3>
-                    <p className="mt-1.5 text-sm text-clay">{pick(a.craft)}</p>
-                    <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-ink/70">{pick(a.standfirst)}</p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-bordeaux">
-                      {t('drawer.viewProfile')}
-                      <ArrowRight size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              </motion.li>
-            )
-          })}
-        </ul>
-      </section>
     </>
   )
 }
