@@ -66,6 +66,7 @@ const en = {
   'atlas.title': 'Textile Atlas of Colombia',
   'atlas.lede':
     'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
+  'atlas.scroll': 'See the six regions',
   'atlas.hint': 'Select a region to open its panel',
   'atlas.hint.touch': 'Tap a band to open its panel',
   'atlas.map.label': 'Textile regions of Colombia',
@@ -293,6 +294,7 @@ const es: Record<UIKey, string> = {
   'atlas.title': 'Atlas Textil de Colombia',
   'atlas.lede':
     'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
+  'atlas.scroll': 'Ver las seis regiones',
   'atlas.hint': 'Seleccione una región para abrir su panel',
   'atlas.hint.touch': 'Toque una franja para abrir su panel',
   'atlas.map.label': 'Regiones textiles de Colombia',
