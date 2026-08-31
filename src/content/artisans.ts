@@ -2,7 +2,7 @@ import type { Localized } from '../i18n'
 import type { MotionKind } from './techniques'
 
 /**
- * Artisan chronicles.
+ * Artisan stories.
  *
  * IMPORTANT — content status. FIBRA's governing rule is that published material
  * is supplied and validated by the artisans and their collectives. No such

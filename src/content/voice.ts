@@ -3,7 +3,7 @@ import type { Localized } from '../i18n'
 /**
  * The voice on the cover.
  *
- * Real supplied material, unlike the chronicles in `artisans.ts`, which are
+ * Real supplied material, unlike the stories in `artisans.ts`, which are
  * flagged demonstrations. It is kept in its own file so the cover never has to
  * borrow a demonstration quotation again, and so nothing here inherits the
  * demonstration badge.
@@ -22,7 +22,7 @@ export type Voice = {
 export const HERO_VOICE: Voice = {
   name: 'Adita',
   quote: {
-    es: 'Cada pieza nace de un concepto narrativo. Para mí, tejer no es solo entrelazar fibras; es invocar una época, un estilo o una emoción, permitiendo que mi propia esencia se vierta en la prenda final.',
-    en: 'Every piece begins from a narrative concept. For me, weaving is not only interlacing fibres; it is summoning a period, a style or an emotion, letting my own essence pour into the finished garment.',
+    es: 'Tejer no es solo entrelazar fibras; es invocar una época, un estilo o una emoción',
+    en: 'Weaving is not only interlacing fibres; it is summoning a period, a style or an emotion.',
   },
 }

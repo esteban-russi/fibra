@@ -110,7 +110,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Chronicles. */}
+      {/* Stories. */}
       <section className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
         <motion.div {...rise}>
           <SectionHeading

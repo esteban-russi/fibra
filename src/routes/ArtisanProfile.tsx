@@ -20,7 +20,7 @@ import { DirectContact } from '../components/artisan/DirectContact'
 import { CreditedImage, DemonstrationNotice, Prose } from '../components/ui/primitives'
 
 /**
- * The chronicle: five acts read as one continuous descent.
+ * The story: five acts read as one continuous descent.
  *
  * Explicitly not tabs. The specification abandons a fragmented tabbed layout in
  * favour of sequential reading, so the acts are sections of a single document
@@ -39,10 +39,10 @@ export function ArtisanProfile() {
   const { slug } = useParams()
   const artisan = ARTISAN_BY_SLUG.get(slug ?? '')
   if (!artisan) return <Navigate to="/artisans" replace />
-  return <Chronicle key={artisan.slug} artisan={artisan} />
+  return <Story key={artisan.slug} artisan={artisan} />
 }
 
-function Chronicle({ artisan }: { artisan: Artisan }) {
+function Story({ artisan }: { artisan: Artisan }) {
   const { t, pick } = useI18n()
   const reduced = useReducedMotion()
   const ids = useMemo(() => ACTS.map((a) => a.id), [])
@@ -139,7 +139,7 @@ function Chronicle({ artisan }: { artisan: Artisan }) {
         </div>
       </section>
 
-      {/* The act rail plus the body of the chronicle. */}
+      {/* The act rail plus the body of the story. */}
       <div className="mx-auto max-w-[86rem] px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[13rem_1fr] lg:gap-16">
           <ActRail active={active} accent={accent} />

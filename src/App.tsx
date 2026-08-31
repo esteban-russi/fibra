@@ -8,7 +8,7 @@ import { Home } from './routes/Home'
 /**
  * The cover is bundled with the shell because it is where most visits start;
  * everything else is split, so arriving at FIBRA does not cost the weight of
- * * the atlas and the chronicles as well.
+ * * the atlas and the stories as well.
  */
 const Atlas = lazy(() => import('./routes/Atlas').then((m) => ({ default: m.Atlas })))
 const Techniques = lazy(() => import('./routes/Techniques').then((m) => ({ default: m.Techniques })))

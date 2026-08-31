@@ -2,7 +2,7 @@
  * UI string table. English is authored first and its keys become the contract:
  * `es` is typed as Record<UIKey, string>, so a missing Spanish translation is a
  * compile error rather than a silent English leak at runtime.
- * Content strings (region prose, artisan chronicles) live in src/content — this
+ * Content strings (region prose, artisan stories) live in src/content — this
  * file is only chrome: navigation, labels, controls, guidance copy.
  */
 
@@ -32,7 +32,7 @@ const en = {
   'home.hero.curatorial':
     'FIBRA gathers the stories of the people who weave in Colombia. Each one is told in the first person, with the name of the weaver, the community that taught them, and the technique they have repeated for generations.',
   'home.hero.scroll': 'Follow the thread',
-  'home.hero.cta': 'Read a chronicle',
+  'home.hero.cta': 'Read a story',
   'home.hero.credit': 'Photograph',
   'home.thread.note': 'A single thread runs the length of this story. Midway down it frays, and each strand leads somewhere.',
   'home.paths.eyebrow': 'The thread divides',
@@ -57,7 +57,7 @@ const en = {
   'home.identity.b.b': 'Warping, braiding, knotting, dyeing, spinning. The same movement, held for centuries in one territory.',
   'home.identity.c.t': 'The patience that turns matter into memory',
   'home.identity.c.b': 'A werregue vessel is weeks of counting. Making time is stated in hours and weeks rather than left out.',
-  'home.artisans.eyebrow': 'Chronicles',
+  'home.artisans.eyebrow': 'Stories',
   'home.artisans.title': 'Five acts, one voice',
   'home.artisans.lede': 'Each profile reads straight through, in five acts, from the weaver\u2019s own voice to the door of the workshop.',
 
@@ -81,9 +81,9 @@ const en = {
   'drawer.materials': 'Materials and extraction',
   'drawer.techniques': 'Techniques',
   'drawer.communities': 'Peoples and workshops',
-  'drawer.artisans': 'Chronicles from this region',
-  'drawer.noArtisans': 'No chronicle has been published from this region yet. Profiles are added only once the workshop has reviewed and approved its own page.',
-  'drawer.viewProfile': 'Read the chronicle',
+  'drawer.artisans': 'Stories from this region',
+  'drawer.noArtisans': 'No story has been published from this region yet. Profiles are added only once the workshop has reviewed and approved its own page.',
+  'drawer.viewProfile': 'Read the full story',
 
   // --- Techniques -----------------------------------------------------------
   'techniques.eyebrow': 'The Path of Techniques',
@@ -100,14 +100,14 @@ const en = {
   'techniques.select': 'Show the {name} technique',
 
   // --- Artisans -------------------------------------------------------------
-  'artisans.eyebrow': 'Chronicles',
+  'artisans.eyebrow': 'Stories',
   'artisans.title': 'The weavers',
   'artisans.lede':
-    'Each chronicle runs in five acts and is read as one continuous descent. Nothing here is a tab, because a life is not a tab.',
-  'artisan.back': 'All chronicles',
+    'Each story runs in five acts and is read as one continuous descent. Nothing here is a tab, because a life is not a tab.',
+  'artisan.back': 'All stories',
   'artisan.acts': 'Acts',
   'artisan.act': 'Act',
-  'artisan.progress': 'Chronicle progress',
+  'artisan.progress': 'Story progress',
   'artisan.community': 'Community',
   'artisan.territory': 'Territory',
   'artisan.craft': 'Craft',
@@ -210,7 +210,7 @@ const en = {
   'credits.status': 'Status',
 
   // --- Demonstration notice -------------------------------------------------
-  'demo.title': 'About this chronicle',
+  'demo.title': 'About this story',
   'demo.body':
     'FIBRA publishes only what an artisan and their collective have supplied and approved. This profile is a demonstration of the five-act structure: the person, the quotations and the contact details are invented, and are marked as such throughout. The craft, materials, regions and techniques described are documented traditions, not invented ones.',
   'demo.short': 'Demonstration profile — invented person, documented craft',
@@ -259,7 +259,7 @@ const es: Record<UIKey, string> = {
   'home.hero.curatorial':
     'FIBRA reúne las historias de quienes tejen en Colombia. Cada una se cuenta en primera persona, con el nombre de quien teje, la comunidad que le enseñó y la técnica que repite desde hace generaciones.',
   'home.hero.scroll': 'Siga el hilo',
-  'home.hero.cta': 'Leer una crónica',
+  'home.hero.cta': 'Leer una historia',
   'home.hero.credit': 'Fotografía',
   'home.thread.note': 'Un solo hilo recorre esta historia. A media altura se deshilacha, y cada hebra lleva a algún lugar.',
   'home.paths.eyebrow': 'El hilo se divide',
@@ -284,7 +284,7 @@ const es: Record<UIKey, string> = {
   'home.identity.b.b': 'Urdir, trenzar, anudar, tinturar, hilar. El mismo movimiento, sostenido durante siglos en un territorio.',
   'home.identity.c.t': 'La paciencia que convierte materia en memoria',
   'home.identity.c.b': 'Una vasija de werregue son semanas de conteo. El tiempo de elaboración se dice en horas y semanas, no se omite.',
-  'home.artisans.eyebrow': 'Crónicas',
+  'home.artisans.eyebrow': 'Historias',
   'home.artisans.title': 'Cinco actos, una voz',
   'home.artisans.lede': 'Cada perfil se lee de corrido, en cinco actos, desde la voz de quien teje hasta la puerta de su taller.',
 
@@ -306,9 +306,9 @@ const es: Record<UIKey, string> = {
   'drawer.materials': 'Materiales y extracción',
   'drawer.techniques': 'Técnicas',
   'drawer.communities': 'Pueblos y talleres',
-  'drawer.artisans': 'Crónicas de esta región',
-  'drawer.noArtisans': 'Todavía no se ha publicado ninguna crónica de esta región. Los perfiles se añaden solo cuando el taller ha revisado y aprobado su propia página.',
-  'drawer.viewProfile': 'Leer la crónica',
+  'drawer.artisans': 'Historias de esta región',
+  'drawer.noArtisans': 'Todavía no se ha publicado ninguna historia de esta región. Los perfiles se añaden solo cuando el taller ha revisado y aprobado su propia página.',
+  'drawer.viewProfile': 'Leer la historia completa',
 
   'techniques.eyebrow': 'La Ruta de las Técnicas',
   'techniques.title': 'Navegación por el acto de hacer',
@@ -323,14 +323,14 @@ const es: Record<UIKey, string> = {
   'techniques.tempo': 'Tempo',
   'techniques.select': 'Mostrar la técnica de {name}',
 
-  'artisans.eyebrow': 'Crónicas',
+  'artisans.eyebrow': 'Historias',
   'artisans.title': 'Quienes tejen',
   'artisans.lede':
-    'Cada crónica transcurre en cinco actos y se lee como un solo descenso continuo. Nada aquí es una pestaña, porque una vida no es una pestaña.',
-  'artisan.back': 'Todas las crónicas',
+    'Cada historia transcurre en cinco actos y se lee como un solo descenso continuo. Nada aquí es una pestaña, porque una vida no es una pestaña.',
+  'artisan.back': 'Todas las historias',
   'artisan.acts': 'Actos',
   'artisan.act': 'Acto',
-  'artisan.progress': 'Avance de la crónica',
+  'artisan.progress': 'Avance de la historia',
   'artisan.community': 'Comunidad',
   'artisan.territory': 'Territorio',
   'artisan.craft': 'Oficio',
@@ -426,7 +426,7 @@ const es: Record<UIKey, string> = {
   'credits.content': 'Contenido editorial',
   'credits.status': 'Estado',
 
-  'demo.title': 'Sobre esta crónica',
+  'demo.title': 'Sobre esta historia',
   'demo.body':
     'FIBRA publica únicamente lo que un artesano y su colectivo han provisto y aprobado. Este perfil es una demostración de la estructura en cinco actos: la persona, las citas y los datos de contacto son inventados, y así se señala en todo momento. El oficio, los materiales, las regiones y las técnicas descritas son tradiciones documentadas, no inventadas.',
   'demo.short': 'Perfil de demostración — persona inventada, oficio documentado',

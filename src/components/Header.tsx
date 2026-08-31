@@ -18,7 +18,7 @@ export function Header() {
   const [lifted, setLifted] = useState(false)
   const location = useLocation()
 
-  // The cover and every chronicle open on a dark full-bleed image, so the
+  // The cover and every story open on a dark full-bleed image, so the
   // header has to invert over them or the navigation is unreadable until the
   // visitor scrolls. Anywhere else the page ground is cream and it does not.
   const overDarkHero = location.pathname === '/' || /^\/artisans\/.+/.test(location.pathname)

@@ -81,7 +81,7 @@ export function useElementSize<T extends HTMLElement>(): [React.RefObject<T | nu
 
 /**
  * Reports which of a set of sections is currently the reading position.
- * Used by the chronicle's act rail; deliberately biased to the upper third of
+ * Used by the story's act rail; deliberately biased to the upper third of
  * the viewport so the rail marks what you are reading, not what is about to
  * scroll into view.
  */

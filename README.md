@@ -30,7 +30,7 @@ tokens in `src/index.css` and composed with utility classes.
 src/
   i18n/            LanguageProvider, and the UI string table (ui.ts)
   content/         All editorial content, bilingual — regions, techniques,
-                   artisan chronicles, the commission guide, the media registry
+                   artisan stories, the commission guide, the media registry
   components/
     graphics/      Drawn textile system: weave plates, fibre studies,
                    technique loops, the hilo conductor
@@ -52,11 +52,11 @@ tools/             Verification harnesses — see below
    linkable and the Back button closes them.
 3. **Techniques** (`/techniques`, `/techniques/:technique`) — the transversal route,
    organised by the act of making: urdir, trenzar, anudar, tinturar, hilar.
-4. **Chronicles** (`/artisans/:slug`) — five acts read as one continuous
+4. **Stories** (`/artisans/:slug`) — five acts read as one continuous
    descent, explicitly not tabs.
 
 Plus `/credits`. The Guide to a Conscious Commission is no longer a route of
-its own; it lives inside Act V of each chronicle.
+its own; it lives inside Act V of each story.
 
 ## Why the graphics are drawn rather than photographed
 

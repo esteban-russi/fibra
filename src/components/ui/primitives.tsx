@@ -175,7 +175,7 @@ export function CreditedImage({
   )
 }
 
-/** The persistent marker on every demonstration chronicle. */
+/** The persistent marker on every demonstration profile. */
 export function DemonstrationNotice({ compact = false }: { compact?: boolean }) {
   const { t } = useI18n()
   if (compact) {
