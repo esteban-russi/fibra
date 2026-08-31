@@ -133,7 +133,7 @@ export function AtlasMap({ selected, onSelect }: Props) {
         </ul>
       </motion.div>
 
-      <p className="mt-4 text-sm text-clay">{coarse ? t('atlas.hint.touch') : t('atlas.hint')}</p>
+      <p className="mt-4 text-center text-sm text-clay">{coarse ? t('atlas.hint.touch') : t('atlas.hint')}</p>
     </div>
   )
 }

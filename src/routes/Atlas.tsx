@@ -4,7 +4,7 @@ import { useI18n } from '../i18n'
 import { AtlasMap } from '../components/atlas/AtlasMap'
 import { RegionDrawer } from '../components/atlas/RegionDrawer'
 import { SectionHeading, ThreadRule } from '../components/ui/primitives'
-import { REGIONS, REGION_BY_SLUG } from '../content/regions'
+import { REGION_BY_SLUG } from '../content/regions'
 import type { Region } from '../content/regions'
 
 /**
@@ -13,7 +13,7 @@ import type { Region } from '../content/regions'
  * actually press to dismiss a full-width overlay on a phone.
  */
 export function Atlas() {
-  const { t, pick } = useI18n()
+  const { t } = useI18n()
   const { slug } = useParams()
   const navigate = useNavigate()
   const [selected, setSelected] = useState<Region | null>(() => REGION_BY_SLUG.get(slug ?? '') ?? null)
@@ -37,42 +37,31 @@ export function Atlas() {
 
   return (
     <>
-      <div className="mx-auto max-w-[86rem] px-5 pb-24 pt-[calc(var(--header-h)+3.5rem)] sm:px-8 sm:pb-32 sm:pt-[calc(var(--header-h)+5rem)]">
-        <SectionHeading eyebrow={t('atlas.eyebrow')} title={t('atlas.title')} lede={t('atlas.lede')} className="mb-12" />
+      <div className="mx-auto max-w-[86rem] px-5 pb-24 pt-[calc(var(--header-h)+1.25rem)] sm:px-8 sm:pb-32 sm:pt-[calc(var(--header-h)+2rem)]">
+        {/* The words on the left, the country woven on the right. */}
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHeading eyebrow={t('atlas.eyebrow')} title={t('atlas.title')} lede={t('atlas.lede')} />
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_20rem] lg:gap-14">
+            <ThreadRule className="my-8" />
+
+            <p className="max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-clay">{t('atlas.note')}</p>
+          </div>
+
+          <img
+            src="/media/map.png"
+            alt={t('atlas.map.alt')}
+            width={1080}
+            height={1440}
+            decoding="async"
+            // Capped against the viewport so the whole country is on the first screen.
+            className="mx-auto w-full max-w-[22rem] object-contain sm:max-w-[28rem] lg:max-h-[calc(100svh-var(--header-h)-6rem)] lg:max-w-none"
+          />
+        </div>
+
+        {/* The bands themselves, centred beneath the introduction. */}
+        <div className="mx-auto mt-20 w-full max-w-4xl sm:mt-24">
           <AtlasMap selected={selected} onSelect={open} />
-
-          <aside aria-labelledby="atlas-legend">
-            <h2 id="atlas-legend" className="eyebrow mb-4">
-              {t('atlas.legend')}
-            </h2>
-            <ul className="space-y-3">
-              {REGIONS.map((r) => (
-                <li key={r.id}>
-                  <button
-                    type="button"
-                    onClick={() => open(r)}
-                    className="group flex w-full items-center gap-3 rounded-sm px-1 py-1.5 text-left transition-colors hover:bg-surface/60"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="h-5 w-5 shrink-0 rounded-sm ring-1 ring-inset ring-black/10"
-                      style={{ background: r.colour }}
-                    />
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm text-ink/85 group-hover:text-bordeaux">{pick(r.name)}</span>
-                      <span className="block font-mono text-[0.6875rem] text-muted">{r.colour}</span>
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            <ThreadRule className="my-7" />
-
-            <p className="text-pretty text-[0.8125rem] leading-relaxed text-clay">{t('atlas.note')}</p>
-          </aside>
         </div>
       </div>
 

@@ -68,8 +68,9 @@ const en = {
     'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
   'atlas.hint': 'Select a region to open its panel',
   'atlas.hint.touch': 'Tap a band to open its panel',
-  'atlas.legend': 'Regions',
   'atlas.map.label': 'Textile regions of Colombia',
+  'atlas.map.alt':
+    'Map of Colombia knitted in wool, with each of the six textile regions worked in its own dye colour.',
   'atlas.region.select': 'Open the {name} region panel',
   'atlas.note':
     'The six bands are a chromatic reading of the country, not a survey boundary. Regional borders in Colombia are drawn differently by different institutions, and craft traditions cross all of them.',
@@ -294,8 +295,9 @@ const es: Record<UIKey, string> = {
     'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
   'atlas.hint': 'Seleccione una región para abrir su panel',
   'atlas.hint.touch': 'Toque una franja para abrir su panel',
-  'atlas.legend': 'Regiones',
   'atlas.map.label': 'Regiones textiles de Colombia',
+  'atlas.map.alt':
+    'Mapa de Colombia tejido en lana, con cada una de las seis regiones textiles trabajada en su propio color de tinte.',
   'atlas.region.select': 'Abrir el panel de la región {name}',
   'atlas.note':
     'Las seis franjas son una lectura cromática del país, no un límite catastral. Las fronteras regionales en Colombia se trazan de modo distinto según la institución, y las tradiciones artesanales las cruzan todas.',
