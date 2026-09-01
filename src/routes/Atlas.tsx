@@ -62,7 +62,7 @@ export function Atlas() {
 
             <ThreadRule className="my-8" />
 
-            <p className="max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-clay">{t('atlas.note')}</p>
+            <p className="max-w-xl text-pretty text-base leading-relaxed text-clay sm:text-[1.0625rem]">{t('atlas.note')}</p>
           </div>
 
           <img

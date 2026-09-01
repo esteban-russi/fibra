@@ -70,8 +70,10 @@ the pitch of a coil, the ply angle of a two-ply cord. Three reasons:
 2. Openly-licensed photography of Colombian textile practice is genuinely
    sparse, and the nearest matches are frequently from other countries. Using
    those would misrepresent the traditions the site is about.
-3. Attaching photographs of identifiable people to demonstration profiles would
-   be exactly the cultural extractivism the project exists to avoid.
+3. The photographic registry documents other people in other regions. Attaching
+   one of those frames to a named living artisan — as though it were her, or her
+   workshop — would be exactly the cultural extractivism the project exists to
+   avoid. Drawn plates stand in until these workshops supply their own images.
 
 Real photography is used where it is verified and correctly attributed — nine
 openly-licensed images, listed with author and licence on `/credits` and
@@ -80,18 +82,33 @@ are done in CSS so no derivative work is created, several being share-alike.
 
 ## Content status
 
-Every artisan profile is flagged `demonstration: true` and rendered with a
-permanent visible badge and an explanatory notice. The split is stated to the
-reader rather than hidden:
+Three profiles are published, and each one is built from a recorded interview
+with the artisan it names — Luz María Rodríguez Rodríguez (Sutatausa,
+Cundinamarca), Flor Imbacuan (Resguardo de Carlosama, Nariño) and Ada «Adita»
+(Chapinero, Bogotá). The demonstration profiles that preceded them — invented
+people attached to documented crafts — were removed rather than kept alongside,
+so nothing on the site is a person who does not exist.
 
-- **Invented** — the person, their name, quotations, contact details, individual
-  works and the times attached to them.
-- **Documented** — the craft, materials, extraction processes, tools, regions,
-  technique names and structural descriptions.
+Every profile carries a provenance notice stating the split rather than hiding
+it:
 
-Semiotic hotspots describe construction, which the eye can verify, and mark
-figure *meaning* as knowledge held by the community. No cosmology is invented
-for a real people's real designs. `/credits` states all of this in the product.
+- **Supplied by the artisan** — her name, community, territory, craft, the
+  quotations, who taught her, the fibre reading, the figures and their meanings,
+  the works and the times attached to them.
+- **Curatorial** — the ordering into five acts, the English translation (Spanish
+  is the language everything was said in and is authoritative), and the notes
+  explicitly marked as structural.
+- **Withheld** — the workshop telephone numbers. Publishing a number is a
+  separate consent from publishing a story and has not been given, so the
+  contact buttons render inert and say which consent is missing instead of
+  linking a placeholder.
+- **Documented, not community-validated** — the regions, materials, extraction
+  processes and technique pages, written from the published record.
+
+Semiotic hotspots describe construction, which the eye can verify, and publish a
+figure's *meaning* only where its holder stated it, attributed to her. No
+cosmology is invented for a real people's real designs. `/credits` states all of
+this in the product.
 
 ## Accessibility
 

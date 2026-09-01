@@ -5,7 +5,7 @@ import { ArrowRight, X } from 'lucide-react'
 import { useI18n } from '../../i18n'
 import { useEscape, useFocusTrap, useLockBodyScroll, useReducedMotion } from '../../lib/hooks'
 import { WeavePlate } from '../graphics/WeavePlate'
-import { CreditedImage, DemonstrationNotice, Prose } from '../ui/primitives'
+import { CreditedImage, ProvenanceNotice, Prose } from '../ui/primitives'
 import { MEDIA } from '../../content/media'
 import { artisansInRegion } from '../../content/artisans'
 import type { Region } from '../../content/regions'
@@ -187,7 +187,7 @@ export function RegionDrawer({ region, onClose }: { region: Region | null; onClo
                 </section>
 
                 <div className="mt-10">
-                  <DemonstrationNotice />
+                  <ProvenanceNotice />
                 </div>
               </div>
             </div>

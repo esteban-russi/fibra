@@ -17,7 +17,7 @@ import { ZoomLens } from '../components/artisan/ZoomLens'
 import { PatternHotspots } from '../components/artisan/PatternHotspots'
 import { TraceabilitySeal } from '../components/artisan/TraceabilitySeal'
 import { DirectContact } from '../components/artisan/DirectContact'
-import { CreditedImage, DemonstrationNotice, Prose } from '../components/ui/primitives'
+import { CreditedImage, ProvenanceNotice, Prose } from '../components/ui/primitives'
 
 /**
  * The story: five acts read as one continuous descent.
@@ -146,7 +146,7 @@ function Story({ artisan }: { artisan: Artisan }) {
 
           <div className="min-w-0 pb-8">
             <div className="pt-12 sm:pt-16">
-              <DemonstrationNotice />
+              <ProvenanceNotice notice={artisan.notice} />
             </div>
 
             {/* =============== ACT II — territory and memory =============== */}

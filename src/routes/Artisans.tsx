@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
-import { SectionHeading, DemonstrationNotice } from '../components/ui/primitives'
+import { SectionHeading, ProvenanceNotice } from '../components/ui/primitives'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { ARTISANS } from '../content/artisans'
 import { REGIONS } from '../content/regions'
@@ -18,7 +18,7 @@ export function Artisans() {
       <SectionHeading eyebrow={t('artisans.eyebrow')} title={t('artisans.title')} lede={t('artisans.lede')} />
 
       <div className="mt-8 max-w-3xl">
-        <DemonstrationNotice />
+        <ProvenanceNotice />
       </div>
 
       <ul className="mt-14 space-y-6">

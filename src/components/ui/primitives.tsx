@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 import { useI18n } from '../../i18n'
+import type { Localized } from '../../i18n'
 import { MEDIA } from '../../content/media'
 
 /** Small-caps editorial label used above every section heading. */
@@ -175,26 +176,35 @@ export function CreditedImage({
   )
 }
 
-/** The persistent marker on every demonstration profile. */
-export function DemonstrationNotice({ compact = false }: { compact?: boolean }) {
-  const { t } = useI18n()
+/**
+ * Where the material on a profile comes from.
+ *
+ * It states the provenance of what is published rather than warning the reader
+ * off it: the stories are supplied by the artisans, the translation and the
+ * ordering are ours, and the parts that are withheld are named. `notice` is the
+ * line the individual record carries in its own words, appended when a profile
+ * has one.
+ */
+export function ProvenanceNotice({ notice, compact = false }: { notice?: Localized; compact?: boolean }) {
+  const { t, pick } = useI18n()
   if (compact) {
     return (
-      <Badge tone="warn">
+      <Badge tone="neutral">
         <span aria-hidden="true">◆</span>
-        {t('demo.badge')}
+        {t('provenance.badge')}
       </Badge>
     )
   }
   return (
     <aside
-      className="rounded-sm border-l-2 border-caribe bg-caribe/10 px-5 py-4 text-sm leading-relaxed text-ink/80"
-      aria-label={t('demo.title')}
+      className="rounded-sm border-l-2 border-andina/70 bg-surface/60 px-5 py-4 text-sm leading-relaxed text-ink/80"
+      aria-label={t('provenance.title')}
     >
-      <p className="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#7A5410]">
-        {t('demo.title')}
+      <p className="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-bordeaux">
+        {t('provenance.title')}
       </p>
-      <p className="text-pretty">{t('demo.body')}</p>
+      <p className="text-pretty">{t('provenance.body')}</p>
+      {notice && <p className="mt-2 text-pretty italic text-clay">{pick(notice)}</p>}
     </aside>
   )
 }

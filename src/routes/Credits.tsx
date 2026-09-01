@@ -11,8 +11,9 @@ import { REGIONS } from '../content/regions'
  * for its own material, so this route is generated directly from the media
  * registry rather than maintained by hand — a photograph cannot appear on the
  * site without appearing here with its author and licence. It also states
- * plainly which parts of the editorial content are documented and which are
- * demonstration structure awaiting artisan-supplied material.
+ * plainly which parts of the editorial content came from the artisans
+ * themselves, which are written from the published record, and which are still
+ * withheld pending a consent that has not been given.
  */
 export function Credits() {
   const { t, pick } = useI18n()
@@ -33,17 +34,41 @@ export function Credits() {
       },
     },
     {
-      what: { en: 'Artisan names, quotations, works and contact', es: 'Nombres, citas, obras y contacto de los artesanos' },
+      what: {
+        en: 'Artisan names, quotations, memory and works',
+        es: 'Nombres, citas, memoria y obras de las artesanas',
+      },
       status: {
-        en: 'Invented. Demonstration content, marked as such on every profile. No real person is depicted or represented.',
-        es: 'Inventados. Contenido de demostración, señalado como tal en cada perfil. No se representa a ninguna persona real.',
+        en: 'Supplied by the artisan. Each of the three profiles is built from a recorded interview with the woman it names. Nothing on the site is a person who does not exist.',
+        es: 'Provistos por la artesana. Cada uno de los tres perfiles se construyó a partir de una entrevista grabada con la mujer que nombra. Nada en el sitio es una persona que no existe.',
+      },
+    },
+    {
+      what: { en: 'English translation of the stories', es: 'Traducción al inglés de las historias' },
+      status: {
+        en: 'Curatorial. Spanish is the language everything was said in and is the authoritative version.',
+        es: 'Curatorial. El español es la lengua en que todo se dijo y es la versión con autoridad.',
+      },
+    },
+    {
+      what: { en: 'Workshop telephone numbers', es: 'Teléfonos de los talleres' },
+      status: {
+        en: 'Withheld. Publishing a number is a separate consent from publishing a story; until it is given the contact buttons are inactive and say so.',
+        es: 'Reservados. Publicar un número es un consentimiento distinto del de publicar una historia; hasta que se dé, los botones de contacto están inactivos y así lo dicen.',
       },
     },
     {
       what: { en: 'Meaning of specific traditional figures', es: 'Significado de figuras tradicionales concretas' },
       status: {
-        en: 'Not published. Named as community-held knowledge wherever a figure appears.',
-        es: 'No publicado. Señalado como saber comunitario dondequiera que aparece una figura.',
+        en: 'Published only where its holder stated it, and attributed to her when it appears. Elsewhere the figure is named as community-held knowledge and left unexplained.',
+        es: 'Se publica solo donde quien lo guarda lo enunció, y se le atribuye cuando aparece. En los demás casos la figura se nombra como saber comunitario y se deja sin explicar.',
+      },
+    },
+    {
+      what: { en: 'Photography on the artisan profiles', es: 'Fotografía en los perfiles de artesanas' },
+      status: {
+        en: 'None. The registry above documents other people and other regions; attaching one of those frames to a named living artisan would misrepresent both. Drawn plates stand in until these workshops supply their own images.',
+        es: 'Ninguna. El registro de arriba documenta a otras personas y otras regiones; atribuir uno de esos encuadres a una artesana viva y nombrada tergiversaría a ambas. Los gráficos dibujados hacen de sustituto hasta que estos talleres provean sus propias imágenes.',
       },
     },
   ]

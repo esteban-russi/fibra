@@ -11,6 +11,12 @@ import type { Artisan } from '../../content/artisans'
  *
  * Rendered as a definition list rather than a graphic badge so the claims are
  * readable, translatable and available to a screen reader as statements.
+ *
+ * Material and consent are carried by the artisan rather than asserted by the
+ * site. Not every workshop works only in natural fibre, and consent is given in
+ * particular terms — a seal that flattened both into one house sentence would be
+ * making a claim on someone else's behalf, which is the failure it exists to
+ * prevent.
  */
 export function TraceabilitySeal({ artisan }: { artisan: Artisan }) {
   const { t, pick } = useI18n()
@@ -19,8 +25,8 @@ export function TraceabilitySeal({ artisan }: { artisan: Artisan }) {
     { k: t('seal.authorship'), v: artisan.seal.authorship },
     { k: t('seal.affiliation'), v: pick(artisan.seal.affiliation) },
     { k: t('seal.origin'), v: pick(artisan.seal.origin) },
-    { k: t('seal.material'), v: t('seal.material.value') },
-    { k: t('seal.consent'), v: artisan.seal.consentYear === '—' ? '—' : t('seal.consent.value') },
+    { k: t('seal.material'), v: pick(artisan.seal.material) },
+    { k: t('seal.consent'), v: pick(artisan.seal.consent) },
   ]
 
   return (
@@ -40,9 +46,9 @@ export function TraceabilitySeal({ artisan }: { artisan: Artisan }) {
 
       <dl className="mt-6 divide-y divide-line/70 border-t border-line/70">
         {rows.map((r) => (
-          <div key={r.k} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-2.5">
+          <div key={r.k} className="py-3">
             <dt className="text-[0.75rem] uppercase tracking-[0.1em] text-muted">{r.k}</dt>
-            <dd className="text-right text-sm text-ink/85">{r.v}</dd>
+            <dd className="mt-1 text-pretty text-sm leading-relaxed text-ink/85">{r.v}</dd>
           </div>
         ))}
       </dl>

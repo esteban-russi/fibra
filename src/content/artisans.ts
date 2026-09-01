@@ -4,20 +4,37 @@ import type { MotionKind } from './techniques'
 /**
  * Artisan stories.
  *
- * IMPORTANT — content status. FIBRA's governing rule is that published material
- * is supplied and validated by the artisans and their collectives. No such
- * material exists yet, so every profile below is flagged `demonstration: true`
- * and is rendered with a permanent, visible badge and an explanatory notice.
+ * CONTENT STATUS — read before editing. FIBRA's governing rule is that
+ * published material is supplied and validated by the artisans and their
+ * collectives. The three profiles below are the first to satisfy it: each one
+ * is built from a recorded interview with the artisan herself, edited
+ * curatorially but not invented. The demonstration profiles that previously
+ * stood here — invented people attached to documented crafts — have been
+ * removed rather than kept alongside, so that nothing on the site is a person
+ * who does not exist.
  *
- * The split is deliberate and is stated to the reader rather than hidden:
- *   - INVENTED: the person, their name, their quotations, their contact details,
- *     the individual works and the times attached to them.
- *   - DOCUMENTED: the craft, materials, extraction processes, tools, regions,
- *     technique names and structural descriptions.
+ * What is hers and what is ours:
+ *   - SUPPLIED by the artisan: her name, community, territory, craft, the
+ *     quotations, the account of who taught her, the fibre reading, the figures
+ *     and what they mean, the works and the times attached to them.
+ *   - CURATORIAL: the ordering into five acts, the English translation (Spanish
+ *     is the language everything was said in), and the structural notes marked
+ *     as such in the hotspots.
+ *   - WITHHELD: the workshop telephone numbers. Publishing a real number is a
+ *     separate consent from publishing a story, and it has not been given yet.
+ *     `contact.published` is false and the page says so rather than linking a
+ *     placeholder as though it were live.
  *
- * Semiotic hotspots describe construction — what the eye can verify in the
- * structure — and explicitly mark figure *meaning* as knowledge held by the
- * community rather than assigning invented cosmology to real traditions.
+ * Semiotic hotspots keep the same discipline as before: `communityHeld` marks a
+ * meaning that belongs to the community and is published only because its
+ * holder stated it. Where nothing was stated, the hotspot describes structure
+ * and says that it is structural.
+ *
+ * No photograph is attached to any of these profiles. The site's photographic
+ * registry holds openly licensed documentary images of other people and other
+ * regions; using one of them as the opening image of a named living artisan
+ * would misrepresent both. Drawn plates stand in until these workshops supply
+ * their own images.
  */
 
 export type Hotspot = {
@@ -28,7 +45,7 @@ export type Hotspot = {
   name: Localized
   /** What is structurally happening at this point — verifiable from the weave. */
   structure: Localized
-  /** What the figure carries. Community-held knowledge is marked, never invented. */
+  /** What the figure carries. Published only when its holder has stated it. */
   meaning: Localized
   communityHeld: boolean
 }
@@ -61,9 +78,15 @@ export type Work = {
 
 export type Artisan = {
   slug: string
-  demonstration: true
+  /**
+   * Provenance of the published material. `interview` means the profile was
+   * built from a recorded conversation with the artisan and edited
+   * curatorially — the person, the voice and the works are hers.
+   */
+  sourcing: 'interview'
+  /** The notice this particular record carries, in its own words. */
+  notice: Localized
   name: string
-  pronounNote?: Localized
   community: Localized
   territory: Localized
   regionId: string
@@ -78,7 +101,10 @@ export type Artisan = {
     authorship: string
     affiliation: Localized
     origin: Localized
-    consentYear: string
+    /** Stated per artisan: not every workshop works only in natural fibre. */
+    material: Localized
+    /** How consent was given, in the terms in which it was given. */
+    consent: Localized
   }
 
   memory: Localized<string[]>
@@ -93,744 +119,613 @@ export type Artisan = {
   works: Work[]
 
   contact: {
-    /** Deliberately non-routable placeholder — see `demonstration`. */
+    /**
+     * Digits for wa.me / tel:. Empty while `published` is false — the UI must
+     * not render a link it cannot honour.
+     */
     whatsapp: string
-    display: string
+    display: Localized
+    /** True only once the artisan has authorised publication of her number. */
+    published: boolean
     hours: Localized
     languages: Localized
   }
 }
 
-const DEMO_NUMBER = '573000000000'
-
 export const ARTISANS: Artisan[] = [
+  // ===========================================================================
+  // Luz María Rodríguez Rodríguez — Sutatausa, Cundinamarca
+  // ===========================================================================
   {
-    slug: 'trenza-zenu',
-    demonstration: true,
-    name: 'Rosalba Suárez Mendoza',
-    community: { en: 'Zenú people', es: 'Pueblo zenú' },
-    territory: { en: 'Tuchín, Córdoba', es: 'Tuchín, Córdoba' },
-    regionId: 'caribe',
-    craft: { en: 'Arrow-cane braiding', es: 'Trenzado en caña flecha' },
-    // Material, not a person: the documentary photograph of someone scraping
-    // arrow cane belongs to the Caribbean region panel with a caption saying
-    // truthfully what it shows. Using it here would read as a portrait of this
-    // invented individual, which is the one thing the ethics rule forbids.
-    openingImage: 'canaflechaPlanta',
-    standfirst: {
-      en: 'Braids arrow cane at counts of twenty-one and above, and scrapes her own fibre because she does not trust anyone else to judge the width.',
-      es: 'Trenza caña flecha en conteos de veintiuno y más, y raspa su propia fibra porque no confía en el juicio ajeno sobre el ancho.',
+    slug: 'luz-maria-rodriguez',
+    sourcing: 'interview',
+    notice: {
+      en: 'Curatorial content, published for cultural visibility and the preservation of memory.',
+      es: 'Contenido curatorial con fines de visibilización cultural y preservación de memoria.',
     },
-    quote: {
-      en: 'People ask me how long a hat takes and I never know how to answer, because they mean the sewing. The sewing is the last week.',
-      es: 'La gente me pregunta cuánto tarda un sombrero y nunca sé qué responder, porque se refieren a la costura. La costura es la última semana.',
+    name: 'Luz María Rodríguez Rodríguez',
+    community: {
+      en: 'Tejilarte collective and training school — the campesina network of the Ubaté valley',
+      es: 'Colectivo y Escuela de Formación Tejilarte — red campesina del valle de Ubaté',
     },
-    quoteAttribution: { en: 'Demonstration quotation', es: 'Cita de demostración' },
-    seal: {
-      authorship: 'Rosalba Suárez Mendoza',
-      affiliation: { en: 'Zenú braiding lineage, Tuchín', es: 'Linaje trenzador zenú, Tuchín' },
-      origin: { en: 'Tuchín, Córdoba, Colombia', es: 'Tuchín, Córdoba, Colombia' },
-      consentYear: '—',
+    territory: {
+      en: 'Vereda Peñas de Cajón, Sutatausa, Cundinamarca',
+      es: 'Vereda Peñas de Cajón, Sutatausa, Cundinamarca',
     },
-    taughtBy: { en: 'Her grandmother, from the age of six', es: 'Su abuela, desde los seis años' },
-    memory: {
-      en: [
-        'In Tuchín almost every household has a relationship with arrow cane, but the relationships are not the same. Some cut and sell the leaf. Some scrape. Some braid. Some only sew, joining the finished braid into hats. The division is old and it is economic, and it is also the reason the finest braid counts are concentrated in a small number of hands.',
-        'Knowledge here passes sideways as well as down. A braider learns the basic count from whoever raised her, but the high counts — twenty-seven, thirty-one — tend to be learned later, from a neighbour or an aunt who has them, and often in exchange for something. That is worth understanding before commissioning: a fine braid is not simply more of the same work, it is access to a skill that its holders have historically had reason to guard.',
-        'The braid itself is portable in a way weaving never is. It travels to the field, to the market, to a conversation on a porch. Much of the work behind a sombrero vueltiao is done in the gaps of other work, which is precisely what makes it so easy to undervalue by the hour.',
-      ],
-      es: [
-        'En Tuchín casi todas las casas tienen una relación con la caña flecha, pero las relaciones no son iguales. Unos cortan y venden la hoja. Otros raspan. Otros trenzan. Otros solo cosen, uniendo la trenza terminada hasta formar sombreros. La división es antigua y es económica, y es también la razón por la que los conteos de trenza más finos se concentran en pocas manos.',
-        'El saber aquí pasa de lado tanto como hacia abajo. Una trenzadora aprende el conteo básico de quien la crió, pero los conteos altos — veintisiete, treintaiuno — suelen aprenderse después, de una vecina o una tía que los tiene, y a menudo a cambio de algo. Conviene entenderlo antes de encargar: una trenza fina no es simplemente más de lo mismo, es acceso a una destreza que quienes la tienen han tenido razones históricas para guardar.',
-        'La trenza misma es portátil de un modo que el tejido nunca lo es. Viaja al campo, al mercado, a una conversación en un corredor. Buena parte del trabajo detrás de un sombrero vueltiao se hace en los huecos de otro trabajo, que es justamente lo que lo vuelve tan fácil de subvalorar por hora.',
-      ],
-    },
-    fibre: {
-      label: { en: 'Scraped arrow cane, undyed and dyed', es: 'Caña flecha raspada, cruda y teñida' },
-      fibre: 'palm',
-      twist: 'Z',
-      reading: {
-        en: [
-          'The strand is flat, not round. It has a face and a back, and it is laid so that the smooth face is always outward — which is why a good braid catches light in one direction only.',
-          'Width varies by fractions of a millimetre along a single strand. Sorting for even width is a separate operation from scraping, and it is what separates a twenty-one count from a twenty-seven.',
-          'The dark strands are not black but a very deep brown-purple, and they hold a slight sheen the pale strands do not. That difference in surface, not just in colour, is what makes the pattern legible from across a room.',
-        ],
-        es: [
-          'La hebra es plana, no redonda. Tiene cara y revés, y se coloca de modo que la cara lisa quede siempre hacia afuera — por eso una buena trenza atrapa la luz en un solo sentido.',
-          'El ancho varía por fracciones de milímetro a lo largo de una misma hebra. Clasificar por ancho parejo es una operación distinta del raspado, y es lo que separa un conteo de veintiuno de uno de veintisiete.',
-          'Las hebras oscuras no son negras sino de un pardo violáceo muy profundo, y conservan un brillo leve que las claras no tienen. Esa diferencia de superficie, no solo de color, es lo que hace legible el patrón desde el otro lado de una sala.',
-        ],
-      },
-    },
-    hotspots: [
-      {
-        id: 'cross',
-        x: 26,
-        y: 30,
-        name: { en: 'The oblique crossing', es: 'El cruce oblicuo' },
-        structure: {
-          en: 'Every strand runs diagonally through the braid, passing over one and under one in strict alternation. There is no thread that stays still — unlike a woven cloth, nothing here is a warp.',
-          es: 'Cada hebra corre en diagonal por la trenza, pasando sobre una y bajo una en alternancia estricta. No hay ningún hilo que se quede quieto — a diferencia de una tela tejida, aquí nada es urdimbre.',
-        },
-        meaning: {
-          en: 'Structural, not symbolic. The angle of the crossing is fixed by the strand count: more strands, shallower angle, denser braid.',
-          es: 'Estructural, no simbólico. El ángulo del cruce lo fija el número de hebras: más hebras, ángulo más tendido, trenza más densa.',
-        },
-        communityHeld: false,
-      },
-      {
-        id: 'pinta',
-        x: 62,
-        y: 46,
-        name: { en: 'A pinta', es: 'Una pinta' },
-        structure: {
-          en: 'A figure produced by choosing which strands are dark at each crossing. Because the strand is committed the moment it crosses, the whole figure must be planned before the braid reaches it.',
-          es: 'Una figura producida al escoger qué hebras van oscuras en cada cruce. Como la hebra queda comprometida en el momento de cruzar, toda la figura debe planearse antes de que la trenza llegue a ella.',
-        },
-        meaning: {
-          en: 'Pintas are named designs within the Zenú repertoire. The names and what they refer to are held and taught within the community — FIBRA does not publish an interpretation that a collective has not supplied.',
-          es: 'Las pintas son diseños con nombre dentro del repertorio zenú. Los nombres y aquello a lo que remiten se guardan y se enseñan dentro de la comunidad — FIBRA no publica una interpretación que un colectivo no haya provisto.',
-        },
-        communityHeld: true,
-      },
-      {
-        id: 'edge',
-        x: 84,
-        y: 68,
-        name: { en: 'The selvedge turn', es: 'El giro de orilla' },
-        structure: {
-          en: 'At each edge the outermost strand reverses direction and re-enters the braid. This turn is where tension is either kept or lost, and an uneven edge cannot be corrected once the braid is sewn.',
-          es: 'En cada orilla la hebra más externa invierte su dirección y vuelve a entrar en la trenza. Ese giro es donde la tensión se conserva o se pierde, y una orilla despareja no se puede corregir una vez cosida la trenza.',
-        },
-        meaning: {
-          en: 'A maker is often identified by the edge before the pattern. Tension habits are as individual as handwriting.',
-          es: 'A menudo se identifica a quien trenzó por la orilla antes que por el patrón. Los hábitos de tensión son tan individuales como la letra.',
-        },
-        communityHeld: false,
-      },
-    ],
-    glossary: [
-      {
-        term: 'Pinta',
-        gloss: { en: 'A named figure in the braid', es: 'Una figura con nombre en la trenza' },
-        note: {
-          en: 'The repertoire of pintas is extensive and regionally specific. Which ones a braider commands is part of her professional identity.',
-          es: 'El repertorio de pintas es extenso y regionalmente específico. Cuáles domina una trenzadora es parte de su identidad profesional.',
-        },
-      },
-      {
-        term: 'Quinciano',
-        gloss: { en: 'A fifteen-strand braid', es: 'Una trenza de quince hebras' },
-        note: {
-          en: 'The everyday count. Quick, hard-wearing, and the entry point at which most braiders learn.',
-          es: 'El conteo corriente. Rápido, resistente, y el punto de entrada en el que aprende la mayoría.',
-        },
-      },
-      {
-        term: 'Vueltiao',
-        gloss: { en: 'Turned — built by coiling the braid', es: 'Vuelto — construido enrollando la trenza' },
-        note: {
-          en: 'Names the construction rather than the decoration: the hat is a single long braid turned in a spiral and stitched.',
-          es: 'Nombra la construcción y no el adorno: el sombrero es una sola trenza larga vuelta en espiral y cosida.',
-        },
-      },
-    ],
-    techniques: ['trenzar', 'tinturar'],
-    patternPalette: ['#E7DDD7', '#3A2420', '#E5A93C'],
-    works: [
-      {
-        id: 'w1',
-        title: { en: 'Hat, twenty-seven count', es: 'Sombrero, conteo veintisiete' },
-        technique: { en: 'Flat oblique braid, coiled and hand-stitched', es: 'Trenza plana oblicua, enrollada y cosida a mano' },
-        materials: { en: 'Arrow cane, undyed and mud-dyed', es: 'Caña flecha, cruda y teñida en barro' },
-        time: { en: 'About 5 weeks — roughly 3 of them braiding', es: 'Cerca de 5 semanas — unas 3 de ellas trenzando' },
-        scale: { en: 'Brim 34 cm across', es: 'Ala de 34 cm de diámetro' },
-        context: {
-          en: 'Worn daily rather than displayed. It softens with use and takes the shape of the head that owns it.',
-          es: 'Se usa a diario más que se exhibe. Se ablanda con el uso y toma la forma de la cabeza que lo lleva.',
-        },
-        plate: 'braid',
-      },
-      {
-        id: 'w2',
-        title: { en: 'Braid length, undyed', es: 'Rollo de trenza, cruda' },
-        technique: { en: 'Continuous flat braid, twenty-one count', es: 'Trenza plana continua, conteo veintiuno' },
-        materials: { en: 'Scraped arrow cane, sorted for width', es: 'Caña flecha raspada, clasificada por ancho' },
-        time: { en: 'About 40 hours for 12 metres', es: 'Cerca de 40 horas por 12 metros' },
-        scale: { en: '12 m long, 2.5 cm wide', es: '12 m de largo, 2,5 cm de ancho' },
-        context: {
-          en: 'Sold as material to sewers who build the hats. This is the form most of the work actually leaves the house in.',
-          es: 'Se vende como material a quienes cosen los sombreros. Esta es la forma en que realmente sale de la casa la mayor parte del trabajo.',
-        },
-        plate: 'braid',
-      },
-      {
-        id: 'w3',
-        title: { en: 'Wide-band cuff', es: 'Manilla de banda ancha' },
-        technique: { en: 'Fine braid, closed with a hidden splice', es: 'Trenza fina, cerrada con un empalme oculto' },
-        materials: { en: 'Arrow cane, two tones', es: 'Caña flecha, dos tonos' },
-        time: { en: 'About 9 hours', es: 'Cerca de 9 horas' },
-        scale: { en: '4 cm wide', es: '4 cm de ancho' },
-        context: {
-          en: 'The splice is the difficult part. A visible join is the mark of a piece made in a hurry.',
-          es: 'El empalme es la parte difícil. Una unión visible es la marca de una pieza hecha con prisa.',
-        },
-        plate: 'braid',
-      },
-    ],
-    contact: {
-      whatsapp: DEMO_NUMBER,
-      display: '+57 300 000 0000',
-      hours: { en: 'Mornings, before the heat', es: 'En las mañanas, antes del calor' },
-      languages: { en: 'Spanish', es: 'Español' },
-    },
-  },
-
-  {
-    slug: 'telar-wayuu',
-    demonstration: true,
-    name: 'Aura Epieyú Uriana',
-    community: { en: 'Wayuu people', es: 'Pueblo wayuu' },
-    territory: { en: 'Alta Guajira, near Uribia', es: 'Alta Guajira, cerca de Uribia' },
-    regionId: 'caribe',
-    craft: { en: 'Vertical loom and single-needle work', es: 'Telar vertical y trabajo de aguja' },
-    openingImage: 'wayuuWoolu',
-    standfirst: {
-      en: 'Works both the upright frame and the hook. Takes chinchorro commissions rarely, and only from people who have understood what the timescale means.',
-      es: 'Trabaja tanto el bastidor vertical como el gancho. Acepta encargos de chinchorro rara vez, y solo de quien ha entendido lo que significa el plazo.',
-    },
-    quote: {
-      en: 'A mochila is a conversation you can finish. A chinchorro is one you have to live inside for a season.',
-      es: 'Una mochila es una conversación que se puede terminar. Un chinchorro es una en la que hay que vivir por dentro toda una temporada.',
-    },
-    quoteAttribution: { en: 'Demonstration quotation', es: 'Cita de demostración' },
-    seal: {
-      authorship: 'Aura Epieyú Uriana',
-      affiliation: { en: 'Wayuu clan affiliation, Alta Guajira', es: 'Filiación clánica wayuu, Alta Guajira' },
-      origin: { en: 'La Guajira, Colombia', es: 'La Guajira, Colombia' },
-      consentYear: '—',
-    },
-    taughtBy: { en: 'Her mother and her mother’s sisters, during her seclusion', es: 'Su madre y las hermanas de su madre, durante su encierro' },
-    memory: {
-      en: [
-        'Wayuu weaving is taught inside a specific institution. When a girl reaches puberty she enters a period of seclusion in which she is instructed by the senior women of her matrilineal family — in conduct, in obligation, in the history of her clan, and in weaving. The technique arrives inseparable from everything else that is being transmitted at the same time.',
-        'That is why designs travel down family lines rather than spreading evenly. A woman commands the figures her instructors commanded. Acquiring others is possible but it is a relationship, not a purchase, and it leaves an obligation behind it.',
-        'The hammock occupies a place in Wayuu life that is difficult to convey to someone who has only seen one hanging in a shop. It is where people sleep, where guests are received, where the dead are wrapped. A chinchorro made for a household is made with that whole future in mind, which is not a sentiment about craft — it is a specification about how strong it has to be.',
-      ],
-      es: [
-        'El tejido wayuu se enseña dentro de una institución concreta. Cuando una niña llega a la pubertad entra en un periodo de encierro en el que la instruyen las mujeres mayores de su familia matrilineal — en conducta, en obligación, en la historia de su clan y en tejido. La técnica llega inseparable de todo lo demás que se transmite al mismo tiempo.',
-        'Por eso los diseños viajan por líneas familiares y no se difunden de manera pareja. Una mujer domina las figuras que dominaron quienes la instruyeron. Adquirir otras es posible, pero es una relación y no una compra, y deja una obligación detrás.',
-        'El chinchorro ocupa en la vida wayuu un lugar difícil de transmitir a quien solo ha visto uno colgado en una tienda. Allí se duerme, allí se recibe a los visitantes, allí se envuelve a los muertos. Un chinchorro hecho para una casa se hace con todo ese futuro en mente, lo cual no es un sentimiento sobre el oficio — es una especificación sobre cuán resistente tiene que ser.',
-      ],
-    },
-    fibre: {
-      label: { en: 'Plied cotton thread, hand-wound', es: 'Hilo de algodón retorcido, devanado a mano' },
-      fibre: 'cotton',
-      twist: 'S',
-      reading: {
-        en: [
-          'Two singles plied together in the direction opposite to their own twist. That opposition is what keeps the thread from kinking back on itself while it is being worked.',
-          'Under magnification the ply angle changes slightly where the spinner’s hands changed pace. In a finished mochila these variations arrive as faint horizontal bands of texture.',
-          'The stitch here is a single continuous element pulled through the loop beneath it. There is no second thread — the density of the fabric is produced entirely by how tightly each loop is drawn.',
-        ],
-        es: [
-          'Dos cabos retorcidos juntos en sentido contrario a su propia torsión. Esa oposición es lo que impide que el hilo se rice sobre sí mismo mientras se trabaja.',
-          'Con aumento, el ángulo del retorcido cambia levemente donde las manos de quien hiló cambiaron de ritmo. En una mochila terminada esas variaciones llegan como franjas horizontales tenues de textura.',
-          'La puntada aquí es un solo elemento continuo que se hala por el bucle inferior. No hay un segundo hilo — la densidad de la tela la produce enteramente cuán apretada se cierra cada lazada.',
-        ],
-      },
-    },
-    hotspots: [
-      {
-        id: 'kanas',
-        x: 34,
-        y: 34,
-        name: { en: 'A kanas figure', es: 'Una figura kanas' },
-        structure: {
-          en: 'Built by changing which colour is carried on the surface stitch while the other runs hidden behind. Both threads travel the whole row; only one is visible at a time.',
-          es: 'Se construye cambiando qué color va en la puntada de superficie mientras el otro corre oculto por detrás. Ambos hilos recorren toda la vuelta; solo uno es visible a la vez.',
-        },
-        meaning: {
-          en: 'Kanas are named designs drawn from the environment and the social world of the weaver. The specific names and what they refer to are Wayuu knowledge, taught in seclusion — this platform reproduces no interpretation that a Wayuu collective has not itself provided.',
-          es: 'Las kanas son diseños con nombre tomados del entorno y del mundo social de quien teje. Los nombres concretos y aquello a lo que remiten son conocimiento wayuu, enseñado en el encierro — esta plataforma no reproduce interpretación alguna que un colectivo wayuu no haya provisto por sí mismo.',
-        },
-        communityHeld: true,
-      },
-      {
-        id: 'spiral',
-        x: 66,
-        y: 24,
-        name: { en: 'The rising spiral', es: 'La espiral ascendente' },
-        structure: {
-          en: 'The body has no rows and no seam. It is one spiral climbing continuously, which means the pattern must shift by a fraction each revolution or it would drift sideways.',
-          es: 'El cuerpo no tiene vueltas cerradas ni costura. Es una sola espiral que asciende de manera continua, lo que obliga a desplazar el patrón una fracción en cada revolución o se iría de lado.',
-        },
-        meaning: {
-          en: 'Structural. It is also why a counting error cannot be unpicked locally — everything above it is one continuous thread.',
-          es: 'Estructural. Es también la razón por la que un error de conteo no puede descoserse de manera puntual — todo lo que está encima es un solo hilo continuo.',
-        },
-        communityHeld: false,
-      },
-      {
-        id: 'base',
-        x: 50,
-        y: 76,
-        name: { en: 'The base disc', es: 'El disco de base' },
-        structure: {
-          en: 'Worked flat outward from a central ring, with increases spaced to keep it from cupping. The whole bag is dimensioned by the moment the maker stops increasing and starts climbing.',
-          es: 'Se trabaja plano hacia afuera desde un anillo central, con aumentos espaciados para que no se acopa. Toda la bolsa queda dimensionada en el momento en que quien teje deja de aumentar y empieza a subir.',
-        },
-        meaning: {
-          en: 'The base is the part most often judged by other weavers, and it is the part a buyer almost never looks at.',
-          es: 'La base es la parte que más juzgan otras tejedoras, y la parte que casi nunca mira quien compra.',
-        },
-        communityHeld: false,
-      },
-      {
-        id: 'strap',
-        x: 16,
-        y: 58,
-        name: { en: 'The strap', es: 'La cincha' },
-        structure: {
-          en: 'A separate loom piece, not part of the spiral. It is woven flat on the vertical frame and joined afterwards, and it is usually the strongest element of the whole object.',
-          es: 'Una pieza de telar aparte, no parte de la espiral. Se teje plana en el bastidor vertical y se une después, y suele ser el elemento más resistente de todo el objeto.',
-        },
-        meaning: {
-          en: 'The strap is where the two techniques in this workshop meet: the frame and the needle, in one object.',
-          es: 'La cincha es donde se encuentran las dos técnicas de este taller: el bastidor y la aguja, en un mismo objeto.',
-        },
-        communityHeld: false,
-      },
-    ],
-    glossary: [
-      {
-        term: 'Kanas',
-        gloss: { en: 'The named geometric designs', es: 'Los diseños geométricos con nombre' },
-        note: {
-          en: 'A repertoire, not a decoration. Which kanas a weaver commands is a statement about who taught her.',
-          es: 'Un repertorio, no un adorno. Cuáles kanas domina una tejedora dice quién la enseñó.',
-        },
-      },
-      {
-        term: 'Susu',
-        gloss: { en: 'The everyday shoulder bag', es: 'La mochila de uso diario' },
-        note: {
-          en: 'Small, worked in a single spiral, and made in far greater numbers than any other Wayuu piece.',
-          es: 'Pequeña, trabajada en una sola espiral, y hecha en cantidades muy superiores a las de cualquier otra pieza wayuu.',
-        },
-      },
-      {
-        term: 'Chinchorro',
-        gloss: { en: 'The large hammock', es: 'La hamaca grande' },
-        note: {
-          en: 'A loom piece with an elaborated fringe. Months of work, and the single most demanding object in the repertoire.',
-          es: 'Una pieza de telar con fleco elaborado. Meses de trabajo, y el objeto más exigente del repertorio.',
-        },
-      },
-    ],
-    techniques: ['urdir', 'anudar', 'hilar'],
-    patternPalette: ['#FFFDF5', '#2A9D8F', '#E5A93C', '#6E3A41'],
-    works: [
-      {
-        id: 'w1',
-        title: { en: 'Susu with a single large figure', es: 'Susu con una sola figura grande' },
-        technique: { en: 'Single-needle continuous spiral, two colours carried', es: 'Espiral continua de una aguja, dos colores portados' },
-        materials: { en: 'Plied cotton thread', es: 'Hilo de algodón retorcido' },
-        time: { en: 'About 2 weeks', es: 'Cerca de 2 semanas' },
-        scale: { en: '28 cm tall, 26 cm across the mouth', es: '28 cm de alto, 26 cm en la boca' },
-        context: {
-          en: 'Carried across the body every day. It slackens into an oval with use and never returns to its made shape.',
-          es: 'Se lleva cruzada al cuerpo todos los días. Con el uso se afloja hasta un óvalo y nunca vuelve a la forma con que fue hecha.',
-        },
-        plate: 'knot',
-      },
-      {
-        id: 'w2',
-        title: { en: 'Chinchorro with worked fringe', es: 'Chinchorro con fleco trabajado' },
-        technique: { en: 'Vertical loom, with a separately built fringe', es: 'Telar vertical, con fleco construido aparte' },
-        materials: { en: 'Cotton, undyed and plant-dyed', es: 'Algodón, crudo y teñido con planta' },
-        time: { en: '4 to 6 months, worked alongside other obligations', es: 'De 4 a 6 meses, trabajado junto a otras obligaciones' },
-        scale: { en: '2.4 m long; the fringe adds 60 cm at each end', es: '2,4 m de largo; el fleco añade 60 cm en cada extremo' },
-        context: {
-          en: 'Hung in the household, not stored. Where people sleep, receive visitors, and are wrapped at the end.',
-          es: 'Colgado en la casa, no guardado. Donde se duerme, se recibe visita, y se envuelve al final.',
-        },
-        plate: 'net',
-      },
-      {
-        id: 'w3',
-        title: { en: 'Woven strap, wide', es: 'Cincha tejida, ancha' },
-        technique: { en: 'Flat weave on the vertical frame', es: 'Tejido plano en el bastidor vertical' },
-        materials: { en: 'Plied cotton', es: 'Algodón retorcido' },
-        time: { en: 'About 20 hours', es: 'Cerca de 20 horas' },
-        scale: { en: '4 cm wide, 1.4 m long', es: '4 cm de ancho, 1,4 m de largo' },
-        context: {
-          en: 'Made to outlast the bag it is attached to, and often transferred to a second one.',
-          es: 'Hecha para durar más que la bolsa a la que se une, y a menudo se traslada a una segunda.',
-        },
-        plate: 'plain',
-      },
-    ],
-    contact: {
-      whatsapp: DEMO_NUMBER,
-      display: '+57 300 000 0000',
-      hours: { en: 'Late afternoon', es: 'A media tarde' },
-      languages: { en: 'Wayuunaiki and Spanish', es: 'Wayuunaiki y español' },
-    },
-  },
-
-  {
-    slug: 'werregue-wounaan',
-    demonstration: true,
-    name: 'Elvia Chamarra Piraza',
-    community: { en: 'Wounaan people', es: 'Pueblo wounaan' },
-    territory: { en: 'Litoral del San Juan, Chocó', es: 'Litoral del San Juan, Chocó' },
-    regionId: 'pacifica',
-    craft: { en: 'Coiled werregue', es: 'Werregue anillado' },
-    openingImage: 'werregueVasijas',
-    standfirst: {
-      en: 'Builds tightly coiled werregue vessels, and dyes her own fibre because the black has to be steeped and cannot be hurried.',
-      es: 'Construye vasijas de werregue de anillado cerrado, y tiñe su propia fibra porque el negro se macera y no admite prisa.',
-    },
-    quote: {
-      en: 'I have to see the whole thing before I start. After that I am only counting.',
-      es: 'Tengo que ver la pieza entera antes de empezar. Después de eso solo estoy contando.',
-    },
-    quoteAttribution: { en: 'Demonstration quotation', es: 'Cita de demostración' },
-    seal: {
-      authorship: 'Elvia Chamarra Piraza',
-      affiliation: { en: 'Wounaan community, Litoral del San Juan', es: 'Comunidad wounaan, Litoral del San Juan' },
-      origin: { en: 'Chocó, Colombia', es: 'Chocó, Colombia' },
-      consentYear: '—',
-    },
-    taughtBy: { en: 'Her mother, and later a neighbour for the fine counts', es: 'Su madre, y después una vecina para los conteos finos' },
-    memory: {
-      en: [
-        'Werregue work is bound to a palm that does not grow everywhere and cannot be harvested freely. Fibre comes from the unopened spear at the crown of a young plant, and taking too many kills it. The rhythm of the craft is therefore set partly by the forest: a workshop that overcuts is a workshop with no material in five years.',
-        'The dyeing is slow by necessity rather than by tradition. Jagua has to oxidise in air after the fibre comes out of the steep, and heating it would stiffen the fibre past the point where it will take a close stitch. A batch of black is several days in which nothing else in the sequence can advance.',
-        'What is unusual about this tradition is how much of it is arithmetic. The maker cannot sketch, cannot correct, cannot approximate. She commits to a figure hundreds of stitches before it appears, and if the count is wrong the piece is wrong from that point upward. Watching someone do this and calling it decorative misses what is actually happening.',
-      ],
-      es: [
-        'El trabajo en werregue está atado a una palma que no crece en todas partes y no se puede cosechar libremente. La fibra viene del cogollo sin abrir en la corona de una planta joven, y tomar demasiados la mata. El ritmo del oficio lo fija por tanto, en parte, el bosque: un taller que corta de más es un taller sin material en cinco años.',
-        'El teñido es lento por necesidad y no por tradición. La jagua tiene que oxidarse al aire después de que la fibra sale de la maceración, y calentarla endurecería la fibra más allá del punto en que admite una puntada cerrada. Un lote de negro son varios días en los que nada más de la secuencia puede avanzar.',
-        'Lo inusual de esta tradición es cuánto de ella es aritmética. Quien teje no puede bosquejar, no puede corregir, no puede aproximar. Se compromete con una figura cientos de puntadas antes de que aparezca, y si el conteo está mal la pieza está mal de ahí hacia arriba. Ver a alguien hacer esto y llamarlo decorativo es no ver lo que realmente ocurre.',
-      ],
-    },
-    fibre: {
-      label: { en: 'Werregue fibre, steeped and sun-bleached', es: 'Fibra de werregue, macerada y blanqueada al sol' },
-      fibre: 'palm',
-      twist: 'Z',
-      reading: {
-        en: [
-          'The fibre is a flat ribbon split from a leaflet, and it tapers along its length. Each one is used from thick end to thin, so the stitch gauge shifts imperceptibly as a single fibre is consumed.',
-          'Sun-bleaching takes the pale fibre almost to white over several days. The cream you see in a finished vessel is that bleached state, not an applied colour.',
-          'Where a coil meets the one below it, the stitch passes through the wrap of the previous round. That is the whole structure — there is no core running through the piece other than the bundle each round is built on.',
-        ],
-        es: [
-          'La fibra es una cinta plana partida de un foliolo, y se adelgaza a lo largo de su recorrido. Cada una se usa del extremo grueso al fino, de modo que el calibre de la puntada se desplaza de manera imperceptible mientras se consume una sola fibra.',
-          'El blanqueo al sol lleva la fibra clara casi hasta el blanco en varios días. El crema que se ve en una vasija terminada es ese estado blanqueado, no un color aplicado.',
-          'Donde un anillo se encuentra con el de abajo, la puntada atraviesa la envoltura de la vuelta anterior. Esa es toda la estructura — no hay más alma recorriendo la pieza que el haz sobre el que se construye cada vuelta.',
-        ],
-      },
-    },
-    hotspots: [
-      {
-        id: 'coil',
-        x: 30,
-        y: 62,
-        name: { en: 'The coil junction', es: 'La unión del anillo' },
-        structure: {
-          en: 'Each stitch wraps the current bundle and passes through the round below, locking the two together. Pull rate decides everything: too loose and the vessel will not hold its shape, too tight and it will not rise.',
-          es: 'Cada puntada envuelve el haz actual y atraviesa la vuelta inferior, trabando ambas. La fuerza del halado lo decide todo: demasiado floja y la vasija no sostiene la forma, demasiado apretada y no sube.',
-        },
-        meaning: {
-          en: 'Structural. The density this produces is why a well-made werregue vessel is effectively watertight.',
-          es: 'Estructural. La densidad que produce es la razón por la que una vasija de werregue bien hecha resulta prácticamente estanca.',
-        },
-        communityHeld: false,
-      },
-      {
-        id: 'figure',
-        x: 56,
-        y: 40,
-        name: { en: 'A counted figure', es: 'Una figura contada' },
-        structure: {
-          en: 'The figure exists only as a sequence of colour changes in the wrapping fibre. Its width in stitches must be divided evenly into the circumference of the round it sits on, and the circumference grows as the vessel widens.',
-          es: 'La figura existe solo como una secuencia de cambios de color en la fibra que envuelve. Su ancho en puntadas debe dividir de manera exacta la circunferencia de la vuelta en que se asienta, y esa circunferencia crece a medida que la vasija se ensancha.',
-        },
-        meaning: {
-          en: 'Wounaan figures name animals, plants and the relations between them. Which figure means what is Wounaan knowledge; FIBRA publishes no interpretation the community has not supplied itself.',
-          es: 'Las figuras wounaan nombran animales, plantas y las relaciones entre ellos. Qué significa cada figura es conocimiento wounaan; FIBRA no publica interpretación alguna que la comunidad no haya provisto por sí misma.',
-        },
-        communityHeld: true,
-      },
-      {
-        id: 'band',
-        x: 74,
-        y: 20,
-        name: { en: 'The neck band', es: 'La franja del cuello' },
-        structure: {
-          en: 'Where the vessel turns inward the circumference falls, so stitches must be decreased. Figures are usually simplified to plain bands here because the arithmetic stops cooperating.',
-          es: 'Donde la vasija se cierra hacia adentro la circunferencia disminuye, así que hay que reducir puntadas. Las figuras suelen simplificarse a franjas lisas aquí porque la aritmética deja de cooperar.',
-        },
-        meaning: {
-          en: 'A reliable place to judge a maker. The transition into the neck is the hardest passage in the whole vessel.',
-          es: 'Un buen lugar para juzgar a quien teje. La transición hacia el cuello es el paso más difícil de toda la vasija.',
-        },
-        communityHeld: false,
-      },
-    ],
-    glossary: [
-      {
-        term: 'Werregue',
-        gloss: { en: 'Astrocaryum standleyanum, and its fibre', es: 'Astrocaryum standleyanum, y su fibra' },
-        note: {
-          en: 'The name covers the palm, the fibre and, colloquially, the objects made from it.',
-          es: 'El nombre cubre la palma, la fibra y, coloquialmente, los objetos hechos con ella.',
-        },
-      },
-      {
-        term: 'Jagua',
-        gloss: { en: 'Genipa americana — the black', es: 'Genipa americana — el negro' },
-        note: {
-          en: 'Colourless when pressed, blue-black after hours in air. It stains skin for a fortnight.',
-          es: 'Incolora al prensarse, negro azulada tras horas al aire. Mancha la piel por quince días.',
-        },
-      },
-      {
-        term: 'Damagua',
-        gloss: { en: 'Beaten bark cloth', es: 'Tela de corteza macerada' },
-        note: {
-          en: 'A separate Pacific tradition worked as sheet rather than thread, from Poulsenia bark.',
-          es: 'Una tradición pacífica aparte, trabajada como lámina y no como hilo, a partir de corteza de Poulsenia.',
-        },
-      },
-    ],
-    techniques: ['tinturar', 'anudar'],
-    patternPalette: ['#F2E9DC', '#2B1B16', '#9E2B25', '#607248'],
-    works: [
-      {
-        id: 'w1',
-        title: { en: 'Tall vessel with banded figures', es: 'Vasija alta con figuras en franjas' },
-        technique: { en: 'Wrapped coil, counted figures', es: 'Anillado envuelto, figuras contadas' },
-        materials: { en: 'Werregue fibre; jagua, achiote and plantain dyes', es: 'Fibra de werregue; tintes de jagua, achiote y plátano' },
-        time: { en: 'About 4 months', es: 'Cerca de 4 meses' },
-        scale: { en: '38 cm tall, 26 cm at the belly', es: '38 cm de alto, 26 cm en la panza' },
-        context: {
-          en: 'Made to be handled. The surface polishes slightly where it is picked up, and the polish follows the hands that use it.',
-          es: 'Hecha para ser manipulada. La superficie se pule levemente donde se toma, y ese pulido sigue a las manos que la usan.',
-        },
-        plate: 'coil',
-      },
-      {
-        id: 'w2',
-        title: { en: 'Shallow bowl, undyed', es: 'Cuenco bajo, sin teñir' },
-        technique: { en: 'Wrapped coil, no colour change', es: 'Anillado envuelto, sin cambio de color' },
-        materials: { en: 'Sun-bleached werregue', es: 'Werregue blanqueado al sol' },
-        time: { en: 'About 3 weeks', es: 'Cerca de 3 semanas' },
-        scale: { en: '22 cm across', es: '22 cm de diámetro' },
-        context: {
-          en: 'With no figure to hide behind, the evenness of the stitch is the only thing on show.',
-          es: 'Sin figura tras la cual esconderse, la regularidad de la puntada es lo único que queda a la vista.',
-        },
-        plate: 'coil',
-      },
-      {
-        id: 'w3',
-        title: { en: 'Lidded jar', es: 'Vasija con tapa' },
-        technique: { en: 'Coil, with a separately built lid matched to the mouth', es: 'Anillado, con tapa construida aparte y ajustada a la boca' },
-        materials: { en: 'Werregue; jagua black', es: 'Werregue; negro de jagua' },
-        time: { en: 'About 5 months', es: 'Cerca de 5 meses' },
-        scale: { en: '30 cm tall', es: '30 cm de alto' },
-        context: {
-          en: 'The lid is the test. It is built blind against a mouth that is already finished, and it either seats or it does not.',
-          es: 'La tapa es la prueba. Se construye a ciegas contra una boca ya terminada, y o asienta o no asienta.',
-        },
-        plate: 'coil',
-      },
-    ],
-    contact: {
-      whatsapp: DEMO_NUMBER,
-      display: '+57 300 000 0000',
-      hours: { en: 'When the river allows the trip into town', es: 'Cuando el río permite el viaje al pueblo' },
-      languages: { en: 'Woun Meu and Spanish', es: 'Woun Meu y español' },
-    },
-  },
-
-  {
-    slug: 'telar-boyaca',
-    demonstration: true,
-    name: 'Hernando Cely Barrera',
-    community: { en: 'Weaving households of the Sugamuxi valley', es: 'Casas tejedoras del valle de Sugamuxi' },
-    territory: { en: 'Nobsa, Boyacá', es: 'Nobsa, Boyacá' },
     regionId: 'andina',
-    craft: { en: 'Pedal loom and hand spinning', es: 'Telar de pedal e hilado a mano' },
-    openingImage: 'fiquePlanta',
+    craft: {
+      en: 'Spinning, flat-bed machine weaving and natural dyeing',
+      es: 'Hilatura, tejeduría en máquina rectilínea y tinturado natural',
+    },
+    openingImage: null,
     standfirst: {
-      en: 'Weaves ruanas on a four-shaft floor loom from wool he buys as fleece and has spun in the village, because mill yarn will not give him the cloth he wants.',
-      es: 'Teje ruanas en un telar de piso de cuatro lizos con lana que compra en vellón y manda hilar en el pueblo, porque el hilo industrial no le da la tela que quiere.',
+      en: 'Master weaver and community leader, more than two decades into the safeguarding of textile knowledge in Cundinamarca. From her native Peñas de Cajón she has drawn spinners and weavers together across five municipalities to give the campesino craft standing against industrial terms.',
+      es: 'Maestra tejedora y líder comunitaria con más de dos décadas impulsando la salvaguardia del saber textil en Cundinamarca. Desde su natal Peñas de Cajón ha articulado a hilanderas y artesanas de cinco municipios para dignificar el oficio campesino frente a las dinámicas industriales.',
     },
     quote: {
-      en: 'Anyone can weave the cloth. The argument is always about the yarn.',
-      es: 'La tela la teje cualquiera. La discusión siempre es por el hilo.',
+      en: 'For me a piece is authentic when the material is 100% accounted for: Elenita looked after the sheep, Marina sheared it, Florencio or Tránsito spun the wool, Luz María dyed it and José wove it.',
+      es: 'Para mí una pieza auténtica es que el material sea 100% garantizado: Elenita cuidó la oveja, Marina la esquiló, Florencio o Tránsito hilaron la lana, Luz María tinturó y José la tejió.',
     },
-    quoteAttribution: { en: 'Demonstration quotation', es: 'Cita de demostración' },
+    quoteAttribution: {
+      en: 'From her interview for FIBRA',
+      es: 'De su entrevista para FIBRA',
+    },
     seal: {
-      authorship: 'Hernando Cely Barrera',
-      affiliation: { en: 'Nobsa weaving tradition, Boyacá', es: 'Tradición tejedora de Nobsa, Boyacá' },
-      origin: { en: 'Nobsa, Boyacá, Colombia', es: 'Nobsa, Boyacá, Colombia' },
-      consentYear: '—',
+      authorship: 'Luz María Rodríguez Rodríguez',
+      affiliation: {
+        en: 'Tejilarte collective and training school',
+        es: 'Colectivo y Escuela de Formación Tejilarte',
+      },
+      origin: {
+        en: 'Sutatausa, Cundinamarca, Andean region, Colombia',
+        es: 'Sutatausa, Cundinamarca, Región Andina, Colombia',
+      },
+      material: {
+        en: '100% virgin wool from local sheep, with natural and eco-friendly dyes',
+        es: '100% lana virgen de oveja local, con tintes naturales y ecoamigables',
+      },
+      consent: {
+        en: 'A pedagogical project endorsed by the network of sabedoras of the Ubaté province',
+        es: 'Proyecto pedagógico avalado por la red de sabedoras de la provincia de Ubaté',
+      },
     },
-    taughtBy: { en: 'His father, on the same loom', es: 'Su padre, en el mismo telar' },
+    taughtBy: {
+      en: 'Her mother and the school and vereda tradition of Peñas de Cajón; later the master weaver Ada — “Adita” — in Bogotá for the machine, with technical advice from Artesanías de Colombia',
+      es: 'Su madre y la tradición escolar y veredal de Peñas de Cajón; después la maestra Ada — «Adita» — en Bogotá para la máquina, con asesoría técnica de Artesanías de Colombia',
+    },
     memory: {
       en: [
-        'The pedal loom is not indigenous to the Andes. It came with the Spanish in the sixteenth century, along with the sheep, and it displaced older backstrap weaving over several generations. Four hundred years later it is entirely local — which is a reminder that "traditional" describes how long a practice has been held, not where it came from.',
-        'What survived the transition is the preparation. The fleece is still washed cold, teased by hand and spun on a drop spindle, and that is where the character of the cloth is decided. Mill yarn is uniform; hand-spun is not, and the small variations in diameter make a woven surface that moves in light. A weaver who buys mill yarn to save time is making a different object.',
-        'The ruana is the whole point of the system. Open at the front, heavy, unlined, and cut with no shaping at all — two woven panels joined with a slit. It is designed for cold that arrives at particular hours in a high valley, and it is the least fashionable garment imaginable, which is exactly why it has not changed.',
+        'She started at seven. Shearing, spinning and weaving arrived as homework — the school set embroidery and she returned woven pieces instead — and the work quickly found its own use in the vereda: as a girl she made the covers that dressed the first refrigerators and the first televisions to reach those houses. The objects were new. The technique used to clothe them was not.',
+        'At sixteen the CAR selected her, through the Checua project, to lead rural training, and more than twenty years as a community trainer followed. The Tejilarte festival and collective grew out of a practical problem rather than a cultural one: women in isolated veredas had the knowledge and no way to reach a market. She has since worked across Ubaté, Cucunubá, Guachetá, Carupa and Tausa, against a steady drift of hands away from the craft towards mining and the flower plantations.',
+        'What she insists on is that a woollen piece is not made by a person but by a sequence. “There is a chain in getting a product made,” she says: “sometimes as many as ten hands are in that work.” Whoever raised the sheep, whoever sheared it, whoever spun, whoever dyed, whoever wove. Naming all of them is not sentiment — it is what she means by traceability, and it is the reason she can say a piece is 100% accounted for.',
       ],
       es: [
-        'El telar de pedal no es originario de los Andes. Llegó con los españoles en el siglo XVI, junto con las ovejas, y desplazó al telar de cintura más antiguo a lo largo de varias generaciones. Cuatrocientos años después es enteramente local — lo que recuerda que «tradicional» describe cuánto tiempo se ha sostenido una práctica, no de dónde vino.',
-        'Lo que sobrevivió a la transición es la preparación. El vellón se sigue lavando en frío, cardando a mano e hilando en huso de caída, y ahí es donde se decide el carácter de la tela. El hilo industrial es uniforme; el hilado a mano no, y las pequeñas variaciones de diámetro hacen una superficie tejida que se mueve con la luz. Un tejedor que compra hilo industrial para ahorrar tiempo está haciendo otro objeto.',
-        'La ruana es el sentido entero del sistema. Abierta al frente, pesada, sin forro, y cortada sin ninguna entalladura — dos lienzos tejidos unidos con una abertura. Está diseñada para un frío que llega a horas concretas en un valle alto, y es la prenda menos moderna que quepa imaginar, que es exactamente por lo que no ha cambiado.',
+        'Empezó a los siete años. La esquilada, la hilada y la tejeduría le llegaron como tarea de la escuela — pedían bordado y ella entregaba piezas tejidas — y el trabajo encontró pronto su uso propio en la vereda: de niña hizo las fundas que vistieron las primeras neveras y los primeros televisores que llegaron a esas casas. Los objetos eran nuevos. La técnica con que se los vistió no lo era.',
+        'A los dieciséis la CAR la seleccionó, a través del proyecto Checua, para liderar capacitaciones rurales, y de ahí siguieron más de veinte años como formadora comunitaria. El festival y el colectivo Tejilarte nacieron de un problema práctico antes que cultural: las mujeres de veredas aisladas tenían el saber y no tenían cómo llegar a un mercado. Desde entonces ha trabajado en Ubaté, Cucunubá, Guachetá, Carupa y Tausa, contra un desplazamiento sostenido de manos del oficio hacia la minería y los cultivos de flores.',
+        'En lo que insiste es en que una pieza de lana no la hace una persona sino una secuencia. «Hay una cadena en el momento de lograr elaborar un producto», dice: «son a veces hasta 10 manos en ese trabajo». Quien crió la oveja, quien la esquiló, quien hiló, quien tinturó, quien tejió. Nombrarlos a todos no es sentimentalismo: es lo que ella entiende por trazabilidad, y es la razón por la que puede decir que una pieza está 100% garantizada.',
       ],
     },
     fibre: {
-      label: { en: 'Hand-spun virgin wool, undyed', es: 'Lana virgen hilada a mano, sin teñir' },
+      label: {
+        en: 'Virgin wool from high-Andean grazing, undyed and dyed',
+        es: 'Lana virgen de oveja de pastoreo altoandino, cruda y tinturada',
+      },
       fibre: 'wool',
       twist: 'Z',
       reading: {
         en: [
-          'Wool fibre is scaled along its length. Those scales are what let the yarn hold together with relatively little twist, and what make the finished cloth full slightly the first time it is washed.',
-          'The diameter here wanders by perhaps a fifth either side of its average. In a mill yarn that variance would be a fault; in a ruana it is the reason the surface is not flat.',
-          'The natural colour range — cream, oatmeal, grey-brown, near-black — comes from the fleeces themselves, sorted before spinning. Nothing in this reading has been dyed.',
+          'Spun on a traditional drop spindle, in Z or in S according to what the piece needs. The direction is a decision, not a habit: it sets which way the cloth wants to bias once it is off the machine.',
+          'The thread is deliberately irregular. Diameter varies along its length, so it takes dye at slightly different rates, and a cloth woven from it has a depth that uniform mill yarn does not reach.',
+          'The hand is rustic and very warm, and the cloth runs from medium to heavy on the machine or the loom. This is fibre for the páramo, and it is not trying to be soft.',
         ],
         es: [
-          'La fibra de lana tiene escamas a lo largo de su recorrido. Esas escamas son las que permiten que el hilo se sostenga con relativamente poca torsión, y las que hacen que la tela terminada se apelmace un poco en el primer lavado.',
-          'El diámetro aquí oscila quizá un quinto a cada lado de su promedio. En un hilo industrial esa varianza sería un defecto; en una ruana es la razón de que la superficie no sea plana.',
-          'La gama de color natural — crema, avena, pardo grisáceo, casi negro — viene de los vellones mismos, clasificados antes de hilar. Nada de lo que se ve aquí ha sido teñido.',
+          'Hilada en huso tradicional, en Z o en S según lo que la pieza necesite. La dirección es una decisión y no una costumbre: define hacia dónde va a querer sesgar la tela una vez fuera de la máquina.',
+          'El hilo es deliberadamente irregular. El diámetro varía a lo largo de su recorrido, así que toma la tintura a ritmos algo distintos, y una tela tejida con él tiene una profundidad a la que el hilo industrial uniforme no llega.',
+          'El tacto es rústico y de mucho abrigo, y la tela va de densidad media a pesada en máquina o en telar. Esta es fibra para el páramo, y no pretende ser suave.',
         ],
       },
     },
     hotspots: [
       {
-        id: 'plain',
-        x: 30,
-        y: 36,
-        name: { en: 'Plain weave', es: 'Tafetán' },
+        id: 'guardas',
+        x: 28,
+        y: 32,
+        name: { en: 'Guardas — campesino Andean lines', es: 'Guardas y líneas campesinas andinas' },
         structure: {
-          en: 'One over, one under, reversing every pick. The simplest interlacement there is, and the most stable — which is why a garment meant to last decades uses it rather than something more elaborate.',
-          es: 'Uno encima, uno debajo, invirtiendo en cada pasada. El entrelazado más simple que existe, y el más estable — por eso una prenda pensada para durar décadas lo usa en lugar de algo más elaborado.',
+          en: 'Warp and weft in undyed and dyed wool, set out in blocks of ochre and grey. The bands are counted into the warp before weaving starts and cannot be moved afterwards.',
+          es: 'Urdimbre y trama en lana cruda y tinturada, dispuestas en bloques de color ocre y gris. Las franjas se cuentan en la urdimbre antes de empezar a tejer y después no se pueden mover.',
         },
         meaning: {
-          en: 'Structural. In this cloth the interest is deliberately in the yarn, not the binding.',
-          es: 'Estructural. En esta tela el interés está deliberadamente en el hilo, no en el ligamento.',
+          en: 'As she states it: the broken landscape of the peñas, and the root of Andean grazing.',
+          es: 'Según ella lo enuncia: el paisaje quebrado de las peñas y la raíz del pastoreo andino.',
         },
-        communityHeld: false,
+        communityHeld: true,
       },
       {
-        id: 'beat',
+        id: 'crudo',
         x: 62,
-        y: 56,
-        name: { en: 'The beat', es: 'El batido' },
+        y: 48,
+        name: { en: 'The undyed block', es: 'El bloque en crudo' },
         structure: {
-          en: 'How hard the reed is pulled after each pick decides how many wefts fit per centimetre — and therefore the weight, drape and warmth of the finished cloth. It is set by the weaver’s arm and cannot be checked except by feel.',
-          es: 'Con cuánta fuerza se hala el peine tras cada pasada decide cuántas tramas caben por centímetro — y por tanto el peso, la caída y el abrigo de la tela terminada. Lo fija el brazo de quien teje y no se puede verificar sino por tacto.',
+          en: 'Wool left the colour the sheep grew it. Nothing has been added here, and the tone varies from fleece to fleece rather than from batch to batch.',
+          es: 'Lana dejada en el color en que la crió la oveja. Aquí no se ha añadido nada, y el tono varía de vellón en vellón antes que de lote en lote.',
         },
         meaning: {
-          en: 'Two weavers on the same loom with the same yarn will produce measurably different cloth. The beat is the signature.',
-          es: 'Dos tejedores en el mismo telar y con el mismo hilo producen telas medidamente distintas. El batido es la firma.',
+          en: 'Structural. The undyed passages are how a dyed piece is read: without them there is no reference against which the botanical colour can be judged.',
+          es: 'Estructural. Los pasajes en crudo son la manera de leer una pieza tinturada: sin ellos no hay referencia contra la cual juzgar el color botánico.',
         },
         communityHeld: false,
       },
       {
-        id: 'selvedge',
-        x: 84,
-        y: 30,
-        name: { en: 'The selvedge', es: 'El orillo' },
+        id: 'trama',
+        x: 82,
+        y: 68,
+        name: { en: 'Hand-spun weft', es: 'Trama hilada a mano' },
         structure: {
-          en: 'The weft turns here and re-enters. Too much tension pulls the cloth in and the panel narrows down its length; too little and the edge loops. Neither can be fixed afterwards.',
-          es: 'Aquí la trama gira y vuelve a entrar. Demasiada tensión mete la tela hacia adentro y el lienzo se angosta a lo largo; demasiado poca y la orilla queda con bucles. Ninguna de las dos se arregla después.',
+          en: 'Every pass carries a thread of uneven diameter, so the cloth closes unevenly and traps air. That is where the warmth comes from — not from thickness.',
+          es: 'Cada pasada lleva un hilo de diámetro desigual, así que la tela cierra de manera despareja y atrapa aire. De ahí viene el abrigo — no del grosor.',
         },
         meaning: {
-          en: 'The first thing an experienced buyer in Nobsa looks at, and the last thing a visitor notices.',
-          es: 'Lo primero que mira un comprador con experiencia en Nobsa, y lo último que nota un visitante.',
+          en: 'Structural. A perfectly even weft in this cloth would be evidence of industrial yarn, which is the one thing the seal on this piece rules out.',
+          es: 'Estructural. Una trama perfectamente pareja en esta tela sería prueba de hilo industrial, que es justamente lo que el sello de esta pieza excluye.',
         },
         communityHeld: false,
       },
     ],
     glossary: [
       {
-        term: 'Ruana',
-        gloss: { en: 'The open highland poncho', es: 'El poncho abierto del altiplano' },
+        term: 'Esquilada',
+        gloss: { en: 'The traditional cutting of the fleece', es: 'Corte tradicional del vellón' },
         note: {
-          en: 'Two panels joined with a neck slit. No shaping, no fastening, no lining.',
-          es: 'Dos lienzos unidos con una abertura de cuello. Sin entalle, sin cierre, sin forro.',
+          en: 'The first link in the chain and a separate trade from spinning. Whoever shears decides how much usable staple length the spinner will have.',
+          es: 'El primer eslabón de la cadena y un oficio distinto del hilado. Quien esquila decide cuánta longitud de fibra aprovechable tendrá quien hila.',
         },
       },
       {
-        term: 'Cabuya',
-        gloss: { en: 'Spun fique thread or rope', es: 'Hilo o soga de fique hilado' },
+        term: 'Hilada',
+        gloss: { en: 'The twisting of the wool', es: 'Torsión de la lana' },
         note: {
-          en: 'The other Andean fibre. Stiff, strong, and worked with an entirely different hand from wool.',
-          es: 'La otra fibra andina. Rígida, fuerte, y trabajada con una mano completamente distinta a la de la lana.',
+          en: 'Done on the spindle or the rueca. It is the operation that converts a fleece into something a machine can accept, and the slowest step in the sequence.',
+          es: 'Se hace en huso o en rueca. Es la operación que convierte un vellón en algo que una máquina puede aceptar, y el paso más lento de la secuencia.',
         },
       },
       {
-        term: 'Huso',
-        gloss: { en: 'The drop spindle', es: 'El huso de caída' },
+        term: 'Tejilarte',
+        gloss: { en: 'The joining of knowledge and fair market', es: 'Unión de saberes y mercado justo' },
         note: {
-          en: 'A shaft and a weighted whorl. Carried and turned while walking, which is why it outlived the loom in many households.',
-          es: 'Una vara y una tortera con peso. Se lleva y se hace girar caminando, y por eso sobrevivió al telar en muchas casas.',
+          en: 'Her own coinage, and the name of both the collective and the festival. It names the problem it was built to solve: knowledge held in isolated veredas with no route to a buyer.',
+          es: 'Un término suyo, y el nombre del colectivo y del festival a la vez. Nombra el problema para el que se construyó: saberes guardados en veredas aisladas sin ruta hacia un comprador.',
         },
       },
     ],
-    techniques: ['hilar', 'urdir', 'tinturar'],
-    patternPalette: ['#E7DDD7', '#5C3D2E', '#B79C9B'],
+    techniques: ['hilar', 'tinturar', 'urdir'],
+    patternPalette: ['#E6DCC9', '#4A3527', '#A8752F'],
     works: [
       {
         id: 'w1',
-        title: { en: 'Ruana, undyed wool', es: 'Ruana, lana sin teñir' },
-        technique: { en: 'Plain weave in two panels, joined by hand', es: 'Tafetán en dos lienzos, unidos a mano' },
-        materials: { en: 'Hand-spun virgin wool', es: 'Lana virgen hilada a mano' },
-        time: { en: 'About 3 weeks, not counting the spinning', es: 'Cerca de 3 semanas, sin contar el hilado' },
-        scale: { en: '1.4 m across the shoulders', es: '1,4 m de hombro a hombro' },
+        title: { en: 'Manta / campesina ruana in virgin wool', es: 'Manta / ruana campesina en lana virgen' },
+        technique: {
+          en: 'Hand-spun, woven on a flat-bed machine and on the loom',
+          es: 'Hilado a mano, tejeduría en máquina rectilínea y en telar',
+        },
+        materials: { en: '100% virgin wool from local sheep', es: '100% lana virgen de oveja local' },
+        time: {
+          en: '3 to 4 weeks — the whole chain, from shearing to finishing',
+          es: '3 a 4 semanas — la cadena completa, del esquilado al acabado',
+        },
+        scale: { en: '180 × 140 cm', es: '180 × 140 cm' },
         context: {
-          en: 'Worn at dusk and at dawn, not through the day. It is a garment for two particular hours.',
-          es: 'Se usa al anochecer y al amanecer, no durante el día. Es una prenda para dos horas concretas.',
+          en: 'Worn for thermal protection in the páramo and in cold country. Not a display piece: it is the garment the work was invented for.',
+          es: 'Indumentaria de protección térmica para el páramo y el clima frío. No es pieza de exhibición: es la prenda para la que se inventó el trabajo.',
         },
         plate: 'plain',
-      },
-      {
-        id: 'w2',
-        title: { en: 'Blanket, banded naturals', es: 'Cobija, franjas de colores naturales' },
-        technique: { en: 'Plain weave with a heavy beat', es: 'Tafetán con batido pesado' },
-        materials: { en: 'Wool sorted into four natural shades', es: 'Lana clasificada en cuatro tonos naturales' },
-        time: { en: 'About 4 weeks', es: 'Cerca de 4 semanas' },
-        scale: { en: '1.8 by 2.2 m', es: '1,8 por 2,2 m' },
-        context: {
-          en: 'The bands are fleece colours, not dye lots — which means the palette is limited by which sheep were shorn.',
-          es: 'Las franjas son colores de vellón, no lotes de tintura — lo que significa que la paleta la limita cuáles ovejas se esquilaron.',
-        },
-        plate: 'plain',
-      },
-      {
-        id: 'w3',
-        title: { en: 'Fique mat', es: 'Estera de fique' },
-        technique: { en: 'Coarse plain weave in cabuya', es: 'Tafetán grueso en cabuya' },
-        materials: { en: 'Spun fique', es: 'Fique hilado' },
-        time: { en: 'About 30 hours', es: 'Cerca de 30 horas' },
-        scale: { en: '90 by 140 cm', es: '90 por 140 cm' },
-        context: {
-          en: 'Floor use. Fique is abrasive enough that this is one of the few things it is genuinely better than wool at.',
-          es: 'Uso de piso. El fique es lo bastante abrasivo como para que esta sea una de las pocas cosas en que resulta genuinamente mejor que la lana.',
-        },
-        plate: 'twist',
       },
     ],
     contact: {
-      whatsapp: DEMO_NUMBER,
-      display: '+57 300 000 0000',
-      hours: { en: 'Weekday mornings', es: 'Mañanas entre semana' },
+      whatsapp: '',
+      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
+      published: false,
+      hours: { en: 'Monday to Friday, 8:00 to 17:00', es: 'Lunes a viernes, de 8:00 a 17:00' },
+      languages: { en: 'Spanish', es: 'Español' },
+    },
+  },
+
+  // ===========================================================================
+  // Flor Imbacuan — Resguardo de Carlosama, Nariño
+  // ===========================================================================
+  {
+    slug: 'flor-imbacuan',
+    sourcing: 'interview',
+    notice: {
+      en: 'A record of intangible cultural heritage.',
+      es: 'Registro de patrimonio cultural inmaterial.',
+    },
+    name: 'Flor Imbacuan',
+    community: {
+      en: 'Los Pastos indigenous people — Resguardo Indígena de Carlosama',
+      es: 'Pueblo indígena de Los Pastos — Resguardo Indígena de Carlosama',
+    },
+    territory: {
+      en: 'Resguardo Indígena de Carlosama, Nariño, on the Ecuadorian border',
+      es: 'Resguardo Indígena de Carlosama, Nariño, frontera con Ecuador',
+    },
+    regionId: 'andina',
+    craft: {
+      en: 'Ancestral weaving on the Huanga vertical loom, and etnomoda',
+      es: 'Tejeduría ancestral en Huanga (telar vertical) y etnomoda',
+    },
+    openingImage: null,
+    standfirst: {
+      en: 'Master weaver and indigenous designer of the Pasto people, leading a movement of healing, memory and community tourism through the collective label Amor / Etnomoda. She brought the Huanga loom back as an act of resistance and of standing for indigenous women.',
+      es: 'Maestra y diseñadora indígena del pueblo Pasto que lidera un movimiento de sanación, memoria y etnoturismo a través de la marca comunitaria Amor / Etnomoda. Rescató el telar en Huanga como un acto de resistencia y de dignificación de la mujer indígena.',
+    },
+    quote: {
+      en: 'Weaving is a conversation between the woman and the warp. The weaving feels, the weaving breathes, the weaving falls ill… I always say that weaving is giving living script to our identity as a people.',
+      es: 'El tejido es un diálogo entre la mujer y la urdimbre. El tejido siente, el tejido respira, el tejido se enferma… Yo siempre digo que el tejido es darle escritura viva a nuestra identidad como pueblo.',
+    },
+    quoteAttribution: {
+      en: 'From her interview for FIBRA',
+      es: 'De su entrevista para FIBRA',
+    },
+    seal: {
+      authorship: 'Flor Imbacuan',
+      affiliation: {
+        en: 'Los Pastos indigenous people — Resguardo de Carlosama, a network of 47 families',
+        es: 'Pueblo indígena de Los Pastos — Resguardo de Carlosama, red de 47 familias',
+      },
+      origin: { en: 'Nariño, Colombia', es: 'Nariño, Colombia' },
+      material: {
+        en: 'Native sheep wool, Andean alpaca, cocoon silk from Cauca and bamboo fibre',
+        es: 'Lana de oveja nativa, alpaca andina, seda de capullo del Cauca y fibra de bambú',
+      },
+      consent: {
+        en: 'A process endorsed by the authorities and the sabedoras of the resguardo',
+        es: 'Proceso avalado por las autoridades y las sabedoras del resguardo',
+      },
+    },
+    taughtBy: {
+      en: 'Her mother, grandmother, great-grandmother and great-great-grandmother — matrilineal transmission across four generations',
+      es: 'Su madre, su abuela, su bisabuela y su tatarabuela — transmisión matrilineal a lo largo de cuatro generaciones',
+    },
+    memory: {
+      en: [
+        'She learned the craft from the womb. Four generations of women — mother, grandmother, great-grandmother, great-great-grandmother — hold the line she describes, and she is explicit that it is a line and not a school: the knowledge arrived at home, in the ordinary hours, before it had a name.',
+        'What she left, she left for a reason. Coming out of an environment of violence and structural machismo, she went away to study fashion design, and returned to the resguardo in 2011 to find the Huanga loom on the point of disappearing. Reviving it meant going house by house to convince the sabedoras that the loom was worth setting up again. Forty-seven families are in the network that came out of those conversations.',
+        'The workshops now run in the homes, with children and young people, and she is direct about what they are for: suicide and youth violence in the resguardo are the problem the weaving is set against. “More than a ruana, it is building life,” she says. The teaching is the work; the garment is what the work leaves behind.',
+      ],
+      es: [
+        'Aprendió el oficio desde el vientre materno. Cuatro generaciones de mujeres — madre, abuela, bisabuela, tatarabuela — sostienen el linaje que describe, y es explícita en que se trata de un linaje y no de una escuela: el saber llegó en la casa, en las horas corrientes, antes de tener nombre.',
+        'Lo que dejó, lo dejó por una razón. Saliendo de un entorno de violencia y machismo estructural, se fue a estudiar diseño de modas, y regresó al resguardo en 2011 para encontrar el telar en Huanga a punto de desaparecer. Revivirlo significó ir casa por casa a convencer a las sabedoras de que valía la pena volver a armarlo. Cuarenta y siete familias componen la red que salió de esas conversaciones.',
+        'Los talleres funcionan hoy en los hogares, con niños y jóvenes, y ella es directa sobre para qué son: el suicidio y la violencia juvenil en el resguardo son el problema contra el que se pone el tejido. «Más que una ruana, es construir vida», dice. La enseñanza es el trabajo; la prenda es lo que el trabajo deja atrás.',
+      ],
+    },
+    fibre: {
+      label: {
+        en: 'Native sheep wool, southern Andean alpaca and cocoon silk',
+        es: 'Lana de oveja nativa, alpaca del sur andino y seda de capullo',
+      },
+      fibre: 'wool',
+      twist: 'S',
+      reading: {
+        en: [
+          'Spun and tizado by hand, in the ancestral manner. The loom itself uses no electricity and no fuel, so every variable in the thread is set by hand before it reaches the warp.',
+          'Alpaca and sheep wool are not interchangeable here. Alpaca carries the drape; the sheep wool carries the body and the warmth. Which one dominates a piece is decided at the warping stage.',
+          'The finished cloth is dense and structured, with a heavy fall and thermal body that holds its shape. A Huanga piece hangs from the shoulder rather than following it.',
+        ],
+        es: [
+          'Hilado y tizado a mano, a la manera ancestral. El telar mismo no usa electricidad ni combustibles, así que cada variable del hilo se fija con la mano antes de llegar a la urdimbre.',
+          'La alpaca y la lana de oveja no son intercambiables aquí. La alpaca lleva la caída; la lana de oveja lleva el cuerpo y el abrigo. Cuál domina una pieza se decide en el urdido.',
+          'La tela terminada es densa y estructurada, de gran caída y con un cuerpo térmico que sostiene la forma. Una pieza en Huanga cuelga del hombro antes que seguirlo.',
+        ],
+      },
+    },
+    hotspots: [
+      {
+        id: 'sol-de-los-pastos',
+        x: 30,
+        y: 30,
+        name: { en: 'Sol de los Pastos', es: 'Sol de los Pastos' },
+        structure: {
+          en: 'An eight-pointed star counted into the vertical warp. Because the Huanga is worked upward from the bottom, the figure must be resolved symmetrically in both directions from a centre the weaver has to establish before she reaches it.',
+          es: 'Una estrella de ocho puntas contada en la urdimbre vertical. Como la Huanga se trabaja de abajo hacia arriba, la figura debe resolverse simétricamente en ambos sentidos desde un centro que quien teje ha de establecer antes de llegar a él.',
+        },
+        meaning: {
+          en: 'As stated by her: the cosmovision of the Pasto people — the centre of the universe and the agricultural cycle.',
+          es: 'Según ella lo enuncia: la cosmovisión del pueblo Pasto — el centro del universo y el ciclo agrícola.',
+        },
+        communityHeld: true,
+      },
+      {
+        id: 'churo-cosmico',
+        x: 64,
+        y: 52,
+        name: { en: 'Churo Cósmico — the spiral', es: 'Churo Cósmico — la espiral' },
+        structure: {
+          en: 'A spiral built by displacing the figure one count per row, so the curve is an accumulation of straight steps. It is unforgiving: a single miscount unwinds the whole turn.',
+          es: 'Una espiral construida desplazando la figura un punto por hilera, de modo que la curva es una acumulación de pasos rectos. No perdona: un solo error de cuenta desenrolla la vuelta entera.',
+        },
+        meaning: {
+          en: 'As stated by her: origin, circular time, the return, and the evolution of life.',
+          es: 'Según ella lo enuncia: el origen, el tiempo circular, el retorno y la evolución de la vida.',
+        },
+        communityHeld: true,
+      },
+      {
+        id: 'dualidad',
+        x: 84,
+        y: 74,
+        name: { en: 'Dualidad', es: 'Dualidad' },
+        structure: {
+          en: 'Contrasting colours interlaced so that neither reads as ground and neither as figure. The pairing is held across the whole width rather than applied as a border.',
+          es: 'Colores contrastantes entrelazados de modo que ninguno se lee como fondo y ninguno como figura. La pareja se sostiene a lo ancho de toda la pieza y no se aplica como un borde.',
+        },
+        meaning: {
+          en: 'As stated by her: cosmic balance — the two halves that require each other.',
+          es: 'Según ella lo enuncia: el equilibrio cósmico — las dos mitades que se requieren mutuamente.',
+        },
+        communityHeld: true,
+      },
+    ],
+    glossary: [
+      {
+        term: 'Huanga',
+        gloss: { en: 'The traditional vertical loom of Los Pastos', es: 'Telar vertical tradicional de Los Pastos' },
+        note: {
+          en: 'A wooden frame worked standing, upward from the bottom edge, with no electricity and no fuel. It was close to disappearing in Carlosama before 2011.',
+          es: 'Una estructura de madera que se trabaja de pie, de abajo hacia arriba, sin electricidad ni combustibles. Estuvo cerca de desaparecer en Carlosama antes de 2011.',
+        },
+      },
+      {
+        term: 'Churo',
+        gloss: { en: 'Cosmic spiral', es: 'Espiral cósmica' },
+        note: {
+          en: 'A figure of the Pasto repertoire. Its reading is community-held knowledge and appears here because she stated it.',
+          es: 'Una figura del repertorio Pasto. Su lectura es saber comunitario y aparece aquí porque ella la enunció.',
+        },
+      },
+      {
+        term: 'Pañolón / Anaco / Follado',
+        gloss: { en: 'Ceremonial and everyday dress', es: 'Indumentaria ceremonial y cotidiana' },
+        note: {
+          en: 'The named garments of the territory. Each has its own construction, and the distinction between ceremonial and everyday is not a matter of decoration.',
+          es: 'Las prendas con nombre del territorio. Cada una tiene su propia construcción, y la distinción entre lo ceremonial y lo cotidiano no es asunto de adorno.',
+        },
+      },
+    ],
+    techniques: ['urdir', 'hilar', 'tinturar'],
+    patternPalette: ['#E9DECB', '#2B2733', '#C1352F'],
+    works: [
+      {
+        id: 'w1',
+        title: { en: 'Ceremonial ruana in Huanga', es: 'Ruana ceremonial en Huanga' },
+        technique: {
+          en: 'Woven on the Huanga indigenous vertical loom',
+          es: 'Tejido en telar vertical indígena Huanga',
+        },
+        materials: { en: 'Sheep wool and alpaca fibre', es: 'Lana de oveja y fibra de alpaca' },
+        time: {
+          en: '4 to 6 weeks of warping and weaving by hand',
+          es: '4 a 6 semanas de urdido y tejido manual',
+        },
+        scale: { en: 'A single piece, fitted to the body', es: 'Pieza única, ajustada al cuerpo' },
+        context: {
+          en: 'A garment of warmth, of territorial identity and of spiritual protection. As she puts it: no two are alike, because each one has a soul of its own.',
+          es: 'Prenda de abrigo, de identidad territorial y de protección espiritual. Como ella lo dice: no hay dos iguales, porque cada una tiene alma propia.',
+        },
+        plate: 'plain',
+      },
+    ],
+    contact: {
+      whatsapp: '',
+      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
+      published: false,
+      hours: {
+        en: 'According to the community times of the resguardo',
+        es: 'Según los tiempos comunitarios del resguardo',
+      },
+      languages: { en: 'Spanish', es: 'Español' },
+    },
+  },
+
+  // ===========================================================================
+  // Ada «Adita» — Chapinero, Bogotá D.C.
+  // ===========================================================================
+  {
+    slug: 'adita-chapinero',
+    sourcing: 'interview',
+    notice: {
+      en: 'A profile of teaching and of experiment.',
+      es: 'Perfil formativo y experimental.',
+    },
+    name: 'Ada «Adita»',
+    community: {
+      en: 'Family workshop and academy of urban weaving, Chapinero',
+      es: 'Taller y academia familiar de tejeduría urbana, Chapinero',
+    },
+    territory: { en: 'Chapinero, Calle 63, Bogotá D.C.', es: 'Chapinero, Calle 63, Bogotá D.C.' },
+    regionId: 'andina',
+    craft: {
+      en: 'Hand flat-bed machine knitting, fine crochet and three-dimensional pattern-making',
+      es: 'Tejeduría en máquina rectilínea manual, crochet fino y patronaje tridimensional',
+    },
+    openingImage: null,
+    standfirst: {
+      en: 'Teacher of generations of designers and weavers in Bogotá. Self-taught, and exceptional at it: she translates complex sketches and period silhouettes straight onto the knitting machine, and defends weaving as a rigorous profession rather than a pastime.',
+      es: 'Maestra de generaciones de diseñadores y tejedoras en Bogotá. Autodidacta y excepcional en ello: traduce bocetos complejos y siluetas de época directamente a la máquina de tejer, y defiende el tejido como una profesión rigurosa y no como un pasatiempo.',
+    },
+    quote: {
+      en: 'I like working very fine things, veil-like; I like transparency, I like it not to come out heavy… The simple machine is very versatile and a delight to explore. In teaching, one passes on the knowledge so that whoever wants to learn can make a living from it.',
+      es: 'A mí me gusta trabajar cosas muy finitas, tipo velos; me gusta la transparencia, que no quede pesado… La máquina sencilla es muy versátil y deliciosa de explorar. Al enseñar uno transmite el conocimiento para que el que quiera aprender pueda vivir de él.',
+    },
+    quoteAttribution: {
+      en: 'From her interview for FIBRA',
+      es: 'De su entrevista para FIBRA',
+    },
+    seal: {
+      authorship: 'Ada «Adita»',
+      affiliation: {
+        en: 'Family workshop and academy of urban weaving, Chapinero',
+        es: 'Taller y academia familiar de tejeduría urbana, Chapinero',
+      },
+      origin: {
+        en: 'Bogotá D.C., Cundinamarca, Andean region, Colombia',
+        es: 'Bogotá D.C., Cundinamarca, Región Andina, Colombia',
+      },
+      material: {
+        en: 'Extra-fine yarns, silks, cottons and light blends for veils — not exclusively natural fibre, and stated as such',
+        es: 'Hilos extrafinos, sedas, algodones y mezclas livianas para velos — no exclusivamente fibra natural, y así se declara',
+      },
+      consent: {
+        en: 'Independent pedagogical knowledge, passed on by word of mouth',
+        es: 'Saber pedagógico independiente, transmitido de voz a voz',
+      },
+    },
+    taughtBy: {
+      en: 'Her elder sister, for crochet; the machine she learned by watching her mother’s; and continuous empirical experiment alongside her sisters Laura and Fabiola',
+      es: 'Su hermana mayor, para el crochet; la máquina la aprendió observando la de su madre; y experimentación empírica continua junto a sus hermanas Laura y Fabiola',
+    },
+    memory: {
+      en: [
+        'It began as play. She and her sisters dressed dolls for home theatre productions, and the clothes had to fit a body and hold together — which is, in miniature, the whole problem of the trade. Crochet came from her elder sister. Nobody set out to train her.',
+        'When her mother acquired one of the first industrial machines to reach the country, Adita learned it in secret, watching the mechanism rather than being shown it. That is the origin of her particular refusal: she will not work from punched cards. Cards impose the pattern from outside, and she would rather the fingers and the mechanical buttons govern the openwork, because that is where a design can still change while it is being made.',
+        'The workshop on the 63 has since been an epicentre of experiment rather than a production floor. Artisans from several regions and young students have come through it, and the pieces that leave it are often co-authored — a designer arrives with a silhouette that has no obvious construction, and she finds one. Her insistence throughout is that this is a profession with its own rigour, and that treating it as a hobby is what keeps it underpaid.',
+      ],
+      es: [
+        'Empezó jugando. Con sus hermanas vestía muñecos para obras de teatro caseras, y la ropa tenía que caber en un cuerpo y sostenerse — que es, en miniatura, el problema entero del oficio. El crochet vino de su hermana mayor. Nadie se propuso formarla.',
+        'Cuando su madre adquirió una de las primeras máquinas industriales que llegaron al país, Adita la aprendió a escondidas, observando el mecanismo en lugar de que se lo enseñaran. De ahí viene su negativa particular: no trabaja con tarjetas perforadas. Las tarjetas imponen el patrón desde afuera, y ella prefiere que los dedos y los botones mecánicos gobiernen el calado, porque ahí es donde un diseño todavía puede cambiar mientras se hace.',
+        'El taller de la 63 ha sido desde entonces un epicentro de experimentación antes que un piso de producción. Por él han pasado artesanas de varias regiones y jóvenes estudiantes, y las piezas que salen son a menudo de coautoría: llega un diseñador con una silueta que no tiene construcción evidente, y ella le encuentra una. Su insistencia, en todo momento, es que este es un oficio con rigor propio, y que tratarlo como pasatiempo es lo que lo mantiene mal pagado.',
+      ],
+    },
+    fibre: {
+      label: {
+        en: 'Fine yarns, silks and light wools for high-gauge machines',
+        es: 'Hilos delgados, sedas y lanas finas para máquinas de alta galga',
+      },
+      fibre: 'cotton',
+      twist: 'Z',
+      reading: {
+        en: [
+          'A fine, even twist — the opposite requirement to hand-spun wool. A high-gauge needle bed will not accept an irregular thread, so the regularity here is a condition of the machine rather than an aesthetic choice.',
+          'The finished hand is a transparent veil: light fall, fluidity, and open work where the stitches have been moved by hand.',
+          'Density is deliberately low. She works against weight, and a piece that comes out heavy is, by her own account, a piece that has failed.',
+        ],
+        es: [
+          'Una torsión fina y pareja — la exigencia contraria a la de la lana hilada a mano. Una cama de agujas de alta galga no acepta un hilo irregular, así que aquí la regularidad es una condición de la máquina antes que una elección estética.',
+          'El tacto terminado es un velo transparente: caída ligera, fluidez, y calados abiertos donde los puntos se han movido a mano.',
+          'La densidad es deliberadamente baja. Ella trabaja contra el peso, y una pieza que sale pesada es, según sus propias palabras, una pieza que falló.',
+        ],
+      },
+    },
+    hotspots: [
+      {
+        id: 'velo',
+        x: 26,
+        y: 28,
+        name: { en: 'Veil stitch / hand openwork', es: 'Puntada en velo / calado manual' },
+        structure: {
+          en: 'Stitches lifted and re-hung by hand on the needle bed to open a transparency. Nothing in the machine produces this; it is done between rows, one point at a time.',
+          es: 'Puntos levantados y vueltos a colgar a mano sobre la cama de agujas para abrir una transparencia. La máquina no produce esto por sí sola; se hace entre hileras, punto por punto.',
+        },
+        meaning: {
+          en: 'Her own device, not a traditional figure. The transparency is the point of the piece rather than an ornament applied to it.',
+          es: 'Un recurso suyo, no una figura tradicional. La transparencia es el asunto de la pieza y no un ornamento aplicado sobre ella.',
+        },
+        communityHeld: false,
+      },
+      {
+        id: 'menguados',
+        x: 60,
+        y: 50,
+        name: { en: 'Menguados and circular forms', es: 'Menguados y hormas circulares' },
+        structure: {
+          en: 'Stitches reduced on the machine to shape armholes, necklines and three-dimensional fall without a seam. The garment acquires its volume as it is knitted, not afterwards at the cutting table.',
+          es: 'Reducción de puntos en máquina para lograr sisas, escotes y caídas tridimensionales sin costura. La prenda adquiere su volumen mientras se teje, no después en la mesa de corte.',
+        },
+        meaning: {
+          en: 'Structural. This is the technique that lets a sketch be answered directly on the machine, and it is what she is sought out for.',
+          es: 'Estructural. Es la técnica que permite responder un boceto directamente en la máquina, y es aquello por lo que la buscan.',
+        },
+        communityHeld: false,
+      },
+      {
+        id: 'anos-veinte',
+        x: 82,
+        y: 72,
+        name: { en: 'Nineteen-twenties structure / lace', es: 'Estructura años veinte / encaje' },
+        structure: {
+          en: 'Historical silhouettes and couture textures rebuilt in knit. A cut-and-sewn structure has to be re-derived as a sequence of rows before it can exist on a needle bed.',
+          es: 'Siluetas históricas y texturas de alta costura reconstruidas en tejido. Una estructura de corte y confección tiene que volver a deducirse como una secuencia de hileras antes de poder existir en una cama de agujas.',
+        },
+        meaning: {
+          en: 'Her own repertoire. “What is authentic,” she says, “is what you create with your own head — a garment you know nobody else is going to have.”',
+          es: 'Repertorio propio. «Para mí lo auténtico es lo que tú creas con tu propia cabeza», dice, «una prenda que sabes que nadie más va a tener».',
+        },
+        communityHeld: false,
+      },
+    ],
+    glossary: [
+      {
+        term: 'Máquina sencilla',
+        gloss: {
+          en: 'The manual, non-computerised machine where the hand governs the openwork',
+          es: 'La máquina manual, no computarizada, donde la mano gobierna el calado',
+        },
+        note: {
+          en: 'Needles are manipulated by buttons rather than by punched cards. Slower, and the only way the pattern stays negotiable while the piece is on the bed.',
+          es: 'Las agujas se manipulan por botones y no por tarjetas perforadas. Más lento, y la única manera de que el patrón siga siendo negociable mientras la pieza está en la cama.',
+        },
+      },
+      {
+        term: 'Velo',
+        gloss: { en: 'An ultra-fine translucent knit', es: 'Tejido ultrafino translúcido' },
+        note: {
+          en: 'Her preferred register. It is harder than a dense knit, because there is less structure holding the errors out of sight.',
+          es: 'Su registro preferido. Es más difícil que un tejido denso, porque hay menos estructura sosteniendo los errores fuera de la vista.',
+        },
+      },
+      {
+        term: 'Maquila vs. taller',
+        gloss: { en: 'The single piece against the production run', es: 'La pieza única frente a la serie masiva' },
+        note: {
+          en: 'The distinction she works by. A maquila reproduces a specification; a taller answers a problem, and charges for having answered it.',
+          es: 'La distinción con la que trabaja. Una maquila reproduce una especificación; un taller resuelve un problema, y cobra por haberlo resuelto.',
+        },
+      },
+    ],
+    techniques: ['urdir', 'anudar'],
+    patternPalette: ['#F4EDE1', '#3B3A38', '#C9B9A2'],
+    works: [
+      {
+        id: 'w1',
+        title: {
+          en: 'Dress / sheer garment in openwork knit',
+          es: 'Vestido / prenda vaporosa en tejido calado',
+        },
+        technique: {
+          en: 'Knitted on the hand flat-bed machine, openwork formed by menguado',
+          es: 'Tejido en máquina rectilínea manual, con calados por menguado',
+        },
+        materials: { en: 'Fine soft yarn / light blend', es: 'Hilado fino suave / mezcla liviana' },
+        time: {
+          en: '2 to 3 weeks of modelling and knitting directly on the machine',
+          es: '2 a 3 semanas de modelado y tejido directo en máquina',
+        },
+        scale: { en: 'Made to measure on the body', es: 'Prenda a medida sobre el cuerpo' },
+        context: {
+          en: 'Light dress, bridal wear, and garments where formal sensitivity is the whole brief.',
+          es: 'Indumentaria ligera, trajes de novia y prendas en las que la sensibilidad formal es todo el encargo.',
+        },
+        plate: 'net',
+      },
+    ],
+    contact: {
+      whatsapp: '',
+      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
+      published: false,
+      hours: {
+        en: 'Monday to Friday, workshop hours',
+        es: 'Lunes a viernes, en jornada de taller',
+      },
       languages: { en: 'Spanish', es: 'Español' },
     },
   },

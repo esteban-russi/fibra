@@ -121,9 +121,7 @@ const en = {
   'seal.affiliation': 'Community affiliation',
   'seal.origin': 'Geographic origin',
   'seal.material': 'Raw material',
-  'seal.material.value': '100% natural fibre',
   'seal.consent': 'Informed community consent',
-  'seal.consent.value': 'Recorded and renewable',
   'seal.what': 'What this seal states',
   'seal.explain':
     'The seal names the individual who made the piece and the collective the knowledge belongs to. Both matter: authorship without affiliation erases the lineage, affiliation without authorship erases the person.',
@@ -183,11 +181,14 @@ const en = {
   'contact.whatsapp': 'Message on WhatsApp',
   'contact.call': 'Call the workshop',
   'contact.prefilled': 'Your message will open pre-written, and you can change every word of it:',
+  'contact.prefilledPending':
+    'When the workshop’s number is published, your message will open pre-written — and you will be able to change every word of it:',
   'contact.hours': 'Best hours to write',
   'contact.language': 'Languages spoken',
   'contact.nocommission': 'FIBRA charges no commission on this conversation.',
-  'contact.demoNote':
-    'This is a demonstration contact. The number is a placeholder and will not reach a real workshop.',
+  'contact.withheld': 'Number not published yet',
+  'contact.withheld.why':
+    'Publishing a workshop’s telephone is a separate consent from publishing a story, and this one has not been given. The buttons above are inactive rather than pointed at a placeholder that would not reach her.',
 
   'guide.title': 'Guide to a Conscious Commission',
   'guide.lede':
@@ -211,12 +212,12 @@ const en = {
   'credits.content': 'Editorial content',
   'credits.status': 'Status',
 
-  // --- Demonstration notice -------------------------------------------------
-  'demo.title': 'About this story',
-  'demo.body':
-    'FIBRA publishes only what an artisan and their collective have supplied and approved. This profile is a demonstration of the five-act structure: the person, the quotations and the contact details are invented, and are marked as such throughout. The craft, materials, regions and techniques described are documented traditions, not invented ones.',
-  'demo.short': 'Demonstration profile — invented person, documented craft',
-  'demo.badge': 'Demonstration',
+  // --- Provenance notice ----------------------------------------------------
+  'provenance.title': 'Where this material comes from',
+  'provenance.body':
+    'FIBRA publishes only what an artisan and their collective have supplied and approved. Every story here was built from a recorded interview with the artisan herself: the voice, the account of the craft, the figures and their meanings, and the works and the times attached to them are hers. Ours is the ordering into five acts and the English translation — Spanish is the language it was all said in. The workshop telephone numbers are not published yet, and are named as withheld rather than replaced with placeholders.',
+  'provenance.short': 'From a recorded interview with the artisan',
+  'provenance.badge': 'Artisan-supplied',
 
   // --- Common ---------------------------------------------------------------
   'common.readMore': 'Read more',
@@ -345,9 +346,7 @@ const es: Record<UIKey, string> = {
   'seal.affiliation': 'Filiación comunitaria',
   'seal.origin': 'Origen geográfico',
   'seal.material': 'Materia prima',
-  'seal.material.value': 'Fibra 100% natural',
   'seal.consent': 'Consentimiento informado de la comunidad',
-  'seal.consent.value': 'Registrado y renovable',
   'seal.what': 'Qué declara este sello',
   'seal.explain':
     'El sello nombra a la persona que hizo la pieza y al colectivo al que pertenece el saber. Ambos importan: la autoría sin filiación borra el linaje; la filiación sin autoría borra a la persona.',
@@ -403,11 +402,14 @@ const es: Record<UIKey, string> = {
   'contact.whatsapp': 'Escribir por WhatsApp',
   'contact.call': 'Llamar al taller',
   'contact.prefilled': 'Su mensaje se abrirá ya redactado, y puede cambiar cada palabra:',
+  'contact.prefilledPending':
+    'Cuando el número del taller se publique, su mensaje se abrirá ya redactado — y podrá cambiar cada palabra:',
   'contact.hours': 'Mejores horas para escribir',
   'contact.language': 'Lenguas que se hablan',
   'contact.nocommission': 'FIBRA no cobra comisión alguna sobre esta conversación.',
-  'contact.demoNote':
-    'Este es un contacto de demostración. El número es un marcador de posición y no llegará a ningún taller real.',
+  'contact.withheld': 'Número aún no publicado',
+  'contact.withheld.why':
+    'Publicar el teléfono de un taller es un consentimiento distinto del de publicar una historia, y este no se ha dado. Los botones de arriba están inactivos en lugar de apuntar a un número de relleno que no llegaría a ella.',
 
   'guide.title': 'Guía de Encargo Consciente',
   'guide.lede':
@@ -430,11 +432,11 @@ const es: Record<UIKey, string> = {
   'credits.content': 'Contenido editorial',
   'credits.status': 'Estado',
 
-  'demo.title': 'Sobre esta historia',
-  'demo.body':
-    'FIBRA publica únicamente lo que un artesano y su colectivo han provisto y aprobado. Este perfil es una demostración de la estructura en cinco actos: la persona, las citas y los datos de contacto son inventados, y así se señala en todo momento. El oficio, los materiales, las regiones y las técnicas descritas son tradiciones documentadas, no inventadas.',
-  'demo.short': 'Perfil de demostración — persona inventada, oficio documentado',
-  'demo.badge': 'Demostración',
+  'provenance.title': 'De dónde viene este material',
+  'provenance.body':
+    'FIBRA publica únicamente lo que un artesano y su colectivo han provisto y aprobado. Cada historia de aquí se construyó a partir de una entrevista grabada con la artesana misma: la voz, el relato del oficio, las figuras y sus significados, y las obras y los tiempos que llevan son suyos. Nuestro es el ordenamiento en cinco actos y la traducción al inglés — el español es la lengua en que todo se dijo. Los teléfonos de los talleres aún no se publican, y se nombran como reservados en lugar de reemplazarse por números de relleno.',
+  'provenance.short': 'De una entrevista grabada con la artesana',
+  'provenance.badge': 'Provisto por la artesana',
 
   'common.readMore': 'Leer más',
   'common.close': 'Cerrar',

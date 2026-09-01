@@ -15,14 +15,18 @@ import type { Artisan } from '../../content/artisans'
  * is sent, because a message that goes out in someone's name should be one
  * they have actually read.
  *
- * The number is a non-routable placeholder while the profiles are
- * demonstrations, and says so rather than pretending otherwise.
+ * Publishing a workshop's telephone number is a separate consent from
+ * publishing her story, and it has not been given for these profiles yet. While
+ * `contact.published` is false the buttons are rendered inert rather than
+ * pointed at a placeholder: a dead link that looks live is worse than an honest
+ * absence, and the visitor is told which consent is missing.
  */
 export function DirectContact({ artisan }: { artisan: Artisan }) {
   const { t, pick, lang } = useI18n()
   const [openPoint, setOpenPoint] = useState<string | null>(GUIDE[0].id)
 
   const message = pick(OPENING_MESSAGE)
+  const live = artisan.contact.published && artisan.contact.whatsapp !== ''
   const waHref = `https://wa.me/${artisan.contact.whatsapp}?text=${encodeURIComponent(message)}`
   const telHref = `tel:+${artisan.contact.whatsapp}`
 
@@ -34,31 +38,54 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
         <p className="mt-5 max-w-lg text-pretty leading-relaxed text-clay">{t('contact.lede')}</p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-bordeaux px-6 py-4 text-sm font-medium text-canvas transition-colors hover:bg-clay"
-          >
-            <MessageCircle size={17} aria-hidden="true" />
-            {t('contact.whatsapp')}
-          </a>
-          <a
-            href={telHref}
-            className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-line px-6 py-4 text-sm font-medium text-bordeaux transition-colors hover:border-ash hover:bg-surface/60"
-          >
-            <Phone size={16} aria-hidden="true" />
-            {t('contact.call')}
-            <span className="font-mono text-xs text-muted">{artisan.contact.display}</span>
-          </a>
+          {live ? (
+            <>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-bordeaux px-6 py-4 text-sm font-medium text-canvas transition-colors hover:bg-clay"
+              >
+                <MessageCircle size={17} aria-hidden="true" />
+                {t('contact.whatsapp')}
+              </a>
+              <a
+                href={telHref}
+                className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-line px-6 py-4 text-sm font-medium text-bordeaux transition-colors hover:border-ash hover:bg-surface/60"
+              >
+                <Phone size={16} aria-hidden="true" />
+                {t('contact.call')}
+                <span className="font-mono text-xs text-muted">{pick(artisan.contact.display)}</span>
+              </a>
+            </>
+          ) : (
+            <>
+              <span className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-dashed border-ash bg-surface/50 px-6 py-4 text-sm font-medium text-clay">
+                <MessageCircle size={17} aria-hidden="true" />
+                {t('contact.whatsapp')}
+              </span>
+              <span className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-dashed border-line px-6 py-4 text-sm font-medium text-clay">
+                <Phone size={16} aria-hidden="true" />
+                {t('contact.call')}
+                <span className="font-mono text-xs text-muted">{pick(artisan.contact.display)}</span>
+              </span>
+            </>
+          )}
         </div>
 
-        <p className="mt-4">
-          <Badge tone="warn">{t('contact.demoNote')}</Badge>
-        </p>
+        {!live && (
+          <div className="mt-4">
+            <Badge tone="warn">{t('contact.withheld')}</Badge>
+            <p className="mt-3 max-w-lg text-pretty text-[0.8125rem] leading-relaxed text-clay">
+              {t('contact.withheld.why')}
+            </p>
+          </div>
+        )}
 
         <div className="mt-8 rounded-sm border border-line bg-surface/45 p-5">
-          <p className="text-[0.8125rem] leading-relaxed text-clay">{t('contact.prefilled')}</p>
+          <p className="text-[0.8125rem] leading-relaxed text-clay">
+            {live ? t('contact.prefilled') : t('contact.prefilledPending')}
+          </p>
           <p
             lang={lang}
             className="mt-3 border-l-2 border-ash pl-4 text-pretty text-sm italic leading-relaxed text-ink/80"

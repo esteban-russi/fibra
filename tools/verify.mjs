@@ -80,7 +80,7 @@ await new Promise((r) => setTimeout(r, 1200))
 ok('click outside closes drawer', !(await p.$('[role="dialog"]')))
 
 /* ---------- 4. Hotspots by keyboard ---------- */
-await p.goto(BASE + '/artisans/werregue-wounaan', { waitUntil: 'networkidle2' })
+await p.goto(BASE + '/artisans/flor-imbacuan', { waitUntil: 'networkidle2' })
 await new Promise((r) => setTimeout(r, 800))
 // scope to Act III: the header menu toggle and the Act V guide accordion also
 // carry aria-expanded, and matching them made this assert the wrong control.
@@ -115,7 +115,7 @@ const firstStop = await p.evaluate(() => document.activeElement?.textContent?.tr
 ok('skip link is the first tab stop', /skip|contenido/i.test(firstStop ?? ''), firstStop)
 
 /* ---------- 7. Images all have alt text ---------- */
-for (const path of ['/', '/atlas/caribe', '/artisans/telar-wayuu', '/credits']) {
+for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/credits']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const bad = await p.$$eval('img', (els) => els.filter((e) => !e.getAttribute('alt')).length)
@@ -152,7 +152,7 @@ ok('motion toggle disabled under reduced motion', toggleDisabled === true)
 /* ---------- 10. Positioning: no commerce patterns ---------- */
 await p.emulateMediaFeatures([])
 const commerce = []
-for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/telar-wayuu']) {
+for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/luz-maria-rodriguez']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const found = await p.evaluate(() => {
@@ -168,13 +168,24 @@ for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/telar-
 }
 ok('no cart, checkout or price anywhere', commerce.length === 0, commerce.join(' | '))
 
-/* ---------- 11. Direct contact is a real wa.me link with a message ---------- */
-await p.goto(BASE + '/artisans/werregue-wounaan', { waitUntil: 'networkidle2' })
+/* ---------- 11. Direct contact: live where consented, inert where withheld ---------- */
+await p.goto(BASE + '/artisans/flor-imbacuan', { waitUntil: 'networkidle2' })
 await new Promise((r) => setTimeout(r, 800))
-const wa = await p.$eval('a[href^="https://wa.me/"]', (a) => a.getAttribute('href'))
-ok('WhatsApp CTA carries a prefilled message', /wa\.me\/\d+\?text=.{40,}/.test(wa ?? ''))
+const wa = await p.$eval('a[href^="https://wa.me/"]', (a) => a.getAttribute('href')).catch(() => null)
 const tel = await p.$('a[href^="tel:"]')
-ok('a telephone route is offered alongside', !!tel)
+if (wa || tel) {
+  // The workshop has authorised publication of its number: the route must work.
+  ok('WhatsApp CTA carries a prefilled message', /wa\.me\/\d+\?text=.{40,}/.test(wa ?? ''))
+  ok('a telephone route is offered alongside', !!tel)
+} else {
+  // The number is withheld. Nothing may pretend to be a route, and the page
+  // has to say which consent is missing rather than going quiet about it.
+  const explained = await p.evaluate(() =>
+    /no est\u00e1 publicado|not published yet/i.test(document.body.innerText),
+  )
+  ok('no contact link is rendered while the number is withheld', true)
+  ok('the withheld number is explained on the page', explained)
+}
 
 /* ---------- 12. Reduced motion draws the thread fully ---------- */
 await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
