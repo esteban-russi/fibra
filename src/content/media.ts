@@ -36,7 +36,6 @@ function commons(file: string): string {
 
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
-const CC_BY_3 = 'https://creativecommons.org/licenses/by/3.0/deed.en'
 
 export const MEDIA: Record<string, Credit> = {
   canaflechaRaspado: {
@@ -81,21 +80,21 @@ export const MEDIA: Record<string, Credit> = {
 
   werregueVasijas: {
     id: 'werregueVasijas',
-    src: '/media/werregue-vasijas.webp',
-    width: 1280,
-    height: 960,
-    file: 'Artesanías indígenas en werregue, Jardín Botánico La Manigua By Pilar Quintana.JPG',
-    author: 'Jardín Botánico La Manigua',
-    licence: 'CC BY 3.0',
-    licenceUrl: CC_BY_3,
-    sourceUrl: commons('Artesanías indígenas en werregue, Jardín Botánico La Manigua By Pilar Quintana.JPG'),
+    src: '/media/IMG_5544.png',
+    width: 2747,
+    height: 1847,
+    file: 'IMG_5544.png',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
     alt: {
-      en: 'Three rounded werregue vessels in close view. Their coiled palm-fibre walls carry banded geometric figures in deep red, black, olive and cream.',
-      es: 'Tres vasijas redondeadas de werregue en primer plano. Sus paredes de fibra de palma anillada llevan figuras geométricas en franjas de rojo profundo, negro, oliva y crema.',
+      en: 'A close view of woven textile surfaces in yellow, coral, brown, green and blue.',
+      es: 'Detalle de superficies textiles tejidas en amarillo, coral, café, verde y azul.',
     },
     caption: {
-      en: 'Wounaan werregue vessels. The wall is built as a continuous coil and the figures are counted into it stitch by stitch. The pattern cannot be corrected afterwards.',
-      es: 'Vasijas wounaan en werregue. La pared se construye como un anillado continuo y las figuras se cuentan puntada a puntada. El patrón no se puede corregir después.',
+      en: 'Textile surfaces shown in close detail, revealing changes in colour, texture and weave.',
+      es: 'Superficies textiles vistas en detalle, donde se revelan los cambios de color, textura y tejido.',
     },
   },
 
