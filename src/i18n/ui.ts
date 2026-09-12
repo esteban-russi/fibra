@@ -46,10 +46,13 @@ const en = {
   'home.path.territory.desc':
     'Six regions dyed by their surroundings. From the solar yellow of bija in the north, to the deep green of mangrove and Pacific mud.',
   'home.path.territory.cta': 'Enter through the region',
-  'home.identity.eyebrow': 'The name',
-  'home.identity.title': 'Between the thread and the feeling',
-  'home.identity.body':
-    'Fibra is the filament a plant gives up and an animal offers. In Spanish it is also what moves in you when something truly reaches you: we say a thing has touched our fibres when it shakes us or captivates us. FIBRA is born at that crossing, and here every story is a weave.',
+  'home.identity.title': 'About FIBRA',
+  'home.identity.body.1':
+    'Fibre is the filament a plant gives up and an animal offers; what the human hand transforms.',
+  'home.identity.body.2':
+    'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
+  'home.identity.body.3':
+    'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
   'home.identity.a.t': 'The hand that knots inherited knowledge',
   'home.identity.a.b': 'Every piece carries the name of the person who made it and the community that taught them.',
   'home.identity.b.t': 'The technique repeated across generations',
@@ -277,10 +280,13 @@ const es: Record<UIKey, string> = {
   'home.path.territory.desc':
     'Seis regiones teñidas por su entorno. Del amarillo solar de la bija en el norte, al verde profundo del mangle y el lodo pacífico.',
   'home.path.territory.cta': 'Entrar por la región',
-  'home.identity.eyebrow': 'El nombre',
-  'home.identity.title': 'Entre el hilo y la emoción',
-  'home.identity.body':
-    'Fibra es el filamento que entrega la planta y ofrece el animal. En nuestra lengua es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece o nos cautiva. FIBRA nace en ese cruce, y aquí cada historia es un tejido.',
+  'home.identity.title': 'Acerca de FIBRA',
+  'home.identity.body.1':
+    'Fibra es el filamento que la planta entrega y el animal ofrece; lo que la mano humana transforma.',
+  'home.identity.body.2':
+    'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
+  'home.identity.body.3':
+    'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
   'home.identity.a.t': 'La mano que anuda saberes heredados',
   'home.identity.a.b': 'Cada pieza lleva el nombre de quien la hizo y la comunidad que se lo enseñó.',
   'home.identity.b.t': 'La técnica repetida durante generaciones',

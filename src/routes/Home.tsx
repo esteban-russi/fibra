@@ -255,10 +255,12 @@ export function Home() {
         <div className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-28">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <motion.div {...rise}>
-              <SectionHeading eyebrow={t('home.identity.eyebrow')} title={t('home.identity.title')} />
-              <p className="mt-6 max-w-lg text-pretty text-[1.0625rem] leading-[1.75] text-ink/80">
-                {t('home.identity.body')}
-              </p>
+              <SectionHeading title={t('home.identity.title')} />
+              <div className="mt-6 max-w-lg space-y-4 text-pretty text-[1.0625rem] leading-[1.75] text-ink/80">
+                <p>{t('home.identity.body.1')}</p>
+                <p>{t('home.identity.body.2')}</p>
+                <p>{t('home.identity.body.3')}</p>
+              </div>
             </motion.div>
 
             <motion.dl {...rise} className="grid gap-px overflow-hidden rounded-sm bg-line sm:grid-cols-1">
