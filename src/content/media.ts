@@ -241,6 +241,44 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Fotografía de banco de imágenes de tejido en telar de varas. La fuente no registra el nombre de la tejedora, ni su comunidad, ni su territorio, y aquí no se le atribuye ninguno.',
     },
   },
+  florImbacuanRetrato: {
+    id: 'florImbacuanRetrato',
+    src: '/media/artisans/flor_imbacuan/profile.webp',
+    width: 1024,
+    height: 997,
+    file: 'flor_imbacuan/profile.jpg',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A woman in Pastos dress — black hat, and a shawl and anaco banded in red, pink and black — seated before a Huanga vertical loom. Skeins of yellow, teal, green and red wool rest on a wooden stand and in a basket beside her.',
+      es: 'Una mujer con vestido de Los Pastos — sombrero negro, y chal y anaco con franjas rojas, rosadas y negras — sentada ante un telar vertical Huanga. A su lado, madejas de lana amarilla, verde azulada, verde y roja sobre un caballete de madera y en un canasto.',
+    },
+    caption: {
+      en: 'Flor Imbacuan at a Huanga vertical loom.',
+      es: 'Flor Imbacuan ante un telar vertical Huanga.',
+    },
+  },
+  aditaRetrato: {
+    id: 'aditaRetrato',
+    src: '/media/artisans/ada_morgante/profile.webp',
+    width: 1198,
+    height: 1600,
+    file: 'ada_morgante/profile.jpg',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'An older woman in a black polo neck, seated at a flat-bed knitting machine. Behind her a dress form, a rail of garments, paintings and a work table crowded with tools fill the workshop.',
+      es: 'Una mujer mayor, de suéter negro de cuello alto, sentada ante una máquina de tejer rectilínea. Detrás, un maniquí de costura, un perchero con prendas, cuadros y una mesa de trabajo llena de herramientas ocupan el taller.',
+    },
+    caption: {
+      en: 'Ada «Adita» at the flat-bed knitting machine in her workshop.',
+      es: 'Ada «Adita» ante la máquina de tejer rectilínea de su taller.',
+    },
+  },
 }
 
 export const CREDITS: Credit[] = Object.values(MEDIA)

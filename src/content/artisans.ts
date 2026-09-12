@@ -157,7 +157,7 @@ export const ARTISANS: Artisan[] = [
       en: 'Spinning, flat-bed machine weaving and natural dyeing',
       es: 'Hilatura, tejeduría en máquina rectilínea y tinturado natural',
     },
-    openingImage: null,
+    openingImage: 'hilosTenidos',
     standfirst: {
       en: 'Master weaver and community leader, more than two decades into the safeguarding of textile knowledge in Cundinamarca. From her native Peñas de Cajón she has drawn spinners and weavers together across five municipalities to give the campesino craft standing against industrial terms.',
       es: 'Maestra tejedora y líder comunitaria con más de dos décadas impulsando la salvaguardia del saber textil en Cundinamarca. Desde su natal Peñas de Cajón ha articulado a hilanderas y artesanas de cinco municipios para dignificar el oficio campesino frente a las dinámicas industriales.',
@@ -354,7 +354,7 @@ export const ARTISANS: Artisan[] = [
       en: 'Ancestral weaving on the Huanga vertical loom, and etnomoda',
       es: 'Tejeduría ancestral en Huanga (telar vertical) y etnomoda',
     },
-    openingImage: null,
+    openingImage: 'florImbacuanRetrato',
     standfirst: {
       en: 'Master weaver and indigenous designer of the Pasto people, leading a movement of healing, memory and community tourism through the collective label Amor / Etnomoda. She brought the Huanga loom back as an act of resistance and of standing for indigenous women.',
       es: 'Maestra y diseñadora indígena del pueblo Pasto que lidera un movimiento de sanación, memoria y etnoturismo a través de la marca comunitaria Amor / Etnomoda. Rescató el telar en Huanga como un acto de resistencia y de dignificación de la mujer indígena.',
@@ -548,7 +548,7 @@ export const ARTISANS: Artisan[] = [
       en: 'Hand flat-bed machine knitting, fine crochet and three-dimensional pattern-making',
       es: 'Tejeduría en máquina rectilínea manual, crochet fino y patronaje tridimensional',
     },
-    openingImage: null,
+    openingImage: 'aditaRetrato',
     standfirst: {
       en: 'Teacher of generations of designers and weavers in Bogotá. Self-taught, and exceptional at it: she translates complex sketches and period silhouettes straight onto the knitting machine, and defends weaving as a rigorous profession rather than a pastime.',
       es: 'Maestra de generaciones de diseñadores y tejedoras en Bogotá. Autodidacta y excepcional en ello: traduce bocetos complejos y siluetas de época directamente a la máquina de tejer, y defiende el tejido como una profesión rigurosa y no como un pasatiempo.',
