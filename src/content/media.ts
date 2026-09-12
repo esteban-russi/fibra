@@ -275,8 +275,8 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Una mujer mayor, de suéter negro de cuello alto, sentada ante una máquina de tejer rectilínea. Detrás, un maniquí de costura, un perchero con prendas, cuadros y una mesa de trabajo llena de herramientas ocupan el taller.',
     },
     caption: {
-      en: 'Ada «Adita» at the flat-bed knitting machine in her workshop.',
-      es: 'Ada «Adita» ante la máquina de tejer rectilínea de su taller.',
+      en: 'Ada Morgante at the flat-bed knitting machine in her workshop.',
+      es: 'Ada Morgante ante la máquina de tejer rectilínea de su taller.',
     },
   },
 }

@@ -128,6 +128,9 @@ export type Artisan = {
     /** True only once the artisan has authorised publication of her number. */
     published: boolean
     hours: Localized
+    /** Public handles the artisan asked to be listed. Absent means none given —
+     *  never a guess, and never a profile found by searching for her name. */
+    links?: { instagram?: string; website?: string }
     languages: Localized
   }
 }
@@ -190,8 +193,8 @@ export const ARTISANS: Artisan[] = [
       },
     },
     taughtBy: {
-      en: 'Her mother and the school and vereda tradition of Peñas de Cajón; later the master weaver Ada — “Adita” — in Bogotá for the machine, with technical advice from Artesanías de Colombia',
-      es: 'Su madre y la tradición escolar y veredal de Peñas de Cajón; después la maestra Ada — «Adita» — en Bogotá para la máquina, con asesoría técnica de Artesanías de Colombia',
+      en: 'Her mother and the school and vereda tradition of Peñas de Cajón; later the master weaver Ada Morgante in Bogotá for the machine, with technical advice from Artesanías de Colombia',
+      es: 'Su madre y la tradición escolar y veredal de Peñas de Cajón; después la maestra Ada Morgante en Bogotá para la máquina, con asesoría técnica de Artesanías de Colombia',
     },
     memory: {
       en: [
@@ -322,10 +325,11 @@ export const ARTISANS: Artisan[] = [
       },
     ],
     contact: {
-      whatsapp: '',
-      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
-      published: false,
+      whatsapp: '573212414594',
+      display: { en: '+57 321 241 4594', es: '+57 321 241 4594' },
+      published: true,
       hours: { en: 'Monday to Friday, 8:00 to 17:00', es: 'Lunes a viernes, de 8:00 a 17:00' },
+      links: { instagram: 'https://www.instagram.com/tejilartesutatausa/' },
       languages: { en: 'Spanish', es: 'Español' },
     },
   },
@@ -356,8 +360,8 @@ export const ARTISANS: Artisan[] = [
     },
     openingImage: 'florImbacuanRetrato',
     standfirst: {
-      en: 'Master weaver and indigenous designer of the Pasto people, leading a movement of healing, memory and community tourism through the collective label Amor / Etnomoda. She brought the Huanga loom back as an act of resistance and of standing for indigenous women.',
-      es: 'Maestra y diseñadora indígena del pueblo Pasto que lidera un movimiento de sanación, memoria y etnoturismo a través de la marca comunitaria Amor / Etnomoda. Rescató el telar en Huanga como un acto de resistencia y de dignificación de la mujer indígena.',
+      en: 'Master weaver and indigenous designer of the Pasto people, leading a movement of healing, memory and community tourism through the collective label Hajsu Etnomoda. She brought the Huanga loom back as an act of resistance and of standing for indigenous women.',
+      es: 'Maestra y diseñadora indígena del pueblo Pasto que lidera un movimiento de sanación, memoria y etnoturismo a través de la marca comunitaria Hajsu Etnomoda. Rescató el telar en Huanga como un acto de resistencia y de dignificación de la mujer indígena.',
     },
     quote: {
       en: 'Weaving is a conversation between the woman and the warp. The weaving feels, the weaving breathes, the weaving falls ill… I always say that weaving is giving living script to our identity as a people.',
@@ -516,28 +520,32 @@ export const ARTISANS: Artisan[] = [
       },
     ],
     contact: {
-      whatsapp: '',
-      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
-      published: false,
+      whatsapp: '573217212545',
+      display: { en: '+57 321 721 2545', es: '+57 321 721 2545' },
+      published: true,
       hours: {
         en: 'According to the community times of the resguardo',
         es: 'Según los tiempos comunitarios del resguardo',
+      },
+      links: {
+        instagram: 'https://www.instagram.com/hajsu_etnomoda/',
+        website: 'https://www.hajsu.com.co/sobre-nosotros/',
       },
       languages: { en: 'Spanish', es: 'Español' },
     },
   },
 
   // ===========================================================================
-  // Ada «Adita» — Chapinero, Bogotá D.C.
+  // Ada Morgante — Chapinero, Bogotá D.C.
   // ===========================================================================
   {
-    slug: 'adita-chapinero',
+    slug: 'ada-morgante',
     sourcing: 'interview',
     notice: {
       en: 'A profile of teaching and of experiment.',
       es: 'Perfil formativo y experimental.',
     },
-    name: 'Ada «Adita»',
+    name: 'Ada Morgante',
     community: {
       en: 'Family workshop and academy of urban weaving, Chapinero',
       es: 'Taller y academia familiar de tejeduría urbana, Chapinero',
@@ -562,7 +570,7 @@ export const ARTISANS: Artisan[] = [
       es: 'De su entrevista para FIBRA',
     },
     seal: {
-      authorship: 'Ada «Adita»',
+      authorship: 'Ada Morgante',
       affiliation: {
         en: 'Family workshop and academy of urban weaving, Chapinero',
         es: 'Taller y academia familiar de tejeduría urbana, Chapinero',
@@ -587,12 +595,12 @@ export const ARTISANS: Artisan[] = [
     memory: {
       en: [
         'It began as play. She and her sisters dressed dolls for home theatre productions, and the clothes had to fit a body and hold together — which is, in miniature, the whole problem of the trade. Crochet came from her elder sister. Nobody set out to train her.',
-        'When her mother acquired one of the first industrial machines to reach the country, Adita learned it in secret, watching the mechanism rather than being shown it. That is the origin of her particular refusal: she will not work from punched cards. Cards impose the pattern from outside, and she would rather the fingers and the mechanical buttons govern the openwork, because that is where a design can still change while it is being made.',
+        'When her mother acquired one of the first industrial machines to reach the country, Ada Morgante learned it in secret, watching the mechanism rather than being shown it. That is the origin of her particular refusal: she will not work from punched cards. Cards impose the pattern from outside, and she would rather the fingers and the mechanical buttons govern the openwork, because that is where a design can still change while it is being made.',
         'The workshop on the 63 has since been an epicentre of experiment rather than a production floor. Artisans from several regions and young students have come through it, and the pieces that leave it are often co-authored — a designer arrives with a silhouette that has no obvious construction, and she finds one. Her insistence throughout is that this is a profession with its own rigour, and that treating it as a hobby is what keeps it underpaid.',
       ],
       es: [
         'Empezó jugando. Con sus hermanas vestía muñecos para obras de teatro caseras, y la ropa tenía que caber en un cuerpo y sostenerse — que es, en miniatura, el problema entero del oficio. El crochet vino de su hermana mayor. Nadie se propuso formarla.',
-        'Cuando su madre adquirió una de las primeras máquinas industriales que llegaron al país, Adita la aprendió a escondidas, observando el mecanismo en lugar de que se lo enseñaran. De ahí viene su negativa particular: no trabaja con tarjetas perforadas. Las tarjetas imponen el patrón desde afuera, y ella prefiere que los dedos y los botones mecánicos gobiernen el calado, porque ahí es donde un diseño todavía puede cambiar mientras se hace.',
+        'Cuando su madre adquirió una de las primeras máquinas industriales que llegaron al país, Ada Morgante la aprendió a escondidas, observando el mecanismo en lugar de que se lo enseñaran. De ahí viene su negativa particular: no trabaja con tarjetas perforadas. Las tarjetas imponen el patrón desde afuera, y ella prefiere que los dedos y los botones mecánicos gobiernen el calado, porque ahí es donde un diseño todavía puede cambiar mientras se hace.',
         'El taller de la 63 ha sido desde entonces un epicentro de experimentación antes que un piso de producción. Por él han pasado artesanas de varias regiones y jóvenes estudiantes, y las piezas que salen son a menudo de coautoría: llega un diseñador con una silueta que no tiene construcción evidente, y ella le encuentra una. Su insistencia, en todo momento, es que este es un oficio con rigor propio, y que tratarlo como pasatiempo es lo que lo mantiene mal pagado.',
       ],
     },
@@ -719,9 +727,9 @@ export const ARTISANS: Artisan[] = [
       },
     ],
     contact: {
-      whatsapp: '',
-      display: { en: 'Number not yet published', es: 'Número aún no publicado' },
-      published: false,
+      whatsapp: '573214871396',
+      display: { en: '+57 321 487 1396', es: '+57 321 487 1396' },
+      published: true,
       hours: {
         en: 'Monday to Friday, workshop hours',
         es: 'Lunes a viernes, en jornada de taller',
