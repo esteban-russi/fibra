@@ -21,6 +21,7 @@ const en = {
   'nav.atlas': 'Territories',
   'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
+  'nav.about': 'About',
   'nav.credits': 'Credits',
   'nav.menu': 'Menu',
   'nav.open': 'Open menu',
@@ -53,12 +54,6 @@ const en = {
     'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
   'home.identity.body.3':
     'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
-  'home.identity.a.t': 'The hand that knots inherited knowledge',
-  'home.identity.a.b': 'Every piece carries the name of the person who made it and the community that taught them.',
-  'home.identity.b.t': 'The technique repeated across generations',
-  'home.identity.b.b': 'Warping, braiding, knotting, dyeing, spinning. The same movement, held for centuries in one territory.',
-  'home.identity.c.t': 'The patience that turns matter into memory',
-  'home.identity.c.b': 'A werregue vessel is weeks of counting. Making time is stated in hours and weeks rather than left out.',
   'home.artisans.eyebrow': 'Stories',
   'home.artisans.title': 'Five acts, one voice',
   'home.artisans.lede':
@@ -256,6 +251,7 @@ const es: Record<UIKey, string> = {
   'nav.atlas': 'Territorios',
   'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
+  'nav.about': 'Acerca de',
   'nav.credits': 'Créditos',
   'nav.menu': 'Menú',
   'nav.open': 'Abrir menú',
@@ -287,12 +283,6 @@ const es: Record<UIKey, string> = {
     'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
   'home.identity.body.3':
     'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
-  'home.identity.a.t': 'La mano que anuda saberes heredados',
-  'home.identity.a.b': 'Cada pieza lleva el nombre de quien la hizo y la comunidad que se lo enseñó.',
-  'home.identity.b.t': 'La técnica repetida durante generaciones',
-  'home.identity.b.b': 'Urdir, trenzar, anudar, tinturar, hilar. El mismo movimiento, sostenido durante siglos en un territorio.',
-  'home.identity.c.t': 'La paciencia que convierte materia en memoria',
-  'home.identity.c.b': 'Una vasija de werregue son semanas de conteo. El tiempo de elaboración se dice en horas y semanas, no se omite.',
   'home.artisans.eyebrow': 'Historias',
   'home.artisans.title': 'Cinco actos, una voz',
   'home.artisans.lede':

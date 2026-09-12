@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useCallback, useEffect, useState } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/cn'
 import { useI18n } from '../i18n'
 import type { Lang } from '../i18n'
 import { useLockBodyScroll } from '../lib/hooks'
+import { ABOUT_ID, scrollToElement } from '../lib/scroll'
 
 const ROUTES = [
   { to: '/artisans', key: 'nav.artisans' },
@@ -17,6 +18,57 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [lifted, setLifted] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  /**
+   * About is a place on the cover, not a route of its own.
+   *
+   * It lands on the section at once, with no travel. An eased descent was tried
+   * and abandoned: it crosses most of the page, and the tween yields the moment
+   * the reader touches the wheel — which a trackpad reports on the faintest
+   * gesture, so the descent stalled part-way more often than it arrived.
+   *
+   * From another route it is an ordinary navigation carrying the hash, which
+   * Home reads on arrival. A modified click falls through to the link so the
+   * target still opens in a new tab or copies as a URL.
+   */
+  /**
+   * The wordmark goes to the top of the cover, the way a masthead is expected to.
+   *
+   * From another route the Link is enough: RouteChange resets the scroll on a
+   * pathname change. Already on Home it is not — that effect compares against
+   * the previous path and returns early when they match, so a visitor at the
+   * foot of the page would click the logo and watch nothing happen. The click
+   * is allowed through rather than prevented, so an About hash still drops off
+   * the URL.
+   */
+  const toTop = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+      setOpen(false)
+      if (location.pathname !== '/') return
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+    },
+    [location.pathname],
+  )
+
+  const toAbout = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+      e.preventDefault()
+      setOpen(false)
+      if (location.pathname !== '/') {
+        navigate(`/#${ABOUT_ID}`)
+        return
+      }
+      const el = document.getElementById(ABOUT_ID)
+      if (!el) return
+      scrollToElement(el, { instant: true })
+      history.replaceState(null, '', `#${ABOUT_ID}`)
+      el.focus({ preventScroll: true })
+    },
+    [location.pathname, navigate],
+  )
 
   // The cover and every story open on a dark full-bleed image, so the
   // header has to invert over them or the navigation is unreadable until the
@@ -48,6 +100,7 @@ export function Header() {
       <div className="mx-auto flex h-[var(--header-h)] max-w-[86rem] items-center justify-between gap-4 px-5 sm:px-8">
         <Link
           to="/"
+          onClick={toTop}
           className={cn(
             'group flex items-baseline gap-2.5 font-serif text-[1.375rem] font-semibold tracking-[0.2em] transition-colors',
             inverted ? 'text-canvas' : 'text-bordeaux',
@@ -97,6 +150,16 @@ export function Header() {
               )}
             </NavLink>
           ))}
+          <Link
+            to={`/#${ABOUT_ID}`}
+            onClick={toAbout}
+            className={cn(
+              'rounded-sm px-3.5 py-2 text-sm transition-colors',
+              inverted ? 'text-canvas/75 hover:text-canvas' : 'text-clay hover:text-bordeaux',
+            )}
+          >
+            {t('nav.about')}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -140,6 +203,16 @@ export function Header() {
                 </NavLink>
               </li>
             ))}
+            <li>
+              <Link
+                to={`/#${ABOUT_ID}`}
+                onClick={toAbout}
+                className="flex items-center justify-between py-4 font-serif text-xl text-ink/80"
+              >
+                {t('nav.about')}
+                <span aria-hidden="true" className="text-ash">→</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

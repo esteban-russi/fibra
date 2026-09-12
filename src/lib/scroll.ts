@@ -35,3 +35,30 @@ export function scrollToY(target: number, duration = 1500): void {
   }
   frame = requestAnimationFrame(step)
 }
+
+/**
+ * Eases to an element, landing where a native jump to the same id would.
+ *
+ * The offset is read from the element's own `scroll-mt` class rather than
+ * passed in, so the header clearance stays declared in one place — the markup —
+ * and an anchor, a nav button and a chevron all arrive at the same line.
+ */
+export function scrollToElement(
+  el: HTMLElement,
+  { duration, instant = false }: { duration?: number; instant?: boolean } = {},
+): void {
+  const offset = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
+  const target = el.getBoundingClientRect().top + window.scrollY - offset
+  // `behavior: 'instant'` and not a plain two-argument scrollTo: that form
+  // resolves to the `scroll-behavior: smooth` set on <html> in index.css, so
+  // the one path that promises no animation would quietly animate.
+  if (instant) window.scrollTo({ top: target, behavior: 'instant' as ScrollBehavior })
+  else scrollToY(target, duration)
+}
+
+/** The id of the Home section the header's About item descends to. */
+export const ABOUT_ID = 'acerca-de-fibra'
+
+/** Slower than the 1500ms default: these trips cross most of a screen or more,
+ *  and the descent is meant to read as travel rather than a jump. */
+export const SLOW_DESCENT_MS = 2400

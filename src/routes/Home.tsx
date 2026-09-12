@@ -1,5 +1,5 @@
-import { useCallback, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import { useI18n } from '../i18n'
@@ -12,11 +12,7 @@ import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { HERO_VOICE } from '../content/voice'
 import { cn } from '../lib/cn'
-import { scrollToY } from '../lib/scroll'
-
-/** Slower than the 1500ms the Atlas chevron uses: this trip is a full cover
- *  screen, and the copy asks the visitor to follow the thread, not skip it. */
-const SLOW_DESCENT_MS = 2400
+import { ABOUT_ID, SLOW_DESCENT_MS, scrollToElement } from '../lib/scroll'
 
 export function Home() {
   const { t, pick } = useI18n()
@@ -38,14 +34,25 @@ export function Home() {
       const el = storiesRef.current
       if (!el || reduced || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
       e.preventDefault()
-      // The landing offset stays declared in the element's scroll-mt class.
-      const offset = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
-      scrollToY(el.getBoundingClientRect().top + window.scrollY - offset, SLOW_DESCENT_MS)
+      scrollToElement(el, { duration: SLOW_DESCENT_MS, instant: reduced })
       history.replaceState(null, '', '#cinco-actos')
       el.focus({ preventScroll: true })
     },
     [reduced],
   )
+
+  // Arriving from another route with the About hash. RouteChange has just reset
+  // the scroll to the top, so the section is taken directly: the eased descent
+  // is for visitors already on this page, where the travel is the point. Across
+  // a route change it would only be 2.4s of content nobody asked to see.
+  const { hash } = useLocation()
+  useEffect(() => {
+    if (hash !== `#${ABOUT_ID}`) return
+    const el = document.getElementById(ABOUT_ID)
+    if (!el) return
+    const frame = requestAnimationFrame(() => scrollToElement(el, { instant: true }))
+    return () => cancelAnimationFrame(frame)
+  }, [hash])
 
   const rise = reduced
     ? {}
@@ -197,7 +204,7 @@ export function Home() {
         {/* The two routes the strands lead to. */}
         <section className="relative mx-auto max-w-[86rem] px-5 pb-24 sm:px-8 sm:pb-32">
           <motion.div {...rise}>
-            <div className="mx-auto mb-14 w-fit max-w-3xl bg-canvas px-8 py-4">
+            <div className="mx-auto mb-20 w-fit max-w-3xl bg-canvas px-8 py-4 sm:mb-28">
               <SectionHeading
                 title={t('home.paths.title')}
                 lede={t('home.paths.lede')}
@@ -250,8 +257,13 @@ export function Home() {
         </section>
       </div>
 
-      {/* What the name means, and the three ideas it carries. */}
-      <section className="border-y border-line bg-surface/50">
+      {/* What the name means. Also where the header's About item lands, hence the
+          id, the focus target and the offset that clears the fixed header. */}
+      <section
+        id={ABOUT_ID}
+        tabIndex={-1}
+        className="scroll-mt-[var(--header-h)] border-y border-line bg-surface/50 outline-none"
+      >
         <div className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-28">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <motion.div {...rise}>
@@ -263,23 +275,17 @@ export function Home() {
               </div>
             </motion.div>
 
-            <motion.dl {...rise} className="grid gap-px overflow-hidden rounded-sm bg-line sm:grid-cols-1">
-              {[
-                { t: t('home.identity.a.t'), b: t('home.identity.a.b') },
-                { t: t('home.identity.b.t'), b: t('home.identity.b.b') },
-                { t: t('home.identity.c.t'), b: t('home.identity.c.b') },
-              ].map((row, i) => (
-                <div key={row.t} className="bg-canvas px-6 py-7 sm:px-8">
-                  <dt className="flex items-baseline gap-3 font-serif text-lg text-bordeaux">
-                    <span aria-hidden="true" className="text-xs tabular-nums text-ash">
-                      0{i + 1}
-                    </span>
-                    {row.t}
-                  </dt>
-                  <dd className="mt-2 pl-7 text-pretty text-sm leading-relaxed text-clay">{row.b}</dd>
-                </div>
-              ))}
-            </motion.dl>
+            <motion.div {...rise}>
+              <img
+                src={MEDIA.guajiraTerritorio.src}
+                alt={pick(MEDIA.guajiraTerritorio.alt)}
+                width={MEDIA.guajiraTerritorio.width}
+                height={MEDIA.guajiraTerritorio.height}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full rounded-sm object-cover"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
