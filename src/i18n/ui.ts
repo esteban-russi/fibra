@@ -38,14 +38,14 @@ const en = {
   'home.paths.title': 'Two ways to untie memory.',
   'home.paths.lede':
     'You can come in through the technique of the hands that transform the strand, or through the territory where the raw material is born. Choose which end of the thread you want to start pulling.',
-  'home.path.techniques.title': 'The Path of Techniques',
+  'home.path.techniques.title': 'The path of techniques',
   'home.path.techniques.desc':
-    'Warping, braiding, knotting, dyeing, spinning. Five movements of the hand, each with its own tools and its own timings.',
-  'home.path.techniques.cta': 'Enter through the hand',
-  'home.path.territory.title': 'The Path of Territory',
+    'Warping, twisting, knotting, steeping, spinning. Five exact movements in which the body converses with tension, rhythm and tool.',
+  'home.path.techniques.cta': 'Enter through the craft',
+  'home.path.territory.title': 'The path of territories',
   'home.path.territory.desc':
-    'Six regions, each carrying the colour of the dye or the fibre that grows there. From the yellow of bija in the north to the green of mangrove on the Pacific coast.',
-  'home.path.territory.cta': 'Enter through the ground',
+    'Six regions dyed by their surroundings. From the solar yellow of bija in the north, to the deep green of mangrove and Pacific mud.',
+  'home.path.territory.cta': 'Enter through the region',
   'home.identity.eyebrow': 'The name',
   'home.identity.title': 'Between the thread and the feeling',
   'home.identity.body':
@@ -269,14 +269,14 @@ const es: Record<UIKey, string> = {
   'home.paths.title': 'Dos maneras de desatar la memoria.',
   'home.paths.lede':
     'Puedes entrar por la técnica de las manos que transforman la hebra, o por el territorio donde nace la materia prima. Escoge qué extremo del hilo quieres empezar a halar.',
-  'home.path.techniques.title': 'La Ruta de las Técnicas',
+  'home.path.techniques.title': 'La ruta de las técnicas',
   'home.path.techniques.desc':
-    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno con sus herramientas y sus tiempos.',
-  'home.path.techniques.cta': 'Entrar por la mano',
-  'home.path.territory.title': 'La Ruta del Territorio',
+    'Urdir, torcer, anudar, macerar, hilar. Cinco movimientos exactos donde el cuerpo dialoga con la tensión, el ritmo y la herramienta.',
+  'home.path.techniques.cta': 'Entrar en el oficio',
+  'home.path.territory.title': 'La ruta de los territorios',
   'home.path.territory.desc':
-    'Seis regiones, cada una con el color de la tintura o la fibra que allí crece. Del amarillo de la bija en el norte al verde del mangle en el litoral Pacífico.',
-  'home.path.territory.cta': 'Entrar por la tierra',
+    'Seis regiones teñidas por su entorno. Del amarillo solar de la bija en el norte, al verde profundo del mangle y el lodo pacífico.',
+  'home.path.territory.cta': 'Entrar por la región',
   'home.identity.eyebrow': 'El nombre',
   'home.identity.title': 'Entre el hilo y la emoción',
   'home.identity.body':
