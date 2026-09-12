@@ -89,7 +89,7 @@ const en = {
   'techniques.eyebrow': 'The Path of Techniques',
   'techniques.title': 'Navigation by the act of making',
   'techniques.lede':
-    'A technique is not a category. It is a movement one body learned from another. These five cut across every region: the same knot is tied on the Guajira peninsula and in the Chocó rainforest, and it means something different in each place.',
+    'A technique is not a mechanical procedure: it is bodily knowledge that one body memorised from another. These five gestures hold the textile memory of Colombia; the same knot that secures a mochila in La Guajira holds a net in the Chocó, turning matter into thought and territory.',
   'techniques.motion': 'Motion study',
   'techniques.reduced': 'Motion is paused because your system asks for reduced motion.',
   'techniques.play': 'Play motion study',
@@ -97,6 +97,10 @@ const en = {
   'techniques.materials': 'Worked in',
   'techniques.regions': 'Practised in',
   'techniques.tempo': 'Tempo',
+  'techniques.gesture': 'Definition of the gesture',
+  'techniques.account': 'The account',
+  'techniques.back': 'All techniques',
+  'techniques.others': 'The other gestures',
   'techniques.select': 'Show the {name} technique',
 
   // --- Artisans -------------------------------------------------------------
@@ -320,7 +324,7 @@ const es: Record<UIKey, string> = {
   'techniques.eyebrow': 'La Ruta de las Técnicas',
   'techniques.title': 'Navegación por el acto de hacer',
   'techniques.lede':
-    'Una técnica no es una categoría. Es un movimiento que un cuerpo aprendió de otro cuerpo. Estas cinco atraviesan todas las regiones: el mismo nudo se ata en la península de la Guajira y en la selva del Chocó, y significa algo distinto en cada lugar.',
+    'Una técnica no es un procedimiento mecánico: es un saber corporal que un cuerpo memorizó de otro. Estos cinco gestos sostienen la memoria textil de Colombia; el mismo nudo que asegura una mochila en La Guajira sostiene una red en el Chocó, transformando la materia en pensamiento y territorio.',
   'techniques.motion': 'Estudio de movimiento',
   'techniques.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
   'techniques.play': 'Reproducir el estudio de movimiento',
@@ -328,6 +332,10 @@ const es: Record<UIKey, string> = {
   'techniques.materials': 'Se trabaja en',
   'techniques.regions': 'Se practica en',
   'techniques.tempo': 'Tempo',
+  'techniques.gesture': 'Definición del gesto',
+  'techniques.account': 'Relato',
+  'techniques.back': 'Todas las técnicas',
+  'techniques.others': 'Los otros gestos',
   'techniques.select': 'Mostrar la técnica de {name}',
 
   'artisans.eyebrow': 'Historias',
