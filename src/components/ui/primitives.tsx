@@ -203,7 +203,11 @@ export function ProvenanceNotice({ notice, compact = false }: { notice?: Localiz
       <p className="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-bordeaux">
         {t('provenance.title')}
       </p>
-      <p className="text-pretty">{t('provenance.body')}</p>
+      <div className="space-y-2.5">
+        <p className="text-pretty">{t('provenance.body.1')}</p>
+        <p className="text-pretty">{t('provenance.body.2')}</p>
+        <p className="text-pretty">{t('provenance.body.3')}</p>
+      </div>
       {notice && <p className="mt-2 text-pretty italic text-clay">{pick(notice)}</p>}
     </aside>
   )

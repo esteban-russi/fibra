@@ -102,8 +102,7 @@ const en = {
   // --- Artisans -------------------------------------------------------------
   'artisans.eyebrow': 'Stories',
   'artisans.title': 'The weavers',
-  'artisans.lede':
-    'Each story runs in five acts and is read as one continuous descent. Nothing here is a tab, because a life is not a tab.',
+  'artisans.lede': 'Each story unwinds in five acts: one continuous passage',
   'artisan.back': 'All stories',
   'artisan.acts': 'Acts',
   'artisan.act': 'Act',
@@ -183,6 +182,8 @@ const en = {
     'When the workshop’s number is published, your message will open pre-written — and you will be able to change every word of it:',
   'contact.hours': 'Best hours to write',
   'contact.language': 'Languages spoken',
+  'contact.instagram': 'Instagram',
+  'contact.website': 'Website',
   'contact.nocommission': 'FIBRA charges no commission on this conversation.',
   'contact.withheld': 'Number not published yet',
   'contact.withheld.why':
@@ -213,8 +214,12 @@ const en = {
 
   // --- Provenance notice ----------------------------------------------------
   'provenance.title': 'Where this material comes from',
-  'provenance.body':
-    'FIBRA publishes only what an artisan and their collective have supplied and approved. Every story here was built from a recorded interview with the artisan herself: the voice, the account of the craft, the figures and their meanings, and the works and the times attached to them are hers. Ours is the ordering into five acts and the English translation — Spanish is the language it was all said in. The workshop telephone numbers are not published yet, and are named as withheld rather than replaced with placeholders.',
+  'provenance.body.1':
+    'FIBRA publishes only the testimony that each artisan and each workshop has shared and authorised.',
+  'provenance.body.2':
+    'Every chronicle comes out of direct conversation beside the person who commands the fibre: the first-person voice, the memory held in the hands, the meaning of the symbols and the time spent at the loom are entirely theirs. Our work is to thread the account across five acts.',
+  'provenance.body.3':
+    'Contact details are given directly and with consent, safeguarding the autonomy of the makers and opening transparent channels in place of intermediation.',
   'provenance.short': 'From a recorded interview with the artisan',
   'provenance.badge': 'Artisan-supplied',
 
@@ -327,8 +332,7 @@ const es: Record<UIKey, string> = {
 
   'artisans.eyebrow': 'Historias',
   'artisans.title': 'Quienes tejen',
-  'artisans.lede':
-    'Cada historia transcurre en cinco actos y se lee como un solo descenso continuo. Nada aquí es una pestaña, porque una vida no es una pestaña.',
+  'artisans.lede': 'Cada historia se desmadeja en cinco actos: un solo recorrido continuo',
   'artisan.back': 'Todas las historias',
   'artisan.acts': 'Actos',
   'artisan.act': 'Acto',
@@ -402,7 +406,9 @@ const es: Record<UIKey, string> = {
   'contact.prefilledPending':
     'Cuando el número del taller se publique, su mensaje se abrirá ya redactado — y podrá cambiar cada palabra:',
   'contact.hours': 'Mejores horas para escribir',
-  'contact.language': 'Lenguas que se hablan',
+  'contact.language': 'Idiomas que se hablan',
+  'contact.instagram': 'Instagram',
+  'contact.website': 'Sitio web',
   'contact.nocommission': 'FIBRA no cobra comisión alguna sobre esta conversación.',
   'contact.withheld': 'Número aún no publicado',
   'contact.withheld.why':
@@ -431,8 +437,12 @@ const es: Record<UIKey, string> = {
   'credits.status': 'Estado',
 
   'provenance.title': 'De dónde viene este material',
-  'provenance.body':
-    'FIBRA publica únicamente lo que un artesano y su colectivo han provisto y aprobado. Cada historia de aquí se construyó a partir de una entrevista grabada con la artesana misma: la voz, el relato del oficio, las figuras y sus significados, y las obras y los tiempos que llevan son suyos. Nuestro es el ordenamiento en cinco actos y la traducción al inglés — el español es la lengua en que todo se dijo. Los teléfonos de los talleres aún no se publican, y se nombran como reservados en lugar de reemplazarse por números de relleno.',
+  'provenance.body.1':
+    'FIBRA publica exclusivamente los testimonios compartidos y autorizados por cada artesana, artesano y taller.',
+  'provenance.body.2':
+    'Cada crónica nace de conversaciones directas junto a quien domina la fibra: la voz en primera persona, la memoria de las manos, el sentido de los símbolos y el tiempo invertido en el telar son enteramente suyos. Nuestra labor es hilar el relato a lo largo de cinco actos.',
+  'provenance.body.3':
+    'Los datos de contacto se presentan de manera directa y bajo consentimiento, salvaguardando la autonomía de los creadores y abriendo canales transparentes frente a la intermediación.',
   'provenance.short': 'De una entrevista grabada con la artesana',
   'provenance.badge': 'Provisto por la artesana',
 
