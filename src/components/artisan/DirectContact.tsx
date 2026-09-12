@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, MessageCircle, Phone } from 'lucide-react'
+import { AtSign, ChevronDown, Globe, MessageCircle, Phone } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { useI18n } from '../../i18n'
 import { Badge } from '../ui/primitives'
@@ -16,10 +16,11 @@ import type { Artisan } from '../../content/artisans'
  * they have actually read.
  *
  * Publishing a workshop's telephone number is a separate consent from
- * publishing her story, and it has not been given for these profiles yet. While
- * `contact.published` is false the buttons are rendered inert rather than
- * pointed at a placeholder: a dead link that looks live is worse than an honest
- * absence, and the visitor is told which consent is missing.
+ * publishing her story. While `contact.published` is false the buttons are
+ * rendered inert rather than pointed at a placeholder: a dead link that looks
+ * live is worse than an honest absence, and the visitor is told which consent
+ * is missing. The same rule governs `contact.links` — a handle appears only
+ * where the artisan gave one, never one found by searching for her name.
  */
 export function DirectContact({ artisan }: { artisan: Artisan }) {
   const { t, pick, lang } = useI18n()
@@ -103,6 +104,38 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
             <dt className="eyebrow mb-1.5">{t('contact.language')}</dt>
             <dd className="text-sm text-ink/80">{pick(artisan.contact.languages)}</dd>
           </div>
+          {artisan.contact.links?.instagram && (
+            <div>
+              <dt className="eyebrow mb-1.5">{t('contact.instagram')}</dt>
+              <dd>
+                <a
+                  href={artisan.contact.links.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 text-sm text-bordeaux underline decoration-line underline-offset-2 hover:decoration-ash"
+                >
+                  <AtSign size={15} aria-hidden="true" />
+                  {handle(artisan.contact.links.instagram)}
+                </a>
+              </dd>
+            </div>
+          )}
+          {artisan.contact.links?.website && (
+            <div>
+              <dt className="eyebrow mb-1.5">{t('contact.website')}</dt>
+              <dd>
+                <a
+                  href={artisan.contact.links.website}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 break-all text-sm text-bordeaux underline decoration-line underline-offset-2 hover:decoration-ash"
+                >
+                  <Globe size={15} aria-hidden="true" className="shrink-0" />
+                  {host(artisan.contact.links.website)}
+                </a>
+              </dd>
+            </div>
+          )}
         </dl>
 
         <p className="mt-6 font-serif text-lg italic leading-snug text-bordeaux">{t('contact.nocommission')}</p>
@@ -152,4 +185,20 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
       </div>
     </div>
   )
+}
+
+/** The @name an Instagram URL points at, so the link reads as the handle the
+ *  artisan would give you rather than as a tracking-shaped URL. */
+function handle(url: string): string {
+  const name = url.replace(/\/+$/, '').split('/').pop()
+  return name ? `@${name}` : url
+}
+
+/** A site shown by its domain: the path is where it goes, not what it is. */
+function host(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return url
+  }
 }
