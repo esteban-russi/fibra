@@ -119,14 +119,7 @@ export function Credits() {
                   <div className="flex justify-between gap-4">
                     <dt className="text-muted">{t('credits.source')}</dt>
                     <dd className="min-w-0 text-right">
-                      <a
-                        href={c.sourceUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="break-words text-bordeaux underline decoration-line underline-offset-2"
-                      >
-                        Wikimedia Commons
-                      </a>
+                      <Source url={c.sourceUrl} own={t('credits.sourceOwn')} />
                     </dd>
                   </div>
                 </dl>
@@ -182,5 +175,35 @@ export function Credits() {
         </p>
       </section>
     </div>
+  )
+}
+
+/**
+ * Names the archive a photograph came from.
+ *
+ * Derived from the URL rather than stored, so a new source cannot be mislabelled
+ * by a row that was written when Commons was the only one. An entry with no
+ * external page — the project's own archive — is stated rather than linked, so
+ * the credits never offer a link that goes nowhere.
+ */
+function Source({ url, own }: { url: string; own: string }) {
+  let name: string | null = null
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '')
+    name = host.endsWith('wikimedia.org') ? 'Wikimedia Commons' : host.endsWith('unsplash.com') ? 'Unsplash' : host
+  } catch {
+    name = null
+  }
+
+  if (!name) return <span className="text-ink/80">{own}</span>
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="break-words text-bordeaux underline decoration-line underline-offset-2"
+    >
+      {name}
+    </a>
   )
 }

@@ -34,6 +34,7 @@ function commons(file: string): string {
   return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file.replace(/ /g, '_'))}`
 }
 
+const UNSPLASH = 'https://unsplash.com/license'
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
 
@@ -80,7 +81,7 @@ export const MEDIA: Record<string, Credit> = {
 
   werregueVasijas: {
     id: 'werregueVasijas',
-    src: '/media/IMG_5544.png',
+    src: '/media/texturas-textiles.webp',
     width: 2747,
     height: 1847,
     file: 'IMG_5544.png',
@@ -215,6 +216,29 @@ export const MEDIA: Record<string, Credit> = {
     caption: {
       en: 'Wound thread at rest between operations — the pause between dyeing and the first row.',
       es: 'Hilo enrollado en reposo entre operaciones — la pausa entre el teñido y la primera vuelta.',
+    },
+  },
+  telarManos: {
+    id: 'telarManos',
+    src: '/media/telar-varas.webp',
+    width: 1600,
+    height: 1067,
+    file: 'felipe-mendoza-QZo-EW1Pnp0-unsplash.jpg',
+    author: 'Felipe Mendoza',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    // The referral parameters are the form Unsplash asks attribution to take.
+    sourceUrl:
+      'https://unsplash.com/photos/a-woman-weaving-a-rug-with-a-wooden-stick-QZo-EW1Pnp0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+    alt: {
+      en: 'Two hands working a striped warp on a stick loom: one holds a smooth wooden rod, the other presses the threads down. Bands of red, turquoise, black and cream run the width of the cloth.',
+      es: 'Dos manos trabajan una urdimbre rayada en un telar de varas: una sostiene una vara de madera lisa y la otra presiona los hilos. Franjas rojas, turquesas, negras y crudas recorren el ancho de la tela.',
+    },
+    caption: {
+      // Stock, not documentary: the source records no name, community or place,
+      // so none is claimed. The frame shows hands and cloth, never a face.
+      en: 'A stock photograph of weaving on a stick loom. The source records neither the weaver, her community nor her territory, so none is attributed here.',
+      es: 'Fotografía de banco de imágenes de tejido en telar de varas. La fuente no registra el nombre de la tejedora, ni su comunidad, ni su territorio, y aquí no se le atribuye ninguno.',
     },
   },
 }

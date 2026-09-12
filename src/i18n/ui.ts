@@ -205,6 +205,7 @@ const en = {
   'credits.author': 'Photographer',
   'credits.licence': 'Licence',
   'credits.source': 'Source',
+  'credits.sourceOwn': 'Project archive',
   'credits.depicts': 'Depicts',
   'credits.graphics': 'Drawn graphics',
   'credits.graphics.lede':
@@ -425,6 +426,7 @@ const es: Record<UIKey, string> = {
   'credits.author': 'Fotógrafo/a',
   'credits.licence': 'Licencia',
   'credits.source': 'Fuente',
+  'credits.sourceOwn': 'Archivo del proyecto',
   'credits.depicts': 'Muestra',
   'credits.graphics': 'Gráficos dibujados',
   'credits.graphics.lede':

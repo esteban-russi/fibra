@@ -6,10 +6,8 @@ import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
 import { ConductorThread } from '../components/graphics/ConductorThread'
 import { WeavePlate } from '../components/graphics/WeavePlate'
-import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
 import { SectionHeading } from '../components/ui/primitives'
 import { MEDIA } from '../content/media'
-import { TECHNIQUES } from '../content/techniques'
 import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { HERO_VOICE } from '../content/voice'
@@ -216,19 +214,15 @@ export function Home() {
                 desc={t('home.path.techniques.desc')}
                 cta={t('home.path.techniques.cta')}
                 visual={
-                  <div className="grid h-full grid-cols-3 gap-px bg-line/40">
-                    {TECHNIQUES.slice(0, 3).map((g) => (
-                      <div key={g.id} className="flex items-center justify-center bg-surface p-3">
-                        <TechniqueLoop
-                          kind={g.id}
-                          playing={!reduced}
-                          label={pick(g.motionAlt)}
-                          ink="#6E3A41"
-                          accent="#E5A93C"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  <img
+                    src={MEDIA.telarManos.src}
+                    alt={pick(MEDIA.telarManos.alt)}
+                    width={MEDIA.telarManos.width}
+                    height={MEDIA.telarManos.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
                 }
               />
             </motion.div>
@@ -240,15 +234,15 @@ export function Home() {
                 desc={t('home.path.territory.desc')}
                 cta={t('home.path.territory.cta')}
                 visual={
-                  <div className="flex h-full">
-                    {REGIONS.map((r) => (
-                      <div key={r.id} className="relative h-full flex-1 overflow-hidden" style={{ background: r.colour }}>
-                        <div className="absolute inset-0 opacity-30">
-                          <WeavePlate kind={r.weave} palette={[r.colour, '#FFFDF5', '#2E1B1E']} seed={r.id} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <img
+                    src={MEDIA.werregueVasijas.src}
+                    alt={pick(MEDIA.werregueVasijas.alt)}
+                    width={MEDIA.werregueVasijas.width}
+                    height={MEDIA.werregueVasijas.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
                 }
               />
             </motion.div>
