@@ -12,6 +12,9 @@ import { Home } from './routes/Home'
  */
 const Atlas = lazy(() => import('./routes/Atlas').then((m) => ({ default: m.Atlas })))
 const Techniques = lazy(() => import('./routes/Techniques').then((m) => ({ default: m.Techniques })))
+const TechniqueDetail = lazy(() =>
+  import('./routes/TechniqueDetail').then((m) => ({ default: m.TechniqueDetail })),
+)
 const Artisans = lazy(() => import('./routes/Artisans').then((m) => ({ default: m.Artisans })))
 const ArtisanProfile = lazy(() =>
   import('./routes/ArtisanProfile').then((m) => ({ default: m.ArtisanProfile })),
@@ -79,7 +82,7 @@ function Shell() {
             <Route path="/atlas" element={<Atlas />} />
             <Route path="/atlas/:slug" element={<Atlas />} />
             <Route path="/techniques" element={<Techniques />} />
-            <Route path="/gestures/:slug" element={<Techniques />} />
+            <Route path="/techniques/:slug" element={<TechniqueDetail />} />
             <Route path="/artisans" element={<Artisans />} />
             <Route path="/artisans/:slug" element={<ArtisanProfile />} />
             <Route path="/credits" element={<Credits />} />
