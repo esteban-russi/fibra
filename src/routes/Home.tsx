@@ -1,3 +1,4 @@
+import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
@@ -13,15 +14,40 @@ import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { HERO_VOICE } from '../content/voice'
 import { cn } from '../lib/cn'
+import { scrollToY } from '../lib/scroll'
+
+/** Slower than the 1500ms the Atlas chevron uses: this trip is a full cover
+ *  screen, and the copy asks the visitor to follow the thread, not skip it. */
+const SLOW_DESCENT_MS = 2400
 
 export function Home() {
   const { t, pick } = useI18n()
   const reduced = useReducedMotion()
   // Objects, not a portrait: the cover photograph is of pieces, so the voice
-  // beside it is not read as a likeness of the person speaking. The credit line
-  // says what the photograph actually shows.
+  // beside it is not read as a likeness of the person speaking. The cover shows
+  // it uncredited — it is the project's own archive image, and the credits route
+  // still carries every third-party photograph's attribution.
   const hero = MEDIA.werregueVasijas
   const voice = HERO_VOICE
+
+  // The cover fills the first screen, so its secondary link descends rather
+  // than jumps — slower than the browser's `smooth`, whose duration is fixed by
+  // the engine. Falling through to the plain anchor covers reduced motion and
+  // any modified click (new tab, copy link).
+  const storiesRef = useRef<HTMLElement>(null)
+  const toStories = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      const el = storiesRef.current
+      if (!el || reduced || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+      e.preventDefault()
+      // The landing offset stays declared in the element's scroll-mt class.
+      const offset = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
+      scrollToY(el.getBoundingClientRect().top + window.scrollY - offset, SLOW_DESCENT_MS)
+      history.replaceState(null, '', '#cinco-actos')
+      el.focus({ preventScroll: true })
+    },
+    [reduced],
+  )
 
   const rise = reduced
     ? {}
@@ -71,28 +97,6 @@ export function Home() {
               {t('home.hero.curatorial')}
             </p>
 
-            <p className="mt-6 max-w-xl text-xs leading-relaxed text-canvas/45">
-              {t('home.hero.credit')}:{' '}
-              <a
-                href={hero.sourceUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="underline decoration-canvas/25 underline-offset-2 hover:text-canvas/70"
-              >
-                {hero.author}
-              </a>
-              ,{' '}
-              <a
-                href={hero.licenceUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="underline decoration-canvas/25 underline-offset-2 hover:text-canvas/70"
-              >
-                {hero.licence}
-              </a>
-              . {pick(hero.caption)}
-            </p>
-
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 to="/artisans"
@@ -101,17 +105,30 @@ export function Home() {
                 {t('home.hero.cta')}
                 <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
               </Link>
-              <span className="inline-flex items-center gap-2 text-sm text-canvas/60">
+              <a
+                href="#cinco-actos"
+                onClick={toStories}
+                className="group inline-flex items-center gap-2 rounded-sm py-3.5 text-sm text-canvas/60 transition-colors hover:text-canvas"
+              >
                 <ArrowDown size={15} aria-hidden="true" className={cn(!reduced && 'animate-bounce')} />
-                {t('home.hero.scroll')}
-              </span>
+                <span className="underline decoration-canvas/20 decoration-1 underline-offset-4 transition-colors group-hover:decoration-canvas/60">
+                  {t('home.hero.scroll')}
+                </span>
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stories. */}
-      <section className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
+      {/* Stories. Where the cover's secondary link lands: the id keeps the plain
+          anchor working, the ref feeds the eased descent, and the offset is
+          declared here so both arrive at the same place. */}
+      <section
+        id="cinco-actos"
+        ref={storiesRef}
+        tabIndex={-1}
+        className="mx-auto max-w-[86rem] scroll-mt-[calc(var(--header-h)+1.5rem)] px-5 pb-12 pt-24 outline-none sm:px-8 sm:pb-16 sm:pt-32"
+      >
         <motion.div {...rise}>
           <SectionHeading
             eyebrow={t('home.artisans.eyebrow')}
@@ -151,8 +168,7 @@ export function Home() {
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <p className="eyebrow">{pick(region?.name ?? { en: '', es: '' })}</p>
-                    <h3 className="mt-2 font-serif text-xl leading-snug text-bordeaux">{a.name}</h3>
+                    <h3 className="font-serif text-[1.625rem] leading-snug text-bordeaux">{a.name}</h3>
                     <p className="mt-1.5 text-sm text-clay">{pick(a.craft)}</p>
                     <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-ink/70">{pick(a.standfirst)}</p>
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-bordeaux">
@@ -171,7 +187,7 @@ export function Home() {
       <div className="relative">
         <ConductorThread frayAt={0.3} />
 
-        <section className="relative mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-32">
+        <section className="relative mx-auto max-w-[86rem] px-5 py-12 sm:px-8 sm:py-16">
           <motion.div {...rise} className="mx-auto max-w-xl text-center">
             {/* Ground painted behind the line so the thread passes behind the type. */}
             <p className="text-pretty bg-canvas px-6 py-3 font-serif text-xl italic leading-relaxed text-clay sm:text-2xl">
@@ -185,7 +201,6 @@ export function Home() {
           <motion.div {...rise}>
             <div className="mx-auto mb-14 w-fit max-w-3xl bg-canvas px-8 py-4">
               <SectionHeading
-                eyebrow={t('home.paths.eyebrow')}
                 title={t('home.paths.title')}
                 lede={t('home.paths.lede')}
                 align="center"

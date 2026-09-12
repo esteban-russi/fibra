@@ -28,17 +28,16 @@ const en = {
   'nav.primary': 'Primary',
 
   // --- Home -----------------------------------------------------------------
-  'home.eyebrow': 'Where the weave trembles again',
+  'home.eyebrow': 'The pulse of the strand',
   'home.hero.curatorial':
-    'FIBRA gathers the stories of the people who weave in Colombia. Each one is told in the first person, with the name of the weaver, the community that taught them, and the technique they have repeated for generations.',
-  'home.hero.scroll': 'Follow the thread',
-  'home.hero.cta': 'Read a story',
-  'home.hero.credit': 'Photograph',
-  'home.thread.note': 'A single thread runs the length of this story. Midway down it frays, and each strand leads somewhere.',
-  'home.paths.eyebrow': 'The thread divides',
-  'home.paths.title': 'Two doors into the craft',
+    'FIBRA is a living archive of weaving in Colombia. History is not summarised here: it is warped in the first person, naming the hand that pulls it taut, the territory that gives the fibre, and the knowledge that has held for centuries without losing its pulse.',
+  'home.hero.scroll': 'Follow the course of the thread',
+  'home.hero.cta': 'Start unwinding the skein',
+  'home.thread.note':
+    'A single thread holds this story together. Where you cross it, the thread opens into separate ends: each strand takes its own course, towards the land or towards the craft.',
+  'home.paths.title': 'Two ways to untie memory.',
   'home.paths.lede':
-    'From the technique that gives the strand its shape, or from the territory where the material grows. Choose your own route.',
+    'You can come in through the technique of the hands that transform the strand, or through the territory where the raw material is born. Choose which end of the thread you want to start pulling.',
   'home.path.techniques.title': 'The Path of Techniques',
   'home.path.techniques.desc':
     'Warping, braiding, knotting, dyeing, spinning. Five movements of the hand, each with its own tools and its own timings.',
@@ -59,7 +58,8 @@ const en = {
   'home.identity.c.b': 'A werregue vessel is weeks of counting. Making time is stated in hours and weeks rather than left out.',
   'home.artisans.eyebrow': 'Stories',
   'home.artisans.title': 'Five acts, one voice',
-  'home.artisans.lede': 'Each profile reads straight through, in five acts, from the weaver\u2019s own voice to the door of the workshop.',
+  'home.artisans.lede':
+    'Each profile unwinds straight through, in five acts: from the voice of the person who scrapes, spins and knots, to the very door of their workshop.',
 
   // --- Atlas ----------------------------------------------------------------
   'atlas.eyebrow': 'Territories',
@@ -258,17 +258,16 @@ const es: Record<UIKey, string> = {
   'nav.close': 'Cerrar menú',
   'nav.primary': 'Principal',
 
-  'home.eyebrow': 'Donde el tejido vuelve a temblar',
+  'home.eyebrow': 'El latido de la hebra',
   'home.hero.curatorial':
-    'FIBRA reúne las historias de quienes tejen en Colombia. Cada una se cuenta en primera persona, con el nombre de quien teje, la comunidad que le enseñó y la técnica que repite desde hace generaciones.',
-  'home.hero.scroll': 'Siga el hilo',
-  'home.hero.cta': 'Leer una historia',
-  'home.hero.credit': 'Fotografía',
-  'home.thread.note': 'Un solo hilo recorre esta historia. A media altura se deshilacha, y cada hebra lleva a algún lugar.',
-  'home.paths.eyebrow': 'El hilo se divide',
-  'home.paths.title': 'Dos puertas de entrada al oficio',
+    'FIBRA es un archivo vivo de la tejeduría en Colombia. Aquí la historia no se resume: se urde en primera persona, nombrando la mano que tensa, el territorio que provee la fibra y el saber que ha resistido siglos sin perder su pulso.',
+  'home.hero.scroll': 'Seguir curso del hilo',
+  'home.hero.cta': 'Comienza a desmadejar',
+  'home.thread.note':
+    'Un solo hilo sostiene este relato. Al cruzarlo, se abre en cabos: cada hebra toma su propio rumbo hacia la tierra o hacia el oficio.',
+  'home.paths.title': 'Dos maneras de desatar la memoria.',
   'home.paths.lede':
-    'Desde la técnica que da forma a la hebra, o desde el territorio donde germina la materia. Elige tu propio recorrido.',
+    'Puedes entrar por la técnica de las manos que transforman la hebra, o por el territorio donde nace la materia prima. Escoge qué extremo del hilo quieres empezar a halar.',
   'home.path.techniques.title': 'La Ruta de las Técnicas',
   'home.path.techniques.desc':
     'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos de la mano, cada uno con sus herramientas y sus tiempos.',
@@ -289,7 +288,8 @@ const es: Record<UIKey, string> = {
   'home.identity.c.b': 'Una vasija de werregue son semanas de conteo. El tiempo de elaboración se dice en horas y semanas, no se omite.',
   'home.artisans.eyebrow': 'Historias',
   'home.artisans.title': 'Cinco actos, una voz',
-  'home.artisans.lede': 'Cada perfil se lee de corrido, en cinco actos, desde la voz de quien teje hasta la puerta de su taller.',
+  'home.artisans.lede':
+    'Cada perfil se desmadeja de corrido, en cinco actos: desde la voz de quien raspa, hila y anuda, hasta la puerta misma de su taller.',
 
   'atlas.eyebrow': 'Territorios',
   'atlas.title': 'Atlas Textil de Colombia',

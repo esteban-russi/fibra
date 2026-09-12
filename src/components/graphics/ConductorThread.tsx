@@ -29,8 +29,11 @@ export function ConductorThread({ frayAt = 0.3, colour = '#9E7B7D' }: Props) {
   const reduced = useReducedMotion()
 
   const { scrollYProgress } = useScroll({
+    // Measured from the moment the block's top edge appears at the bottom of the
+    // viewport, not from when it reaches the top: 'start start' left the thread
+    // at pathLength 0 — invisible — for the whole of the section's entrance.
     target: ref as React.RefObject<HTMLElement>,
-    offset: ['start start', 'end end'],
+    offset: ['start end', 'end end'],
   })
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 })
 
