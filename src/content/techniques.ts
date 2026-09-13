@@ -7,11 +7,16 @@ import type { Localized } from '../i18n'
  * are not equivalents, and the craft vocabulary is the precise term. English
  * carries a gloss rather than a replacement.
  *
- * `motion` selects which drawn loop animates the card. Each loop is authored
- * against the real mechanics of the technique rather than being decorative: the
- * warping loop lays parallel ends and returns, the braid loop crosses three
- * strands in strict alternation, the spin loop shows draft and twist entering
- * the fibre in opposite directions.
+ * `photo` is the photograph that carries the technique across the site: the
+ * route, the detail page and the artisan profiles all show the same frame, so
+ * a gesture is recognisable before its name is read.
+ *
+ * The drawn loops that used to fill those slots now live on as icons. Each was
+ * authored against the real mechanics of the technique rather than being
+ * decorative — the warping mark lays parallel ends and returns, the braid mark
+ * crosses three strands in strict alternation, the spin mark shows draft and
+ * twist entering the fibre in opposite directions — which is exactly what makes
+ * them legible at 24px, where a photograph is not.
  */
 export type MotionKind = 'urdir' | 'trenzar' | 'anudar' | 'tinturar' | 'hilar'
 
@@ -21,6 +26,8 @@ export type Technique = {
   /** The craft term, kept in Spanish in both languages. */
   term: string
   gloss: Localized
+  /** Key into MEDIA for the photograph of the gesture. */
+  photo: string
   lede: Localized
   /** One line naming what the gesture *is*, shown above the expanded account. */
   gesture: Localized
@@ -28,7 +35,7 @@ export type Technique = {
   materials: Localized<string[]>
   regions: string[]
   tempo: Localized
-  /** Description of the animation for people who cannot see it. */
+  /** Description of the drawn icon for people who cannot see it. */
   motionAlt: Localized
 }
 
@@ -38,6 +45,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'urdir',
     term: 'Urdir',
     gloss: { en: 'to warp', es: 'preparar la urdimbre' },
+    photo: 'gestoUrdir',
     lede: {
       en: 'Laying the threads that will hold the tension, and tracing — before the first pass — the exact limit and the memory of the finished cloth.',
       es: 'Tender los hilos que sostendrán la tensión y trazar, antes de la primera pasada, el límite exacto y la memoria de la tela terminada.',
@@ -67,6 +75,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'trenzar',
     term: 'Trenzar',
     gloss: { en: 'to braid', es: 'entrecruzar en oblicuo' },
+    photo: 'canaflechaRaspado',
     lede: {
       en: 'Three or more strands crossed in living alternation, guided only by the cadence of the fingers, with no frame and no tool in between.',
       es: 'Tres o más hebras cruzadas en alternancia viva, guiadas únicamente por la cadencia de los dedos, sin bastidor ni herramienta intermediaria.',
@@ -96,6 +105,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'anudar',
     term: 'Anudar',
     gloss: { en: 'to knot', es: 'fijar por lazada' },
+    photo: 'gestoAnudar',
     lede: {
       en: 'Building a plane or a net out of cords that embrace themselves; the firmness of the structure comes from the insistence of the knot.',
       es: 'Construir un plano o red a partir de cordeles que se abrazan a sí mismos; la firmeza de la estructura nace de la insistencia del nudo.',
@@ -125,6 +135,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'tinturar',
     term: 'Tinturar',
     gloss: { en: 'to dye', es: 'fijar color vegetal' },
+    photo: 'gestoTinturar',
     lede: {
       en: 'Persuading bark, seed and mud to give up their tone, and the natural fibre to keep it against water and sun.',
       es: 'Persuadir a la corteza, la semilla y el lodo de entregar su tono, y a la fibra natural de custodiarlo frente al agua y al sol.',
@@ -154,6 +165,7 @@ export const TECHNIQUES: Technique[] = [
     slug: 'hilar',
     term: 'Hilar',
     gloss: { en: 'to spin', es: 'dar torsión a la fibra' },
+    photo: 'gestoHilar',
     lede: {
       en: 'Turning rough fleece or plant strand into a continuous, unbreakable thread through the pulse of the hand and the turn of the spindle.',
       es: 'Transformar el vellón agreste o la hebra vegetal en un hilo continuo e irrompible mediante el pulso de la mano y el giro del huso.',

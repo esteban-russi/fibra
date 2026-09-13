@@ -37,6 +37,7 @@ function commons(file: string): string {
 const UNSPLASH = 'https://unsplash.com/license'
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
+const PUBLIC_DOMAIN = 'https://commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain'
 
 export const MEDIA: Record<string, Credit> = {
   canaflechaRaspado: {
@@ -241,6 +242,101 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Fotografía de banco de imágenes de tejido en telar de varas. La fuente no registra el nombre de la tejedora, ni su comunidad, ni su territorio, y aquí no se le atribuye ninguno.',
     },
   },
+  // ---------------------------------------------------------------------------
+  // The five gestures, photographed.
+  //
+  // These replace the drawn loops on the technique route. None of them was made
+  // in Colombia — no openly licensed photograph of each gesture exists from
+  // these territories — so none of them claims to have been. Each caption says
+  // where the frame was taken and what it shows, and the technique it stands
+  // for is named as the gesture, not as the place. The drawn loops survive as
+  // the wayfinding icons in TechniqueIcon, which is where a diagram belongs.
+  //
+  // `trenzar` is the exception: it keeps canaflechaRaspado, already in this
+  // registry, because a Zenú photograph of the braid's own material is a truer
+  // image of the gesture than a foreign braid would be.
+  // ---------------------------------------------------------------------------
+
+  gestoHilar: {
+    id: 'gestoHilar',
+    src: '/media/techniques/hilar.webp',
+    width: 1600,
+    height: 1065,
+    file: 'Flickr - DVIDSHUB - Fourth Kabul AgFair (1).jpg',
+    author: 'DVIDSHUB',
+    licence: 'Public domain',
+    licenceUrl: PUBLIC_DOMAIN,
+    sourceUrl: commons('Flickr - DVIDSHUB - Fourth Kabul AgFair (1).jpg'),
+    alt: {
+      en: 'A close view of two weathered hands drawing a thin thread out of loose fibre, one thumb and forefinger pinching the twist as it forms.',
+      es: 'Vista cercana de dos manos curtidas estirando un hilo delgado desde la fibra suelta, con el pulgar y el índice sujetando la torsión mientras se forma.',
+    },
+    caption: {
+      en: 'Spinning by hand, photographed in Kabul. The frame is not Colombian and does not claim to be: it is here because it shows the twist entering the thread, which is the gesture itself.',
+      es: 'Hilado a mano, fotografiado en Kabul. El encuadre no es colombiano y no pretende serlo: está aquí porque muestra la torsión entrando en el hilo, que es el gesto mismo.',
+    },
+  },
+
+  gestoTinturar: {
+    id: 'gestoTinturar',
+    src: '/media/techniques/tinturar.webp',
+    width: 1600,
+    height: 1065,
+    file: '2021-09-05 AsparnZaya Museum Färber.jpg',
+    author: 'Robert Kropf',
+    licence: 'CC BY-SA 4.0',
+    licenceUrl: CC_BY_SA_4,
+    sourceUrl: commons('2021-09-05 AsparnZaya Museum Färber.jpg'),
+    alt: {
+      en: 'Hanks of wool dyed rust, ochre, blue and cream hung in a row from a wooden beam to dry, still dripping.',
+      es: 'Madejas de lana teñidas de óxido, ocre, azul y crudo colgadas en fila de una viga de madera para secar, todavía escurriendo.',
+    },
+    caption: {
+      en: 'Wool dyed with natural colour, hung to dry. Photographed at a museum of prehistory in Lower Austria; the fibre and the botanical process are what the frame is for.',
+      es: 'Lana tinturada con color natural, colgada a secar. Fotografiada en un museo de prehistoria de la Baja Austria; lo que interesa del encuadre son la fibra y el proceso botánico.',
+    },
+  },
+
+  gestoUrdir: {
+    id: 'gestoUrdir',
+    src: '/media/techniques/urdir.webp',
+    width: 1600,
+    height: 1064,
+    file: 'FeriadeRebozo2014 51.JPG',
+    author: 'AlejandroLinaresGarcia',
+    licence: 'CC BY-SA 4.0',
+    licenceUrl: CC_BY_SA_4,
+    sourceUrl: commons('FeriadeRebozo2014 51.JPG'),
+    alt: {
+      en: 'Several hundred warp ends in indigo and cream run in strict parallel down a backstrap loom, tensioned between two wooden bars, the first bands of weft closing at the bottom.',
+      es: 'Varios cientos de hilos de urdimbre en índigo y crudo corren en estricto paralelo por un telar de cintura, tensados entre dos varas de madera, con las primeras franjas de trama cerrando abajo.',
+    },
+    caption: {
+      en: 'A warp under tension on a backstrap loom, photographed at the Feria del Rebozo in Tenancingo, Mexico. Counted and laid before a single weft passes.',
+      es: 'Una urdimbre en tensión sobre telar de cintura, fotografiada en la Feria del Rebozo de Tenancingo, México. Contada y tendida antes de que pase una sola trama.',
+    },
+  },
+
+  gestoAnudar: {
+    id: 'gestoAnudar',
+    src: '/media/techniques/anudar.webp',
+    width: 1600,
+    height: 1067,
+    file: 'DEC2025 A woman from Ibeno weaving fishing net 02.jpg',
+    author: 'EnnyOch',
+    licence: 'CC BY-SA 4.0',
+    licenceUrl: CC_BY_SA_4,
+    sourceUrl: commons('DEC2025 A woman from Ibeno weaving fishing net 02.jpg'),
+    alt: {
+      en: 'Two hands hold a netting needle wound with yellow and blue cord and draw a knot closed against the diamond mesh of a part-finished net.',
+      es: 'Dos manos sostienen una aguja de red enrollada con cordel amarillo y azul y cierran un nudo contra la malla en rombos de una red a medio terminar.',
+    },
+    caption: {
+      en: 'Knotting a fishing net by hand in Ibeno, Nigeria. The mesh is built knot by knot, the same operation that raises a chinchorro or a carrying net here.',
+      es: 'Anudado a mano de una red de pesca en Ibeno, Nigeria. La malla se construye nudo a nudo, la misma operación con que aquí se levanta un chinchorro o una red de carga.',
+    },
+  },
+
   florImbacuanRetrato: {
     id: 'florImbacuanRetrato',
     src: '/media/artisans/flor_imbacuan/profile.webp',
