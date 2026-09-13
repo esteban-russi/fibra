@@ -297,17 +297,17 @@ function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string })
   ]
 
   return (
-    <div className="mt-8 max-w-xl rounded-sm border border-canvas/20 bg-ink/35 p-5 backdrop-blur-[2px] sm:p-6">
+    <div className="mt-8 max-w-xl rounded-sm border border-line bg-canvas p-5 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.8)] sm:p-6">
       <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
         {rows.map((r) => (
           <div key={r.k}>
-            <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{r.k}</dt>
-            <dd className="mt-1.5 text-pretty text-sm leading-snug text-canvas/90">{r.v}</dd>
+            <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{r.k}</dt>
+            <dd className="mt-1.5 text-pretty text-sm leading-snug text-ink/85">{r.v}</dd>
           </div>
         ))}
 
         <div>
-          <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{t('artisan.techniques')}</dt>
+          <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{t('artisan.techniques')}</dt>
           <dd className="mt-2 flex flex-wrap gap-2">
             {artisan.techniques.map((id) => {
               const g = TECHNIQUES.find((x) => x.id === id)
@@ -316,9 +316,9 @@ function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string })
                 <Link
                   key={id}
                   to={`/techniques/${g.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-canvas/25 py-1 pl-1 pr-3 text-xs text-canvas/90 transition-colors hover:border-canvas/60 hover:text-canvas"
+                  className="inline-flex items-center gap-2 rounded-full border border-line py-1 pl-1 pr-3 text-xs text-ink/85 transition-colors hover:border-ash hover:text-bordeaux"
                 >
-                  <TechniqueIcon kind={g.id} size={24} className="text-canvas" />
+                  <TechniqueIcon kind={g.id} size={24} className="text-bordeaux" />
                   {g.term}
                 </Link>
               )
@@ -327,8 +327,8 @@ function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string })
         </div>
       </dl>
 
-      <p className="mt-5 border-t border-canvas/15 pt-4 text-[0.75rem] leading-relaxed text-canvas/55">
-        <span className="text-canvas/75">{t('seal.authorship')}:</span> {artisan.seal.authorship}. {pick(artisan.seal.consent)}.
+      <p className="mt-5 border-t border-line pt-4 text-[0.75rem] leading-relaxed text-clay">
+        <span className="text-ink/80">{t('seal.authorship')}:</span> {artisan.seal.authorship}. {pick(artisan.seal.consent)}.
       </p>
 
       <span aria-hidden="true" className="mt-5 block h-0.5 w-10 rounded-full" style={{ background: accent }} />
