@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react'
-import { cn } from '../lib/cn'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
-import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
-import { Prose } from '../components/ui/primitives'
+import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
+import { CreditedImage, Prose } from '../components/ui/primitives'
 import { TECHNIQUES, TECHNIQUE_BY_SLUG } from '../content/techniques'
 import type { Technique } from '../content/techniques'
 import { REGIONS } from '../content/regions'
@@ -29,8 +27,6 @@ export function TechniqueDetail() {
 function Gesture({ technique: g }: { technique: Technique }) {
   const { t, pick } = useI18n()
   const reduced = useReducedMotion()
-  const [wanted, setWanted] = useState(true)
-  const playing = wanted && !reduced
 
   const others = TECHNIQUES.filter((x) => x.slug !== g.slug)
 
@@ -54,37 +50,22 @@ function Gesture({ technique: g }: { technique: Technique }) {
       </Link>
 
       <article aria-labelledby="gesture-title" className="mt-10 grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
-        {/* The motion study, held in view while the account is read. */}
+        {/* The photograph, held in view while the account is read. */}
         <div>
           <div className="sticky top-[calc(var(--header-h)+2rem)]">
-            <div className="aspect-square overflow-hidden rounded-sm border border-line bg-surface/60">
-              <TechniqueLoop kind={g.id} playing={playing} label={pick(g.motionAlt)} />
-            </div>
-            <div className="mt-4 flex flex-col items-start gap-2">
-              <button
-                type="button"
-                onClick={() => setWanted((v) => !v)}
-                disabled={reduced}
-                aria-pressed={playing}
-                className={cn(
-                  'inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm transition-colors',
-                  reduced ? 'cursor-not-allowed text-ash' : 'text-clay hover:border-ash hover:text-bordeaux',
-                )}
-              >
-                {playing ? <Pause size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}
-                {playing ? t('techniques.pause') : t('techniques.play')}
-              </button>
-              {reduced && <p className="max-w-[18rem] text-xs leading-relaxed text-muted">{t('techniques.reduced')}</p>}
-            </div>
-            <p className="mt-4 max-w-[22rem] text-pretty text-[0.8125rem] leading-relaxed text-clay">
-              {pick(g.motionAlt)}
-            </p>
+            <CreditedImage
+              id={g.photo}
+              className="overflow-hidden rounded-sm border border-line"
+              imgClassName="aspect-square"
+              priority
+            />
           </div>
         </div>
 
         <div>
           <p className="eyebrow">{t('techniques.eyebrow')}</p>
-          <h1 id="gesture-title" className="mt-3 font-serif text-4xl text-bordeaux sm:text-5xl">
+          <h1 id="gesture-title" className="mt-3 flex items-center gap-4 font-serif text-4xl text-bordeaux sm:text-5xl">
+            <TechniqueIcon kind={g.id} size={52} className="text-bordeaux" />
             {g.term}
           </h1>
           <p className="mt-2 font-serif text-xl italic text-muted">{pick(g.gloss)}</p>
@@ -155,6 +136,7 @@ function Gesture({ technique: g }: { technique: Technique }) {
                 to={`/techniques/${o.slug}`}
                 className="group flex h-full flex-col rounded-sm border border-line bg-canvas p-5 transition-colors hover:border-ash"
               >
+                <TechniqueIcon kind={o.id} size={38} className="mb-3 text-bordeaux" />
                 <h3 className="font-serif text-xl text-bordeaux">{o.term}</h3>
                 <p className="mt-1.5 text-sm italic text-muted">{pick(o.gloss)}</p>
                 <p className="mt-3 flex-1 text-pretty text-sm leading-relaxed text-ink/70">{pick(o.gesture)}</p>

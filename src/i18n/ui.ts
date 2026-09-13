@@ -90,10 +90,6 @@ const en = {
   'techniques.title': 'Navigation by the act of making',
   'techniques.lede':
     'A technique is not a mechanical procedure: it is bodily knowledge that one body memorised from another. These five gestures hold the textile memory of Colombia; the same knot that secures a mochila in La Guajira holds a net in the Chocó, turning matter into thought and territory.',
-  'techniques.motion': 'Motion study',
-  'techniques.reduced': 'Motion is paused because your system asks for reduced motion.',
-  'techniques.play': 'Play motion study',
-  'techniques.pause': 'Pause motion study',
   'techniques.materials': 'Worked in',
   'techniques.regions': 'Practised in',
   'techniques.tempo': 'Tempo',
@@ -325,10 +321,6 @@ const es: Record<UIKey, string> = {
   'techniques.title': 'Navegación por el acto de hacer',
   'techniques.lede':
     'Una técnica no es un procedimiento mecánico: es un saber corporal que un cuerpo memorizó de otro. Estos cinco gestos sostienen la memoria textil de Colombia; el mismo nudo que asegura una mochila en La Guajira sostiene una red en el Chocó, transformando la materia en pensamiento y territorio.',
-  'techniques.motion': 'Estudio de movimiento',
-  'techniques.reduced': 'El movimiento está en pausa porque su sistema solicita movimiento reducido.',
-  'techniques.play': 'Reproducir el estudio de movimiento',
-  'techniques.pause': 'Pausar el estudio de movimiento',
   'techniques.materials': 'Se trabaja en',
   'techniques.regions': 'Se practica en',
   'techniques.tempo': 'Tempo',
