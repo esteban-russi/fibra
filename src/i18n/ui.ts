@@ -110,18 +110,15 @@ const en = {
   'artisan.community': 'Community',
   'artisan.territory': 'Territory',
   'artisan.craft': 'Craft',
+  'artisan.techniques': 'Techniques',
+  'artisan.voice': 'In her own words',
+  'artisan.noPortrait': 'No portrait has been supplied for this workshop yet. The cloth shown is drawn, not photographed.',
   'artisan.region': 'Region',
 
   // --- Traceability seal ----------------------------------------------------
-  'seal.title': 'Traceability Seal',
   'seal.authorship': 'Individual authorship',
-  'seal.affiliation': 'Community affiliation',
   'seal.origin': 'Geographic origin',
   'seal.material': 'Raw material',
-  'seal.consent': 'Informed community consent',
-  'seal.what': 'What this seal states',
-  'seal.explain':
-    'The seal names the individual who made the piece and the collective the knowledge belongs to. Both matter: authorship without affiliation erases the lineage, affiliation without authorship erases the person.',
 
   // --- Acts -----------------------------------------------------------------
   'act.1.roman': 'I',
@@ -320,17 +317,14 @@ const es: Record<UIKey, string> = {
   'artisan.community': 'Comunidad',
   'artisan.territory': 'Territorio',
   'artisan.craft': 'Oficio',
+  'artisan.techniques': 'Técnicas',
+  'artisan.voice': 'En su propia voz',
+  'artisan.noPortrait': 'Este taller aún no ha entregado un retrato. El tejido que se muestra es dibujado, no fotografiado.',
   'artisan.region': 'Región',
 
-  'seal.title': 'Sello de Trazabilidad',
   'seal.authorship': 'Autoría individual',
-  'seal.affiliation': 'Filiación comunitaria',
   'seal.origin': 'Origen geográfico',
   'seal.material': 'Materia prima',
-  'seal.consent': 'Consentimiento informado de la comunidad',
-  'seal.what': 'Qué declara este sello',
-  'seal.explain':
-    'El sello nombra a la persona que hizo la pieza y al colectivo al que pertenece el saber. Ambos importan: la autoría sin filiación borra el linaje; la filiación sin autoría borra a la persona.',
 
   'act.1.roman': 'I',
   'act.1.title': 'La Huella y la Voz',

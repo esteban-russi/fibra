@@ -13,7 +13,7 @@ import { TECHNIQUES } from '../content/techniques'
 import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
-import { TraceabilitySeal } from '../components/artisan/TraceabilitySeal'
+import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
 import { ProvenanceNotice, Prose } from '../components/ui/primitives'
 
@@ -60,24 +60,21 @@ function Story({ artisan }: { artisan: Artisan }) {
   return (
     <article>
       {/* =============== ACT I — the trace and the voice =============== */}
+      {/*
+        One screen, one claim: this is her, this is where the work comes from.
+        The backdrop is drawn rather than photographed so that the only
+        photograph on the screen is the portrait — a documentary image behind a
+        named person reads as being of that person, and it never is. Everything
+        the summary card states appears exactly once; the region, the craft and
+        the community used to be repeated three ways above the fold.
+      */}
       <section id="act-1" aria-labelledby="act-1-title" className="relative overflow-hidden bg-ink text-canvas">
-        <div className="absolute inset-0">
-          {artisan.openingImage ? (
-            <img
-              src={MEDIA[artisan.openingImage].src}
-              alt={pick(MEDIA[artisan.openingImage].alt)}
-              width={MEDIA[artisan.openingImage].width}
-              height={MEDIA[artisan.openingImage].height}
-              fetchPriority="high"
-              className="h-full w-full object-cover object-center opacity-55"
-            />
-          ) : (
-            <div className="h-full w-full opacity-45">
-              <WeavePlate kind="plain" palette={artisan.patternPalette} seed={artisan.slug} />
-            </div>
-          )}
-          <div aria-hidden="true" className="scrim-bottom absolute inset-0" />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-ink/10" />
+        <div aria-hidden="true" className="absolute inset-0">
+          <div className="h-full w-full opacity-[0.18]">
+            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={artisan.slug} />
+          </div>
+          <div className="scrim-bottom absolute inset-0" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink/85 via-ink/70 to-ink/55" />
         </div>
 
         <div className="relative mx-auto max-w-[86rem] px-5 pb-16 pt-[calc(var(--header-h)+3rem)] sm:px-8 sm:pb-20 sm:pt-[calc(var(--header-h)+4.5rem)]">
@@ -89,52 +86,42 @@ function Story({ artisan }: { artisan: Artisan }) {
             {t('artisan.back')}
           </Link>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:items-end lg:gap-16">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:items-start lg:gap-16">
             <div>
-              <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.6875rem] uppercase tracking-[0.18em] text-canvas/70">
-                <span className="inline-flex items-center gap-2">
-                  <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full" style={{ background: accent }} />
-                  {pick(region?.name ?? { en: '', es: '' })}
-                </span>
-                <span aria-hidden="true" className="text-canvas/30">/</span>
-                <span>{pick(artisan.craft)}</span>
-              </p>
-
               <h1
                 id="act-1-title"
-                className="mt-5 text-balance font-serif text-[2.5rem] leading-[1.04] sm:text-6xl lg:text-[4.25rem]"
+                className="text-balance font-serif text-[2.5rem] leading-[1.04] sm:text-6xl lg:text-[4.25rem]"
               >
                 {artisan.name}
               </h1>
 
-              <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-4 text-sm">
-                <div>
-                  <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{t('artisan.community')}</dt>
-                  <dd className="mt-1 text-canvas/90">{pick(artisan.community)}</dd>
-                </div>
-                <div>
-                  <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{t('artisan.territory')}</dt>
-                  <dd className="mt-1 text-canvas/90">{pick(artisan.territory)}</dd>
-                </div>
-              </dl>
+              <IdentityCard artisan={artisan} accent={accent} />
 
-              <p className="mt-7 max-w-xl text-pretty leading-relaxed text-canvas/78">{pick(artisan.standfirst)}</p>
-
-              <div className="mt-10 max-w-xl border-l-2 pl-6" style={{ borderColor: accent }}>
-                <blockquote className="text-pretty font-serif text-2xl italic leading-[1.3] text-canvas sm:text-[1.875rem]">
-                  {pick(artisan.quote)}
-                </blockquote>
-                <p className="mt-4 text-xs uppercase tracking-[0.16em] text-canvas/55">
-                  {artisan.name} · {pick(artisan.quoteAttribution)}
-                </p>
-              </div>
+              <p className="mt-8 max-w-xl text-pretty leading-relaxed text-canvas/78">{pick(artisan.standfirst)}</p>
             </div>
 
-            <div className="lg:pb-2">
-              <TraceabilitySeal artisan={artisan} />
+            <div className="lg:pt-2">
+              <Portrait artisan={artisan} />
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ---------------- The voice, between the acts ----------------
+        Her own words stand alone between the opening and the account of where
+        she learned, on the page's own ground rather than over the hero. The
+        curatorial voice does not surround it on either side. */}
+      <section aria-label={t('artisan.voice')} className="border-y border-line bg-surface/40">
+        <figure className="mx-auto max-w-[86rem] px-5 py-16 sm:px-8 sm:py-20">
+          <div className="mx-auto max-w-3xl border-l-2 pl-6 sm:pl-8" style={{ borderColor: accent }}>
+            <blockquote className="text-pretty font-serif text-2xl italic leading-[1.32] text-bordeaux sm:text-[2rem]">
+              {pick(artisan.quote)}
+            </blockquote>
+            <figcaption className="mt-5 text-xs uppercase tracking-[0.16em] text-muted">
+              {artisan.name} · {pick(artisan.quoteAttribution)}
+            </figcaption>
+          </div>
+        </figure>
       </section>
 
       {/* The act rail plus the body of the story. */}
@@ -155,8 +142,6 @@ function Story({ artisan }: { artisan: Artisan }) {
                   <div className="rounded-sm border border-line bg-surface/45 p-6">
                     <h3 className="eyebrow mb-2">{t('artisan.craft')}</h3>
                     <p className="font-serif text-lg text-bordeaux">{pick(artisan.craft)}</p>
-                    <h3 className="eyebrow mb-2 mt-6">{t('artisan.community')}</h3>
-                    <p className="text-sm leading-relaxed text-ink/80">{pick(artisan.community)}</p>
                     <h3 className="eyebrow mb-2 mt-6">
                       {pick({ en: 'Taught by', es: 'Le enseñó' })}
                     </h3>
@@ -269,6 +254,111 @@ function Story({ artisan }: { artisan: Artisan }) {
         </div>
       </div>
     </article>
+  )
+}
+
+/**
+ * The summary card: the four facts a reader needs before the story starts.
+ *
+ * These are the claims the Traceability Seal used to make in its own panel —
+ * community affiliation, geographic origin, raw material — stated once, in the
+ * artisan's own terms, at the point where they are first useful. They are hers
+ * rather than the site's: not every workshop works only in natural fibre, and
+ * the material line says what she says it says.
+ *
+ * The techniques carry their drawn marks. At this size a photograph would be
+ * unreadable and a bare list of five verbs reads as a footnote; the marks make
+ * the row scannable and tie it to the technique route it links into.
+ */
+function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string }) {
+  const { t, pick } = useI18n()
+
+  const rows: { k: string; v: React.ReactNode }[] = [
+    { k: t('artisan.community'), v: pick(artisan.seal.affiliation) },
+    { k: t('seal.origin'), v: pick(artisan.seal.origin) },
+    { k: t('seal.material'), v: pick(artisan.seal.material) },
+  ]
+
+  return (
+    <div className="mt-8 max-w-xl rounded-sm border border-canvas/20 bg-ink/35 p-5 backdrop-blur-[2px] sm:p-6">
+      <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+        {rows.map((r) => (
+          <div key={r.k}>
+            <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{r.k}</dt>
+            <dd className="mt-1.5 text-pretty text-sm leading-snug text-canvas/90">{r.v}</dd>
+          </div>
+        ))}
+
+        <div>
+          <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-canvas/55">{t('artisan.techniques')}</dt>
+          <dd className="mt-2 flex flex-wrap gap-2">
+            {artisan.techniques.map((id) => {
+              const g = TECHNIQUES.find((x) => x.id === id)
+              if (!g) return null
+              return (
+                <Link
+                  key={id}
+                  to={`/techniques/${g.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-canvas/25 py-1 pl-1 pr-3 text-xs text-canvas/90 transition-colors hover:border-canvas/60 hover:text-canvas"
+                >
+                  <TechniqueIcon kind={g.id} size={24} className="text-canvas" />
+                  {g.term}
+                </Link>
+              )
+            })}
+          </dd>
+        </div>
+      </dl>
+
+      <p className="mt-5 border-t border-canvas/15 pt-4 text-[0.75rem] leading-relaxed text-canvas/55">
+        <span className="text-canvas/75">{t('seal.authorship')}:</span> {artisan.seal.authorship}. {pick(artisan.seal.consent)}.
+      </p>
+
+      <span aria-hidden="true" className="mt-5 block h-0.5 w-10 rounded-full" style={{ background: accent }} />
+    </div>
+  )
+}
+
+/**
+ * Her portrait, or the plate that stands in for one.
+ *
+ * A profile with no supplied photograph gets the drawn cloth in her palette
+ * rather than a borrowed face. The substitution is stated rather than hidden:
+ * a reader who sees a plate here should know that it means no portrait has
+ * been given yet, not that one is loading.
+ */
+function Portrait({ artisan }: { artisan: Artisan }) {
+  const { t, pick } = useI18n()
+  const credit = artisan.portrait ? MEDIA[artisan.portrait] : null
+
+  if (!credit) {
+    return (
+      <figure className="overflow-hidden rounded-sm border border-canvas/20">
+        <div className="relative aspect-[4/5]">
+          <div className="h-full w-full opacity-55">
+            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={`${artisan.slug}-portrait`} />
+          </div>
+          <div aria-hidden="true" className="absolute inset-0 bg-ink/35" />
+        </div>
+        <figcaption className="bg-ink/45 px-4 py-3 text-[0.75rem] leading-relaxed text-canvas/60">
+          {t('artisan.noPortrait')}
+        </figcaption>
+      </figure>
+    )
+  }
+
+  return (
+    <figure className="overflow-hidden rounded-sm border border-canvas/20 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.85)]">
+      <img
+        src={credit.src}
+        alt={pick(credit.alt)}
+        width={credit.width}
+        height={credit.height}
+        fetchPriority="high"
+        decoding="async"
+        className="aspect-[4/5] w-full object-cover object-center"
+      />
+    </figure>
   )
 }
 
