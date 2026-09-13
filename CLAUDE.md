@@ -35,8 +35,14 @@ Four top-level surfaces, navigated non-linearly:
    two exploration routes below.
 2. **Atlas Textil de Colombia** — the territory route. Interactive map.
 3. **Técnicas** — the transversal route, organized by the *act of
-   making*: urdir, anudar, tinturar, trenzar, hilar. Grid/carousel of looping
-   hand-motion clips.
+   making*: urdir, anudar, tinturar, trenzar, hilar. A grid of **photographs**
+   of the work, one per gesture (`technique.photo` into `MEDIA`). The drawn
+   loops that used to animate here are gone; they survive as the static marks in
+   `TechniqueIcon`, which identify a technique wherever it is referenced — the
+   grid, the detail page, an artisan's summary card, "El ritmo de las manos".
+   Only one of the five photographs was taken in Colombia; every caption says
+   where its frame comes from and none claims a territory it does not have.
+   `technique.focus` tightens a crop in CSS, never in the file.
 4. **Artisan profiles** — sequential editorial chronicles.
 
 ## Domain model
@@ -68,14 +74,20 @@ via a visible top "X" or click-outside, sliding back down and restoring the map.
 
 A single continuous scroll, explicitly **not** tabs:
 
-- **I. La Huella y la Voz** — contextual portrait, name, community, territory,
-  Traceability Seal (individual authorship *and* ancestral community affiliation),
-  pull quote in the artisan's own voice.
+- **I. La Huella y la Voz** — name, the artisan's portrait, and one summary card
+  carrying community, geographic origin, raw material and techniques, with
+  authorship and informed consent as its footnote. The card replaced a separate
+  Traceability Seal panel: the same claims, stated once. The first screen is
+  kept free of repetition — region, craft and community each appear exactly
+  once. The pull quote sits **between acts I and II**, on its own ground, not
+  over the hero.
 - **II. El Territorio y la Memoria** — intergenerational transmission: who taught
   them, what the craft means in their setting.
-- **III. La Materia y la Técnica** — high-res macro of fibers, interactive diagrams
-  and a semiotic glossary decoding traditional patterns, silent micro-videos of
-  hands working.
+- **III. La Materia y la Técnica** — "El ritmo de las manos": the techniques this
+  workshop performs, as circular photographs of the work, each linking to the
+  technique route. The progressive-zoom fibre lens and the pattern hotspots were
+  removed from this act; their content (`fibre`, `hotspots`, `glossary`) is still
+  in `artisans.ts` and still belongs to the artisans.
 - **IV. Las Obras del Taller** — finished pieces in use context, real scale, and
   estimated making time in hours/weeks (patience as stated value).
 - **V. El Contacto Directo y el Encargo Ético** — direct WhatsApp/call to the
@@ -84,15 +96,22 @@ A single continuous scroll, explicitly **not** tabs:
 
 ## Sensory / semiotic modules
 
-Three devices compensate for the absent sense of touch — treat them as core
-features, not enhancements:
+The spec proposes three devices to compensate for the absent sense of touch. Two
+have since been removed from the interface by decision, and the third was folded
+into the profile's summary card:
 
-- **Sensory translation** — fiber-level photography with progressive zoom to
-  perceive twist, thread irregularity, and weave density.
-- **Interactive semiotic narrative** — hotspots on the textile explaining the
-  cosmogonic meaning of grecas, rhombuses, zoophytomorphic figures, color shifts.
-- **Traceability / author's-mark badges** — verifying geographic origin, 100%
-  natural raw material, making time, and the community's informed consent.
+- **Sensory translation** (progressive fibre zoom) — **removed.** The `fibre`
+  reading stays in `artisans.ts`.
+- **Interactive semiotic narrative** (pattern hotspots and glossary) —
+  **removed.** `hotspots` and `glossary` stay in `artisans.ts`.
+- **Traceability / author's-mark** — **folded** into the act I summary card:
+  geographic origin, raw material and community affiliation as card rows,
+  authorship and informed consent as its footnote. Making time stays with each
+  piece in act IV.
+
+Both removals are deliberate, not oversights. The content was kept because it
+was supplied and validated by the artisans; reinstating either module is a
+matter of building a surface for data that is already there.
 
 ## Ethical constraints
 

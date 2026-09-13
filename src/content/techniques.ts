@@ -45,8 +45,6 @@ export type Technique = {
   materials: Localized<string[]>
   regions: string[]
   tempo: Localized
-  /** Description of the drawn icon for people who cannot see it. */
-  motionAlt: Localized
 }
 
 export const TECHNIQUES: Technique[] = [
@@ -74,10 +72,6 @@ export const TECHNIQUES: Technique[] = [
     },
     regions: ['andina', 'caribe'],
     tempo: { en: 'Slow, counted, unbroken', es: 'Lento, contado, sin interrupción' },
-    motionAlt: {
-      en: 'A line travels the full width of a frame, turns at the far peg, and returns beside itself, building a field of parallel threads that crosses over on itself at one end.',
-      es: 'Una línea recorre todo el ancho de un bastidor, gira en la estaca del extremo y vuelve junto a sí misma, construyendo un campo de hilos paralelos que se cruza sobre sí mismo en un extremo.',
-    },
   },
 
   {
@@ -107,10 +101,6 @@ export const TECHNIQUES: Technique[] = [
     },
     regions: ['caribe', 'insular'],
     tempo: { en: 'Quick, even, conversational', es: 'Rápido, parejo, conversable' },
-    motionAlt: {
-      en: 'Three strands cross over one another in alternation: the outer over the centre, then the other outer over the new centre, and the braid grows steadily downward.',
-      es: 'Tres hebras se cruzan alternadamente: la exterior sobre la central, luego la otra exterior sobre la nueva central, y la trenza crece de manera sostenida hacia abajo.',
-    },
   },
 
   {
@@ -137,10 +127,6 @@ export const TECHNIQUES: Technique[] = [
     },
     regions: ['amazonia', 'orinoquia', 'insular'],
     tempo: { en: 'Interruptible, patient, portable', es: 'Interrumpible, paciente, portátil' },
-    motionAlt: {
-      en: 'A cord passes through the loop of the row above, draws closed into a knot, and moves on, forming a diamond mesh row by row.',
-      es: 'Un cordel pasa por el bucle de la vuelta superior, se cierra en un nudo y sigue, y así se forma una malla en rombos vuelta a vuelta.',
-    },
   },
 
   {
@@ -167,10 +153,6 @@ export const TECHNIQUES: Technique[] = [
     },
     regions: ['pacifica', 'amazonia', 'andina', 'caribe'],
     tempo: { en: 'Waiting more than working', es: 'Más espera que trabajo' },
-    motionAlt: {
-      en: 'Pale skeins are lowered into a vessel; colour rises through them from the bottom until the whole hank is saturated, then they lift and drip.',
-      es: 'Madejas pálidas descienden a una vasija; el color sube por ellas desde el fondo hasta saturar la madeja entera, y luego se alzan y escurren.',
-    },
   },
 
   {
@@ -197,10 +179,6 @@ export const TECHNIQUES: Technique[] = [
     },
     regions: ['andina', 'caribe'],
     tempo: { en: 'Continuous, walking pace', es: 'Continuo, a paso de caminata' },
-    motionAlt: {
-      en: 'A spindle turns below a mass of loose fibre; a thin thread draws downward out of the cloud and twist travels up it, the wound cop growing at the whorl.',
-      es: 'Un huso gira bajo una masa de fibra suelta; un hilo delgado se estira hacia abajo desde la nube y la torsión sube por él, mientras el ovillo crece en la tortera.',
-    },
   },
 ]
 
