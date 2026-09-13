@@ -115,6 +115,8 @@ export function CreditedImage({
   className,
   imgClassName,
   position = 'center',
+  zoom,
+  zoomOrigin,
   showCaption = true,
   priority = false,
   sizes,
@@ -123,6 +125,10 @@ export function CreditedImage({
   className?: string
   imgClassName?: string
   position?: string
+  /** Scale applied in CSS to tighten the frame. The file stays unmodified. */
+  zoom?: number
+  /** The point the scale expands from, as a CSS transform-origin. */
+  zoomOrigin?: string
   showCaption?: boolean
   priority?: boolean
   sizes?: string
@@ -143,7 +149,11 @@ export function CreditedImage({
           decoding="async"
           fetchPriority={priority ? 'high' : 'auto'}
           sizes={sizes}
-          style={{ objectPosition: position }}
+          style={{
+            objectPosition: position,
+            transform: zoom ? `scale(${zoom})` : undefined,
+            transformOrigin: zoomOrigin,
+          }}
           className={cn('h-full w-full object-cover', imgClassName)}
         />
       </div>

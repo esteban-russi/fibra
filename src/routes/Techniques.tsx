@@ -48,7 +48,11 @@ export function Techniques() {
                     height={MEDIA[g.photo].height}
                     loading={i < 3 ? 'eager' : 'lazy'}
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    style={{
+                      transformOrigin: g.focus?.origin,
+                      ['--photo-zoom' as string]: g.focus?.zoom ?? 1,
+                    }}
+                    className="h-full w-full scale-[var(--photo-zoom,1)] object-cover transition-transform duration-700 group-hover:scale-[calc(var(--photo-zoom,1)*1.04)]"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">

@@ -28,6 +28,16 @@ export type Technique = {
   gloss: Localized
   /** Key into MEDIA for the photograph of the gesture. */
   photo: string
+  /**
+   * How to tighten the frame when the photograph is cropped to a card or a
+   * circle: a CSS scale about `origin`, expressed as a point in the rendered
+   * box rather than in the file.
+   *
+   * Done in CSS rather than baked in. Several of these images are share-alike
+   * licensed and the registry keeps every file unmodified, so a closer frame is
+   * a decision the page makes and can revise, not a new derivative work.
+   */
+  focus?: { origin: string; zoom: number }
   lede: Localized
   /** One line naming what the gesture *is*, shown above the expanded account. */
   gesture: Localized
@@ -75,7 +85,10 @@ export const TECHNIQUES: Technique[] = [
     slug: 'trenzar',
     term: 'Trenzar',
     gloss: { en: 'to braid', es: 'entrecruzar en oblicuo' },
-    photo: 'canaflechaRaspado',
+    photo: 'gestoTrenzar',
+    // Pull in past the floor the hat was photographed on, so the card is the
+    // braid and not the parquet.
+    focus: { origin: '50% 46%', zoom: 1.35 },
     lede: {
       en: 'Three or more strands crossed in living alternation, guided only by the cadence of the fingers, with no frame and no tool in between.',
       es: 'Tres o más hebras cruzadas en alternancia viva, guiadas únicamente por la cadencia de los dedos, sin bastidor ni herramienta intermediaria.',

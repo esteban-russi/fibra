@@ -187,7 +187,11 @@ function Story({ artisan }: { artisan: Artisan }) {
                               height={photo.height}
                               loading="lazy"
                               decoding="async"
-                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
+                              style={{
+                                transformOrigin: g.focus?.origin,
+                                ['--photo-zoom' as string]: g.focus?.zoom ?? 1,
+                              }}
+                              className="h-full w-full scale-[var(--photo-zoom,1)] object-cover transition-transform duration-700 group-hover:scale-[calc(var(--photo-zoom,1)*1.07)]"
                             />
                             <span
                               aria-hidden="true"

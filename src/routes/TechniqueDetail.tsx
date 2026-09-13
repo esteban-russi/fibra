@@ -57,6 +57,8 @@ function Gesture({ technique: g }: { technique: Technique }) {
               id={g.photo}
               className="overflow-hidden rounded-sm border border-line"
               imgClassName="aspect-square"
+              zoom={g.focus?.zoom}
+              zoomOrigin={g.focus?.origin}
               priority
             />
           </div>

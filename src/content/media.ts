@@ -252,9 +252,11 @@ export const MEDIA: Record<string, Credit> = {
   // for is named as the gesture, not as the place. The drawn loops survive as
   // the wayfinding icons in TechniqueIcon, which is where a diagram belongs.
   //
-  // `trenzar` is the exception: it keeps canaflechaRaspado, already in this
-  // registry, because a Zenú photograph of the braid's own material is a truer
-  // image of the gesture than a foreign braid would be.
+  // `trenzar` is the exception: a Zenú sombrero vueltiao, photographed in
+  // Colombia. It is the braid rather than the braiding, which is the honest
+  // trade here — the openly licensed photographs of hands braiding are all of
+  // other crafts in other places, and the kana bands of this crown are the
+  // gesture's own record.
   // ---------------------------------------------------------------------------
 
   gestoHilar: {
@@ -274,6 +276,26 @@ export const MEDIA: Record<string, Credit> = {
     caption: {
       en: 'Spinning by hand, photographed in Kabul. The frame is not Colombian and does not claim to be: it is here because it shows the twist entering the thread, which is the gesture itself.',
       es: 'Hilado a mano, fotografiado en Kabul. El encuadre no es colombiano y no pretende serlo: está aquí porque muestra la torsión entrando en el hilo, que es el gesto mismo.',
+    },
+  },
+
+  gestoTrenzar: {
+    id: 'gestoTrenzar',
+    src: '/media/techniques/trenzar.webp',
+    width: 1050,
+    height: 1400,
+    file: 'Sombrero vueltiao de Colombia.jpg',
+    author: 'Hurluberlue',
+    licence: 'CC BY-SA 4.0',
+    licenceUrl: CC_BY_SA_4,
+    sourceUrl: commons('Sombrero vueltiao de Colombia.jpg'),
+    alt: {
+      en: 'A sombrero vueltiao seen from directly above, its crown and brim built from concentric braided bands in black and cream, each band a plait of arrow-cane strands.',
+      es: 'Un sombrero vueltiao visto desde arriba, con la copa y el ala construidas en franjas trenzadas concéntricas en negro y crudo, cada franja una trenza de hebras de caña flecha.',
+    },
+    caption: {
+      en: 'A sombrero vueltiao. Every ring is a single continuous braid of arrow cane, sewn round on itself; the black and cream alternation is the pinta, counted into the plait as it is made.',
+      es: 'Un sombrero vueltiao. Cada anillo es una sola trenza continua de caña flecha, cosida sobre sí misma; la alternancia de negro y crudo es la pinta, contada en el trenzado a medida que se hace.',
     },
   },
 
