@@ -136,27 +136,7 @@ const en = {
   'act.5.title': 'Direct Contact and Ethical Commission',
 
   // --- Act III modules ------------------------------------------------------
-  'zoom.title': 'Sensory translation',
-  'zoom.lede':
-    'A screen has no touch. What it can do is get close enough that twist, irregularity and density become legible — the things a hand would have told you in a second.',
-  'zoom.instruction': 'Drag, or use the slider, to move through the fibre.',
-  'zoom.level': 'Magnification',
-  'zoom.reset': 'Reset magnification',
-  'zoom.in': 'Zoom in',
-  'zoom.out': 'Zoom out',
-  'zoom.reading': 'What you are looking at',
 
-  'hotspots.title': 'Reading the pattern',
-  'hotspots.lede':
-    'Geometric figures in these traditions are not ornament. They name animals, paths, kinship and weather. Select a marker to read what the figure carries.',
-  'hotspots.instruction': 'Select a marker on the cloth. Use Tab to move between markers and Enter to open one.',
-  'hotspots.marker': 'Figure {n}: {name}',
-  'hotspots.close': 'Close figure note',
-  'hotspots.meaning': 'What it carries',
-  'hotspots.glossary': 'Semiotic glossary',
-  'hotspots.communityHeld': 'Community-held knowledge',
-  'hotspots.markersLabel': 'markers on this cloth. Tab between them, Enter to open.',
-  'hotspots.term': 'Term',
 
   'techniquevideo.title': 'The rhythm of the hands',
   'techniquevideo.lede': 'Silent loops. No music, no voiceover. The tempo of the work is the point.',
@@ -363,27 +343,7 @@ const es: Record<UIKey, string> = {
   'act.5.roman': 'V',
   'act.5.title': 'El Contacto Directo y el Encargo Ético',
 
-  'zoom.title': 'Traducción sensorial',
-  'zoom.lede':
-    'Una pantalla no tiene tacto. Lo que sí puede hacer es acercarse lo suficiente para que la torsión, la irregularidad y la densidad se vuelvan legibles — lo que una mano le habría dicho en un segundo.',
-  'zoom.instruction': 'Arrastre, o use el control, para recorrer la fibra.',
-  'zoom.level': 'Aumento',
-  'zoom.reset': 'Restablecer el aumento',
-  'zoom.in': 'Acercar',
-  'zoom.out': 'Alejar',
-  'zoom.reading': 'Lo que está viendo',
 
-  'hotspots.title': 'Leer el patrón',
-  'hotspots.lede':
-    'Las figuras geométricas en estas tradiciones no son ornamento. Nombran animales, caminos, parentesco y clima. Seleccione un marcador para leer lo que la figura carga.',
-  'hotspots.instruction': 'Seleccione un marcador sobre la tela. Use Tab para moverse entre marcadores y Enter para abrir uno.',
-  'hotspots.marker': 'Figura {n}: {name}',
-  'hotspots.close': 'Cerrar la nota de la figura',
-  'hotspots.meaning': 'Lo que carga',
-  'hotspots.glossary': 'Glosario semiótico',
-  'hotspots.communityHeld': 'Saber comunitario',
-  'hotspots.markersLabel': 'marcadores sobre esta tela. Tab para recorrerlos, Enter para abrir.',
-  'hotspots.term': 'Término',
 
   'techniquevideo.title': 'El ritmo de las manos',
   'techniquevideo.lede': 'Bucles mudos. Sin música, sin voz en off. El tempo del trabajo es lo que importa.',

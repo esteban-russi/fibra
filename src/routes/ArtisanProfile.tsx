@@ -13,11 +13,9 @@ import { TECHNIQUES } from '../content/techniques'
 import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
-import { ZoomLens } from '../components/artisan/ZoomLens'
-import { PatternHotspots } from '../components/artisan/PatternHotspots'
 import { TraceabilitySeal } from '../components/artisan/TraceabilitySeal'
 import { DirectContact } from '../components/artisan/DirectContact'
-import { CreditedImage, ProvenanceNotice, Prose } from '../components/ui/primitives'
+import { ProvenanceNotice, Prose } from '../components/ui/primitives'
 
 /**
  * The story: five acts read as one continuous descent.
@@ -179,33 +177,6 @@ function Story({ artisan }: { artisan: Artisan }) {
             {/* =============== ACT III — material and technique =============== */}
             <Act id="act-3" index={2} accent={accent}>
               <motion.div {...rise}>
-                <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('zoom.title')}</h3>
-                <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('zoom.lede')}</p>
-                <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
-                  <ZoomLens fibre={artisan.fibre} />
-                  <div className="lg:pt-1">
-                    {artisan.openingImage && (
-                      <CreditedImage id={artisan.openingImage} imgClassName="aspect-[4/3]" />
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div {...rise} className="mt-20">
-                <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('hotspots.title')}</h3>
-                <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('hotspots.lede')}</p>
-                <div className="mt-8">
-                  <PatternHotspots
-                    hotspots={artisan.hotspots}
-                    glossary={artisan.glossary}
-                    plate={artisan.works[0]?.plate ?? 'plain'}
-                    palette={artisan.patternPalette}
-                    seed={artisan.slug}
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div {...rise} className="mt-20">
                 <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('techniquevideo.title')}</h3>
                 <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('techniquevideo.lede')}</p>
                 <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
