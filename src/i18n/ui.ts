@@ -136,7 +136,8 @@ const en = {
 
 
   'techniquevideo.title': 'The rhythm of the hands',
-  'techniquevideo.lede': 'Silent loops. No music, no voiceover. The tempo of the work is the point.',
+  'techniquevideo.lede':
+    'The gestures this workshop performs, each one photographed at the work. Follow any of them to the technique itself.',
 
   // --- Act IV ---------------------------------------------------------------
   'works.technique': 'Technique',
@@ -340,7 +341,8 @@ const es: Record<UIKey, string> = {
 
 
   'techniquevideo.title': 'El ritmo de las manos',
-  'techniquevideo.lede': 'Bucles mudos. Sin música, sin voz en off. El tempo del trabajo es lo que importa.',
+  'techniquevideo.lede':
+    'Los gestos que se practican en este taller, cada uno fotografiado en el trabajo. Cualquiera de ellos lleva a la técnica misma.',
 
   'works.technique': 'Técnica',
   'works.materials': 'Materiales',

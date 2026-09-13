@@ -12,7 +12,6 @@ import { REGIONS } from '../content/regions'
 import { TECHNIQUES } from '../content/techniques'
 import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
-import { TechniqueLoop } from '../components/graphics/TechniqueLoop'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
 import { ProvenanceNotice, Prose } from '../components/ui/primitives'
@@ -161,32 +160,46 @@ function Story({ artisan }: { artisan: Artisan }) {
 
             {/* =============== ACT III — material and technique =============== */}
             <Act id="act-3" index={2} accent={accent}>
+              {/*
+                The gestures this workshop actually performs, each one a round
+                photograph of the work rather than a diagram. Round because the
+                row is a set of people's hands, not a set of cards: the circle
+                crops to the gesture and keeps five very different frames
+                reading as one row.
+              */}
               <motion.div {...rise}>
                 <h3 className="font-serif text-2xl text-bordeaux sm:text-[1.75rem]">{t('techniquevideo.title')}</h3>
                 <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-clay">{t('techniquevideo.lede')}</p>
-                <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+                <ul className="mt-10 flex flex-wrap gap-x-10 gap-y-9">
                   {artisan.techniques.map((id) => {
                     const g = TECHNIQUES.find((x) => x.id === id)
                     if (!g) return null
+                    const photo = MEDIA[g.photo]
                     return (
                       <li key={id}>
-                        <Link
-                          to={`/techniques/${g.slug}`}
-                          className="group block overflow-hidden rounded-sm border border-line transition-colors hover:border-ash"
-                        >
-                          <div className="aspect-[5/4] border-b border-line bg-surface/60">
-                            <TechniqueLoop
-                              kind={g.id}
-                              playing={!reduced}
-                              label={pick(g.motionAlt)}
-                              ink="#6E3A41"
-                              accent={accent}
+                        <Link to={`/techniques/${g.slug}`} className="group flex w-36 flex-col items-center text-center">
+                          <span className="relative block h-36 w-36 overflow-hidden rounded-full border border-line bg-surface/60">
+                            <img
+                              src={photo.src}
+                              alt={pick(photo.alt)}
+                              width={photo.width}
+                              height={photo.height}
+                              loading="lazy"
+                              decoding="async"
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
                             />
-                          </div>
-                          <div className="p-4">
-                            <p className="font-serif text-lg text-bordeaux">{g.term}</p>
-                            <p className="mt-0.5 text-sm text-clay">{pick(g.gloss)}</p>
-                          </div>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0 rounded-full ring-1 ring-inset transition-colors"
+                              style={{ ['--tw-ring-color' as string]: `${accent}55` }}
+                            />
+                          </span>
+                          <span className="mt-4 flex items-center gap-2 font-serif text-lg text-bordeaux">
+                            <TechniqueIcon kind={g.id} size={22} ringed={false} className="text-bordeaux" />
+                            {g.term}
+                          </span>
+                          <span className="mt-0.5 text-sm leading-snug text-clay">{pick(g.gloss)}</span>
                         </Link>
                       </li>
                     )
