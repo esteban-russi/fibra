@@ -578,6 +578,28 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Flor Imbacuan ante un telar vertical Huanga.',
     },
   },
+  // The person who made the platform, on the page that says so. Her own
+  // photograph, published with her consent; it carries an author and a licence
+  // here like every other file, because the registry admits no exceptions.
+  valeriaRetrato: {
+    id: 'valeriaRetrato',
+    src: '/media/about/valeria-leon.webp',
+    width: 400,
+    height: 400,
+    file: 'about/valeria-leon.jpg',
+    author: 'Valeria León Niño',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A young woman with long dark hair, smiling, in a red high-necked knitted jumper against a plain warm beige ground.',
+      es: 'Una mujer joven de cabello largo y oscuro, sonriendo, con un suéter tejido rojo de cuello alto sobre un fondo beige cálido y liso.',
+    },
+    caption: {
+      en: 'Valeria León Niño, who founded FIBRA.',
+      es: 'Valeria León Niño, quien fundó FIBRA.',
+    },
+  },
   aditaRetrato: {
     id: 'aditaRetrato',
     src: '/media/artisans/ada_morgante/profile.webp',

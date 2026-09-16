@@ -10,7 +10,10 @@ export function Footer() {
     { to: '/techniques', label: t('nav.techniques') },
     { to: '/atlas', label: t('nav.atlas') },
   ]
-  const about = [{ to: '/credits', label: t('credits.title') }]
+  const about = [
+    { to: '/about', label: t('about.title') },
+    { to: '/credits', label: t('credits.title') },
+  ]
 
   return (
     <footer className="mt-24 border-t border-line bg-surface/55">

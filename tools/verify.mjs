@@ -115,7 +115,7 @@ const firstStop = await p.evaluate(() => document.activeElement?.textContent?.tr
 ok('skip link is the first tab stop', /skip|contenido/i.test(firstStop ?? ''), firstStop)
 
 /* ---------- 7. Images all have alt text ---------- */
-for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/credits']) {
+for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/about', '/credits']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const bad = await p.$$eval('img', (els) => els.filter((e) => !e.getAttribute('alt')).length)
@@ -127,7 +127,7 @@ for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/cre
 /* ---------- 8. Internal links all resolve ---------- */
 await p.goto(BASE + '/', { waitUntil: 'networkidle2' })
 const hrefs = await p.$$eval('a[href^="/"]', (els) => [...new Set(els.map((e) => e.getAttribute('href')))])
-const routes = ['/', '/atlas', '/techniques', '/artisans', '/credits']
+const routes = ['/', '/atlas', '/techniques', '/artisans', '/about', '/credits']
 const bad = []
 for (const h of hrefs) {
   const base = h.split('#')[0]
