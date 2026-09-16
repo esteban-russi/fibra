@@ -10,8 +10,8 @@ import { ARTISAN_BY_SLUG } from '../content/artisans'
 import type { Artisan } from '../content/artisans'
 import { REGIONS } from '../content/regions'
 import { TECHNIQUES } from '../content/techniques'
-import { MEDIA } from '../content/media'
-import { WeavePlate } from '../components/graphics/WeavePlate'
+import { MEDIA, backdropFor } from '../content/media'
+import type { Credit } from '../content/media'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
 import { Prose } from '../components/ui/primitives'
@@ -46,6 +46,7 @@ function Story({ artisan }: { artisan: Artisan }) {
   const active = useActiveSection(ids)
   const region = REGIONS.find((r) => r.id === artisan.regionId)
   const accent = region?.colour ?? '#6E3A41'
+  const backdrop = backdropFor(artisan.slug)
 
   const rise = reduced
     ? {}
@@ -61,19 +62,28 @@ function Story({ artisan }: { artisan: Artisan }) {
       {/* =============== ACT I — the trace and the voice =============== */}
       {/*
         One screen, one claim: this is her, this is where the work comes from.
-        The backdrop is drawn rather than photographed so that the only
-        photograph on the screen is the portrait — a documentary image behind a
-        named person reads as being of that person, and it never is. Everything
-        the summary card states appears exactly once; the region, the craft and
-        the community used to be repeated three ways above the fold.
+        The backdrop is real cloth, photographed — a drawn plate stood here
+        before and read as decoration. It is texture and nothing more: the
+        registry entry says whose frame it is and that it documents no weaver
+        and no place, which is the only condition on which a photograph can sit
+        behind a named person without being read as hers. The scrim over it is
+        15% lighter than it was, so the interlacement is legible as cloth rather
+        than as a dark wash. Everything the summary card states appears exactly
+        once; the region, the craft and the community used to be repeated three
+        ways above the fold.
       */}
       <section id="act-1" aria-labelledby="act-1-title" className="relative overflow-hidden bg-ink text-canvas">
         <div aria-hidden="true" className="absolute inset-0">
-          <div className="h-full w-full opacity-[0.18]">
-            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={artisan.slug} />
-          </div>
+          <img
+            src={backdrop.src}
+            alt=""
+            width={backdrop.width}
+            height={backdrop.height}
+            decoding="async"
+            className="h-full w-full object-cover opacity-[0.62]"
+          />
           <div className="scrim-bottom absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-br from-ink/85 via-ink/70 to-ink/55" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink/72 via-ink/60 to-ink/47" />
         </div>
 
         <div className="relative mx-auto max-w-[86rem] px-5 pb-16 pt-[calc(var(--header-h)+3rem)] sm:px-8 sm:pb-20 sm:pt-[calc(var(--header-h)+4.5rem)]">
@@ -100,7 +110,7 @@ function Story({ artisan }: { artisan: Artisan }) {
             </div>
 
             <div className="lg:pt-2">
-              <Portrait artisan={artisan} />
+              <Portrait artisan={artisan} backdrop={backdrop} />
             </div>
           </div>
         </div>
@@ -328,14 +338,15 @@ function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string })
 }
 
 /**
- * Her portrait, or the plate that stands in for one.
+ * Her portrait, or the cloth that stands in for one.
  *
- * A profile with no supplied photograph gets the drawn cloth in her palette
- * rather than a borrowed face. The substitution is stated rather than hidden:
- * a reader who sees a plate here should know that it means no portrait has
- * been given yet, not that one is loading.
+ * A profile with no supplied photograph gets woven ground rather than a
+ * borrowed face — the same cloth as the backdrop behind it, so the empty slot
+ * reads as a gap in the page rather than as a second image. The substitution is
+ * stated rather than hidden: a reader who sees cloth here should know that it
+ * means no portrait has been given yet, not that one is loading.
  */
-function Portrait({ artisan }: { artisan: Artisan }) {
+function Portrait({ artisan, backdrop }: { artisan: Artisan; backdrop: Credit }) {
   const { t, pick } = useI18n()
   const credit = artisan.portrait ? MEDIA[artisan.portrait] : null
 
@@ -343,10 +354,16 @@ function Portrait({ artisan }: { artisan: Artisan }) {
     return (
       <figure className="overflow-hidden rounded-sm border border-canvas/20">
         <div className="relative aspect-[4/5]">
-          <div className="h-full w-full opacity-55">
-            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={`${artisan.slug}-portrait`} />
-          </div>
-          <div aria-hidden="true" className="absolute inset-0 bg-ink/35" />
+          <img
+            src={backdrop.src}
+            alt=""
+            width={backdrop.width}
+            height={backdrop.height}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-ink/30" />
         </div>
         <figcaption className="bg-ink/45 px-4 py-3 text-[0.75rem] leading-relaxed text-canvas/60">
           {t('artisan.noPortrait')}

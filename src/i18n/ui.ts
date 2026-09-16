@@ -61,9 +61,10 @@ const en = {
 
   // --- Atlas ----------------------------------------------------------------
   'atlas.eyebrow': 'Territories',
-  'atlas.title': 'Textile Atlas of Colombia',
+  'atlas.title': 'Textile Map of Colombia',
+  'atlas.standfirst': 'Colombia does not weave one way. It weaves six, at least.',
   'atlas.lede':
-    'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
+    'The country is read here as a cloth: six chromatic bands taken from what the earth itself dyes and grows in each region — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast. These bands do not follow administrative limits; they follow colour, territory and craft. Every tone exists in the landscape first, before it exists in a thread.',
   'atlas.scroll': 'See the six regions',
   'atlas.hint': 'Select a region to open its panel',
   'atlas.hint.touch': 'Tap a band to open its panel',
@@ -72,7 +73,7 @@ const en = {
     'Map of Colombia knitted in wool, with each of the six textile regions worked in its own dye colour.',
   'atlas.region.select': 'Open the {name} region panel',
   'atlas.note':
-    'The six bands are a chromatic reading of the country, not a survey boundary. Regional borders in Colombia are drawn differently by different institutions, and craft traditions cross all of them.',
+    'Colombian weaving is not one tradition: it is dozens, each with its territory, its raw material and its knowledge. This map is the way in to that diversity.',
 
   // --- Region drawer --------------------------------------------------------
   'drawer.close': 'Close region panel',
@@ -112,7 +113,7 @@ const en = {
   'artisan.craft': 'Craft',
   'artisan.techniques': 'Techniques',
   'artisan.voice': 'In her own words',
-  'artisan.noPortrait': 'No portrait has been supplied for this workshop yet. The cloth shown is drawn, not photographed.',
+  'artisan.noPortrait': 'No portrait has been supplied for this workshop yet. The cloth shown is not from this workshop: it is the same photographed ground as the page behind it.',
   'artisan.region': 'Region',
 
   // --- Traceability seal ----------------------------------------------------
@@ -255,9 +256,10 @@ const es: Record<UIKey, string> = {
     'Cada perfil se desmadeja de corrido, en cinco actos: desde la voz de quien raspa, hila y anuda, hasta la puerta misma de su taller.',
 
   'atlas.eyebrow': 'Territorios',
-  'atlas.title': 'Atlas Textil de Colombia',
+  'atlas.title': 'Mapa Textil de Colombia',
+  'atlas.standfirst': 'Colombia no teje de una sola forma. Teje seis, al menos.',
   'atlas.lede':
-    'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
+    'El país se lee aquí como una tela: seis franjas cromáticas tomadas de lo que la tierra misma tiñe y hace crecer en cada región: bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico. Estas franjas no siguen límites administrativos; siguen el color, el territorio y el oficio. Cada tono existe primero en el paisaje, antes de existir en un hilo.',
   'atlas.scroll': 'Ver las seis regiones',
   'atlas.hint': 'Seleccione una región para abrir su panel',
   'atlas.hint.touch': 'Toque una franja para abrir su panel',
@@ -266,7 +268,7 @@ const es: Record<UIKey, string> = {
     'Mapa de Colombia tejido en lana, con cada una de las seis regiones textiles trabajada en su propio color de tinte.',
   'atlas.region.select': 'Abrir el panel de la región {name}',
   'atlas.note':
-    'Las seis franjas son una lectura cromática del país, no un límite catastral. Las fronteras regionales en Colombia se trazan de modo distinto según la institución, y las tradiciones artesanales las cruzan todas.',
+    'El tejido colombiano no es una sola tradición: son decenas, cada una con su territorio, su materia prima y su saber. Este mapa es la puerta de entrada a esa diversidad.',
 
   'drawer.close': 'Cerrar el panel de la región',
   'drawer.region': 'Región',
@@ -303,7 +305,7 @@ const es: Record<UIKey, string> = {
   'artisan.craft': 'Oficio',
   'artisan.techniques': 'Técnicas',
   'artisan.voice': 'En su propia voz',
-  'artisan.noPortrait': 'Este taller aún no ha entregado un retrato. El tejido que se muestra es dibujado, no fotografiado.',
+  'artisan.noPortrait': 'Este taller aún no ha entregado un retrato. El tejido que se muestra no es de este taller: es el mismo fondo fotografiado que la página que lo rodea.',
   'artisan.region': 'Región',
 
   'seal.authorship': 'Autoría individual',

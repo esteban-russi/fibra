@@ -34,6 +34,11 @@ function commons(file: string): string {
   return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file.replace(/ /g, '_'))}`
 }
 
+/** The referral parameters are the form Unsplash asks attribution to take. */
+function unsplash(slug: string): string {
+  return `https://unsplash.com/photos/${slug}?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText`
+}
+
 const UNSPLASH = 'https://unsplash.com/license'
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
@@ -228,9 +233,7 @@ export const MEDIA: Record<string, Credit> = {
     author: 'Felipe Mendoza',
     licence: 'Unsplash License',
     licenceUrl: UNSPLASH,
-    // The referral parameters are the form Unsplash asks attribution to take.
-    sourceUrl:
-      'https://unsplash.com/photos/a-woman-weaving-a-rug-with-a-wooden-stick-QZo-EW1Pnp0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+    sourceUrl: unsplash('a-woman-weaving-a-rug-with-a-wooden-stick-QZo-EW1Pnp0'),
     alt: {
       en: 'Two hands working a striped warp on a stick loom: one holds a smooth wooden rod, the other presses the threads down. Bands of red, turquoise, black and cream run the width of the cloth.',
       es: 'Dos manos trabajan una urdimbre rayada en un telar de varas: una sostiene una vara de madera lisa y la otra presiona los hilos. Franjas rojas, turquesas, negras y crudas recorren el ancho de la tela.',
@@ -594,6 +597,133 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Ada Morgante ante la máquina de tejer rectilínea de su taller.',
     },
   },
+  // ---------------------------------------------------------------------------
+  // Woven grounds.
+  //
+  // Macro photographs of real cloth, used as the backdrop of an artisan profile
+  // in place of the drawn plate that used to sit there. They are texture, not
+  // testimony: none of them was made in Colombia, none is a piece from any of
+  // these workshops, and the source records neither weaver nor place, so none
+  // is attributed one. That is exactly why they can stand behind a named person
+  // — they show cloth and never a face, and the caption here says whose frame
+  // it is. Delivered at 1440px and heavily scrimmed in place, so the file is
+  // sized for a background rather than for inspection.
+  // ---------------------------------------------------------------------------
+
+  tejidoRojoDiamantes: {
+    id: 'tejidoRojoDiamantes',
+    src: '/media/patterns/tejido-rojo-diamantes.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-nDgBHlWRwqw-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-red-carpet-with-a-pattern-on-it-nDgBHlWRwqw'),
+    alt: {
+      en: 'A deep red woven ground carrying two embroidered diamonds in orange, purple and cream, either side of a vertical band of white, blue and green stitches.',
+      es: 'Un fondo tejido en rojo profundo con dos rombos bordados en naranja, morado y crudo, a lado y lado de una banda vertical de puntadas blancas, azules y verdes.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoGeometricoOblicuo: {
+    id: 'tejidoGeometricoOblicuo',
+    src: '/media/patterns/tejido-geometrico-oblicuo.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-risCdLh_4fY-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-red-and-green-rug-risCdLh_4fY'),
+    alt: {
+      en: 'An oblique close view of a woven panel worked in red, olive and cream, its stepped geometric figures running away from the lens and softening out of focus.',
+      es: 'Vista cercana y oblicua de un panel tejido en rojo, verde oliva y crudo, cuyas figuras geométricas escalonadas se alejan del lente y se desenfocan.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoNudosPolicromo: {
+    id: 'tejidoNudosPolicromo',
+    src: '/media/patterns/tejido-nudos-policromo.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-V0UiJiU85dM-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-multicolored-woven-material-V0UiJiU85dM'),
+    alt: {
+      en: 'Rows of knots packed tight across a dark warp, each row a different run of colour — orange, green, purple, red and white — with loose fibre standing up between them.',
+      es: 'Hileras de nudos apretados sobre una urdimbre oscura; cada hilera es una tirada de color distinta — naranja, verde, morado, rojo y blanco — con fibra suelta levantándose entre ellas.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoRayasNaranja: {
+    id: 'tejidoRayasNaranja',
+    src: '/media/patterns/tejido-rayas-naranja.webp',
+    width: 1440,
+    height: 960,
+    file: 'milton-matsumura--cfDJkq27zs-unsplash.jpg',
+    author: 'Milton Matsumura',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-view-of-a-woven-material--cfDJkq27zs'),
+    alt: {
+      en: 'A flat weave in vertical bands of orange, indigo, yellow and natural, the weft crossing the warp closely enough that every pick is countable.',
+      es: 'Un tejido plano en franjas verticales naranjas, añil, amarillas y crudas; la trama cruza la urdimbre tan de cerca que cada pasada se puede contar.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
 }
 
 export const CREDITS: Credit[] = Object.values(MEDIA)
+
+/**
+ * The woven grounds, in the order they were registered.
+ *
+ * Kept here rather than on the artisan record: which cloth sits behind a story
+ * is a layout decision, and writing a stock photograph into `artisans.ts` would
+ * file it among the things the artisan supplied and validated.
+ */
+export const BACKDROPS: Credit[] = [
+  MEDIA.tejidoRojoDiamantes,
+  MEDIA.tejidoGeometricoOblicuo,
+  MEDIA.tejidoNudosPolicromo,
+  MEDIA.tejidoRayasNaranja,
+]
+
+/**
+ * The ground for a given profile. Chosen by a hash of the seed so that a
+ * profile keeps its own cloth across reloads and across deploys, and two
+ * neighbouring profiles do not open on the same one.
+ */
+export function backdropFor(seed: string): Credit {
+  let h = 2166136261
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  // FNV leaves its low bits poorly mixed, and a list this short is indexed by
+  // exactly those bits: without this avalanche step every slug of a similar
+  // shape lands on the same cloth.
+  h ^= h >>> 13
+  h = Math.imul(h, 0x5bd1e995)
+  h ^= h >>> 15
+  return BACKDROPS[(h >>> 0) % BACKDROPS.length]
+}
+
