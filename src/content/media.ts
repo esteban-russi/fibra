@@ -39,6 +39,8 @@ function unsplash(slug: string): string {
   return `https://unsplash.com/photos/${slug}?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText`
 }
 
+const TEJILARTE = 'https://www.instagram.com/tejilartesutatausa'
+
 const UNSPLASH = 'https://unsplash.com/license'
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
@@ -709,6 +711,133 @@ export const MEDIA: Record<string, Credit> = {
     caption: {
       en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
       es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  /* --- Bitácora: Tejilarte, Sutatausa ------------------------------------
+     Supplied by the collective for publication here. These are not openly
+     licensed: they are published by courtesy, which is a narrower permission
+     than the Commons files above, so both the licence and the source point at
+     the collective itself rather than at a licence deed. They are documentary
+     images of a public festival and every caption says so. */
+
+  journalHilanderas: {
+    id: 'journalHilanderas',
+    src: '/media/journal/festival/hilanderas-atrio.webp',
+    width: 1200,
+    height: 1500,
+    file: 'tejilarte_festival.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'Seven women and one man in hats and flowered aprons stand spread across the stone steps of a whitewashed colonial church, each drop-spinning raw wool from a distaff. Skeins dyed orange, ochre and green lie on the steps between them.',
+      es: 'Siete mujeres y un hombre, con sombrero y delantales floreados, repartidos por las gradas de piedra de una iglesia colonial encalada, cada uno hilando lana cruda al huso. Entre ellos, madejas teñidas de naranja, ocre y verde reposan sobre los escalones.',
+    },
+    caption: {
+      en: 'Spinners on the church steps at Sutatausa, Cundinamarca, during the Tejilarte festival.',
+      es: 'Hilanderas en el atrio de la iglesia de Sutatausa, Cundinamarca, durante el festival Tejilarte.',
+    },
+  },
+
+  journalTejedora: {
+    id: 'journalTejedora',
+    src: '/media/journal/festival/tejedora-dos-agujas.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_464376041_18257732518252385_2008525703878228911_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman in a straw hat and a hand-knitted brown waistcoat sits on the stone steps working grey wool on two needles. A heap of orange-dyed skeins rests beside her.',
+      es: 'Una mujer con sombrero de paja y chaleco café tejido a mano está sentada en las gradas de piedra trabajando lana gris a dos agujas. A su lado reposa un montón de madejas teñidas de naranja.',
+    },
+    caption: {
+      en: 'Worked by hand at the Tejilarte festival, beside the dyed skeins.',
+      es: 'Tejido a mano en el festival Tejilarte, junto a las madejas tinturadas.',
+    },
+  },
+
+  journalPasarelaBlanca: {
+    id: 'journalPasarelaBlanca',
+    src: '/media/journal/festival/pasarela-ruana-blanca.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_654017717_18012614069833196_4600604891847503497_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman walks an outdoor runway in a thick undyed wool ruana with a fringed hem, three dark patches of fleece worked into the cloth. Cloud sits on the mountain behind her.',
+      es: 'Una mujer recorre una pasarela al aire libre con una ruana gruesa de lana sin teñir y fleco en el ruedo, con tres manchas de vellón oscuro trabajadas en la tela. Detrás, la nube se posa sobre la montaña.',
+    },
+    caption: {
+      en: 'The ruana runway at the Tejilarte festival: undyed wool, with the motifs worked in dark fleece.',
+      es: 'La pasarela de ruanas del festival Tejilarte: lana sin teñir, con los motivos trabajados en vellón oscuro.',
+    },
+  },
+
+  journalPasarelaBordada: {
+    id: 'journalPasarelaBordada',
+    src: '/media/journal/festival/pasarela-ruana-bordada.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_657504743_18139070374442969_6113798523182220278_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A man holds open a cream wool ruana embroidered in coloured thread with scenes of work in the countryside: a man driving an ox, a figure sowing, a harvest on a hillside.',
+      es: 'Un hombre abre una ruana de lana crema bordada con hilo de colores con escenas del trabajo del campo: un hombre arreando un buey, una figura sembrando, una cosecha en la ladera.',
+    },
+    caption: {
+      en: 'An embroidered ruana at the festival. The scenes are of work in the veredas around Sutatausa.',
+      es: 'Una ruana bordada en el festival. Las escenas son del trabajo en las veredas de Sutatausa.',
+    },
+  },
+
+  journalPasarelaCamel: {
+    id: 'journalPasarelaCamel',
+    src: '/media/journal/festival/pasarela-poncho-camel.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_660686941_18209535559328546_2169186533950462793_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman walks the runway in a wide poncho of natural brown wool, wearing a long yellow cord strung with felted wool beads in many colours. Pines hung with old man’s beard stand behind.',
+      es: 'Una mujer recorre la pasarela con un poncho amplio de lana café natural y un cordel largo amarillo ensartado con motas de lana afieltrada de muchos colores. Detrás, pinos cubiertos de barba de viejo.',
+    },
+    caption: {
+      en: 'Undyed brown wool on the Tejilarte runway, with a cord of felted beads.',
+      es: 'Lana café sin teñir en la pasarela de Tejilarte, con un cordel de motas afieltradas.',
+    },
+  },
+
+  journalHiloVerde: {
+    id: 'journalHiloVerde',
+    src: '/media/journal/festival/hilo-verde-poster.webp',
+    width: 719,
+    height: 1280,
+    file: 'hilo-verde.mp4 (still)',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'Close on two hands working dark green wool on two needles, over a yellow flowered apron, a ball of the same wool resting on the lap.',
+      es: 'Primer plano de dos manos trabajando lana verde oscura a dos agujas, sobre un delantal amarillo floreado, con un ovillo de la misma lana reposando en el regazo.',
+    },
+    caption: {
+      en: 'Still from the video filmed at the festival: two needles on dark green wool.',
+      es: 'Fotograma del video filmado en el festival: dos agujas sobre lana verde oscura.',
     },
   },
 }

@@ -56,6 +56,13 @@ export function scrollToElement(
   else scrollToY(target, duration)
 }
 
+/** The id of the Home section the header's Journal item lands on. The
+ *  journal's masthead is a place on the cover rather than a route of its own —
+ *  there is one entry, and an index page would only repeat it. Each entry does
+ *  have its own route. (About went the other way: it outgrew its block at the
+ *  foot of the cover and became `/about`.) */
+export const JOURNAL_ID = 'bitacora'
+
 /** Slower than the 1500ms default: these trips cross most of a screen or more,
  *  and the descent is meant to read as travel rather than a jump. */
 export const SLOW_DESCENT_MS = 2400

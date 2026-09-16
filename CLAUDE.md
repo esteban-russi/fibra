@@ -26,7 +26,7 @@ price, it contradicts the spec.
 
 ## Information architecture
 
-Four top-level surfaces, navigated non-linearly:
+Four top-level surfaces, navigated non-linearly, plus the journal:
 
 1. **Home / immersive cover** — hero is a micro-narrative (macro photo or silent
    video of hands and fiber + first-person artisan quote), not a catalog or menu.
@@ -44,6 +44,13 @@ Four top-level surfaces, navigated non-linearly:
    where its frame comes from and none claims a territory it does not have.
    `technique.focus` tightens a crop in CSS, never in the file.
 4. **Artisan profiles** — sequential editorial chronicles.
+5. **Bitácora** (*Journal* in English) — the magazine. Everything else on the
+   site is written to stand still; this is where what moves goes: a festival on
+   a date, a workshop opening its doors, an encounter that will not repeat. Its
+   masthead is a **section of the cover** (`JOURNAL_ID`, `#bitacora`), not a
+   route — the same treatment About gets, because with one entry an index page
+   would be that masthead printed twice. The header and the footer point at the
+   anchor. Each entry *does* have its own route, `/journal/:slug`.
 
 Beside these sit two standing pages, reachable from the header and the footer
 rather than from the thread: **`/about`** — what the platform does, what the
@@ -121,6 +128,26 @@ A single continuous scroll, explicitly **not** tabs:
   pre-written message were both removed; the message itself still travels in
   the wa.me link (`content/message.ts`), editable before it is sent. The hours
   and languages she gave stay in `artisans.ts` without a surface.
+
+### Journal entries (`src/content/journal.ts`)
+
+An entry is a headline, a standfirst, a dateline, a region (which gives it its
+accent colour) and a run of sections. A section carries `blocks` — `prose`,
+`quote`, `entries` (a labelled run, `numbered` where the order is the route
+through the town) — and one `aside`, either a photograph or the video, held in
+a sticky rail beside the reading. Every section of a piece should carry an
+aside: a column of type alone on a wide screen reads as a page that was never
+finished. A section marked `feature` leaves the two-column rhythm and is
+centred on its own ground — used for the invitation, which is addressed to the
+reader rather than reported to them. The piece closes with a `gallery` strip
+and `facts`, the practical rows of the traveller's guide.
+
+The first entry is the Tejilarte festival in Sutatausa, Cundinamarca. Its
+photographs and its video were supplied by the collective and are published **by
+courtesy, not under an open licence** — narrower permission than the Commons
+files, so their `licence` and `sourceUrl` both point at the collective rather
+than at a licence deed. The video is `preload="none"` behind a poster frame and
+never autoplays.
 
 ## Sensory / semiotic modules
 
