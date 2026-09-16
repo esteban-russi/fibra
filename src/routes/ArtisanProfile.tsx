@@ -210,87 +210,52 @@ function Story({ artisan }: { artisan: Artisan }) {
 
             {/* =============== ACT IV — works of the workshop =============== */}
             {/*
-              A gallery rather than a stack of records. The pieces are looked at
-              first and read second, so each one is a plate at a single shared
-              proportion with its caption underneath — the grid lets a visitor
-              take the workshop's output in at a glance, which the full-width
-              rows did not. Scale and making time sit directly under the title
-              because they are the two claims the spec asks a piece to carry:
-              how big it really is, and how much patience it cost. There is
-              still no price.
+              The pieces themselves, photographed by the workshops, in a plain
+              grid. No record, no metadata, no caption standing under the image
+              competing with it — the name arrives on hover, over the photograph
+              it belongs to, and leaves again. What a garment is is something
+              you see; the times and the scales the artisans gave are still in
+              `artisans.ts`, and would need their own surface to come back.
+
+              The name is in the DOM whether or not it is revealed, so a screen
+              reader reads it with the image, and on a touch screen — where
+              there is no hover to give — it simply stays visible.
             */}
             <Act id="act-4" index={3} accent={accent}>
-              <motion.div {...rise}>
-                <p className="max-w-2xl text-pretty leading-relaxed text-clay">{t('works.lede')}</p>
-
-                <ul className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-                  {artisan.works.map((w, i) => (
-                    <li key={w.id}>
-                      <figure className="group">
-                        <div className="overflow-hidden rounded-sm border border-line">
-                          <div className="aspect-[4/5]">
-                            <WeavePlate
-                              kind={w.plate}
-                              palette={artisan.patternPalette}
-                              seed={`${artisan.slug}-${w.id}`}
-                            />
-                          </div>
-                        </div>
-
-                        <figcaption className="mt-5">
-                          <p className="flex items-center gap-2.5">
-                            <span aria-hidden="true" className="h-px w-5" style={{ background: accent }} />
-                            <span className="font-mono text-xs tabular-nums text-muted">
-                              {String(i + 1).padStart(2, '0')}
-                            </span>
-                          </p>
-
-                          <h3 className="mt-2 text-balance font-serif text-xl leading-snug text-bordeaux">
-                            {pick(w.title)}
-                          </h3>
-
-                          {/* Scale and time wrap as one phrase: the separator
-                              belongs to the time, so it never strands itself at
-                              the end of a line. */}
-                          <p className="mt-2.5 text-pretty text-sm leading-snug">
-                            <span className="text-ink/80">
-                              <span className="sr-only">{t('works.scale')}: </span>
-                              {pick(w.scale)}
-                            </span>{' '}
-                            <span className="whitespace-normal font-serif italic text-bordeaux">
-                              <span aria-hidden="true" className="not-italic text-ash">
-                                ·{' '}
-                              </span>
-                              <span className="sr-only">{t('works.time')}: </span>
-                              {pick(w.time)}
-                            </span>
-                          </p>
-
-                          <p className="mt-3.5 text-pretty text-sm leading-relaxed text-ink/75">{pick(w.context)}</p>
-
-                          <p className="mt-3 text-pretty text-[0.8125rem] leading-snug text-clay">
-                            <span className="sr-only">{t('works.technique')}: </span>
-                            {pick(w.technique)}
-                            <span aria-hidden="true"> · </span>
-                            <span className="sr-only">{t('works.materials')}: </span>
-                            {pick(w.materials)}
-                          </p>
+              <motion.ul {...rise} className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                {artisan.gallery.map((piece) => {
+                  const photo = MEDIA[piece.image]
+                  if (!photo) return null
+                  return (
+                    <li key={piece.id}>
+                      <figure className="group relative overflow-hidden rounded-sm border border-line bg-surface/40">
+                        <img
+                          src={photo.src}
+                          alt={pick(photo.alt)}
+                          width={photo.width}
+                          height={photo.height}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[3/4] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
+                        />
+                        <figcaption className="pointer-events-none absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-coarse:opacity-100 sm:p-5">
+                          <span aria-hidden="true" className="absolute inset-0 bg-ink/30" />
+                          <span aria-hidden="true" className="scrim-bottom absolute inset-x-0 bottom-0 h-3/5" />
+                          <span className="relative text-pretty font-serif text-lg leading-tight text-canvas sm:text-xl">
+                            {pick(piece.name)}
+                          </span>
                         </figcaption>
                       </figure>
                     </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <p className="mt-14 max-w-2xl border-l-2 border-ash pl-5 text-pretty font-serif text-lg italic leading-relaxed text-clay">
-                {t('works.note')}
-              </p>
+                  )
+                })}
+              </motion.ul>
             </Act>
 
             {/* =============== ACT V — direct contact =============== */}
-            <Act id="act-5" index={4} accent={accent}>
+            <Act id="act-5" index={4} accent={accent} titled={false}>
               <motion.div {...rise}>
-                <DirectContact artisan={artisan} />
+                <DirectContact artisan={artisan} headingId="act-5-title" />
               </motion.div>
             </Act>
           </div>
@@ -405,31 +370,48 @@ function Portrait({ artisan }: { artisan: Artisan }) {
   )
 }
 
+/**
+ * One act: the rule, the numeral, and the act's own title.
+ *
+ * `titled={false}` suppresses that title for an act whose content already
+ * opens with a heading of its own — act V says "Hable con el taller" and does
+ * not also need to be announced as "El Contacto Directo y el Encargo Ético"
+ * directly above it. The act name still identifies it in the rail. The section
+ * keeps pointing at `<id>-title`, so whichever element carries that id is the
+ * one that names the section.
+ */
 function Act({
   id,
   index,
   accent,
+  titled = true,
   children,
 }: {
   id: string
   index: number
   accent: string
+  titled?: boolean
   children: React.ReactNode
 }) {
   const { t } = useI18n()
   const act = ACTS[index]
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-[calc(var(--header-h)+2rem)] pt-20 sm:pt-28">
-      <header className="mb-10">
+      <header className={titled ? 'mb-10' : 'mb-7'}>
         <p className="flex items-center gap-3">
           <span aria-hidden="true" className="h-px w-8" style={{ background: accent }} />
           <span className="text-[0.6875rem] uppercase tracking-[0.2em] text-muted">
             {t('artisan.act')} {t(act.roman)}
           </span>
         </p>
-        <h2 id={`${id}-title`} className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]">
-          {t(act.title)}
-        </h2>
+        {titled && (
+          <h2
+            id={`${id}-title`}
+            className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]"
+          >
+            {t(act.title)}
+          </h2>
+        )}
       </header>
       {children}
     </section>

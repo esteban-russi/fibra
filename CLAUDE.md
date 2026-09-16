@@ -88,12 +88,21 @@ A single continuous scroll, explicitly **not** tabs:
   technique route. The progressive-zoom fibre lens and the pattern hotspots were
   removed from this act; their content (`fibre`, `hotspots`, `glossary`) is still
   in `artisans.ts` and still belongs to the artisans.
-- **IV. Las Obras del Taller** — a gallery: one plate per piece at a shared
-  proportion, captioned with real scale and making time (patience as stated
-  value), then its use context. Looked at first, read second. Still no price.
-- **V. El Contacto Directo y el Encargo Ético** — the workshop's line, stated
-  large, with direct WhatsApp/call beneath it and the handles she asked to be
-  listed. The "Guía de Encargo Consciente" accordion and the on-page preview of
+- **IV. Las Obras del Taller** — a grid of the workshop's own photographs of
+  its pieces, and nothing else. The name of a piece appears over the image on
+  hover (and stays visible on a touch screen); there is no caption, no record
+  and no price — nor the line that used to explain the absence of one, which
+  was removed too: the act says it by having nothing to say it about, and the
+  footer still carries the standing commitment. The full records the artisans
+  gave — technique, materials,
+  making time, real scale, use context — stay in `artisans.ts` as `works`,
+  without a surface. `gallery[].named` marks whether the name shown is the
+  workshop's own or our description of what is in the frame; every `false` is a
+  piece still waiting for its workshop to name it.
+- **V. El Contacto Directo y el Encargo Ético** — the workshop's line, with
+  direct WhatsApp/call beneath it and the handles she asked to be listed. The
+  act prints no title of its own (`Act titled={false}`): its content already
+  opens with "Hable con el taller", and the act name identifies it in the rail. The "Guía de Encargo Consciente" accordion and the on-page preview of
   the pre-written message were both removed; the message itself still travels
   in the wa.me link (`content/message.ts`), editable before it is sent. The
   hours and languages she gave stay in `artisans.ts` without a surface.

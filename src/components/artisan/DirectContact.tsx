@@ -25,7 +25,7 @@ import type { Artisan } from '../../content/artisans'
  * is missing. The same rule governs `contact.links` — a handle appears only
  * where the artisan gave one, never one found by searching for her name.
  */
-export function DirectContact({ artisan }: { artisan: Artisan }) {
+export function DirectContact({ artisan, headingId }: { artisan: Artisan; headingId?: string }) {
   const { t, pick } = useI18n()
 
   const message = pick(OPENING_MESSAGE)
@@ -38,10 +38,15 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
   return (
     <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-20">
       {/* --- what the conversation is, said once --- */}
-      <div className="lg:pt-3">
-        <h3 className="text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-4xl lg:text-[2.75rem]">
+      <div>
+        {/* The heading of act V, carrying the act's accessible name: the act
+            itself renders no title above this one. */}
+        <h2
+          id={headingId}
+          className="text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]"
+        >
           {t('contact.title')}
-        </h3>
+        </h2>
         <p className="mt-6 max-w-lg text-pretty text-[1.0625rem] leading-relaxed text-clay sm:text-lg">
           {t('contact.lede')}
         </p>
@@ -51,7 +56,7 @@ export function DirectContact({ artisan }: { artisan: Artisan }) {
       <div className="rounded-sm border border-line bg-surface/50 p-6 sm:p-8">
         <p className="eyebrow">{t('contact.line')}</p>
         <p
-          className={`mt-3 font-mono text-[1.75rem] leading-none tabular-nums sm:text-[2rem] ${
+          className={`mt-2.5 font-mono text-xl leading-none tabular-nums sm:text-2xl ${
             live ? 'text-bordeaux' : 'text-clay'
           }`}
         >

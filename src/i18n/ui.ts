@@ -139,17 +139,6 @@ const en = {
   'techniquevideo.lede':
     'The gestures this workshop performs, each one photographed at the work. Follow any of them to the technique itself.',
 
-  // --- Act IV ---------------------------------------------------------------
-  'works.technique': 'Technique',
-  'works.materials': 'Materials',
-  'works.time': 'Time invested',
-  'works.scale': 'Real scale',
-  'works.context': 'In use',
-  'works.lede':
-    'Pieces the workshop has made, each one at its real scale and with the time it took. Nothing here is for sale through FIBRA.',
-  'works.note':
-    'These are not listings. There is no price on this page, because a price agreed in advance by a platform is a price the maker did not set.',
-
   // --- Act V ----------------------------------------------------------------
   'contact.eyebrow': 'Act V',
   'contact.title': 'Speak to the workshop',
@@ -337,16 +326,6 @@ const es: Record<UIKey, string> = {
   'techniquevideo.title': 'El ritmo de las manos',
   'techniquevideo.lede':
     'Los gestos que se practican en este taller, cada uno fotografiado en el trabajo. Cualquiera de ellos lleva a la técnica misma.',
-
-  'works.technique': 'Técnica',
-  'works.materials': 'Materiales',
-  'works.time': 'Tiempo invertido',
-  'works.scale': 'Escala real',
-  'works.context': 'En uso',
-  'works.lede':
-    'Piezas que ha hecho el taller, cada una en su escala real y con el tiempo que tomó. Nada de esto se vende a través de FIBRA.',
-  'works.note':
-    'Estas no son fichas de venta. En esta página no hay precio, porque un precio acordado de antemano por una plataforma es un precio que quien hace la pieza no fijó.',
 
   'contact.eyebrow': 'Acto V',
   'contact.title': 'Hable con el taller',
