@@ -94,18 +94,21 @@ A single continuous scroll, explicitly **not** tabs:
   and no price — nor the line that used to explain the absence of one, which
   was removed too: the act says it by having nothing to say it about, and the
   footer still carries the standing commitment. The full records the artisans
-  gave — technique, materials,
-  making time, real scale, use context — stay in `artisans.ts` as `works`,
-  without a surface. `gallery[].named` marks whether the name shown is the
-  workshop's own or our description of what is in the frame; every `false` is a
-  piece still waiting for its workshop to name it.
+  gave — technique, materials, making time, real scale, use context — stay in
+  `artisans.ts` as `works`, without a surface. `gallery[].named` marks whether
+  the name shown is the workshop's own or our description of what is in the
+  frame; every `false` is a piece still waiting for its workshop to name it.
+  The piece photographs are credited to each workshop ("Cedida por el taller"),
+  not to FIBRA, and only their webp deliveries are versioned — the originals
+  named in each record's `file` are not in the repository.
 - **V. El Contacto Directo y el Encargo Ético** — the workshop's line, with
   direct WhatsApp/call beneath it and the handles she asked to be listed. The
   act prints no title of its own (`Act titled={false}`): its content already
-  opens with "Hable con el taller", and the act name identifies it in the rail. The "Guía de Encargo Consciente" accordion and the on-page preview of
-  the pre-written message were both removed; the message itself still travels
-  in the wa.me link (`content/message.ts`), editable before it is sent. The
-  hours and languages she gave stay in `artisans.ts` without a surface.
+  opens with "Hable con el taller", and the act name identifies it in the rail.
+  The "Guía de Encargo Consciente" accordion and the on-page preview of the
+  pre-written message were both removed; the message itself still travels in
+  the wa.me link (`content/message.ts`), editable before it is sent. The hours
+  and languages she gave stay in `artisans.ts` without a surface.
 
 ## Sensory / semiotic modules
 
