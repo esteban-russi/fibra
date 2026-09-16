@@ -183,6 +183,12 @@ const en = {
     'That passion led me to found d_moda, a digital magazine, and to pursue my dream of studying the Strategic Fashion Marketing master’s at London College of Fashion.',
   'about.weaver.4':
     'FIBRA comes of weaving all my passions into a single thread — the thread of a weaver who never stopped learning, and who now wants other weavers to be seen, named and heard.',
+  'about.weaver.reach': 'Contact',
+  'about.weaver.linkedin': 'LinkedIn',
+  'about.weaver.linkedinLabel': 'Valeria León Niño on LinkedIn (opens in a new tab)',
+  'about.weaver.whatsapp': 'WhatsApp',
+  'about.weaver.whatsappLabel': 'Write to Valeria León Niño on WhatsApp (opens in a new tab)',
+  'about.weaver.callLabel': 'Call Valeria León Niño',
 
   'credits.eyebrow': 'Provenance',
   'credits.title': 'Credits and content provenance',
@@ -396,6 +402,12 @@ const es: Record<UIKey, string> = {
     'Esta pasión me llevó a fundar d_moda, una revista digital, y a perseguir mi sueño de estudiar la maestría Strategic Fashion Marketing en London College of Fashion.',
   'about.weaver.4':
     'FIBRA nace de tejer todas mis pasiones en un solo hilo — el de una tejedora que nunca dejó de aprender, y que ahora quiere que otras tejedoras sean vistas, nombradas y escuchadas.',
+  'about.weaver.reach': 'Contacto',
+  'about.weaver.linkedin': 'LinkedIn',
+  'about.weaver.linkedinLabel': 'Valeria León Niño en LinkedIn (se abre en una pestaña nueva)',
+  'about.weaver.whatsapp': 'WhatsApp',
+  'about.weaver.whatsappLabel': 'Escribir a Valeria León Niño por WhatsApp (se abre en una pestaña nueva)',
+  'about.weaver.callLabel': 'Llamar a Valeria León Niño',
 
   'credits.eyebrow': 'Procedencia',
   'credits.title': 'Créditos y procedencia del contenido',

@@ -206,7 +206,7 @@ export const ARTISANS: Artisan[] = [
       en: 'Spinning, flat-bed machine weaving and natural dyeing',
       es: 'Hilatura, tejeduría en máquina rectilínea y tinturado natural',
     },
-    openingImage: 'hilosTenidos',
+    openingImage: 'luzMariaRetrato',
     portrait: 'luzMariaRetrato',
     standfirst: {
       en: 'Master weaver and community leader, more than two decades into the safeguarding of textile knowledge in Cundinamarca. From her native Peñas de Cajón she has drawn spinners and weavers together across five municipalities to give the campesino craft standing against industrial terms.',

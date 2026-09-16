@@ -11,7 +11,7 @@ import { cn } from '../../lib/cn'
  *
  * Static, like the technique marks: they label a link, they do not perform.
  */
-export type ContactChannel = 'whatsapp' | 'phone' | 'instagram' | 'website'
+export type ContactChannel = 'whatsapp' | 'phone' | 'instagram' | 'website' | 'linkedin'
 
 type Props = {
   kind: ContactChannel
@@ -67,6 +67,19 @@ const MARKS: Record<ContactChannel, React.ReactNode> = {
       <rect x="11" y="11" width="26" height="26" rx="8" />
       <circle cx="24" cy="24" r="7" />
       <circle cx="31.4" cy="16.6" r="1.5" fill="currentColor" stroke="none" />
+    </>
+  ),
+
+  /* linkedin — a professional record: the card and the figure entered on it.
+     Drawn rather than borrowed for the same reason as the rest of this set —
+     the "in" monogram is the vendor's mark, and the adjacent label already
+     names the channel. Held to three elements, like the camera above: a fourth
+     closes up at label scale and the mark goes to mud. */
+  linkedin: (
+    <>
+      <rect x="11" y="11" width="26" height="26" rx="6" />
+      <circle cx="24" cy="20.8" r="3.4" />
+      <path d="M16.8 32.8a7.2 7.2 0 0 1 14.4 0" />
     </>
   ),
 

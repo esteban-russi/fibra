@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/cn'
 import { useI18n } from '../i18n'
 import type { Lang } from '../i18n'
 import { useLockBodyScroll } from '../lib/hooks'
-import { JOURNAL_ID, scrollToElement } from '../lib/scroll'
 
 const ROUTES = [
   { to: '/artisans', key: 'nav.artisans' },
@@ -14,20 +13,17 @@ const ROUTES = [
   { to: '/about', key: 'nav.about' },
 ] as const
 
-/**
- * Places on the cover rather than routes of their own. The journal is here and
- * not in ROUTES because there is one entry so far, and an index page would be
- * the cover's own masthead printed twice; each entry still has its own route.
- * About used to sit beside it and has since become `/about`.
- */
-const SECTIONS = [{ id: JOURNAL_ID, key: 'nav.journal' }] as const
+/* The journal is deliberately absent from this nav. It is a section of the
+   cover rather than a destination, and the four items above are the four
+   surfaces the site is built on; a fifth pointing back at a block of the page
+   you are already on read as one item too many. The footer still links it, and
+   every entry keeps its own route. */
 
 export function Header() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const [lifted, setLifted] = useState(false)
   const location = useLocation()
-  const navigate = useNavigate()
 
   /**
    * The wordmark goes to the top of the cover, the way a masthead is expected to.
@@ -47,36 +43,6 @@ export function Header() {
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
     },
     [location.pathname],
-  )
-
-  /**
-   * The journal masthead is a place on the cover, not a route of its own.
-   *
-   * It lands on the section at once, with no travel. An eased descent was tried
-   * and abandoned: it crosses most of the page, and the tween yields the moment
-   * the reader touches the wheel — which a trackpad reports on the faintest
-   * gesture, so the descent stalled part-way more often than it arrived.
-   *
-   * From another route it is an ordinary navigation carrying the hash, which
-   * Home reads on arrival. A modified click falls through to the link so the
-   * target still opens in a new tab or copies as a URL.
-   */
-  const toSection = useCallback(
-    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
-      e.preventDefault()
-      setOpen(false)
-      if (location.pathname !== '/') {
-        navigate(`/#${id}`)
-        return
-      }
-      const el = document.getElementById(id)
-      if (!el) return
-      scrollToElement(el, { instant: true })
-      history.replaceState(null, '', `#${id}`)
-      el.focus({ preventScroll: true })
-    },
-    [location.pathname, navigate],
   )
 
   // The cover, every story and every journal entry open on a dark full-bleed
@@ -161,19 +127,6 @@ export function Header() {
               )}
             </NavLink>
           ))}
-          {SECTIONS.map((sec) => (
-            <Link
-              key={sec.id}
-              to={`/#${sec.id}`}
-              onClick={toSection(sec.id)}
-              className={cn(
-                'rounded-sm px-3.5 py-2 text-sm transition-colors',
-                inverted ? 'text-canvas/75 hover:text-canvas' : 'text-clay hover:text-bordeaux',
-              )}
-            >
-              {t(sec.key)}
-            </Link>
-          ))}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -215,18 +168,6 @@ export function Header() {
                   {t(r.key)}
                   <span aria-hidden="true" className="text-ash">→</span>
                 </NavLink>
-              </li>
-            ))}
-            {SECTIONS.map((sec) => (
-              <li key={sec.id}>
-                <Link
-                  to={`/#${sec.id}`}
-                  onClick={toSection(sec.id)}
-                  className="flex items-center justify-between py-4 font-serif text-xl text-ink/80"
-                >
-                  {t(sec.key)}
-                  <span aria-hidden="true" className="text-ash">→</span>
-                </Link>
               </li>
             ))}
           </ul>

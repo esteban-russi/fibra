@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
 import { SectionHeading, ThreadRule } from '../components/ui/primitives'
+import { ContactIcon } from '../components/graphics/ContactIcon'
 import { MEDIA } from '../content/media'
 
 /**
@@ -18,6 +19,22 @@ import { MEDIA } from '../content/media'
  * is set apart from the curatorial voice above it — the same rule the artisan
  * profiles keep, applied to the person who built the site.
  */
+/** Her own professional record, given as she asked it to be listed. Kept
+ *  percent-encoded as LinkedIn issues it: the vanity slug carries an ó and an ñ,
+ *  and the escaped form is the one that resolves everywhere. */
+const LINKEDIN = 'https://www.linkedin.com/in/valeriale%C3%B3nni%C3%B1o/'
+
+/**
+ * Her line, as she gave it. One number serves both channels, the way each
+ * workshop's does in act V.
+ *
+ * No opening message rides in the wa.me link here. `OPENING_MESSAGE` asks a
+ * workshop about its timescale before a commission, which is the wrong thing
+ * to put in a stranger's mouth when the person they are writing to is the one
+ * who built the site.
+ */
+const PHONE = { digits: '447824768215', display: '+44 7824 768215' }
+
 /**
  * The magazine she founded, linked from the sentence that names it.
  *
@@ -111,6 +128,51 @@ export function About() {
           <p>{t('about.weaver.2')}</p>
           <p>{withDmodaLink(t('about.weaver.3'))}</p>
           <p>{t('about.weaver.4')}</p>
+        </div>
+
+        {/* Her channels, not the site's: the one place on FIBRA that points away
+            from the work and at the person answerable for it. It closes her
+            account rather than interrupting it — you read who she is, and then
+            where to find her.
+
+            Her number is set in the mono face at the same weight act V gives a
+            workshop's, because it is the same kind of claim: a real line a real
+            person answers. */}
+        <div className="mt-10 border-t border-line pt-8">
+          <p className="eyebrow">{t('about.weaver.reach')}</p>
+
+          <div className="mt-5 flex flex-wrap items-center gap-x-9 gap-y-5">
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('about.weaver.linkedinLabel')}
+              className="inline-flex items-center gap-3 rounded-sm text-[1.0625rem] text-clay transition-colors hover:text-bordeaux"
+            >
+              <ContactIcon kind="linkedin" size={28} />
+              {t('about.weaver.linkedin')}
+            </a>
+
+            <a
+              href={`https://wa.me/${PHONE.digits}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('about.weaver.whatsappLabel')}
+              className="inline-flex items-center gap-3 rounded-sm text-[1.0625rem] text-clay transition-colors hover:text-bordeaux"
+            >
+              <ContactIcon kind="whatsapp" size={28} />
+              {t('about.weaver.whatsapp')}
+            </a>
+
+            <a
+              href={`tel:+${PHONE.digits}`}
+              aria-label={t('about.weaver.callLabel')}
+              className="inline-flex items-center gap-3 rounded-sm font-mono text-[1.0625rem] tabular-nums text-clay transition-colors hover:text-bordeaux"
+            >
+              <ContactIcon kind="phone" size={28} />
+              {PHONE.display}
+            </a>
+          </div>
         </div>
       </motion.section>
     </div>
