@@ -30,12 +30,12 @@ tokens in `src/index.css` and composed with utility classes.
 src/
   i18n/            LanguageProvider, and the UI string table (ui.ts)
   content/         All editorial content, bilingual — regions, techniques,
-                   artisan stories, the commission guide, the media registry
+                   artisan stories, the opening message, the media registry
   components/
     graphics/      Drawn textile system: weave plates, fibre studies,
                    technique loops, the hilo conductor
     atlas/         The band cartography and the region drawer
-    artisan/       Zoom lens, semiotic hotspots, traceability seal, contact
+    artisan/       The contact panel of Act V
     ui/            Shared primitives
   routes/          One file per surface
 tools/             Verification harnesses — see below
@@ -55,8 +55,11 @@ tools/             Verification harnesses — see below
 4. **Stories** (`/artisans/:slug`) — five acts read as one continuous
    descent, explicitly not tabs.
 
-Plus `/credits`. The Guide to a Conscious Commission is no longer a route of
-its own; it lives inside Act V of each story.
+Plus `/credits`. The Guide to a Conscious Commission has been removed: it was
+never a route of its own, and the accordion that carried it inside Act V is
+gone too. What it was for survives in the opening message that travels in the
+WhatsApp link — it asks the workshop for its timescale before announcing the
+visitor's.
 
 ## Why the graphics are drawn rather than photographed
 
@@ -73,10 +76,13 @@ the pitch of a coil, the ply angle of a two-ply cord. Three reasons:
 3. The photographic registry documents other people in other regions. Attaching
    one of those frames to a named living artisan — as though it were her, or her
    workshop — would be exactly the cultural extractivism the project exists to
-   avoid. Drawn plates stand in until these workshops supply their own images.
+   avoid. The only photographs standing beside a name are the ones that workshop
+   supplied: its portrait, and its own pictures of its pieces in Act IV.
+   Anywhere else, a drawn plate stands in and says that it is standing in.
 
-Real photography is used where it is verified and correctly attributed — nine
-openly-licensed images, listed with author and licence on `/credits` and
+Real photography is used where it is verified and correctly attributed —
+fourteen openly-licensed images, plus the portraits and piece photographs the
+three workshops supplied, all listed with author and licence on `/credits` and
 credited again in place. They are used unmodified apart from resampling; crops
 are done in CSS so no derivative work is created, several being share-alike.
 
@@ -89,8 +95,9 @@ Cundinamarca), Flor Imbacuan (Resguardo de Carlosama, Nariño) and Ada «Adita»
 people attached to documented crafts — were removed rather than kept alongside,
 so nothing on the site is a person who does not exist.
 
-Every profile carries a provenance notice stating the split rather than hiding
-it:
+The split is stated rather than hidden. Each profile makes it on its own act I
+card — origin, material, community, authorship and consent — and the artisan
+index and the region drawer carry the fuller provenance notice:
 
 - **Supplied by the artisan** — her name, community, territory, craft, the
   quotations, who taught her, the fibre reading, the figures and their meanings,

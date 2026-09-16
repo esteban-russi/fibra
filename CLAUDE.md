@@ -88,11 +88,27 @@ A single continuous scroll, explicitly **not** tabs:
   technique route. The progressive-zoom fibre lens and the pattern hotspots were
   removed from this act; their content (`fibre`, `hotspots`, `glossary`) is still
   in `artisans.ts` and still belongs to the artisans.
-- **IV. Las Obras del Taller** — finished pieces in use context, real scale, and
-  estimated making time in hours/weeks (patience as stated value).
-- **V. El Contacto Directo y el Encargo Ético** — direct WhatsApp/call to the
-  workshop plus a "Guía de Encargo Consciente" on discussing lead times,
-  customization, and fair pay.
+- **IV. Las Obras del Taller** — a grid of the workshop's own photographs of
+  its pieces, and nothing else. The name of a piece appears over the image on
+  hover (and stays visible on a touch screen); there is no caption, no record
+  and no price — nor the line that used to explain the absence of one, which
+  was removed too: the act says it by having nothing to say it about, and the
+  footer still carries the standing commitment. The full records the artisans
+  gave — technique, materials, making time, real scale, use context — stay in
+  `artisans.ts` as `works`, without a surface. `gallery[].named` marks whether
+  the name shown is the workshop's own or our description of what is in the
+  frame; every `false` is a piece still waiting for its workshop to name it.
+  The piece photographs are credited to each workshop ("Cedida por el taller"),
+  not to FIBRA, and only their webp deliveries are versioned — the originals
+  named in each record's `file` are not in the repository.
+- **V. El Contacto Directo y el Encargo Ético** — the workshop's line, with
+  direct WhatsApp/call beneath it and the handles she asked to be listed. The
+  act prints no title of its own (`Act titled={false}`): its content already
+  opens with "Hable con el taller", and the act name identifies it in the rail.
+  The "Guía de Encargo Consciente" accordion and the on-page preview of the
+  pre-written message were both removed; the message itself still travels in
+  the wa.me link (`content/message.ts`), editable before it is sent. The hours
+  and languages she gave stay in `artisans.ts` without a surface.
 
 ## Sensory / semiotic modules
 
@@ -108,6 +124,11 @@ into the profile's summary card:
   geographic origin, raw material and community affiliation as card rows,
   authorship and informed consent as its footnote. Making time stays with each
   piece in act IV.
+
+The "De dónde viene este material" provenance notice no longer runs inside a
+profile — the act I card already states the same split for the person you are
+reading. `ProvenanceNotice` still opens the artisan index and the region drawer,
+where it covers material the reader has not been given a card for.
 
 Both removals are deliberate, not oversights. The content was kept because it
 was supplied and validated by the artisans; reinstating either module is a

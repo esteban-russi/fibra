@@ -14,7 +14,7 @@ import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
-import { ProvenanceNotice, Prose } from '../components/ui/primitives'
+import { Prose } from '../components/ui/primitives'
 
 /**
  * The story: five acts read as one continuous descent.
@@ -129,10 +129,6 @@ function Story({ artisan }: { artisan: Artisan }) {
           <ActRail active={active} accent={accent} />
 
           <div className="min-w-0 pb-8">
-            <div className="pt-12 sm:pt-16">
-              <ProvenanceNotice notice={artisan.notice} />
-            </div>
-
             {/* =============== ACT II — territory and memory =============== */}
             <Act id="act-2" index={1} accent={accent}>
               <motion.div {...rise} className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
@@ -213,58 +209,53 @@ function Story({ artisan }: { artisan: Artisan }) {
             </Act>
 
             {/* =============== ACT IV — works of the workshop =============== */}
+            {/*
+              The pieces themselves, photographed by the workshops, in a plain
+              grid. No record, no metadata, no caption standing under the image
+              competing with it — the name arrives on hover, over the photograph
+              it belongs to, and leaves again. What a garment is is something
+              you see; the times and the scales the artisans gave are still in
+              `artisans.ts`, and would need their own surface to come back.
+
+              The name is in the DOM whether or not it is revealed, so a screen
+              reader reads it with the image, and on a touch screen — where
+              there is no hover to give — it simply stays visible.
+            */}
             <Act id="act-4" index={3} accent={accent}>
-              <motion.ul {...rise} className="space-y-10">
-                {artisan.works.map((w, i) => (
-                  <li
-                    key={w.id}
-                    className="grid gap-6 border-t border-line pt-10 first:border-0 first:pt-0 sm:grid-cols-[15rem_1fr] sm:gap-10"
-                  >
-                    <div className="overflow-hidden rounded-sm border border-line">
-                      <div className="aspect-square">
-                        <WeavePlate kind={w.plate} palette={artisan.patternPalette} seed={`${artisan.slug}-${w.id}`} />
-                      </div>
-                    </div>
-
-                    <div className="min-w-0">
-                      <p className="font-mono text-xs tabular-nums text-muted">{String(i + 1).padStart(2, '0')}</p>
-                      <h3 className="mt-1.5 font-serif text-2xl leading-snug text-bordeaux">{pick(w.title)}</h3>
-                      <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-ink/78">{pick(w.context)}</p>
-
-                      <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {[
-                          { k: t('works.technique'), v: pick(w.technique) },
-                          { k: t('works.materials'), v: pick(w.materials) },
-                          { k: t('works.time'), v: pick(w.time), emphasis: true },
-                          { k: t('works.scale'), v: pick(w.scale) },
-                        ].map((row) => (
-                          <div key={row.k}>
-                            <dt className="text-[0.6875rem] uppercase tracking-[0.12em] text-muted">{row.k}</dt>
-                            <dd
-                              className={cn(
-                                'mt-1 text-sm leading-snug',
-                                row.emphasis ? 'font-serif text-base italic text-bordeaux' : 'text-ink/80',
-                              )}
-                            >
-                              {row.v}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </div>
-                  </li>
-                ))}
+              <motion.ul {...rise} className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                {artisan.gallery.map((piece) => {
+                  const photo = MEDIA[piece.image]
+                  if (!photo) return null
+                  return (
+                    <li key={piece.id}>
+                      <figure className="group relative overflow-hidden rounded-sm border border-line bg-surface/40">
+                        <img
+                          src={photo.src}
+                          alt={pick(photo.alt)}
+                          width={photo.width}
+                          height={photo.height}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[3/4] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
+                        />
+                        <figcaption className="pointer-events-none absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-coarse:opacity-100 sm:p-5">
+                          <span aria-hidden="true" className="absolute inset-0 bg-ink/30" />
+                          <span aria-hidden="true" className="scrim-bottom absolute inset-x-0 bottom-0 h-3/5" />
+                          <span className="relative text-pretty font-serif text-lg leading-tight text-canvas sm:text-xl">
+                            {pick(piece.name)}
+                          </span>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  )
+                })}
               </motion.ul>
-
-              <p className="mt-12 max-w-2xl border-l-2 border-ash pl-5 text-pretty font-serif text-lg italic leading-relaxed text-clay">
-                {t('works.note')}
-              </p>
             </Act>
 
             {/* =============== ACT V — direct contact =============== */}
-            <Act id="act-5" index={4} accent={accent}>
+            <Act id="act-5" index={4} accent={accent} titled={false}>
               <motion.div {...rise}>
-                <DirectContact artisan={artisan} />
+                <DirectContact artisan={artisan} headingId="act-5-title" />
               </motion.div>
             </Act>
           </div>
@@ -379,31 +370,48 @@ function Portrait({ artisan }: { artisan: Artisan }) {
   )
 }
 
+/**
+ * One act: the rule, the numeral, and the act's own title.
+ *
+ * `titled={false}` suppresses that title for an act whose content already
+ * opens with a heading of its own — act V says "Hable con el taller" and does
+ * not also need to be announced as "El Contacto Directo y el Encargo Ético"
+ * directly above it. The act name still identifies it in the rail. The section
+ * keeps pointing at `<id>-title`, so whichever element carries that id is the
+ * one that names the section.
+ */
 function Act({
   id,
   index,
   accent,
+  titled = true,
   children,
 }: {
   id: string
   index: number
   accent: string
+  titled?: boolean
   children: React.ReactNode
 }) {
   const { t } = useI18n()
   const act = ACTS[index]
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-[calc(var(--header-h)+2rem)] pt-20 sm:pt-28">
-      <header className="mb-10">
+      <header className={titled ? 'mb-10' : 'mb-7'}>
         <p className="flex items-center gap-3">
           <span aria-hidden="true" className="h-px w-8" style={{ background: accent }} />
           <span className="text-[0.6875rem] uppercase tracking-[0.2em] text-muted">
             {t('artisan.act')} {t(act.roman)}
           </span>
         </p>
-        <h2 id={`${id}-title`} className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]">
-          {t(act.title)}
-        </h2>
+        {titled && (
+          <h2
+            id={`${id}-title`}
+            className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]"
+          >
+            {t(act.title)}
+          </h2>
+        )}
       </header>
       {children}
     </section>

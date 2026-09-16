@@ -139,15 +139,6 @@ const en = {
   'techniquevideo.lede':
     'The gestures this workshop performs, each one photographed at the work. Follow any of them to the technique itself.',
 
-  // --- Act IV ---------------------------------------------------------------
-  'works.technique': 'Technique',
-  'works.materials': 'Materials',
-  'works.time': 'Time invested',
-  'works.scale': 'Real scale',
-  'works.context': 'In use',
-  'works.note':
-    'These are not listings. There is no price on this page, because a price agreed in advance by a platform is a price the maker did not set.',
-
   // --- Act V ----------------------------------------------------------------
   'contact.eyebrow': 'Act V',
   'contact.title': 'Speak to the workshop',
@@ -155,21 +146,13 @@ const en = {
     'From here the conversation is yours. FIBRA does not sit in the middle of it, does not read it, and takes nothing from what you agree.',
   'contact.whatsapp': 'Message on WhatsApp',
   'contact.call': 'Call the workshop',
-  'contact.prefilled': 'Your message will open pre-written, and you can change every word of it:',
-  'contact.prefilledPending':
-    'When the workshop’s number is published, your message will open pre-written — and you will be able to change every word of it:',
-  'contact.hours': 'Best hours to write',
-  'contact.language': 'Languages spoken',
+  'contact.line': 'The workshop’s line',
+  'contact.channels': 'Also visit',
   'contact.instagram': 'Instagram',
   'contact.website': 'Website',
-  'contact.nocommission': 'FIBRA charges no commission on this conversation.',
   'contact.withheld': 'Number not published yet',
   'contact.withheld.why':
     'Publishing a workshop’s telephone is a separate consent from publishing a story, and this one has not been given. The buttons above are inactive rather than pointed at a placeholder that would not reach her.',
-
-  'guide.title': 'Guide to a Conscious Commission',
-  'guide.lede':
-    'Most friction between a workshop and a first-time client comes from one place: industrial expectations applied to a handmade object. These are the things worth knowing before you write.',
 
   // --- Credits / provenance -------------------------------------------------
   'credits.eyebrow': 'Provenance',
@@ -344,35 +327,19 @@ const es: Record<UIKey, string> = {
   'techniquevideo.lede':
     'Los gestos que se practican en este taller, cada uno fotografiado en el trabajo. Cualquiera de ellos lleva a la técnica misma.',
 
-  'works.technique': 'Técnica',
-  'works.materials': 'Materiales',
-  'works.time': 'Tiempo invertido',
-  'works.scale': 'Escala real',
-  'works.context': 'En uso',
-  'works.note':
-    'Estas no son fichas de venta. En esta página no hay precio, porque un precio acordado de antemano por una plataforma es un precio que quien hace la pieza no fijó.',
-
   'contact.eyebrow': 'Acto V',
   'contact.title': 'Hable con el taller',
   'contact.lede':
     'De aquí en adelante la conversación es suya. FIBRA no se sitúa en medio de ella, no la lee, y no toma nada de lo que ustedes acuerden.',
   'contact.whatsapp': 'Escribir por WhatsApp',
   'contact.call': 'Llamar al taller',
-  'contact.prefilled': 'Su mensaje se abrirá ya redactado, y puede cambiar cada palabra:',
-  'contact.prefilledPending':
-    'Cuando el número del taller se publique, su mensaje se abrirá ya redactado — y podrá cambiar cada palabra:',
-  'contact.hours': 'Mejores horas para escribir',
-  'contact.language': 'Idiomas que se hablan',
+  'contact.line': 'La línea del taller',
+  'contact.channels': 'También visita',
   'contact.instagram': 'Instagram',
   'contact.website': 'Sitio web',
-  'contact.nocommission': 'FIBRA no cobra comisión alguna sobre esta conversación.',
   'contact.withheld': 'Número aún no publicado',
   'contact.withheld.why':
     'Publicar el teléfono de un taller es un consentimiento distinto del de publicar una historia, y este no se ha dado. Los botones de arriba están inactivos en lugar de apuntar a un número de relleno que no llegaría a ella.',
-
-  'guide.title': 'Guía de Encargo Consciente',
-  'guide.lede':
-    'Casi toda la fricción entre un taller y un cliente primerizo viene del mismo sitio: expectativas industriales aplicadas a un objeto hecho a mano. Esto es lo que conviene saber antes de escribir.',
 
   'credits.eyebrow': 'Procedencia',
   'credits.title': 'Créditos y procedencia del contenido',

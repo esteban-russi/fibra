@@ -359,6 +359,203 @@ export const MEDIA: Record<string, Credit> = {
     },
   },
 
+  /* --- The workshops' own pieces, act IV ------------------------------------
+     Supplied by each taller with its story. Credited to the workshop rather
+     than to FIBRA: we did not take these, and the pieces in them are theirs. */
+
+  florChalecoPachamama: {
+    id: 'florChalecoPachamama',
+    src: '/media/artisans/flor_imbacuan/chaleco-pachamama.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Pachamama.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long sleeveless wrap vest in cream, banded with wine red and black stripes and finished in fringes, tied at the waist on a dress form. Around it, a courtyard workshop: small looms, a basket of raw fleece, skeins of yellow and teal yarn and two clay pots.',
+      es: 'Un chaleco largo sin mangas, crudo, con franjas vino tinto y negras y remate en flecos, amarrado a la cintura sobre un maniquí. Alrededor, un taller de patio: telares pequeños, un canasto de vellón sin hilar, madejas de lana amarilla y verde azulada y dos ollas de barro.',
+    },
+    caption: {
+      en: 'Chaleco Pachamama, in the courtyard of the Hajsú workshop.',
+      es: 'Chaleco Pachamama, en el patio del taller Hajsú.',
+    },
+  },
+  florChalecoFuego: {
+    id: 'florChalecoFuego',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-fuego.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Vestido Fuego.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long open vest-dress on a dress form, banded in yellow, orange, brown and red, with woven diamond figures down the front panel, a brown sash at the waist and fringes at the hem. Behind it, a courtyard with painted walls and hanging looms.',
+      es: 'Un chaleco vestido largo y abierto sobre un maniquí, en franjas amarillas, naranjas, cafés y rojas, con figuras de rombos tejidas en el panel delantero, una faja café a la cintura y flecos en el ruedo. Detrás, un patio de muros pintados y telares colgados.',
+    },
+    caption: {
+      en: 'Chaleco Vestido Fuego.',
+      es: 'Chaleco Vestido Fuego.',
+    },
+  },
+  florChalecoNocheFertil: {
+    id: 'florChalecoNocheFertil',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-noche-fertil.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Vestido Noche Fértil.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long black vest-dress on a dress form, striped in magenta, red and yellow with woven diamond figures, a black sash at the waist and fringes at the hem. It stands outside a shopfront hung with hats.',
+      es: 'Un chaleco vestido largo y negro sobre un maniquí, con rayas magenta, rojas y amarillas y figuras de rombos tejidas, una faja negra a la cintura y flecos en el ruedo. Está a la entrada de un local donde cuelgan sombreros.',
+    },
+    caption: {
+      en: 'Chaleco Vestido Noche Fértil.',
+      es: 'Chaleco Vestido Noche Fértil.',
+    },
+  },
+  florChalecoRojo: {
+    id: 'florChalecoRojo',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-rojo.webp',
+    width: 900,
+    height: 1125,
+    file: 'flor_imbacuan/SaveClip.App_749440507.jpg',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A model against a dark studio backdrop, wearing a floor-length wrap garment in deep red with black edging, a sash at the waist and long fringes at the hem and the ends of the belt.',
+      es: 'Una modelo sobre un fondo oscuro de estudio, con una prenda envolvente hasta el piso en rojo profundo, con ribete negro, faja a la cintura y flecos largos en el ruedo y en las puntas del cinturón.',
+    },
+    caption: {
+      en: 'A vest-dress in red, photographed in studio for the workshop.',
+      es: 'Un chaleco vestido en rojo, fotografiado en estudio para el taller.',
+    },
+  },
+
+  luzRuanaCruda: {
+    id: 'luzRuanaCruda',
+    src: '/media/artisans/luz_rodriguez/ruana-lana-cruda.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_654017717.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A woman walking a runway in a thick undyed wool poncho with a V neck, a fringed hem and three dark embroidered marks across the front. Behind her, a mountain ridge, pine trees and white event tents.',
+      es: 'Una mujer camina por una pasarela con un poncho grueso de lana cruda, con cuello en V, ruedo en flecos y tres manchas oscuras bordadas en el frente. Detrás, una cuchilla de montaña, pinos y carpas blancas de evento.',
+    },
+    caption: {
+      en: 'A poncho in undyed wool on the runway, Tejilarte.',
+      es: 'Un poncho en lana cruda en pasarela, Tejilarte.',
+    },
+  },
+  luzPonchoCamel: {
+    id: 'luzPonchoCamel',
+    src: '/media/artisans/luz_rodriguez/poncho-lana-camel.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_660686941.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A woman walking a runway in a camel-coloured wool poncho with wide square sleeves, worn over jeans with a long necklace of coloured felt balls. Pines and a cloudy sky behind her.',
+      es: 'Una mujer camina por una pasarela con un poncho de lana color camel de mangas anchas y cuadradas, sobre jeans y con un collar largo de bolas de fieltro de colores. Detrás, pinos y un cielo nublado.',
+    },
+    caption: {
+      en: 'A poncho in camel wool on the runway, Tejilarte.',
+      es: 'Un poncho en lana color camel en pasarela, Tejilarte.',
+    },
+  },
+  luzRuanaInfantil: {
+    id: 'luzRuanaInfantil',
+    src: '/media/artisans/luz_rodriguez/ruana-infantil-verdes.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_669731354.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A girl on a runway holding out a child\'s ruana halved lengthwise into lime green and olive green, the two halves joined down the middle by a thick plaited edge.',
+      es: 'Una niña en pasarela extiende una ruana infantil partida a lo largo en verde limón y verde oliva, con las dos mitades unidas al centro por una trenza gruesa.',
+    },
+    caption: {
+      en: 'A child\'s ruana in two greens, joined by a plaited edge.',
+      es: 'Una ruana infantil en dos verdes, unida por una trenza.',
+    },
+  },
+
+  adaVestidoCalado: {
+    id: 'adaVestidoCalado',
+    src: '/media/artisans/ada_morgante/vestido-calado.webp',
+    width: 800,
+    height: 1069,
+    file: 'ada_morgante/505736fe.jpg',
+    author: 'Ada Morgante',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long-sleeved dress in openwork knit on a dress form, in bands running from deep red through pink to cream. Behind it, the workshop: a painting of sunflowers, cones of yarn and a work bench.',
+      es: 'Un vestido de manga larga en tejido calado sobre un maniquí, en franjas que van del rojo profundo al rosado y al crudo. Detrás, el taller: un cuadro de girasoles, conos de hilo y un mesón de trabajo.',
+    },
+    caption: {
+      en: 'A dress in openwork knit, in her Chapinero workshop.',
+      es: 'Un vestido en tejido calado, en su taller de Chapinero.',
+    },
+  },
+  adaVestidoAmarillo: {
+    id: 'adaVestidoAmarillo',
+    src: '/media/artisans/ada_morgante/vestido-amarillo.webp',
+    width: 800,
+    height: 1423,
+    file: 'ada_morgante/fe0b6e75.jpg',
+    author: 'Ada Morgante',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A pale yellow knitted dress on a dress form, sleeveless with a deep V neck, a ribbed waist and a full skirt that falls in flutes. The workshop is behind it, with a Botero poster and racks of yarn.',
+      es: 'Un vestido tejido en amarillo pálido sobre un maniquí, sin mangas, con escote en V profundo, cintura acanalada y falda amplia que cae en godets. Detrás está el taller, con un afiche de Botero y estantes de hilos.',
+    },
+    caption: {
+      en: 'A knitted dress in pale yellow, in her Chapinero workshop.',
+      es: 'Un vestido tejido en amarillo pálido, en su taller de Chapinero.',
+    },
+  },
+
+  luzMariaRetrato: {
+    id: 'luzMariaRetrato',
+    src: '/media/artisans/luz_rodriguez/profile.webp',
+    width: 413,
+    height: 512,
+    file: 'luz_rodriguez/profile.webp',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'Black and white studio portrait of a woman with long dark hair, looking straight at the camera. She wears a striped collared shirt under a dark jumper, with a heavy dark wool ruana drawn across both shoulders. The background is plain and pale.',
+      es: 'Retrato de estudio en blanco y negro de una mujer de pelo largo y oscuro, que mira de frente a la cámara. Lleva una camisa de cuello a rayas bajo un suéter oscuro, y una ruana gruesa de lana oscura cruzada sobre los dos hombros. El fondo es liso y claro.',
+    },
+    caption: {
+      en: 'Luz María Rodríguez Rodríguez, wearing a ruana in virgin wool.',
+      es: 'Luz María Rodríguez Rodríguez, con una ruana en lana virgen.',
+    },
+  },
   florImbacuanRetrato: {
     id: 'florImbacuanRetrato',
     src: '/media/artisans/flor_imbacuan/profile.webp',
