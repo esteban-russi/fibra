@@ -33,7 +33,7 @@ Four top-level surfaces, navigated non-linearly:
    A continuous "hilo conductor" thread follows vertical scroll and *frays*
    (`deshilachado`) at mid-page into multiple vector strands, branching to the
    two exploration routes below.
-2. **Atlas Textil de Colombia** — the territory route. Interactive map.
+2. **Mapa Textil de Colombia** — the territory route. Interactive map.
 3. **Técnicas** — the transversal route, organized by the *act of
    making*: urdir, anudar, tinturar, trenzar, hilar. A grid of **photographs**
    of the work, one per gesture (`technique.photo` into `MEDIA`). The drawn
@@ -80,7 +80,12 @@ A single continuous scroll, explicitly **not** tabs:
   Traceability Seal panel: the same claims, stated once. The first screen is
   kept free of repetition — region, craft and community each appear exactly
   once. The pull quote sits **between acts I and II**, on its own ground, not
-  over the hero.
+  over the hero. The ground of the act is a macro photograph of real cloth
+  (`BACKDROPS` in `media.ts`, picked per slug by `backdropFor`), not a drawn
+  plate. It is texture and never testimony: each frame is registered with its
+  photographer and states that it documents no weaver and no place, which is the
+  only condition on which a photograph may sit behind a named person. The scrim
+  over it is deliberately light enough to read the interlacement.
 - **II. El Territorio y la Memoria** — intergenerational transmission: who taught
   them, what the craft means in their setting.
 - **III. La Materia y la Técnica** — "El ritmo de las manos": the techniques this

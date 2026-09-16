@@ -12,6 +12,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
 export function SectionHeading({
   eyebrow,
   title,
+  standfirst,
   lede,
   align = 'left',
   className,
@@ -19,6 +20,12 @@ export function SectionHeading({
 }: {
   eyebrow?: ReactNode
   title: ReactNode
+  /**
+   * One line between the title and the lede, carrying the claim the section
+   * makes. Set in the serif at display size but never in italic: italic serif
+   * is the artisan's voice throughout the site, and this line is curatorial.
+   */
+  standfirst?: ReactNode
   lede?: ReactNode
   align?: 'left' | 'center'
   className?: string
@@ -30,6 +37,11 @@ export function SectionHeading({
       <h2 id={id} className="text-balance text-3xl leading-[1.08] font-medium sm:text-4xl lg:text-[2.9rem]">
         {title}
       </h2>
+      {standfirst && (
+        <p className="mt-5 max-w-2xl text-balance font-serif text-xl leading-snug text-bordeaux sm:text-[1.375rem]">
+          {standfirst}
+        </p>
+      )}
       {lede && <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-clay sm:text-lg">{lede}</p>}
     </header>
   )
