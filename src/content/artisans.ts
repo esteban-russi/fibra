@@ -135,11 +135,17 @@ export type Artisan = {
     display: Localized
     /** True only once the artisan has authorised publication of her number. */
     published: boolean
+    /**
+     * When she prefers to be written to, and in which languages. Both were
+     * given by the artisans and both stay here, although Act V no longer shows
+     * them: the final screen was cut back to the line itself, and these are
+     * theirs to keep in the record rather than ours to discard.
+     */
     hours: Localized
+    languages: Localized
     /** Public handles the artisan asked to be listed. Absent means none given —
      *  never a guess, and never a profile found by searching for her name. */
     links?: { instagram?: string; website?: string }
-    languages: Localized
   }
 }
 

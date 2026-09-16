@@ -30,12 +30,12 @@ tokens in `src/index.css` and composed with utility classes.
 src/
   i18n/            LanguageProvider, and the UI string table (ui.ts)
   content/         All editorial content, bilingual — regions, techniques,
-                   artisan stories, the commission guide, the media registry
+                   artisan stories, the opening message, the media registry
   components/
     graphics/      Drawn textile system: weave plates, fibre studies,
                    technique loops, the hilo conductor
     atlas/         The band cartography and the region drawer
-    artisan/       Zoom lens, semiotic hotspots, traceability seal, contact
+    artisan/       The contact panel of Act V
     ui/            Shared primitives
   routes/          One file per surface
 tools/             Verification harnesses — see below
@@ -55,8 +55,11 @@ tools/             Verification harnesses — see below
 4. **Stories** (`/artisans/:slug`) — five acts read as one continuous
    descent, explicitly not tabs.
 
-Plus `/credits`. The Guide to a Conscious Commission is no longer a route of
-its own; it lives inside Act V of each story.
+Plus `/credits`. The Guide to a Conscious Commission has been removed: it was
+never a route of its own, and the accordion that carried it inside Act V is
+gone too. What it was for survives in the opening message that travels in the
+WhatsApp link — it asks the workshop for its timescale before announcing the
+visitor's.
 
 ## Why the graphics are drawn rather than photographed
 
@@ -89,8 +92,9 @@ Cundinamarca), Flor Imbacuan (Resguardo de Carlosama, Nariño) and Ada «Adita»
 people attached to documented crafts — were removed rather than kept alongside,
 so nothing on the site is a person who does not exist.
 
-Every profile carries a provenance notice stating the split rather than hiding
-it:
+The split is stated rather than hidden. Each profile makes it on its own act I
+card — origin, material, community, authorship and consent — and the artisan
+index and the region drawer carry the fuller provenance notice:
 
 - **Supplied by the artisan** — her name, community, territory, craft, the
   quotations, who taught her, the fibre reading, the figures and their meanings,

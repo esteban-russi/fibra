@@ -88,11 +88,15 @@ A single continuous scroll, explicitly **not** tabs:
   technique route. The progressive-zoom fibre lens and the pattern hotspots were
   removed from this act; their content (`fibre`, `hotspots`, `glossary`) is still
   in `artisans.ts` and still belongs to the artisans.
-- **IV. Las Obras del Taller** — finished pieces in use context, real scale, and
-  estimated making time in hours/weeks (patience as stated value).
-- **V. El Contacto Directo y el Encargo Ético** — direct WhatsApp/call to the
-  workshop plus a "Guía de Encargo Consciente" on discussing lead times,
-  customization, and fair pay.
+- **IV. Las Obras del Taller** — a gallery: one plate per piece at a shared
+  proportion, captioned with real scale and making time (patience as stated
+  value), then its use context. Looked at first, read second. Still no price.
+- **V. El Contacto Directo y el Encargo Ético** — the workshop's line, stated
+  large, with direct WhatsApp/call beneath it and the handles she asked to be
+  listed. The "Guía de Encargo Consciente" accordion and the on-page preview of
+  the pre-written message were both removed; the message itself still travels
+  in the wa.me link (`content/message.ts`), editable before it is sent. The
+  hours and languages she gave stay in `artisans.ts` without a surface.
 
 ## Sensory / semiotic modules
 
@@ -108,6 +112,11 @@ into the profile's summary card:
   geographic origin, raw material and community affiliation as card rows,
   authorship and informed consent as its footnote. Making time stays with each
   piece in act IV.
+
+The "De dónde viene este material" provenance notice no longer runs inside a
+profile — the act I card already states the same split for the person you are
+reading. `ProvenanceNotice` still opens the artisan index and the region drawer,
+where it covers material the reader has not been given a card for.
 
 Both removals are deliberate, not oversights. The content was kept because it
 was supplied and validated by the artisans; reinstating either module is a

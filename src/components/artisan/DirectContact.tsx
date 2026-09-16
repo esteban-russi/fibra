@@ -1,19 +1,22 @@
-import { useState } from 'react'
-import { AtSign, ChevronDown, Globe, MessageCircle, Phone } from 'lucide-react'
-import { cn } from '../../lib/cn'
 import { useI18n } from '../../i18n'
 import { Badge } from '../ui/primitives'
-import { GUIDE, OPENING_MESSAGE } from '../../content/guide'
+import { ContactIcon } from '../graphics/ContactIcon'
+import { OPENING_MESSAGE } from '../../content/message'
 import type { Artisan } from '../../content/artisans'
 
 /**
- * Act V — direct contact, and the Guide to a Conscious Commission.
+ * Act V — direct contact.
  *
  * The conversion model is the whole product decision: there is no cart, no
  * checkout and no commission. This module hands the visitor to the workshop
- * and gets out of the way. The pre-written opening is shown in full before it
- * is sent, because a message that goes out in someone's name should be one
- * they have actually read.
+ * and gets out of the way, so it carries one thing — how to reach her — and
+ * gives it the whole width it needs. The Guía de Encargo Consciente and the
+ * preview of the pre-written message have both been removed; the message still
+ * travels in the wa.me link, where it can be read and edited before it is sent.
+ *
+ * The number is the loudest thing on the panel. Everything else on the page
+ * has been leading here, and a reader who arrives with a phone in hand should
+ * find the line before they find any instructions about it.
  *
  * Publishing a workshop's telephone number is a separate consent from
  * publishing her story. While `contact.published` is false the buttons are
@@ -23,167 +26,137 @@ import type { Artisan } from '../../content/artisans'
  * where the artisan gave one, never one found by searching for her name.
  */
 export function DirectContact({ artisan }: { artisan: Artisan }) {
-  const { t, pick, lang } = useI18n()
-  const [openPoint, setOpenPoint] = useState<string | null>(GUIDE[0].id)
+  const { t, pick } = useI18n()
 
   const message = pick(OPENING_MESSAGE)
   const live = artisan.contact.published && artisan.contact.whatsapp !== ''
   const waHref = `https://wa.me/${artisan.contact.whatsapp}?text=${encodeURIComponent(message)}`
   const telHref = `tel:+${artisan.contact.whatsapp}`
+  const links = artisan.contact.links
+  const elsewhere = Boolean(links?.instagram || links?.website)
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-      {/* --- the contact itself --- */}
-      <div>
-        <h3 className="font-serif text-3xl leading-tight text-bordeaux sm:text-4xl">{t('contact.title')}</h3>
-        <p className="mt-5 max-w-lg text-pretty leading-relaxed text-clay">{t('contact.lede')}</p>
+    <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-20">
+      {/* --- what the conversation is, said once --- */}
+      <div className="lg:pt-3">
+        <h3 className="text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-4xl lg:text-[2.75rem]">
+          {t('contact.title')}
+        </h3>
+        <p className="mt-6 max-w-lg text-pretty text-[1.0625rem] leading-relaxed text-clay sm:text-lg">
+          {t('contact.lede')}
+        </p>
+      </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      {/* --- the line itself --- */}
+      <div className="rounded-sm border border-line bg-surface/50 p-6 sm:p-8">
+        <p className="eyebrow">{t('contact.line')}</p>
+        <p
+          className={`mt-3 font-mono text-[1.75rem] leading-none tabular-nums sm:text-[2rem] ${
+            live ? 'text-bordeaux' : 'text-clay'
+          }`}
+        >
+          {pick(artisan.contact.display)}
+        </p>
+
+        <div className="mt-8 flex flex-col gap-3">
           {live ? (
             <>
               <a
                 href={waHref}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-bordeaux px-6 py-4 text-sm font-medium text-canvas transition-colors hover:bg-clay"
+                className="inline-flex items-center justify-center gap-3 rounded-sm bg-bordeaux px-6 py-4 text-sm font-medium text-canvas transition-colors hover:bg-clay"
               >
-                <MessageCircle size={17} aria-hidden="true" />
+                <ContactIcon kind="whatsapp" size={24} />
                 {t('contact.whatsapp')}
               </a>
               <a
                 href={telHref}
-                className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-line px-6 py-4 text-sm font-medium text-bordeaux transition-colors hover:border-ash hover:bg-surface/60"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-line bg-canvas px-6 py-4 text-sm font-medium text-bordeaux transition-colors hover:border-ash hover:bg-surface"
               >
-                <Phone size={16} aria-hidden="true" />
+                <ContactIcon kind="phone" size={24} />
                 {t('contact.call')}
-                <span className="font-mono text-xs text-muted">{pick(artisan.contact.display)}</span>
               </a>
             </>
           ) : (
             <>
-              <span className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-dashed border-ash bg-surface/50 px-6 py-4 text-sm font-medium text-clay">
-                <MessageCircle size={17} aria-hidden="true" />
+              <span className="inline-flex items-center justify-center gap-3 rounded-sm border border-dashed border-ash bg-surface/60 px-6 py-4 text-sm font-medium text-clay">
+                <ContactIcon kind="whatsapp" size={24} />
                 {t('contact.whatsapp')}
               </span>
-              <span className="inline-flex items-center justify-center gap-2.5 rounded-sm border border-dashed border-line px-6 py-4 text-sm font-medium text-clay">
-                <Phone size={16} aria-hidden="true" />
+              <span className="inline-flex items-center justify-center gap-3 rounded-sm border border-dashed border-line px-6 py-4 text-sm font-medium text-clay">
+                <ContactIcon kind="phone" size={24} />
                 {t('contact.call')}
-                <span className="font-mono text-xs text-muted">{pick(artisan.contact.display)}</span>
               </span>
             </>
           )}
         </div>
 
         {!live && (
-          <div className="mt-4">
+          <div className="mt-6">
             <Badge tone="warn">{t('contact.withheld')}</Badge>
-            <p className="mt-3 max-w-lg text-pretty text-[0.8125rem] leading-relaxed text-clay">
-              {t('contact.withheld.why')}
-            </p>
+            <p className="mt-3 text-pretty text-[0.8125rem] leading-relaxed text-clay">{t('contact.withheld.why')}</p>
           </div>
         )}
 
-        <div className="mt-8 rounded-sm border border-line bg-surface/45 p-5">
-          <p className="text-[0.8125rem] leading-relaxed text-clay">
-            {live ? t('contact.prefilled') : t('contact.prefilledPending')}
-          </p>
-          <p
-            lang={lang}
-            className="mt-3 border-l-2 border-ash pl-4 text-pretty text-sm italic leading-relaxed text-ink/80"
-          >
-            {message}
-          </p>
-        </div>
-
-        <dl className="mt-8 grid gap-5 border-t border-line pt-6 sm:grid-cols-2">
-          <div>
-            <dt className="eyebrow mb-1.5">{t('contact.hours')}</dt>
-            <dd className="text-sm text-ink/80">{pick(artisan.contact.hours)}</dd>
+        {/* --- the handles she asked to be listed, and only those --- */}
+        {elsewhere && (
+          <div className="mt-9 border-t border-line pt-7">
+            <p className="eyebrow mb-4">{t('contact.channels')}</p>
+            <ul className="flex flex-wrap gap-3">
+              {links?.instagram && (
+                <li>
+                  <ChannelLink
+                    href={links.instagram}
+                    kind="instagram"
+                    label={t('contact.instagram')}
+                    value={handle(links.instagram)}
+                  />
+                </li>
+              )}
+              {links?.website && (
+                <li>
+                  <ChannelLink
+                    href={links.website}
+                    kind="website"
+                    label={t('contact.website')}
+                    value={host(links.website)}
+                  />
+                </li>
+              )}
+            </ul>
           </div>
-          <div>
-            <dt className="eyebrow mb-1.5">{t('contact.language')}</dt>
-            <dd className="text-sm text-ink/80">{pick(artisan.contact.languages)}</dd>
-          </div>
-          {artisan.contact.links?.instagram && (
-            <div>
-              <dt className="eyebrow mb-1.5">{t('contact.instagram')}</dt>
-              <dd>
-                <a
-                  href={artisan.contact.links.instagram}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 text-sm text-bordeaux underline decoration-line underline-offset-2 hover:decoration-ash"
-                >
-                  <AtSign size={15} aria-hidden="true" />
-                  {handle(artisan.contact.links.instagram)}
-                </a>
-              </dd>
-            </div>
-          )}
-          {artisan.contact.links?.website && (
-            <div>
-              <dt className="eyebrow mb-1.5">{t('contact.website')}</dt>
-              <dd>
-                <a
-                  href={artisan.contact.links.website}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 break-all text-sm text-bordeaux underline decoration-line underline-offset-2 hover:decoration-ash"
-                >
-                  <Globe size={15} aria-hidden="true" className="shrink-0" />
-                  {host(artisan.contact.links.website)}
-                </a>
-              </dd>
-            </div>
-          )}
-        </dl>
-
-        <p className="mt-6 font-serif text-lg italic leading-snug text-bordeaux">{t('contact.nocommission')}</p>
-      </div>
-
-      {/* --- the guide --- */}
-      <div>
-        <h3 className="font-serif text-2xl leading-tight text-bordeaux sm:text-[1.75rem]">{t('guide.title')}</h3>
-        <p className="mt-4 max-w-lg text-pretty text-[0.9375rem] leading-relaxed text-clay">{t('guide.lede')}</p>
-
-        <ul className="mt-7 divide-y divide-line border-y border-line">
-          {GUIDE.map((point, i) => {
-            const open = openPoint === point.id
-            return (
-              <li key={point.id}>
-                <h4>
-                  <button
-                    type="button"
-                    onClick={() => setOpenPoint(open ? null : point.id)}
-                    aria-expanded={open}
-                    aria-controls={`guide-${point.id}`}
-                    className="flex w-full items-start gap-4 py-4 text-left"
-                  >
-                    <span aria-hidden="true" className="mt-1 font-mono text-xs tabular-nums text-muted">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="flex-1 font-serif text-lg leading-snug text-bordeaux">{pick(point.title)}</span>
-                    <ChevronDown
-                      size={17}
-                      aria-hidden="true"
-                      className={cn('mt-1 shrink-0 text-clay transition-transform duration-300', open && 'rotate-180')}
-                    />
-                  </button>
-                </h4>
-                <div id={`guide-${point.id}`} hidden={!open} className="pb-5 pl-10 pr-2">
-                  <p className="text-pretty text-sm leading-relaxed text-ink/78">{pick(point.body)}</p>
-                  {point.say && (
-                    <p className="mt-3.5 border-l-2 border-caribe/60 bg-caribe/8 py-2.5 pl-4 pr-3 text-pretty text-sm italic leading-relaxed text-ink/80">
-                      {pick(point.say)}
-                    </p>
-                  )}
-                </div>
-              </li>
-            )
-          })}
-        </ul>
+        )}
       </div>
     </div>
+  )
+}
+
+/** One published channel: the mark, what it is, and the name it is known by. */
+function ChannelLink({
+  href,
+  kind,
+  label,
+  value,
+}: {
+  href: string
+  kind: 'instagram' | 'website'
+  label: string
+  value: string
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="group inline-flex items-center gap-3 rounded-sm border border-line bg-canvas px-4 py-3 transition-colors hover:border-ash hover:bg-surface"
+    >
+      <ContactIcon kind={kind} size={34} ringed className="text-bordeaux" />
+      <span className="min-w-0">
+        <span className="block text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{label}</span>
+        <span className="block truncate text-sm text-bordeaux group-hover:underline">{value}</span>
+      </span>
+    </a>
   )
 }
 

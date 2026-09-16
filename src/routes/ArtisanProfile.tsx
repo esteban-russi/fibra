@@ -14,7 +14,7 @@ import { MEDIA } from '../content/media'
 import { WeavePlate } from '../components/graphics/WeavePlate'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
-import { ProvenanceNotice, Prose } from '../components/ui/primitives'
+import { Prose } from '../components/ui/primitives'
 
 /**
  * The story: five acts read as one continuous descent.
@@ -129,10 +129,6 @@ function Story({ artisan }: { artisan: Artisan }) {
           <ActRail active={active} accent={accent} />
 
           <div className="min-w-0 pb-8">
-            <div className="pt-12 sm:pt-16">
-              <ProvenanceNotice notice={artisan.notice} />
-            </div>
-
             {/* =============== ACT II — territory and memory =============== */}
             <Act id="act-2" index={1} accent={accent}>
               <motion.div {...rise} className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
@@ -213,50 +209,80 @@ function Story({ artisan }: { artisan: Artisan }) {
             </Act>
 
             {/* =============== ACT IV — works of the workshop =============== */}
+            {/*
+              A gallery rather than a stack of records. The pieces are looked at
+              first and read second, so each one is a plate at a single shared
+              proportion with its caption underneath — the grid lets a visitor
+              take the workshop's output in at a glance, which the full-width
+              rows did not. Scale and making time sit directly under the title
+              because they are the two claims the spec asks a piece to carry:
+              how big it really is, and how much patience it cost. There is
+              still no price.
+            */}
             <Act id="act-4" index={3} accent={accent}>
-              <motion.ul {...rise} className="space-y-10">
-                {artisan.works.map((w, i) => (
-                  <li
-                    key={w.id}
-                    className="grid gap-6 border-t border-line pt-10 first:border-0 first:pt-0 sm:grid-cols-[15rem_1fr] sm:gap-10"
-                  >
-                    <div className="overflow-hidden rounded-sm border border-line">
-                      <div className="aspect-square">
-                        <WeavePlate kind={w.plate} palette={artisan.patternPalette} seed={`${artisan.slug}-${w.id}`} />
-                      </div>
-                    </div>
+              <motion.div {...rise}>
+                <p className="max-w-2xl text-pretty leading-relaxed text-clay">{t('works.lede')}</p>
 
-                    <div className="min-w-0">
-                      <p className="font-mono text-xs tabular-nums text-muted">{String(i + 1).padStart(2, '0')}</p>
-                      <h3 className="mt-1.5 font-serif text-2xl leading-snug text-bordeaux">{pick(w.title)}</h3>
-                      <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-ink/78">{pick(w.context)}</p>
-
-                      <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {[
-                          { k: t('works.technique'), v: pick(w.technique) },
-                          { k: t('works.materials'), v: pick(w.materials) },
-                          { k: t('works.time'), v: pick(w.time), emphasis: true },
-                          { k: t('works.scale'), v: pick(w.scale) },
-                        ].map((row) => (
-                          <div key={row.k}>
-                            <dt className="text-[0.6875rem] uppercase tracking-[0.12em] text-muted">{row.k}</dt>
-                            <dd
-                              className={cn(
-                                'mt-1 text-sm leading-snug',
-                                row.emphasis ? 'font-serif text-base italic text-bordeaux' : 'text-ink/80',
-                              )}
-                            >
-                              {row.v}
-                            </dd>
+                <ul className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+                  {artisan.works.map((w, i) => (
+                    <li key={w.id}>
+                      <figure className="group">
+                        <div className="overflow-hidden rounded-sm border border-line">
+                          <div className="aspect-[4/5]">
+                            <WeavePlate
+                              kind={w.plate}
+                              palette={artisan.patternPalette}
+                              seed={`${artisan.slug}-${w.id}`}
+                            />
                           </div>
-                        ))}
-                      </dl>
-                    </div>
-                  </li>
-                ))}
-              </motion.ul>
+                        </div>
 
-              <p className="mt-12 max-w-2xl border-l-2 border-ash pl-5 text-pretty font-serif text-lg italic leading-relaxed text-clay">
+                        <figcaption className="mt-5">
+                          <p className="flex items-center gap-2.5">
+                            <span aria-hidden="true" className="h-px w-5" style={{ background: accent }} />
+                            <span className="font-mono text-xs tabular-nums text-muted">
+                              {String(i + 1).padStart(2, '0')}
+                            </span>
+                          </p>
+
+                          <h3 className="mt-2 text-balance font-serif text-xl leading-snug text-bordeaux">
+                            {pick(w.title)}
+                          </h3>
+
+                          {/* Scale and time wrap as one phrase: the separator
+                              belongs to the time, so it never strands itself at
+                              the end of a line. */}
+                          <p className="mt-2.5 text-pretty text-sm leading-snug">
+                            <span className="text-ink/80">
+                              <span className="sr-only">{t('works.scale')}: </span>
+                              {pick(w.scale)}
+                            </span>{' '}
+                            <span className="whitespace-normal font-serif italic text-bordeaux">
+                              <span aria-hidden="true" className="not-italic text-ash">
+                                ·{' '}
+                              </span>
+                              <span className="sr-only">{t('works.time')}: </span>
+                              {pick(w.time)}
+                            </span>
+                          </p>
+
+                          <p className="mt-3.5 text-pretty text-sm leading-relaxed text-ink/75">{pick(w.context)}</p>
+
+                          <p className="mt-3 text-pretty text-[0.8125rem] leading-snug text-clay">
+                            <span className="sr-only">{t('works.technique')}: </span>
+                            {pick(w.technique)}
+                            <span aria-hidden="true"> · </span>
+                            <span className="sr-only">{t('works.materials')}: </span>
+                            {pick(w.materials)}
+                          </p>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <p className="mt-14 max-w-2xl border-l-2 border-ash pl-5 text-pretty font-serif text-lg italic leading-relaxed text-clay">
                 {t('works.note')}
               </p>
             </Act>
