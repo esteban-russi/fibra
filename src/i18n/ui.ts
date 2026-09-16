@@ -266,7 +266,7 @@ const es: Record<UIKey, string> = {
     'Puedes entrar por la técnica de las manos que transforman la hebra, o por el territorio donde nace la materia prima. Escoge qué extremo del hilo quieres empezar a halar.',
   'home.path.techniques.title': 'La ruta de las técnicas',
   'home.path.techniques.desc':
-    'Urdir, torcer, anudar, macerar, hilar. Cinco movimientos exactos donde el cuerpo dialoga con la tensión, el ritmo y la herramienta.',
+    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos exactos donde el cuerpo dialoga con la tensión, el ritmo y la herramienta.',
   'home.path.techniques.cta': 'Entrar en el oficio',
   'home.path.territory.title': 'La ruta de los territorios',
   'home.path.territory.desc':
