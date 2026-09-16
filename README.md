@@ -76,7 +76,9 @@ the pitch of a coil, the ply angle of a two-ply cord. Three reasons:
 3. The photographic registry documents other people in other regions. Attaching
    one of those frames to a named living artisan — as though it were her, or her
    workshop — would be exactly the cultural extractivism the project exists to
-   avoid. Drawn plates stand in until these workshops supply their own images.
+   avoid. The only photographs standing beside a name are the portraits the
+   three workshops supplied themselves; anywhere else, a drawn plate stands in
+   and says that it is standing in.
 
 Real photography is used where it is verified and correctly attributed — nine
 openly-licensed images, listed with author and licence on `/credits` and

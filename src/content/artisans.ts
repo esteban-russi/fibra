@@ -30,11 +30,12 @@ import type { MotionKind } from './techniques'
  * holder stated it. Where nothing was stated, the hotspot describes structure
  * and says that it is structural.
  *
- * No photograph is attached to any of these profiles. The site's photographic
- * registry holds openly licensed documentary images of other people and other
- * regions; using one of them as the opening image of a named living artisan
- * would misrepresent both. Drawn plates stand in until these workshops supply
- * their own images.
+ * The only photographs attached to these profiles are the portraits the three
+ * workshops supplied themselves, registered in `media.ts` as project archive.
+ * Nothing else in the photographic registry may stand beside a name: those are
+ * openly licensed documentary images of other people and other regions, and
+ * using one as the image of a named living artisan would misrepresent both.
+ * Where no image has been given, a drawn plate stands in and says so.
  */
 
 export type Hotspot = {
@@ -175,7 +176,7 @@ export const ARTISANS: Artisan[] = [
       es: 'Hilatura, tejeduría en máquina rectilínea y tinturado natural',
     },
     openingImage: 'hilosTenidos',
-    portrait: null,
+    portrait: 'luzMariaRetrato',
     standfirst: {
       en: 'Master weaver and community leader, more than two decades into the safeguarding of textile knowledge in Cundinamarca. From her native Peñas de Cajón she has drawn spinners and weavers together across five municipalities to give the campesino craft standing against industrial terms.',
       es: 'Maestra tejedora y líder comunitaria con más de dos décadas impulsando la salvaguardia del saber textil en Cundinamarca. Desde su natal Peñas de Cajón ha articulado a hilanderas y artesanas de cinco municipios para dignificar el oficio campesino frente a las dinámicas industriales.',

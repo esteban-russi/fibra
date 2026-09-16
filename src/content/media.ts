@@ -359,6 +359,25 @@ export const MEDIA: Record<string, Credit> = {
     },
   },
 
+  luzMariaRetrato: {
+    id: 'luzMariaRetrato',
+    src: '/media/artisans/luz_rodriguez/profile.webp',
+    width: 413,
+    height: 512,
+    file: 'luz_rodriguez/profile.webp',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'Black and white studio portrait of a woman with long dark hair, looking straight at the camera. She wears a striped collared shirt under a dark jumper, with a heavy dark wool ruana drawn across both shoulders. The background is plain and pale.',
+      es: 'Retrato de estudio en blanco y negro de una mujer de pelo largo y oscuro, que mira de frente a la cámara. Lleva una camisa de cuello a rayas bajo un suéter oscuro, y una ruana gruesa de lana oscura cruzada sobre los dos hombros. El fondo es liso y claro.',
+    },
+    caption: {
+      en: 'Luz María Rodríguez Rodríguez, wearing a ruana in virgin wool.',
+      es: 'Luz María Rodríguez Rodríguez, con una ruana en lana virgen.',
+    },
+  },
   florImbacuanRetrato: {
     id: 'florImbacuanRetrato',
     src: '/media/artisans/flor_imbacuan/profile.webp',
