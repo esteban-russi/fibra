@@ -5,12 +5,22 @@ import { cn } from '../lib/cn'
 import { useI18n } from '../i18n'
 import type { Lang } from '../i18n'
 import { useLockBodyScroll } from '../lib/hooks'
-import { ABOUT_ID, scrollToElement } from '../lib/scroll'
+import { ABOUT_ID, JOURNAL_ID, scrollToElement } from '../lib/scroll'
 
 const ROUTES = [
   { to: '/artisans', key: 'nav.artisans' },
   { to: '/techniques', key: 'nav.techniques' },
   { to: '/atlas', key: 'nav.atlas' },
+] as const
+
+/**
+ * Places on the cover rather than routes of their own. The journal is here and
+ * not in ROUTES because there is one entry so far, and an index page would be
+ * the cover's own masthead printed twice; each entry still has its own route.
+ */
+const SECTIONS = [
+  { id: JOURNAL_ID, key: 'nav.journal' },
+  { id: ABOUT_ID, key: 'nav.about' },
 ] as const
 
 export function Header() {
@@ -21,7 +31,7 @@ export function Header() {
   const navigate = useNavigate()
 
   /**
-   * About is a place on the cover, not a route of its own.
+   * About and the journal are places on the cover, not routes of their own.
    *
    * It lands on the section at once, with no travel. An eased descent was tried
    * and abandoned: it crosses most of the page, and the tween yields the moment
@@ -52,28 +62,30 @@ export function Header() {
     [location.pathname],
   )
 
-  const toAbout = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const toSection = useCallback(
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
       e.preventDefault()
       setOpen(false)
       if (location.pathname !== '/') {
-        navigate(`/#${ABOUT_ID}`)
+        navigate(`/#${id}`)
         return
       }
-      const el = document.getElementById(ABOUT_ID)
+      const el = document.getElementById(id)
       if (!el) return
       scrollToElement(el, { instant: true })
-      history.replaceState(null, '', `#${ABOUT_ID}`)
+      history.replaceState(null, '', `#${id}`)
       el.focus({ preventScroll: true })
     },
     [location.pathname, navigate],
   )
 
-  // The cover and every story open on a dark full-bleed image, so the
-  // header has to invert over them or the navigation is unreadable until the
-  // visitor scrolls. Anywhere else the page ground is cream and it does not.
-  const overDarkHero = location.pathname === '/' || /^\/artisans\/.+/.test(location.pathname)
+  // The cover, every story and every journal entry open on a dark full-bleed
+  // image, so the header has to invert over them or the navigation is unreadable
+  // until the visitor scrolls. Anywhere else the page ground is cream and it
+  // does not.
+  const overDarkHero =
+    location.pathname === '/' || /^\/(artisans|journal)\/.+/.test(location.pathname)
   const inverted = overDarkHero && !lifted && !open
 
   useLockBodyScroll(open)
@@ -150,16 +162,19 @@ export function Header() {
               )}
             </NavLink>
           ))}
-          <Link
-            to={`/#${ABOUT_ID}`}
-            onClick={toAbout}
-            className={cn(
-              'rounded-sm px-3.5 py-2 text-sm transition-colors',
-              inverted ? 'text-canvas/75 hover:text-canvas' : 'text-clay hover:text-bordeaux',
-            )}
-          >
-            {t('nav.about')}
-          </Link>
+          {SECTIONS.map((sec) => (
+            <Link
+              key={sec.id}
+              to={`/#${sec.id}`}
+              onClick={toSection(sec.id)}
+              className={cn(
+                'rounded-sm px-3.5 py-2 text-sm transition-colors',
+                inverted ? 'text-canvas/75 hover:text-canvas' : 'text-clay hover:text-bordeaux',
+              )}
+            >
+              {t(sec.key)}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -203,16 +218,18 @@ export function Header() {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <Link
-                to={`/#${ABOUT_ID}`}
-                onClick={toAbout}
-                className="flex items-center justify-between py-4 font-serif text-xl text-ink/80"
-              >
-                {t('nav.about')}
-                <span aria-hidden="true" className="text-ash">→</span>
-              </Link>
-            </li>
+            {SECTIONS.map((sec) => (
+              <li key={sec.id}>
+                <Link
+                  to={`/#${sec.id}`}
+                  onClick={toSection(sec.id)}
+                  className="flex items-center justify-between py-4 font-serif text-xl text-ink/80"
+                >
+                  {t(sec.key)}
+                  <span aria-hidden="true" className="text-ash">→</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

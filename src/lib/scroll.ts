@@ -59,6 +59,12 @@ export function scrollToElement(
 /** The id of the Home section the header's About item descends to. */
 export const ABOUT_ID = 'acerca-de-fibra'
 
+/** The id of the Home section the header's Journal item lands on. Like About,
+ *  the journal's masthead is a place on the cover rather than a route of its
+ *  own — there is one entry, and an index page would only repeat it. Each entry
+ *  does have its own route. */
+export const JOURNAL_ID = 'bitacora'
+
 /** Slower than the 1500ms default: these trips cross most of a screen or more,
  *  and the descent is meant to read as travel rather than a jump. */
 export const SLOW_DESCENT_MS = 2400

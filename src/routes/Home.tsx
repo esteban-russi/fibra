@@ -11,8 +11,9 @@ import { MEDIA } from '../content/media'
 import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { HERO_VOICE } from '../content/voice'
+import { JOURNAL_INTRO, LATEST_ENTRY } from '../content/journal'
 import { cn } from '../lib/cn'
-import { ABOUT_ID, SLOW_DESCENT_MS, scrollToElement } from '../lib/scroll'
+import { ABOUT_ID, JOURNAL_ID, SLOW_DESCENT_MS, scrollToElement } from '../lib/scroll'
 
 export function Home() {
   const { t, pick } = useI18n()
@@ -41,14 +42,16 @@ export function Home() {
     [reduced],
   )
 
-  // Arriving from another route with the About hash. RouteChange has just reset
-  // the scroll to the top, so the section is taken directly: the eased descent
-  // is for visitors already on this page, where the travel is the point. Across
-  // a route change it would only be 2.4s of content nobody asked to see.
+  // Arriving from another route with one of the cover's section hashes — About,
+  // or the journal. RouteChange has just reset the scroll to the top, so the
+  // section is taken directly: the eased descent is for visitors already on this
+  // page, where the travel is the point. Across a route change it would only be
+  // 2.4s of content nobody asked to see.
   const { hash } = useLocation()
   useEffect(() => {
-    if (hash !== `#${ABOUT_ID}`) return
-    const el = document.getElementById(ABOUT_ID)
+    const id = hash.slice(1)
+    if (id !== ABOUT_ID && id !== JOURNAL_ID) return
+    const el = document.getElementById(id)
     if (!el) return
     const frame = requestAnimationFrame(() => scrollToElement(el, { instant: true }))
     return () => cancelAnimationFrame(frame)
@@ -256,6 +259,70 @@ export function Home() {
           </div>
         </section>
       </div>
+
+      {/* Bitácora — the journal. Everything above is written to stand still: a
+          gesture, a territory, a workshop. This is where what moves goes, and
+          it is where the header's Journal item lands.
+
+          The masthead carries the section; the entry stands in a narrow rail to
+          its right, at the scale of a contents item rather than a second cover.
+          There is one piece so far, and a full-width plate for it would read as
+          the cover's headline instead of the first item in a magazine that
+          intends to run. */}
+      <section
+        id={JOURNAL_ID}
+        tabIndex={-1}
+        className="mx-auto max-w-[86rem] scroll-mt-[calc(var(--header-h)+1.5rem)] px-5 pb-24 pt-8 outline-none sm:px-8 sm:pb-32"
+      >
+        <div className="grid gap-12 xl:grid-cols-[minmax(0,44rem)_minmax(17rem,1fr)] xl:items-start xl:gap-14">
+          <motion.div {...rise}>
+            <SectionHeading
+              eyebrow={t('journal.eyebrow')}
+              title={pick(JOURNAL_INTRO.title)}
+              lede={pick(JOURNAL_INTRO.lede)}
+            />
+          </motion.div>
+
+          <motion.div {...rise} className="xl:border-l xl:border-line xl:pl-14">
+            <Link
+              to={`/journal/${LATEST_ENTRY.slug}`}
+              className="group block max-w-[21rem] rounded-sm outline-offset-4"
+              aria-label={`${pick(LATEST_ENTRY.headline)} — ${t('journal.read')}`}
+            >
+              <div className="overflow-hidden rounded-sm bg-surface">
+                <img
+                  src={MEDIA[LATEST_ENTRY.hero].src}
+                  alt={pick(MEDIA[LATEST_ENTRY.hero].alt)}
+                  width={MEDIA[LATEST_ENTRY.hero].width}
+                  height={MEDIA[LATEST_ENTRY.hero].height}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover object-[50%_58%] transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+
+              <p className="eyebrow mt-5">{t('journal.latest')}</p>
+              <h3 className="mt-2 text-balance font-serif text-[1.3125rem] leading-[1.18] text-bordeaux">
+                {pick(LATEST_ENTRY.headline)}
+              </h3>
+              <p className="mt-2 text-[0.6875rem] uppercase leading-relaxed tracking-[0.1em] text-muted">
+                {pick(LATEST_ENTRY.dateline)}
+              </p>
+              <p className="mt-3 text-pretty text-[0.875rem] leading-relaxed text-ink/70">
+                {pick(LATEST_ENTRY.standfirst)}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-[0.8125rem] font-medium text-bordeaux">
+                {t('journal.read')}
+                <ArrowRight
+                  size={14}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-1.5"
+                />
+              </span>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* What the name means. Also where the header's About item lands, hence the
           id, the focus target and the offset that clears the fixed header. */}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { ThreadRule } from './ui/primitives'
+import { JOURNAL_ID } from '../lib/scroll'
 
 export function Footer() {
   const { t } = useI18n()
@@ -9,6 +10,7 @@ export function Footer() {
     { to: '/artisans', label: t('nav.artisans') },
     { to: '/techniques', label: t('nav.techniques') },
     { to: '/atlas', label: t('nav.atlas') },
+    { to: `/#${JOURNAL_ID}`, label: t('nav.journal') },
   ]
   const about = [{ to: '/credits', label: t('credits.title') }]
 

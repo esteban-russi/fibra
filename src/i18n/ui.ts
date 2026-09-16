@@ -21,6 +21,7 @@ const en = {
   'nav.atlas': 'Territories',
   'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
+  'nav.journal': 'Journal',
   'nav.about': 'About',
   'nav.credits': 'Credits',
   'nav.menu': 'Menu',
@@ -58,6 +59,19 @@ const en = {
   'home.artisans.title': 'Five acts, one voice',
   'home.artisans.lede':
     'Each profile unwinds straight through, in five acts: from the voice of the person who scrapes, spins and knots, to the very door of their workshop.',
+
+  // --- Journal (Bitácora) ---------------------------------------------------
+  'journal.eyebrow': 'Journal',
+  'journal.latest': 'Latest entry',
+  'journal.read': 'Read the entry',
+  'journal.back': 'Back to the Journal',
+  'journal.guide': 'The traveller’s guide',
+  'journal.gallery': 'From the festival',
+  'journal.watch': 'Video filmed at the festival',
+  'journal.video.fallback':
+    'Your browser cannot play this video. It shows two needles working a dark green wool at the festival.',
+  'journal.courtesy':
+    'The photographs and the video on this page were supplied by the collective and are published by their courtesy. The account, the quotations and the programme are theirs; the ordering and the English translation are ours.',
 
   // --- Atlas ----------------------------------------------------------------
   'atlas.eyebrow': 'Territories',
@@ -234,6 +248,7 @@ const es: Record<UIKey, string> = {
   'nav.atlas': 'Territorios',
   'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
+  'nav.journal': 'Bitácora',
   'nav.about': 'Acerca de',
   'nav.credits': 'Créditos',
   'nav.menu': 'Menú',
@@ -270,6 +285,18 @@ const es: Record<UIKey, string> = {
   'home.artisans.title': 'Cinco actos, una voz',
   'home.artisans.lede':
     'Cada perfil se desmadeja de corrido, en cinco actos: desde la voz de quien raspa, hila y anuda, hasta la puerta misma de su taller.',
+
+  'journal.eyebrow': 'Bitácora',
+  'journal.latest': 'Última entrada',
+  'journal.read': 'Leer la entrada',
+  'journal.back': 'Volver a la Bitácora',
+  'journal.guide': 'Guía del viajero',
+  'journal.gallery': 'Desde el festival',
+  'journal.watch': 'Video filmado en el festival',
+  'journal.video.fallback':
+    'Su navegador no puede reproducir este video. Muestra dos agujas trabajando una lana verde oscura en el festival.',
+  'journal.courtesy':
+    'Las fotografías y el video de esta página fueron provistos por el colectivo y se publican por su cortesía. El relato, las citas y la programación son suyos; el ordenamiento y la traducción al inglés son nuestros.',
 
   'atlas.eyebrow': 'Territorios',
   'atlas.title': 'Atlas Textil de Colombia',
