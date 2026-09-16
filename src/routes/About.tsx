@@ -18,6 +18,36 @@ import { MEDIA } from '../content/media'
  * is set apart from the curatorial voice above it — the same rule the artisan
  * profiles keep, applied to the person who built the site.
  */
+/**
+ * The magazine she founded, linked from the sentence that names it.
+ *
+ * The name travels inside the sentence in both languages, so the link is cut
+ * out of the translated string at render rather than kept as its own key: the
+ * prose stays one sentence to a translator, and the anchor lands on the word
+ * wherever that language puts it.
+ */
+const DMODA = { name: 'd_moda', href: 'https://www.instagram.com/magazined_moda' }
+
+/** Splits a sentence around the magazine's name and links the name itself. */
+function withDmodaLink(sentence: string) {
+  const at = sentence.indexOf(DMODA.name)
+  if (at === -1) return sentence
+  return (
+    <>
+      {sentence.slice(0, at)}
+      <a
+        href={DMODA.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-bordeaux transition-colors hover:text-clay"
+      >
+        {DMODA.name}
+      </a>
+      {sentence.slice(at + DMODA.name.length)}
+    </>
+  )
+}
+
 export function About() {
   const { t, pick } = useI18n()
   const reduced = useReducedMotion()
@@ -79,7 +109,7 @@ export function About() {
 
         <div className="mt-10 space-y-5 text-pretty text-[1.0625rem] leading-[1.75] text-ink/85">
           <p>{t('about.weaver.2')}</p>
-          <p>{t('about.weaver.3')}</p>
+          <p>{withDmodaLink(t('about.weaver.3'))}</p>
           <p>{t('about.weaver.4')}</p>
         </div>
       </motion.section>
