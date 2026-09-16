@@ -45,6 +45,13 @@ Four top-level surfaces, navigated non-linearly:
    `technique.focus` tightens a crop in CSS, never in the file.
 4. **Artisan profiles** — sequential editorial chronicles.
 
+Beside these sit two standing pages, reachable from the header and the footer
+rather than from the thread: **`/about`** — what the platform does, what the
+word *fibra* means in both its senses, and Valeria León Niño in the first
+person as the person who made it; and **`/credits`**, generated from the media
+registry. The About content was a block at the foot of the cover until it was
+given a route, so `ABOUT_ID` and the header's hash descent are gone.
+
 ## Domain model
 
 ### Regions (6 visual regions, 5 cultural content blocks)

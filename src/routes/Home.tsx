@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useCallback, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import { useI18n } from '../i18n'
@@ -12,7 +12,7 @@ import { REGIONS } from '../content/regions'
 import { ARTISANS } from '../content/artisans'
 import { HERO_VOICE } from '../content/voice'
 import { cn } from '../lib/cn'
-import { ABOUT_ID, SLOW_DESCENT_MS, scrollToElement } from '../lib/scroll'
+import { SLOW_DESCENT_MS, scrollToElement } from '../lib/scroll'
 
 export function Home() {
   const { t, pick } = useI18n()
@@ -40,19 +40,6 @@ export function Home() {
     },
     [reduced],
   )
-
-  // Arriving from another route with the About hash. RouteChange has just reset
-  // the scroll to the top, so the section is taken directly: the eased descent
-  // is for visitors already on this page, where the travel is the point. Across
-  // a route change it would only be 2.4s of content nobody asked to see.
-  const { hash } = useLocation()
-  useEffect(() => {
-    if (hash !== `#${ABOUT_ID}`) return
-    const el = document.getElementById(ABOUT_ID)
-    if (!el) return
-    const frame = requestAnimationFrame(() => scrollToElement(el, { instant: true }))
-    return () => cancelAnimationFrame(frame)
-  }, [hash])
 
   const rise = reduced
     ? {}
@@ -256,39 +243,6 @@ export function Home() {
           </div>
         </section>
       </div>
-
-      {/* What the name means. Also where the header's About item lands, hence the
-          id, the focus target and the offset that clears the fixed header. */}
-      <section
-        id={ABOUT_ID}
-        tabIndex={-1}
-        className="scroll-mt-[var(--header-h)] border-y border-line bg-surface/50 outline-none"
-      >
-        <div className="mx-auto max-w-[86rem] px-5 py-24 sm:px-8 sm:py-28">
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-            <motion.div {...rise}>
-              <SectionHeading title={t('home.identity.title')} />
-              <div className="mt-6 max-w-lg space-y-4 text-pretty text-[1.0625rem] leading-[1.75] text-ink/80">
-                <p>{t('home.identity.body.1')}</p>
-                <p>{t('home.identity.body.2')}</p>
-                <p>{t('home.identity.body.3')}</p>
-              </div>
-            </motion.div>
-
-            <motion.div {...rise}>
-              <img
-                src={MEDIA.guajiraTerritorio.src}
-                alt={pick(MEDIA.guajiraTerritorio.alt)}
-                width={MEDIA.guajiraTerritorio.width}
-                height={MEDIA.guajiraTerritorio.height}
-                loading="lazy"
-                decoding="async"
-                className="aspect-[4/3] w-full rounded-sm object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
     </>
   )

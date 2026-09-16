@@ -47,13 +47,6 @@ const en = {
   'home.path.territory.desc':
     'Six regions dyed by their surroundings. From the solar yellow of bija in the north, to the deep green of mangrove and Pacific mud.',
   'home.path.territory.cta': 'Enter through the region',
-  'home.identity.title': 'About FIBRA',
-  'home.identity.body.1':
-    'Fibre is the filament a plant gives up and an animal offers; what the human hand transforms.',
-  'home.identity.body.2':
-    'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
-  'home.identity.body.3':
-    'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
   'home.artisans.eyebrow': 'Stories',
   'home.artisans.title': 'Five acts, one voice',
   'home.artisans.lede':
@@ -172,6 +165,27 @@ const en = {
     'Most friction between a workshop and a first-time client comes from one place: industrial expectations applied to a handmade object. These are the things worth knowing before you write.',
 
   // --- Credits / provenance -------------------------------------------------
+  // --- About ----------------------------------------------------------------
+  'about.eyebrow': 'The project',
+  'about.title': 'About FIBRA',
+  'about.lede':
+    'FIBRA is a cultural storytelling platform that connects Colombian artisan weavers with consumers. We set out to translate the language of weaving — its technique, its territory and its symbolism — into an authentic experience.',
+  'about.name.1':
+    'Fibre is the filament a plant gives up and an animal offers; what the human hand transforms.',
+  'about.name.2':
+    'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
+  'about.name.3':
+    'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
+  'about.weaver.title': 'Who weaves this story',
+  'about.weaver.1':
+    'I am Valeria León Niño, a Colombian with the soul of a weaver — curious, and still an apprentice.',
+  'about.weaver.2':
+    'From early childhood I lived surrounded by reasons to draw, to design and to imagine garments, thanks to my grandmothers: they were my first teachers without ever knowing it. In time I cultivated that curiosity until it became a passion for fashion, and that passion led me to try to turn it into a craft: so at university, while I was studying Business Administration, I began to develop my weaving skills, and since then I have never stopped learning by practice — on the knitting machine as much as at the loom.',
+  'about.weaver.3':
+    'That passion led me to found d_moda, a digital magazine, and to pursue my dream of studying the Strategic Fashion Marketing master’s at London College of Fashion.',
+  'about.weaver.4':
+    'FIBRA comes of weaving all my passions into a single thread — the thread of a weaver who never stopped learning, and who now wants other weavers to be seen, named and heard.',
+
   'credits.eyebrow': 'Provenance',
   'credits.title': 'Credits and content provenance',
   'credits.lede':
@@ -259,13 +273,6 @@ const es: Record<UIKey, string> = {
   'home.path.territory.desc':
     'Seis regiones teñidas por su entorno. Del amarillo solar de la bija en el norte, al verde profundo del mangle y el lodo pacífico.',
   'home.path.territory.cta': 'Entrar por la región',
-  'home.identity.title': 'Acerca de FIBRA',
-  'home.identity.body.1':
-    'Fibra es el filamento que la planta entrega y el animal ofrece; lo que la mano humana transforma.',
-  'home.identity.body.2':
-    'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
-  'home.identity.body.3':
-    'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
   'home.artisans.eyebrow': 'Historias',
   'home.artisans.title': 'Cinco actos, una voz',
   'home.artisans.lede':
@@ -373,6 +380,26 @@ const es: Record<UIKey, string> = {
   'guide.title': 'Guía de Encargo Consciente',
   'guide.lede':
     'Casi toda la fricción entre un taller y un cliente primerizo viene del mismo sitio: expectativas industriales aplicadas a un objeto hecho a mano. Esto es lo que conviene saber antes de escribir.',
+
+  'about.eyebrow': 'El proyecto',
+  'about.title': 'Acerca de FIBRA',
+  'about.lede':
+    'FIBRA es una plataforma de storytelling cultural que conecta a tejedoras artesanas colombianas con consumidores. Buscamos traducir el lenguaje del tejido — su técnica, su territorio y su simbolismo — en una experiencia auténtica.',
+  'about.name.1':
+    'Fibra es el filamento que la planta entrega y el animal ofrece; lo que la mano humana transforma.',
+  'about.name.2':
+    'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
+  'about.name.3':
+    'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
+  'about.weaver.title': 'Quién teje esta historia',
+  'about.weaver.1':
+    'Soy Valeria León Niño y soy una colombiana con alma de tejedora curiosa y aprendiz.',
+  'about.weaver.2':
+    'Desde pequeña viví rodeada de inspiración para dibujar, diseñar e imaginar prendas textiles, gracias a mis abuelas: ellas fueron mis primeras maestras, sin saberlo. Con el tiempo cultivé esa curiosidad que se convirtió en una pasión por la moda, pasión que me llevó a buscar transformarla en oficio: así, en la universidad, mientras estudiaba Administración de Empresas, empecé a desarrollar mis habilidades de tejido, y desde entonces no he parado de aprender de forma empírica, tanto el tejido a máquina como en telar.',
+  'about.weaver.3':
+    'Esta pasión me llevó a fundar d_moda, una revista digital, y a perseguir mi sueño de estudiar la maestría Strategic Fashion Marketing en London College of Fashion.',
+  'about.weaver.4':
+    'FIBRA nace de tejer todas mis pasiones en un solo hilo — el de una tejedora que nunca dejó de aprender, y que ahora quiere que otras tejedoras sean vistas, nombradas y escuchadas.',
 
   'credits.eyebrow': 'Procedencia',
   'credits.title': 'Créditos y procedencia del contenido',

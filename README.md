@@ -55,7 +55,10 @@ tools/             Verification harnesses — see below
 4. **Stories** (`/artisans/:slug`) — five acts read as one continuous
    descent, explicitly not tabs.
 
-Plus `/credits`. The Guide to a Conscious Commission is no longer a route of
+Plus `/about` and `/credits`. `/about` says what the platform is for, what its
+name means and who built it — it used to be a block at the foot of the cover,
+below the two route cards, where it read as an afterthought to them and could
+not be linked to. The Guide to a Conscious Commission is no longer a route of
 its own; it lives inside Act V of each story.
 
 ## Why the graphics are drawn rather than photographed

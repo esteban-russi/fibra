@@ -56,9 +56,6 @@ export function scrollToElement(
   else scrollToY(target, duration)
 }
 
-/** The id of the Home section the header's About item descends to. */
-export const ABOUT_ID = 'acerca-de-fibra'
-
 /** Slower than the 1500ms default: these trips cross most of a screen or more,
  *  and the descent is meant to read as travel rather than a jump. */
 export const SLOW_DESCENT_MS = 2400
