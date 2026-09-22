@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { useReducedMotion } from '../lib/hooks'
+import { cn } from '../lib/cn'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
-import { CreditedImage, Prose } from '../components/ui/primitives'
+import { Prose } from '../components/ui/primitives'
 import { TECHNIQUES, TECHNIQUE_BY_SLUG } from '../content/techniques'
 import type { Technique } from '../content/techniques'
 import { REGIONS } from '../content/regions'
@@ -22,6 +24,41 @@ export function TechniqueDetail() {
   const technique = TECHNIQUE_BY_SLUG.get(slug ?? '')
   if (!technique) return <Navigate to="/techniques" replace />
   return <Gesture key={technique.slug} technique={technique} />
+}
+
+function TechniqueVideo({
+  src,
+  label,
+  fallback,
+}: {
+  src: string
+  label: string
+  fallback: string
+}) {
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  return (
+    <div
+      className={cn(
+        'relative aspect-square w-full overflow-hidden rounded-sm bg-canvas transition-opacity duration-700 ease-out',
+        isPlaying ? 'border border-line opacity-100' : 'border border-transparent opacity-0',
+      )}
+    >
+      <video
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onPlaying={() => setIsPlaying(true)}
+        aria-label={label}
+        className="block h-full w-full object-cover"
+      >
+        {fallback}
+      </video>
+    </div>
+  )
 }
 
 function Gesture({ technique: g }: { technique: Technique }) {
@@ -50,16 +87,14 @@ function Gesture({ technique: g }: { technique: Technique }) {
       </Link>
 
       <article aria-labelledby="gesture-title" className="mt-10 grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
-        {/* The photograph, held in view while the account is read. */}
+        {/* The video of the gesture, held in view while the account is read. */}
         <div>
           <div className="sticky top-[calc(var(--header-h)+2rem)]">
-            <CreditedImage
-              id={g.photo}
-              className="overflow-hidden rounded-sm border border-line"
-              imgClassName="aspect-square"
-              zoom={g.focus?.zoom}
-              zoomOrigin={g.focus?.origin}
-              priority
+            <TechniqueVideo
+              key={g.video}
+              src={g.video}
+              label={pick(g.gesture)}
+              fallback={t('journal.video.fallback')}
             />
           </div>
         </div>
