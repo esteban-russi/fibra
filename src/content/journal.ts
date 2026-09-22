@@ -85,7 +85,7 @@ export const JOURNAL_INTRO: { title: Localized; lede: Localized } = {
  * and is registered there, so the credits account for it.
  */
 export const TEJILARTE_VIDEO = {
-  src: '/media/journal/festival/hilo-verde.mp4',
+  src: 'https://storage.googleapis.com/fibra-media/videos/hilo-verde.mp4',
   /** Key into MEDIA for the still used as the poster frame. */
   poster: 'journalHiloVerde',
   width: 720,
