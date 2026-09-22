@@ -35,7 +35,7 @@ deploy-run:
 		--allow-unauthenticated \
 		--service-account=$(GCP_SA) \
 		--port=8080 \
-		--memory=512Mi \
+		--memory=1G \
 		--cpu=1 \
 		--concurrency=80 \
 		--min-instances=0 \
