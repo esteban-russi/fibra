@@ -30,11 +30,13 @@ import type { MotionKind } from './techniques'
  * holder stated it. Where nothing was stated, the hotspot describes structure
  * and says that it is structural.
  *
- * No photograph is attached to any of these profiles. The site's photographic
- * registry holds openly licensed documentary images of other people and other
- * regions; using one of them as the opening image of a named living artisan
- * would misrepresent both. Drawn plates stand in until these workshops supply
- * their own images.
+ * The only photographs attached to these profiles are the ones each workshop
+ * supplied: its portrait, and its own pictures of its pieces in the act IV
+ * gallery. Nothing else in the photographic registry may stand beside a name:
+ * those are openly licensed documentary images of other people and other
+ * regions, and using one as the image of a named living artisan would
+ * misrepresent both. Where no image has been given, a drawn plate stands in
+ * and says so.
  */
 
 export type Hotspot = {
@@ -64,6 +66,35 @@ export type FibreReading = {
   reading: Localized<string[]>
 }
 
+/**
+ * One piece in the act IV gallery.
+ *
+ * The gallery shows what the workshop makes and nothing else: a photograph and,
+ * on hover, what the piece is called. `named` records where that name comes
+ * from — true when the workshop gave it, false when it is our plain description
+ * of the garment in the frame. A description is not a product name, and the
+ * flag keeps the difference legible instead of letting the two blur together.
+ * Every false in this file is a piece still waiting for its workshop to say
+ * what it calls it.
+ */
+export type GalleryPiece = {
+  id: string
+  /** Key into MEDIA. */
+  image: string
+  name: Localized
+  /** True only when `name` is the workshop's own name for the piece. */
+  named: boolean
+}
+
+/**
+ * The full record of a piece, from the interview.
+ *
+ * Act IV no longer renders these: it became a gallery of the photographs the
+ * workshops supplied, and a photograph of the actual piece says more about it
+ * than four rows of metadata about a drawn plate did. The records stay because
+ * the times, the scales and the use contexts are the artisans', and they are
+ * the kind of claim the spec exists to publish.
+ */
 export type Work = {
   id: string
   title: Localized
@@ -125,6 +156,7 @@ export type Artisan = {
   patternPalette: string[]
 
   works: Work[]
+  gallery: GalleryPiece[]
 
   contact: {
     /**
@@ -135,11 +167,17 @@ export type Artisan = {
     display: Localized
     /** True only once the artisan has authorised publication of her number. */
     published: boolean
+    /**
+     * When she prefers to be written to, and in which languages. Both were
+     * given by the artisans and both stay here, although Act V no longer shows
+     * them: the final screen was cut back to the line itself, and these are
+     * theirs to keep in the record rather than ours to discard.
+     */
     hours: Localized
+    languages: Localized
     /** Public handles the artisan asked to be listed. Absent means none given —
      *  never a guess, and never a profile found by searching for her name. */
     links?: { instagram?: string; website?: string }
-    languages: Localized
   }
 }
 
@@ -168,8 +206,8 @@ export const ARTISANS: Artisan[] = [
       en: 'Spinning, flat-bed machine weaving and natural dyeing',
       es: 'Hilatura, tejeduría en máquina rectilínea y tinturado natural',
     },
-    openingImage: 'hilosTenidos',
-    portrait: null,
+    openingImage: 'luzMariaRetrato',
+    portrait: 'luzMariaRetrato',
     standfirst: {
       en: 'Master weaver and community leader, more than two decades into the safeguarding of textile knowledge in Cundinamarca. From her native Peñas de Cajón she has drawn spinners and weavers together across five municipalities to give the campesino craft standing against industrial terms.',
       es: 'Maestra tejedora y líder comunitaria con más de dos décadas impulsando la salvaguardia del saber textil en Cundinamarca. Desde su natal Peñas de Cajón ha articulado a hilanderas y artesanas de cinco municipios para dignificar el oficio campesino frente a las dinámicas industriales.',
@@ -331,6 +369,26 @@ export const ARTISANS: Artisan[] = [
           es: 'Indumentaria de protección térmica para el páramo y el clima frío. No es pieza de exhibición: es la prenda para la que se inventó el trabajo.',
         },
         plate: 'plain',
+      },
+    ],
+    gallery: [
+      {
+        id: 'g1',
+        image: 'luzRuanaCruda',
+        name: { en: 'Ruana in undyed wool', es: 'Ruana en lana cruda' },
+        named: false,
+      },
+      {
+        id: 'g2',
+        image: 'luzPonchoCamel',
+        name: { en: 'Poncho in camel wool', es: 'Poncho en lana camel' },
+        named: false,
+      },
+      {
+        id: 'g3',
+        image: 'luzRuanaInfantil',
+        name: { en: "Child's ruana in two greens", es: 'Ruana infantil en dos verdes' },
+        named: false,
       },
     ],
     contact: {
@@ -527,6 +585,32 @@ export const ARTISANS: Artisan[] = [
           es: 'Prenda de abrigo, de identidad territorial y de protección espiritual. Como ella lo dice: no hay dos iguales, porque cada una tiene alma propia.',
         },
         plate: 'plain',
+      },
+    ],
+    gallery: [
+      {
+        id: 'g1',
+        image: 'florChalecoPachamama',
+        name: { en: 'Chaleco Pachamama', es: 'Chaleco Pachamama' },
+        named: true,
+      },
+      {
+        id: 'g2',
+        image: 'florChalecoFuego',
+        name: { en: 'Chaleco Vestido Fuego', es: 'Chaleco Vestido Fuego' },
+        named: true,
+      },
+      {
+        id: 'g3',
+        image: 'florChalecoNocheFertil',
+        name: { en: 'Chaleco Vestido Noche Fértil', es: 'Chaleco Vestido Noche Fértil' },
+        named: true,
+      },
+      {
+        id: 'g4',
+        image: 'florChalecoRojo',
+        name: { en: 'Vest-dress in red', es: 'Chaleco vestido en rojo' },
+        named: false,
       },
     ],
     contact: {
@@ -735,6 +819,20 @@ export const ARTISANS: Artisan[] = [
           es: 'Indumentaria ligera, trajes de novia y prendas en las que la sensibilidad formal es todo el encargo.',
         },
         plate: 'net',
+      },
+    ],
+    gallery: [
+      {
+        id: 'g1',
+        image: 'adaVestidoCalado',
+        name: { en: 'Dress in openwork knit', es: 'Vestido en tejido calado' },
+        named: true,
+      },
+      {
+        id: 'g2',
+        image: 'adaVestidoAmarillo',
+        name: { en: 'Knitted dress in pale yellow', es: 'Vestido tejido en amarillo' },
+        named: false,
       },
     ],
     contact: {

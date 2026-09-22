@@ -28,6 +28,8 @@ export type Technique = {
   gloss: Localized
   /** Key into MEDIA for the photograph of the gesture. */
   photo: string
+  /** Direct URL to the video of the gesture in GCS. */
+  video: string
   /**
    * How to tighten the frame when the photograph is cropped to a card or a
    * circle: a CSS scale about `origin`, expressed as a point in the rendered
@@ -54,6 +56,7 @@ export const TECHNIQUES: Technique[] = [
     term: 'Urdir',
     gloss: { en: 'to warp', es: 'preparar la urdimbre' },
     photo: 'gestoUrdir',
+    video: 'https://storage.googleapis.com/fibra-media/videos/video%20urdir.mp4',
     lede: {
       en: 'Laying the threads that will hold the tension, and tracing — before the first pass — the exact limit and the memory of the finished cloth.',
       es: 'Tender los hilos que sostendrán la tensión y trazar, antes de la primera pasada, el límite exacto y la memoria de la tela terminada.',
@@ -80,6 +83,7 @@ export const TECHNIQUES: Technique[] = [
     term: 'Trenzar',
     gloss: { en: 'to braid', es: 'entrecruzar en oblicuo' },
     photo: 'gestoTrenzar',
+    video: 'https://storage.googleapis.com/fibra-media/videos/Video%20trenzar.mp4',
     // Pull in past the floor the hat was photographed on, so the card is the
     // braid and not the parquet.
     focus: { origin: '50% 46%', zoom: 1.35 },
@@ -109,6 +113,7 @@ export const TECHNIQUES: Technique[] = [
     term: 'Anudar',
     gloss: { en: 'to knot', es: 'fijar por lazada' },
     photo: 'gestoAnudar',
+    video: 'https://storage.googleapis.com/fibra-media/videos/Video%20Anudar.mp4',
     lede: {
       en: 'Building a plane or a net out of cords that embrace themselves; the firmness of the structure comes from the insistence of the knot.',
       es: 'Construir un plano o red a partir de cordeles que se abrazan a sí mismos; la firmeza de la estructura nace de la insistencia del nudo.',
@@ -135,6 +140,7 @@ export const TECHNIQUES: Technique[] = [
     term: 'Tinturar',
     gloss: { en: 'to dye', es: 'fijar color vegetal' },
     photo: 'gestoTinturar',
+    video: 'https://storage.googleapis.com/fibra-media/videos/video%20tinturar.mp4',
     lede: {
       en: 'Persuading bark, seed and mud to give up their tone, and the natural fibre to keep it against water and sun.',
       es: 'Persuadir a la corteza, la semilla y el lodo de entregar su tono, y a la fibra natural de custodiarlo frente al agua y al sol.',
@@ -161,6 +167,7 @@ export const TECHNIQUES: Technique[] = [
     term: 'Hilar',
     gloss: { en: 'to spin', es: 'dar torsión a la fibra' },
     photo: 'gestoHilar',
+    video: 'https://storage.googleapis.com/fibra-media/videos/video%20hilar.mp4',
     lede: {
       en: 'Turning rough fleece or plant strand into a continuous, unbreakable thread through the pulse of the hand and the turn of the spindle.',
       es: 'Transformar el vellón agreste o la hebra vegetal en un hilo continuo e irrompible mediante el pulso de la mano y el giro del huso.',

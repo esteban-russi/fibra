@@ -115,7 +115,14 @@ const firstStop = await p.evaluate(() => document.activeElement?.textContent?.tr
 ok('skip link is the first tab stop', /skip|contenido/i.test(firstStop ?? ''), firstStop)
 
 /* ---------- 7. Images all have alt text ---------- */
-for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/credits']) {
+for (const path of [
+  '/',
+  '/atlas/caribe',
+  '/artisans/luz-maria-rodriguez',
+  '/about',
+  '/journal/sutatausa-tejilarte',
+  '/credits',
+]) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const bad = await p.$$eval('img', (els) => els.filter((e) => !e.getAttribute('alt')).length)
@@ -127,7 +134,7 @@ for (const path of ['/', '/atlas/caribe', '/artisans/luz-maria-rodriguez', '/cre
 /* ---------- 8. Internal links all resolve ---------- */
 await p.goto(BASE + '/', { waitUntil: 'networkidle2' })
 const hrefs = await p.$$eval('a[href^="/"]', (els) => [...new Set(els.map((e) => e.getAttribute('href')))])
-const routes = ['/', '/atlas', '/techniques', '/artisans', '/credits']
+const routes = ['/', '/atlas', '/techniques', '/artisans', '/about', '/credits']
 const bad = []
 for (const h of hrefs) {
   const base = h.split('#')[0]
@@ -135,24 +142,25 @@ for (const h of hrefs) {
     routes.includes(base) ||
     /^\/atlas\/[a-z]+$/.test(base) ||
     /^\/techniques\/[a-z]+$/.test(base) ||
-    /^\/artisans\/[a-z-]+$/.test(base)
+    /^\/artisans\/[a-z-]+$/.test(base) ||
+    /^\/journal\/[a-z-]+$/.test(base)
   if (!known) bad.push(h)
 }
 ok('no unknown internal links on home', bad.length === 0, bad.join(', '))
 
-/* ---------- 9. Reduced motion ---------- */
+/* ---------- 9. Reduced motion ----------
+   The drawn technique loops and the motion toggle that governed them are gone;
+   what is left to assert is that the cover still drops its own animation. */
 await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
-await p.goto(BASE + '/techniques', { waitUntil: 'networkidle2' })
+await p.goto(BASE + '/', { waitUntil: 'networkidle2' })
 await new Promise((r) => setTimeout(r, 700))
-const paused = await p.$$eval('svg', (els) => els.some((e) => e.classList.contains('motion-paused')))
-ok('technique loops pause under reduced motion', paused)
-const toggleDisabled = await p.$eval('button[aria-pressed]', (el) => el.disabled)
-ok('motion toggle disabled under reduced motion', toggleDisabled === true)
+const bouncing = await p.$$eval('.animate-bounce', (els) => els.length)
+ok('cover chevron does not bounce under reduced motion', bouncing === 0, `${bouncing} found`)
 
 /* ---------- 10. Positioning: no commerce patterns ---------- */
 await p.emulateMediaFeatures([])
 const commerce = []
-for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/luz-maria-rodriguez']) {
+for (const path of ['/', '/atlas', '/techniques', '/artisans', '/artisans/luz-maria-rodriguez', '/journal/sutatausa-tejilarte']) {
   await p.goto(BASE + path, { waitUntil: 'networkidle2' })
   await new Promise((r) => setTimeout(r, 700))
   const found = await p.evaluate(() => {

@@ -58,7 +58,12 @@ export function Atlas() {
         {/* The words on the left, the country woven on the right. */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHeading eyebrow={t('atlas.eyebrow')} title={t('atlas.title')} lede={t('atlas.lede')} />
+            <SectionHeading
+              eyebrow={t('atlas.eyebrow')}
+              title={t('atlas.title')}
+              standfirst={t('atlas.standfirst')}
+              lede={t('atlas.lede')}
+            />
 
             <ThreadRule className="my-8" />
 

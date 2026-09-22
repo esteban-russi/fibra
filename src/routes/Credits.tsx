@@ -67,8 +67,8 @@ export function Credits() {
     {
       what: { en: 'Photography on the artisan profiles', es: 'Fotografía en los perfiles de artesanas' },
       status: {
-        en: 'None. The registry above documents other people and other regions; attaching one of those frames to a named living artisan would misrepresent both. Drawn plates stand in until these workshops supply their own images.',
-        es: 'Ninguna. El registro de arriba documenta a otras personas y otras regiones; atribuir uno de esos encuadres a una artesana viva y nombrada tergiversaría a ambas. Los gráficos dibujados hacen de sustituto hasta que estos talleres provean sus propias imágenes.',
+        en: 'Only the portraits the workshops themselves supplied. The documentary frames in the registry above are of other people in other regions, and attaching one to a named living artisan would misrepresent both. The ground behind the opening act is a macro of cloth, credited above: it shows no face and documents no weaver and no place, which is why it can be there.',
+        es: 'Solo los retratos que los propios talleres proveyeron. Los encuadres documentales del registro de arriba son de otras personas en otras regiones, y atribuir uno a una artesana viva y nombrada tergiversaría a ambas. El fondo del primer acto es un macro de tela, acreditado arriba: no muestra ningún rostro y no documenta a ninguna tejedora ni ningún lugar, y por eso puede estar ahí.',
       },
     },
   ]

@@ -10,11 +10,11 @@ import { ARTISAN_BY_SLUG } from '../content/artisans'
 import type { Artisan } from '../content/artisans'
 import { REGIONS } from '../content/regions'
 import { TECHNIQUES } from '../content/techniques'
-import { MEDIA } from '../content/media'
-import { WeavePlate } from '../components/graphics/WeavePlate'
+import { MEDIA, backdropFor } from '../content/media'
+import type { Credit } from '../content/media'
 import { TechniqueIcon } from '../components/graphics/TechniqueIcon'
 import { DirectContact } from '../components/artisan/DirectContact'
-import { ProvenanceNotice, Prose } from '../components/ui/primitives'
+import { Prose } from '../components/ui/primitives'
 
 /**
  * The story: five acts read as one continuous descent.
@@ -46,6 +46,7 @@ function Story({ artisan }: { artisan: Artisan }) {
   const active = useActiveSection(ids)
   const region = REGIONS.find((r) => r.id === artisan.regionId)
   const accent = region?.colour ?? '#6E3A41'
+  const backdrop = backdropFor(artisan.slug)
 
   const rise = reduced
     ? {}
@@ -61,19 +62,28 @@ function Story({ artisan }: { artisan: Artisan }) {
       {/* =============== ACT I — the trace and the voice =============== */}
       {/*
         One screen, one claim: this is her, this is where the work comes from.
-        The backdrop is drawn rather than photographed so that the only
-        photograph on the screen is the portrait — a documentary image behind a
-        named person reads as being of that person, and it never is. Everything
-        the summary card states appears exactly once; the region, the craft and
-        the community used to be repeated three ways above the fold.
+        The backdrop is real cloth, photographed — a drawn plate stood here
+        before and read as decoration. It is texture and nothing more: the
+        registry entry says whose frame it is and that it documents no weaver
+        and no place, which is the only condition on which a photograph can sit
+        behind a named person without being read as hers. The scrim over it is
+        15% lighter than it was, so the interlacement is legible as cloth rather
+        than as a dark wash. Everything the summary card states appears exactly
+        once; the region, the craft and the community used to be repeated three
+        ways above the fold.
       */}
       <section id="act-1" aria-labelledby="act-1-title" className="relative overflow-hidden bg-ink text-canvas">
         <div aria-hidden="true" className="absolute inset-0">
-          <div className="h-full w-full opacity-[0.18]">
-            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={artisan.slug} />
-          </div>
+          <img
+            src={backdrop.src}
+            alt=""
+            width={backdrop.width}
+            height={backdrop.height}
+            decoding="async"
+            className="h-full w-full object-cover opacity-[0.62]"
+          />
           <div className="scrim-bottom absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-br from-ink/85 via-ink/70 to-ink/55" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink/72 via-ink/60 to-ink/47" />
         </div>
 
         <div className="relative mx-auto max-w-[86rem] px-5 pb-16 pt-[calc(var(--header-h)+3rem)] sm:px-8 sm:pb-20 sm:pt-[calc(var(--header-h)+4.5rem)]">
@@ -100,7 +110,7 @@ function Story({ artisan }: { artisan: Artisan }) {
             </div>
 
             <div className="lg:pt-2">
-              <Portrait artisan={artisan} />
+              <Portrait artisan={artisan} backdrop={backdrop} />
             </div>
           </div>
         </div>
@@ -129,10 +139,6 @@ function Story({ artisan }: { artisan: Artisan }) {
           <ActRail active={active} accent={accent} />
 
           <div className="min-w-0 pb-8">
-            <div className="pt-12 sm:pt-16">
-              <ProvenanceNotice notice={artisan.notice} />
-            </div>
-
             {/* =============== ACT II — territory and memory =============== */}
             <Act id="act-2" index={1} accent={accent}>
               <motion.div {...rise} className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
@@ -213,58 +219,53 @@ function Story({ artisan }: { artisan: Artisan }) {
             </Act>
 
             {/* =============== ACT IV — works of the workshop =============== */}
+            {/*
+              The pieces themselves, photographed by the workshops, in a plain
+              grid. No record, no metadata, no caption standing under the image
+              competing with it — the name arrives on hover, over the photograph
+              it belongs to, and leaves again. What a garment is is something
+              you see; the times and the scales the artisans gave are still in
+              `artisans.ts`, and would need their own surface to come back.
+
+              The name is in the DOM whether or not it is revealed, so a screen
+              reader reads it with the image, and on a touch screen — where
+              there is no hover to give — it simply stays visible.
+            */}
             <Act id="act-4" index={3} accent={accent}>
-              <motion.ul {...rise} className="space-y-10">
-                {artisan.works.map((w, i) => (
-                  <li
-                    key={w.id}
-                    className="grid gap-6 border-t border-line pt-10 first:border-0 first:pt-0 sm:grid-cols-[15rem_1fr] sm:gap-10"
-                  >
-                    <div className="overflow-hidden rounded-sm border border-line">
-                      <div className="aspect-square">
-                        <WeavePlate kind={w.plate} palette={artisan.patternPalette} seed={`${artisan.slug}-${w.id}`} />
-                      </div>
-                    </div>
-
-                    <div className="min-w-0">
-                      <p className="font-mono text-xs tabular-nums text-muted">{String(i + 1).padStart(2, '0')}</p>
-                      <h3 className="mt-1.5 font-serif text-2xl leading-snug text-bordeaux">{pick(w.title)}</h3>
-                      <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-ink/78">{pick(w.context)}</p>
-
-                      <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {[
-                          { k: t('works.technique'), v: pick(w.technique) },
-                          { k: t('works.materials'), v: pick(w.materials) },
-                          { k: t('works.time'), v: pick(w.time), emphasis: true },
-                          { k: t('works.scale'), v: pick(w.scale) },
-                        ].map((row) => (
-                          <div key={row.k}>
-                            <dt className="text-[0.6875rem] uppercase tracking-[0.12em] text-muted">{row.k}</dt>
-                            <dd
-                              className={cn(
-                                'mt-1 text-sm leading-snug',
-                                row.emphasis ? 'font-serif text-base italic text-bordeaux' : 'text-ink/80',
-                              )}
-                            >
-                              {row.v}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </div>
-                  </li>
-                ))}
+              <motion.ul {...rise} className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                {artisan.gallery.map((piece) => {
+                  const photo = MEDIA[piece.image]
+                  if (!photo) return null
+                  return (
+                    <li key={piece.id}>
+                      <figure className="group relative overflow-hidden rounded-sm border border-line bg-surface/40">
+                        <img
+                          src={photo.src}
+                          alt={pick(photo.alt)}
+                          width={photo.width}
+                          height={photo.height}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[3/4] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
+                        />
+                        <figcaption className="pointer-events-none absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-coarse:opacity-100 sm:p-5">
+                          <span aria-hidden="true" className="absolute inset-0 bg-ink/30" />
+                          <span aria-hidden="true" className="scrim-bottom absolute inset-x-0 bottom-0 h-3/5" />
+                          <span className="relative text-pretty font-serif text-lg leading-tight text-canvas sm:text-xl">
+                            {pick(piece.name)}
+                          </span>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  )
+                })}
               </motion.ul>
-
-              <p className="mt-12 max-w-2xl border-l-2 border-ash pl-5 text-pretty font-serif text-lg italic leading-relaxed text-clay">
-                {t('works.note')}
-              </p>
             </Act>
 
             {/* =============== ACT V — direct contact =============== */}
-            <Act id="act-5" index={4} accent={accent}>
+            <Act id="act-5" index={4} accent={accent} titled={false}>
               <motion.div {...rise}>
-                <DirectContact artisan={artisan} />
+                <DirectContact artisan={artisan} headingId="act-5-title" />
               </motion.div>
             </Act>
           </div>
@@ -337,14 +338,15 @@ function IdentityCard({ artisan, accent }: { artisan: Artisan; accent: string })
 }
 
 /**
- * Her portrait, or the plate that stands in for one.
+ * Her portrait, or the cloth that stands in for one.
  *
- * A profile with no supplied photograph gets the drawn cloth in her palette
- * rather than a borrowed face. The substitution is stated rather than hidden:
- * a reader who sees a plate here should know that it means no portrait has
- * been given yet, not that one is loading.
+ * A profile with no supplied photograph gets woven ground rather than a
+ * borrowed face — the same cloth as the backdrop behind it, so the empty slot
+ * reads as a gap in the page rather than as a second image. The substitution is
+ * stated rather than hidden: a reader who sees cloth here should know that it
+ * means no portrait has been given yet, not that one is loading.
  */
-function Portrait({ artisan }: { artisan: Artisan }) {
+function Portrait({ artisan, backdrop }: { artisan: Artisan; backdrop: Credit }) {
   const { t, pick } = useI18n()
   const credit = artisan.portrait ? MEDIA[artisan.portrait] : null
 
@@ -352,10 +354,16 @@ function Portrait({ artisan }: { artisan: Artisan }) {
     return (
       <figure className="overflow-hidden rounded-sm border border-canvas/20">
         <div className="relative aspect-[4/5]">
-          <div className="h-full w-full opacity-55">
-            <WeavePlate kind="plain" palette={artisan.patternPalette} seed={`${artisan.slug}-portrait`} />
-          </div>
-          <div aria-hidden="true" className="absolute inset-0 bg-ink/35" />
+          <img
+            src={backdrop.src}
+            alt=""
+            width={backdrop.width}
+            height={backdrop.height}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-ink/30" />
         </div>
         <figcaption className="bg-ink/45 px-4 py-3 text-[0.75rem] leading-relaxed text-canvas/60">
           {t('artisan.noPortrait')}
@@ -379,31 +387,48 @@ function Portrait({ artisan }: { artisan: Artisan }) {
   )
 }
 
+/**
+ * One act: the rule, the numeral, and the act's own title.
+ *
+ * `titled={false}` suppresses that title for an act whose content already
+ * opens with a heading of its own — act V says "Hable con el taller" and does
+ * not also need to be announced as "El Contacto Directo y el Encargo Ético"
+ * directly above it. The act name still identifies it in the rail. The section
+ * keeps pointing at `<id>-title`, so whichever element carries that id is the
+ * one that names the section.
+ */
 function Act({
   id,
   index,
   accent,
+  titled = true,
   children,
 }: {
   id: string
   index: number
   accent: string
+  titled?: boolean
   children: React.ReactNode
 }) {
   const { t } = useI18n()
   const act = ACTS[index]
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-[calc(var(--header-h)+2rem)] pt-20 sm:pt-28">
-      <header className="mb-10">
+      <header className={titled ? 'mb-10' : 'mb-7'}>
         <p className="flex items-center gap-3">
           <span aria-hidden="true" className="h-px w-8" style={{ background: accent }} />
           <span className="text-[0.6875rem] uppercase tracking-[0.2em] text-muted">
             {t('artisan.act')} {t(act.roman)}
           </span>
         </p>
-        <h2 id={`${id}-title`} className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]">
-          {t(act.title)}
-        </h2>
+        {titled && (
+          <h2
+            id={`${id}-title`}
+            className="mt-3 text-balance font-serif text-3xl leading-tight text-bordeaux sm:text-[2.5rem]"
+          >
+            {t(act.title)}
+          </h2>
+        )}
       </header>
       {children}
     </section>

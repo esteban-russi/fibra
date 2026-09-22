@@ -19,6 +19,10 @@ const Artisans = lazy(() => import('./routes/Artisans').then((m) => ({ default: 
 const ArtisanProfile = lazy(() =>
   import('./routes/ArtisanProfile').then((m) => ({ default: m.ArtisanProfile })),
 )
+const About = lazy(() => import('./routes/About').then((m) => ({ default: m.About })))
+const JournalEntry = lazy(() =>
+  import('./routes/JournalEntry').then((m) => ({ default: m.JournalEntry })),
+)
 const Credits = lazy(() => import('./routes/Credits').then((m) => ({ default: m.Credits })))
 const NotFound = lazy(() => import('./routes/NotFound').then((m) => ({ default: m.NotFound })))
 
@@ -85,6 +89,8 @@ function Shell() {
             <Route path="/techniques/:slug" element={<TechniqueDetail />} />
             <Route path="/artisans" element={<Artisans />} />
             <Route path="/artisans/:slug" element={<ArtisanProfile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/journal/:slug" element={<JournalEntry />} />
             <Route path="/credits" element={<Credits />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

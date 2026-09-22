@@ -21,6 +21,7 @@ const en = {
   'nav.atlas': 'Territories',
   'nav.techniques': 'Techniques',
   'nav.artisans': 'Artisans',
+  'nav.journal': 'Journal',
   'nav.about': 'About',
   'nav.credits': 'Credits',
   'nav.menu': 'Menu',
@@ -47,23 +48,30 @@ const en = {
   'home.path.territory.desc':
     'Six regions dyed by their surroundings. From the solar yellow of bija in the north, to the deep green of mangrove and Pacific mud.',
   'home.path.territory.cta': 'Enter through the region',
-  'home.identity.title': 'About FIBRA',
-  'home.identity.body.1':
-    'Fibre is the filament a plant gives up and an animal offers; what the human hand transforms.',
-  'home.identity.body.2':
-    'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
-  'home.identity.body.3':
-    'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
   'home.artisans.eyebrow': 'Stories',
   'home.artisans.title': 'Five acts, one voice',
   'home.artisans.lede':
     'Each profile unwinds straight through, in five acts: from the voice of the person who scrapes, spins and knots, to the very door of their workshop.',
 
+  // --- Journal (Bitácora) ---------------------------------------------------
+  'journal.eyebrow': 'Journal',
+  'journal.latest': 'Latest entry',
+  'journal.read': 'Read the entry',
+  'journal.back': 'Back to the Journal',
+  'journal.guide': 'The traveller’s guide',
+  'journal.gallery': 'From the festival',
+  'journal.watch': 'Video filmed at the festival',
+  'journal.video.fallback':
+    'Your browser cannot play this video. It shows two needles working a dark green wool at the festival.',
+  'journal.courtesy':
+    'The photographs and the video on this page were supplied by the collective and are published by their courtesy. The account, the quotations and the programme are theirs; the ordering and the English translation are ours.',
+
   // --- Atlas ----------------------------------------------------------------
   'atlas.eyebrow': 'Territories',
-  'atlas.title': 'Textile Atlas of Colombia',
+  'atlas.title': 'Textile Map of Colombia',
+  'atlas.standfirst': 'Colombia does not weave one way. It weaves six, at least.',
   'atlas.lede':
-    'Six chromatic regions, read as a woven cloth rather than a political map. Each colour is taken from what actually dyes or grows there — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast.',
+    'The country is read here as a cloth: six chromatic bands taken from what the earth itself dyes and grows in each region — bija and dry arrow cane in the north, walnut bark and raw wool in the cordillera, jagua and mangrove on the Pacific coast. These bands do not follow administrative limits; they follow colour, territory and craft. Every tone exists in the landscape first, before it exists in a thread.',
   'atlas.scroll': 'See the six regions',
   'atlas.hint': 'Select a region to open its panel',
   'atlas.hint.touch': 'Tap a band to open its panel',
@@ -72,7 +80,7 @@ const en = {
     'Map of Colombia knitted in wool, with each of the six textile regions worked in its own dye colour.',
   'atlas.region.select': 'Open the {name} region panel',
   'atlas.note':
-    'The six bands are a chromatic reading of the country, not a survey boundary. Regional borders in Colombia are drawn differently by different institutions, and craft traditions cross all of them.',
+    'Colombian weaving is not one tradition: it is dozens, each with its territory, its raw material and its knowledge. This map is the way in to that diversity.',
 
   // --- Region drawer --------------------------------------------------------
   'drawer.close': 'Close region panel',
@@ -112,7 +120,7 @@ const en = {
   'artisan.craft': 'Craft',
   'artisan.techniques': 'Techniques',
   'artisan.voice': 'In her own words',
-  'artisan.noPortrait': 'No portrait has been supplied for this workshop yet. The cloth shown is drawn, not photographed.',
+  'artisan.noPortrait': 'No portrait has been supplied for this workshop yet. The cloth shown is not from this workshop: it is the same photographed ground as the page behind it.',
   'artisan.region': 'Region',
 
   // --- Traceability seal ----------------------------------------------------
@@ -139,15 +147,6 @@ const en = {
   'techniquevideo.lede':
     'The gestures this workshop performs, each one photographed at the work. Follow any of them to the technique itself.',
 
-  // --- Act IV ---------------------------------------------------------------
-  'works.technique': 'Technique',
-  'works.materials': 'Materials',
-  'works.time': 'Time invested',
-  'works.scale': 'Real scale',
-  'works.context': 'In use',
-  'works.note':
-    'These are not listings. There is no price on this page, because a price agreed in advance by a platform is a price the maker did not set.',
-
   // --- Act V ----------------------------------------------------------------
   'contact.eyebrow': 'Act V',
   'contact.title': 'Speak to the workshop',
@@ -155,23 +154,42 @@ const en = {
     'From here the conversation is yours. FIBRA does not sit in the middle of it, does not read it, and takes nothing from what you agree.',
   'contact.whatsapp': 'Message on WhatsApp',
   'contact.call': 'Call the workshop',
-  'contact.prefilled': 'Your message will open pre-written, and you can change every word of it:',
-  'contact.prefilledPending':
-    'When the workshop’s number is published, your message will open pre-written — and you will be able to change every word of it:',
-  'contact.hours': 'Best hours to write',
-  'contact.language': 'Languages spoken',
+  'contact.line': 'The workshop’s line',
+  'contact.channels': 'Also visit',
   'contact.instagram': 'Instagram',
   'contact.website': 'Website',
-  'contact.nocommission': 'FIBRA charges no commission on this conversation.',
   'contact.withheld': 'Number not published yet',
   'contact.withheld.why':
     'Publishing a workshop’s telephone is a separate consent from publishing a story, and this one has not been given. The buttons above are inactive rather than pointed at a placeholder that would not reach her.',
 
-  'guide.title': 'Guide to a Conscious Commission',
-  'guide.lede':
-    'Most friction between a workshop and a first-time client comes from one place: industrial expectations applied to a handmade object. These are the things worth knowing before you write.',
-
   // --- Credits / provenance -------------------------------------------------
+  // --- About ----------------------------------------------------------------
+  'about.eyebrow': 'The project',
+  'about.title': 'About FIBRA',
+  'about.lede':
+    'FIBRA is a cultural storytelling platform that connects Colombian artisan weavers with consumers. We set out to translate the language of weaving — its technique, its territory and its symbolism — into an authentic experience.',
+  'about.name.1':
+    'Fibre is the filament a plant gives up and an animal offers; what the human hand transforms.',
+  'about.name.2':
+    'But in Spanish, fibra is also what moves in you when something truly reaches you: we say something has touched our fibres when it shakes us, captivates us, and comes to live in us.',
+  'about.name.3':
+    'FIBRA is born at that exact crossing: between craft and wonder. Here every story is a weave; we do not show objects, we show hands that weave time.',
+  'about.weaver.title': 'Who weaves this story',
+  'about.weaver.1':
+    'I am Valeria León Niño, a Colombian with the soul of a weaver — curious, and still an apprentice.',
+  'about.weaver.2':
+    'From early childhood I lived surrounded by reasons to draw, to design and to imagine garments, thanks to my grandmothers: they were my first teachers without ever knowing it. In time I cultivated that curiosity until it became a passion for fashion, and that passion led me to try to turn it into a craft: so at university, while I was studying Business Administration, I began to develop my weaving skills, and since then I have never stopped learning by practice — on the knitting machine as much as at the loom.',
+  'about.weaver.3':
+    'That passion led me to found d_moda, a digital magazine, and to pursue my dream of studying the Strategic Fashion Marketing master’s at London College of Fashion.',
+  'about.weaver.4':
+    'FIBRA comes of weaving all my passions into a single thread — the thread of a weaver who never stopped learning, and who now wants other weavers to be seen, named and heard.',
+  'about.weaver.reach': 'Contact',
+  'about.weaver.linkedin': 'LinkedIn',
+  'about.weaver.linkedinLabel': 'Valeria León Niño on LinkedIn (opens in a new tab)',
+  'about.weaver.whatsapp': 'WhatsApp',
+  'about.weaver.whatsappLabel': 'Write to Valeria León Niño on WhatsApp (opens in a new tab)',
+  'about.weaver.callLabel': 'Call Valeria León Niño',
+
   'credits.eyebrow': 'Provenance',
   'credits.title': 'Credits and content provenance',
   'credits.lede':
@@ -234,6 +252,7 @@ const es: Record<UIKey, string> = {
   'nav.atlas': 'Territorios',
   'nav.techniques': 'Técnicas',
   'nav.artisans': 'Artesanos',
+  'nav.journal': 'Bitácora',
   'nav.about': 'Acerca de',
   'nav.credits': 'Créditos',
   'nav.menu': 'Menú',
@@ -253,28 +272,34 @@ const es: Record<UIKey, string> = {
     'Puedes entrar por la técnica de las manos que transforman la hebra, o por el territorio donde nace la materia prima. Escoge qué extremo del hilo quieres empezar a halar.',
   'home.path.techniques.title': 'La ruta de las técnicas',
   'home.path.techniques.desc':
-    'Urdir, torcer, anudar, macerar, hilar. Cinco movimientos exactos donde el cuerpo dialoga con la tensión, el ritmo y la herramienta.',
+    'Urdir, trenzar, anudar, tinturar, hilar. Cinco movimientos exactos donde el cuerpo dialoga con la tensión, el ritmo y la herramienta.',
   'home.path.techniques.cta': 'Entrar en el oficio',
   'home.path.territory.title': 'La ruta de los territorios',
   'home.path.territory.desc':
     'Seis regiones teñidas por su entorno. Del amarillo solar de la bija en el norte, al verde profundo del mangle y el lodo pacífico.',
   'home.path.territory.cta': 'Entrar por la región',
-  'home.identity.title': 'Acerca de FIBRA',
-  'home.identity.body.1':
-    'Fibra es el filamento que la planta entrega y el animal ofrece; lo que la mano humana transforma.',
-  'home.identity.body.2':
-    'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
-  'home.identity.body.3':
-    'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
   'home.artisans.eyebrow': 'Historias',
   'home.artisans.title': 'Cinco actos, una voz',
   'home.artisans.lede':
     'Cada perfil se desmadeja de corrido, en cinco actos: desde la voz de quien raspa, hila y anuda, hasta la puerta misma de su taller.',
 
+  'journal.eyebrow': 'Bitácora',
+  'journal.latest': 'Última entrada',
+  'journal.read': 'Leer la entrada',
+  'journal.back': 'Volver a la Bitácora',
+  'journal.guide': 'Guía del viajero',
+  'journal.gallery': 'Desde el festival',
+  'journal.watch': 'Video filmado en el festival',
+  'journal.video.fallback':
+    'Su navegador no puede reproducir este video. Muestra dos agujas trabajando una lana verde oscura en el festival.',
+  'journal.courtesy':
+    'Las fotografías y el video de esta página fueron provistos por el colectivo y se publican por su cortesía. El relato, las citas y la programación son suyos; el ordenamiento y la traducción al inglés son nuestros.',
+
   'atlas.eyebrow': 'Territorios',
-  'atlas.title': 'Atlas Textil de Colombia',
+  'atlas.title': 'Mapa Textil de Colombia',
+  'atlas.standfirst': 'Colombia no teje de una sola forma. Teje seis, al menos.',
   'atlas.lede':
-    'Seis regiones cromáticas, leídas como una tela tejida antes que como un mapa político. Cada color se toma de lo que realmente tiñe o crece allí — bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico.',
+    'El país se lee aquí como una tela: seis franjas cromáticas tomadas de lo que la tierra misma tiñe y hace crecer en cada región: bija y caña flecha seca en el norte, corteza de nogal y lana cruda en la cordillera, jagua y mangle en el litoral Pacífico. Estas franjas no siguen límites administrativos; siguen el color, el territorio y el oficio. Cada tono existe primero en el paisaje, antes de existir en un hilo.',
   'atlas.scroll': 'Ver las seis regiones',
   'atlas.hint': 'Seleccione una región para abrir su panel',
   'atlas.hint.touch': 'Toque una franja para abrir su panel',
@@ -283,7 +308,7 @@ const es: Record<UIKey, string> = {
     'Mapa de Colombia tejido en lana, con cada una de las seis regiones textiles trabajada en su propio color de tinte.',
   'atlas.region.select': 'Abrir el panel de la región {name}',
   'atlas.note':
-    'Las seis franjas son una lectura cromática del país, no un límite catastral. Las fronteras regionales en Colombia se trazan de modo distinto según la institución, y las tradiciones artesanales las cruzan todas.',
+    'El tejido colombiano no es una sola tradición: son decenas, cada una con su territorio, su materia prima y su saber. Este mapa es la puerta de entrada a esa diversidad.',
 
   'drawer.close': 'Cerrar el panel de la región',
   'drawer.region': 'Región',
@@ -320,7 +345,7 @@ const es: Record<UIKey, string> = {
   'artisan.craft': 'Oficio',
   'artisan.techniques': 'Técnicas',
   'artisan.voice': 'En su propia voz',
-  'artisan.noPortrait': 'Este taller aún no ha entregado un retrato. El tejido que se muestra es dibujado, no fotografiado.',
+  'artisan.noPortrait': 'Este taller aún no ha entregado un retrato. El tejido que se muestra no es de este taller: es el mismo fondo fotografiado que la página que lo rodea.',
   'artisan.region': 'Región',
 
   'seal.authorship': 'Autoría individual',
@@ -344,35 +369,45 @@ const es: Record<UIKey, string> = {
   'techniquevideo.lede':
     'Los gestos que se practican en este taller, cada uno fotografiado en el trabajo. Cualquiera de ellos lleva a la técnica misma.',
 
-  'works.technique': 'Técnica',
-  'works.materials': 'Materiales',
-  'works.time': 'Tiempo invertido',
-  'works.scale': 'Escala real',
-  'works.context': 'En uso',
-  'works.note':
-    'Estas no son fichas de venta. En esta página no hay precio, porque un precio acordado de antemano por una plataforma es un precio que quien hace la pieza no fijó.',
-
   'contact.eyebrow': 'Acto V',
   'contact.title': 'Hable con el taller',
   'contact.lede':
     'De aquí en adelante la conversación es suya. FIBRA no se sitúa en medio de ella, no la lee, y no toma nada de lo que ustedes acuerden.',
   'contact.whatsapp': 'Escribir por WhatsApp',
   'contact.call': 'Llamar al taller',
-  'contact.prefilled': 'Su mensaje se abrirá ya redactado, y puede cambiar cada palabra:',
-  'contact.prefilledPending':
-    'Cuando el número del taller se publique, su mensaje se abrirá ya redactado — y podrá cambiar cada palabra:',
-  'contact.hours': 'Mejores horas para escribir',
-  'contact.language': 'Idiomas que se hablan',
+  'contact.line': 'La línea del taller',
+  'contact.channels': 'También visita',
   'contact.instagram': 'Instagram',
   'contact.website': 'Sitio web',
-  'contact.nocommission': 'FIBRA no cobra comisión alguna sobre esta conversación.',
   'contact.withheld': 'Número aún no publicado',
   'contact.withheld.why':
     'Publicar el teléfono de un taller es un consentimiento distinto del de publicar una historia, y este no se ha dado. Los botones de arriba están inactivos en lugar de apuntar a un número de relleno que no llegaría a ella.',
 
-  'guide.title': 'Guía de Encargo Consciente',
-  'guide.lede':
-    'Casi toda la fricción entre un taller y un cliente primerizo viene del mismo sitio: expectativas industriales aplicadas a un objeto hecho a mano. Esto es lo que conviene saber antes de escribir.',
+  'about.eyebrow': 'El proyecto',
+  'about.title': 'Acerca de FIBRA',
+  'about.lede':
+    'FIBRA es una plataforma de storytelling cultural que conecta a tejedoras artesanas colombianas con consumidores. Buscamos traducir el lenguaje del tejido — su técnica, su territorio y su simbolismo — en una experiencia auténtica.',
+  'about.name.1':
+    'Fibra es el filamento que la planta entrega y el animal ofrece; lo que la mano humana transforma.',
+  'about.name.2':
+    'Pero en nuestra lengua, fibra es también lo que se mueve cuando algo nos toca de verdad: decimos que algo nos tocó las fibras cuando nos estremece, nos cautiva y nos habita.',
+  'about.name.3':
+    'FIBRA nace en ese cruce exacto: entre el oficio y el asombro. Aquí cada historia es un tejido; no mostramos objetos, mostramos manos que tejen tiempo.',
+  'about.weaver.title': 'Quién teje esta historia',
+  'about.weaver.1':
+    'Soy Valeria León Niño y soy una colombiana con alma de tejedora curiosa y aprendiz.',
+  'about.weaver.2':
+    'Desde pequeña viví rodeada de inspiración para dibujar, diseñar e imaginar prendas textiles, gracias a mis abuelas: ellas fueron mis primeras maestras, sin saberlo. Con el tiempo cultivé esa curiosidad que se convirtió en una pasión por la moda, pasión que me llevó a buscar transformarla en oficio: así, en la universidad, mientras estudiaba Administración de Empresas, empecé a desarrollar mis habilidades de tejido, y desde entonces no he parado de aprender de forma empírica, tanto el tejido a máquina como en telar.',
+  'about.weaver.3':
+    'Esta pasión me llevó a fundar d_moda, una revista digital, y a perseguir mi sueño de estudiar la maestría Strategic Fashion Marketing en London College of Fashion.',
+  'about.weaver.4':
+    'FIBRA nace de tejer todas mis pasiones en un solo hilo — el de una tejedora que nunca dejó de aprender, y que ahora quiere que otras tejedoras sean vistas, nombradas y escuchadas.',
+  'about.weaver.reach': 'Contacto',
+  'about.weaver.linkedin': 'LinkedIn',
+  'about.weaver.linkedinLabel': 'Valeria León Niño en LinkedIn (se abre en una pestaña nueva)',
+  'about.weaver.whatsapp': 'WhatsApp',
+  'about.weaver.whatsappLabel': 'Escribir a Valeria León Niño por WhatsApp (se abre en una pestaña nueva)',
+  'about.weaver.callLabel': 'Llamar a Valeria León Niño',
 
   'credits.eyebrow': 'Procedencia',
   'credits.title': 'Créditos y procedencia del contenido',

@@ -34,6 +34,13 @@ function commons(file: string): string {
   return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file.replace(/ /g, '_'))}`
 }
 
+/** The referral parameters are the form Unsplash asks attribution to take. */
+function unsplash(slug: string): string {
+  return `https://unsplash.com/photos/${slug}?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText`
+}
+
+const TEJILARTE = 'https://www.instagram.com/tejilartesutatausa'
+
 const UNSPLASH = 'https://unsplash.com/license'
 const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/deed.en'
 const CC_BY_SA_2 = 'https://creativecommons.org/licenses/by-sa/2.0/deed.en'
@@ -228,9 +235,7 @@ export const MEDIA: Record<string, Credit> = {
     author: 'Felipe Mendoza',
     licence: 'Unsplash License',
     licenceUrl: UNSPLASH,
-    // The referral parameters are the form Unsplash asks attribution to take.
-    sourceUrl:
-      'https://unsplash.com/photos/a-woman-weaving-a-rug-with-a-wooden-stick-QZo-EW1Pnp0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+    sourceUrl: unsplash('a-woman-weaving-a-rug-with-a-wooden-stick-QZo-EW1Pnp0'),
     alt: {
       en: 'Two hands working a striped warp on a stick loom: one holds a smooth wooden rod, the other presses the threads down. Bands of red, turquoise, black and cream run the width of the cloth.',
       es: 'Dos manos trabajan una urdimbre rayada en un telar de varas: una sostiene una vara de madera lisa y la otra presiona los hilos. Franjas rojas, turquesas, negras y crudas recorren el ancho de la tela.',
@@ -359,6 +364,203 @@ export const MEDIA: Record<string, Credit> = {
     },
   },
 
+  /* --- The workshops' own pieces, act IV ------------------------------------
+     Supplied by each taller with its story. Credited to the workshop rather
+     than to FIBRA: we did not take these, and the pieces in them are theirs. */
+
+  florChalecoPachamama: {
+    id: 'florChalecoPachamama',
+    src: '/media/artisans/flor_imbacuan/chaleco-pachamama.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Pachamama.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long sleeveless wrap vest in cream, banded with wine red and black stripes and finished in fringes, tied at the waist on a dress form. Around it, a courtyard workshop: small looms, a basket of raw fleece, skeins of yellow and teal yarn and two clay pots.',
+      es: 'Un chaleco largo sin mangas, crudo, con franjas vino tinto y negras y remate en flecos, amarrado a la cintura sobre un maniquí. Alrededor, un taller de patio: telares pequeños, un canasto de vellón sin hilar, madejas de lana amarilla y verde azulada y dos ollas de barro.',
+    },
+    caption: {
+      en: 'Chaleco Pachamama, in the courtyard of the Hajsú workshop.',
+      es: 'Chaleco Pachamama, en el patio del taller Hajsú.',
+    },
+  },
+  florChalecoFuego: {
+    id: 'florChalecoFuego',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-fuego.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Vestido Fuego.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long open vest-dress on a dress form, banded in yellow, orange, brown and red, with woven diamond figures down the front panel, a brown sash at the waist and fringes at the hem. Behind it, a courtyard with painted walls and hanging looms.',
+      es: 'Un chaleco vestido largo y abierto sobre un maniquí, en franjas amarillas, naranjas, cafés y rojas, con figuras de rombos tejidas en el panel delantero, una faja café a la cintura y flecos en el ruedo. Detrás, un patio de muros pintados y telares colgados.',
+    },
+    caption: {
+      en: 'Chaleco Vestido Fuego.',
+      es: 'Chaleco Vestido Fuego.',
+    },
+  },
+  florChalecoNocheFertil: {
+    id: 'florChalecoNocheFertil',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-noche-fertil.webp',
+    width: 800,
+    height: 1423,
+    file: 'flor_imbacuan/Chaleco Vestido Noche Fértil.JPG',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long black vest-dress on a dress form, striped in magenta, red and yellow with woven diamond figures, a black sash at the waist and fringes at the hem. It stands outside a shopfront hung with hats.',
+      es: 'Un chaleco vestido largo y negro sobre un maniquí, con rayas magenta, rojas y amarillas y figuras de rombos tejidas, una faja negra a la cintura y flecos en el ruedo. Está a la entrada de un local donde cuelgan sombreros.',
+    },
+    caption: {
+      en: 'Chaleco Vestido Noche Fértil.',
+      es: 'Chaleco Vestido Noche Fértil.',
+    },
+  },
+  florChalecoRojo: {
+    id: 'florChalecoRojo',
+    src: '/media/artisans/flor_imbacuan/chaleco-vestido-rojo.webp',
+    width: 900,
+    height: 1125,
+    file: 'flor_imbacuan/SaveClip.App_749440507.jpg',
+    author: 'Hajsú Etnomoda',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A model against a dark studio backdrop, wearing a floor-length wrap garment in deep red with black edging, a sash at the waist and long fringes at the hem and the ends of the belt.',
+      es: 'Una modelo sobre un fondo oscuro de estudio, con una prenda envolvente hasta el piso en rojo profundo, con ribete negro, faja a la cintura y flecos largos en el ruedo y en las puntas del cinturón.',
+    },
+    caption: {
+      en: 'A vest-dress in red, photographed in studio for the workshop.',
+      es: 'Un chaleco vestido en rojo, fotografiado en estudio para el taller.',
+    },
+  },
+
+  luzRuanaCruda: {
+    id: 'luzRuanaCruda',
+    src: '/media/artisans/luz_rodriguez/ruana-lana-cruda.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_654017717.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A woman walking a runway in a thick undyed wool poncho with a V neck, a fringed hem and three dark embroidered marks across the front. Behind her, a mountain ridge, pine trees and white event tents.',
+      es: 'Una mujer camina por una pasarela con un poncho grueso de lana cruda, con cuello en V, ruedo en flecos y tres manchas oscuras bordadas en el frente. Detrás, una cuchilla de montaña, pinos y carpas blancas de evento.',
+    },
+    caption: {
+      en: 'A poncho in undyed wool on the runway, Tejilarte.',
+      es: 'Un poncho en lana cruda en pasarela, Tejilarte.',
+    },
+  },
+  luzPonchoCamel: {
+    id: 'luzPonchoCamel',
+    src: '/media/artisans/luz_rodriguez/poncho-lana-camel.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_660686941.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A woman walking a runway in a camel-coloured wool poncho with wide square sleeves, worn over jeans with a long necklace of coloured felt balls. Pines and a cloudy sky behind her.',
+      es: 'Una mujer camina por una pasarela con un poncho de lana color camel de mangas anchas y cuadradas, sobre jeans y con un collar largo de bolas de fieltro de colores. Detrás, pinos y un cielo nublado.',
+    },
+    caption: {
+      en: 'A poncho in camel wool on the runway, Tejilarte.',
+      es: 'Un poncho en lana color camel en pasarela, Tejilarte.',
+    },
+  },
+  luzRuanaInfantil: {
+    id: 'luzRuanaInfantil',
+    src: '/media/artisans/luz_rodriguez/ruana-infantil-verdes.webp',
+    width: 900,
+    height: 1125,
+    file: 'luz_rodriguez/SaveClip.App_669731354.jpg',
+    author: 'Tejilarte',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A girl on a runway holding out a child\'s ruana halved lengthwise into lime green and olive green, the two halves joined down the middle by a thick plaited edge.',
+      es: 'Una niña en pasarela extiende una ruana infantil partida a lo largo en verde limón y verde oliva, con las dos mitades unidas al centro por una trenza gruesa.',
+    },
+    caption: {
+      en: 'A child\'s ruana in two greens, joined by a plaited edge.',
+      es: 'Una ruana infantil en dos verdes, unida por una trenza.',
+    },
+  },
+
+  adaVestidoCalado: {
+    id: 'adaVestidoCalado',
+    src: '/media/artisans/ada_morgante/vestido-calado.webp',
+    width: 800,
+    height: 1069,
+    file: 'ada_morgante/505736fe.jpg',
+    author: 'Ada Morgante',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A long-sleeved dress in openwork knit on a dress form, in bands running from deep red through pink to cream. Behind it, the workshop: a painting of sunflowers, cones of yarn and a work bench.',
+      es: 'Un vestido de manga larga en tejido calado sobre un maniquí, en franjas que van del rojo profundo al rosado y al crudo. Detrás, el taller: un cuadro de girasoles, conos de hilo y un mesón de trabajo.',
+    },
+    caption: {
+      en: 'A dress in openwork knit, in her Chapinero workshop.',
+      es: 'Un vestido en tejido calado, en su taller de Chapinero.',
+    },
+  },
+  adaVestidoAmarillo: {
+    id: 'adaVestidoAmarillo',
+    src: '/media/artisans/ada_morgante/vestido-amarillo.webp',
+    width: 800,
+    height: 1423,
+    file: 'ada_morgante/fe0b6e75.jpg',
+    author: 'Ada Morgante',
+    licence: 'Cedida por el taller',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A pale yellow knitted dress on a dress form, sleeveless with a deep V neck, a ribbed waist and a full skirt that falls in flutes. The workshop is behind it, with a Botero poster and racks of yarn.',
+      es: 'Un vestido tejido en amarillo pálido sobre un maniquí, sin mangas, con escote en V profundo, cintura acanalada y falda amplia que cae en godets. Detrás está el taller, con un afiche de Botero y estantes de hilos.',
+    },
+    caption: {
+      en: 'A knitted dress in pale yellow, in her Chapinero workshop.',
+      es: 'Un vestido tejido en amarillo pálido, en su taller de Chapinero.',
+    },
+  },
+
+  luzMariaRetrato: {
+    id: 'luzMariaRetrato',
+    src: '/media/artisans/luz_rodriguez/profile.webp',
+    width: 413,
+    height: 512,
+    file: 'luz_rodriguez/profile.webp',
+    author: 'FIBRA',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'Black and white studio portrait of a woman with long dark hair, looking straight at the camera. She wears a striped collared shirt under a dark jumper, with a heavy dark wool ruana drawn across both shoulders. The background is plain and pale.',
+      es: 'Retrato de estudio en blanco y negro de una mujer de pelo largo y oscuro, que mira de frente a la cámara. Lleva una camisa de cuello a rayas bajo un suéter oscuro, y una ruana gruesa de lana oscura cruzada sobre los dos hombros. El fondo es liso y claro.',
+    },
+    caption: {
+      en: 'Luz María Rodríguez Rodríguez, wearing a ruana in virgin wool.',
+      es: 'Luz María Rodríguez Rodríguez, con una ruana en lana virgen.',
+    },
+  },
   florImbacuanRetrato: {
     id: 'florImbacuanRetrato',
     src: '/media/artisans/flor_imbacuan/profile.webp',
@@ -376,6 +578,28 @@ export const MEDIA: Record<string, Credit> = {
     caption: {
       en: 'Flor Imbacuan at a Huanga vertical loom.',
       es: 'Flor Imbacuan ante un telar vertical Huanga.',
+    },
+  },
+  // The person who made the platform, on the page that says so. Her own
+  // photograph, published with her consent; it carries an author and a licence
+  // here like every other file, because the registry admits no exceptions.
+  valeriaRetrato: {
+    id: 'valeriaRetrato',
+    src: '/media/about/valeria-leon.webp',
+    width: 400,
+    height: 400,
+    file: 'about/valeria-leon.jpg',
+    author: 'Valeria León Niño',
+    licence: 'Archivo del proyecto',
+    licenceUrl: '#',
+    sourceUrl: '#',
+    alt: {
+      en: 'A young woman with long dark hair, smiling, in a red high-necked knitted jumper against a plain warm beige ground.',
+      es: 'Una mujer joven de cabello largo y oscuro, sonriendo, con un suéter tejido rojo de cuello alto sobre un fondo beige cálido y liso.',
+    },
+    caption: {
+      en: 'Valeria León Niño, who founded FIBRA.',
+      es: 'Valeria León Niño, quien fundó FIBRA.',
     },
   },
   aditaRetrato: {
@@ -397,6 +621,260 @@ export const MEDIA: Record<string, Credit> = {
       es: 'Ada Morgante ante la máquina de tejer rectilínea de su taller.',
     },
   },
+  // ---------------------------------------------------------------------------
+  // Woven grounds.
+  //
+  // Macro photographs of real cloth, used as the backdrop of an artisan profile
+  // in place of the drawn plate that used to sit there. They are texture, not
+  // testimony: none of them was made in Colombia, none is a piece from any of
+  // these workshops, and the source records neither weaver nor place, so none
+  // is attributed one. That is exactly why they can stand behind a named person
+  // — they show cloth and never a face, and the caption here says whose frame
+  // it is. Delivered at 1440px and heavily scrimmed in place, so the file is
+  // sized for a background rather than for inspection.
+  // ---------------------------------------------------------------------------
+
+  tejidoRojoDiamantes: {
+    id: 'tejidoRojoDiamantes',
+    src: '/media/patterns/tejido-rojo-diamantes.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-nDgBHlWRwqw-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-red-carpet-with-a-pattern-on-it-nDgBHlWRwqw'),
+    alt: {
+      en: 'A deep red woven ground carrying two embroidered diamonds in orange, purple and cream, either side of a vertical band of white, blue and green stitches.',
+      es: 'Un fondo tejido en rojo profundo con dos rombos bordados en naranja, morado y crudo, a lado y lado de una banda vertical de puntadas blancas, azules y verdes.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoGeometricoOblicuo: {
+    id: 'tejidoGeometricoOblicuo',
+    src: '/media/patterns/tejido-geometrico-oblicuo.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-risCdLh_4fY-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-red-and-green-rug-risCdLh_4fY'),
+    alt: {
+      en: 'An oblique close view of a woven panel worked in red, olive and cream, its stepped geometric figures running away from the lens and softening out of focus.',
+      es: 'Vista cercana y oblicua de un panel tejido en rojo, verde oliva y crudo, cuyas figuras geométricas escalonadas se alejan del lente y se desenfocan.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoNudosPolicromo: {
+    id: 'tejidoNudosPolicromo',
+    src: '/media/patterns/tejido-nudos-policromo.webp',
+    width: 1440,
+    height: 1080,
+    file: 'engin-akyurt-V0UiJiU85dM-unsplash.jpg',
+    author: 'Engin Akyurt',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-of-a-multicolored-woven-material-V0UiJiU85dM'),
+    alt: {
+      en: 'Rows of knots packed tight across a dark warp, each row a different run of colour — orange, green, purple, red and white — with loose fibre standing up between them.',
+      es: 'Hileras de nudos apretados sobre una urdimbre oscura; cada hilera es una tirada de color distinta — naranja, verde, morado, rojo y blanco — con fibra suelta levantándose entre ellas.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  tejidoRayasNaranja: {
+    id: 'tejidoRayasNaranja',
+    src: '/media/patterns/tejido-rayas-naranja.webp',
+    width: 1440,
+    height: 960,
+    file: 'milton-matsumura--cfDJkq27zs-unsplash.jpg',
+    author: 'Milton Matsumura',
+    licence: 'Unsplash License',
+    licenceUrl: UNSPLASH,
+    sourceUrl: unsplash('a-close-up-view-of-a-woven-material--cfDJkq27zs'),
+    alt: {
+      en: 'A flat weave in vertical bands of orange, indigo, yellow and natural, the weft crossing the warp closely enough that every pick is countable.',
+      es: 'Un tejido plano en franjas verticales naranjas, añil, amarillas y crudas; la trama cruza la urdimbre tan de cerca que cada pasada se puede contar.',
+    },
+    caption: {
+      en: 'Stock macro of woven cloth, used as a backdrop. The source records neither the weaver nor the place, so neither is claimed here.',
+      es: 'Macro de banco de imágenes de una tela tejida, usado como fondo. La fuente no registra ni a quien tejió ni el lugar, y aquí no se atribuye ninguno.',
+    },
+  },
+
+  /* --- Bitácora: Tejilarte, Sutatausa ------------------------------------
+     Supplied by the collective for publication here. These are not openly
+     licensed: they are published by courtesy, which is a narrower permission
+     than the Commons files above, so both the licence and the source point at
+     the collective itself rather than at a licence deed. They are documentary
+     images of a public festival and every caption says so. */
+
+  journalHilanderas: {
+    id: 'journalHilanderas',
+    src: '/media/journal/festival/hilanderas-atrio.webp',
+    width: 1200,
+    height: 1500,
+    file: 'tejilarte_festival.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'Seven women and one man in hats and flowered aprons stand spread across the stone steps of a whitewashed colonial church, each drop-spinning raw wool from a distaff. Skeins dyed orange, ochre and green lie on the steps between them.',
+      es: 'Siete mujeres y un hombre, con sombrero y delantales floreados, repartidos por las gradas de piedra de una iglesia colonial encalada, cada uno hilando lana cruda al huso. Entre ellos, madejas teñidas de naranja, ocre y verde reposan sobre los escalones.',
+    },
+    caption: {
+      en: 'Spinners on the church steps at Sutatausa, Cundinamarca, during the Tejilarte festival.',
+      es: 'Hilanderas en el atrio de la iglesia de Sutatausa, Cundinamarca, durante el festival Tejilarte.',
+    },
+  },
+
+  journalTejedora: {
+    id: 'journalTejedora',
+    src: '/media/journal/festival/tejedora-dos-agujas.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_464376041_18257732518252385_2008525703878228911_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman in a straw hat and a hand-knitted brown waistcoat sits on the stone steps working grey wool on two needles. A heap of orange-dyed skeins rests beside her.',
+      es: 'Una mujer con sombrero de paja y chaleco café tejido a mano está sentada en las gradas de piedra trabajando lana gris a dos agujas. A su lado reposa un montón de madejas teñidas de naranja.',
+    },
+    caption: {
+      en: 'Worked by hand at the Tejilarte festival, beside the dyed skeins.',
+      es: 'Tejido a mano en el festival Tejilarte, junto a las madejas tinturadas.',
+    },
+  },
+
+  journalPasarelaBlanca: {
+    id: 'journalPasarelaBlanca',
+    src: '/media/journal/festival/pasarela-ruana-blanca.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_654017717_18012614069833196_4600604891847503497_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman walks an outdoor runway in a thick undyed wool ruana with a fringed hem, three dark patches of fleece worked into the cloth. Cloud sits on the mountain behind her.',
+      es: 'Una mujer recorre una pasarela al aire libre con una ruana gruesa de lana sin teñir y fleco en el ruedo, con tres manchas de vellón oscuro trabajadas en la tela. Detrás, la nube se posa sobre la montaña.',
+    },
+    caption: {
+      en: 'The ruana runway at the Tejilarte festival: undyed wool, with the motifs worked in dark fleece.',
+      es: 'La pasarela de ruanas del festival Tejilarte: lana sin teñir, con los motivos trabajados en vellón oscuro.',
+    },
+  },
+
+  journalPasarelaBordada: {
+    id: 'journalPasarelaBordada',
+    src: '/media/journal/festival/pasarela-ruana-bordada.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_657504743_18139070374442969_6113798523182220278_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A man holds open a cream wool ruana embroidered in coloured thread with scenes of work in the countryside: a man driving an ox, a figure sowing, a harvest on a hillside.',
+      es: 'Un hombre abre una ruana de lana crema bordada con hilo de colores con escenas del trabajo del campo: un hombre arreando un buey, una figura sembrando, una cosecha en la ladera.',
+    },
+    caption: {
+      en: 'An embroidered ruana at the festival. The scenes are of work in the veredas around Sutatausa.',
+      es: 'Una ruana bordada en el festival. Las escenas son del trabajo en las veredas de Sutatausa.',
+    },
+  },
+
+  journalPasarelaCamel: {
+    id: 'journalPasarelaCamel',
+    src: '/media/journal/festival/pasarela-poncho-camel.webp',
+    width: 1200,
+    height: 1500,
+    file: 'SaveClip.App_660686941_18209535559328546_2169186533950462793_n.jpg',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'A woman walks the runway in a wide poncho of natural brown wool, wearing a long yellow cord strung with felted wool beads in many colours. Pines hung with old man’s beard stand behind.',
+      es: 'Una mujer recorre la pasarela con un poncho amplio de lana café natural y un cordel largo amarillo ensartado con motas de lana afieltrada de muchos colores. Detrás, pinos cubiertos de barba de viejo.',
+    },
+    caption: {
+      en: 'Undyed brown wool on the Tejilarte runway, with a cord of felted beads.',
+      es: 'Lana café sin teñir en la pasarela de Tejilarte, con un cordel de motas afieltradas.',
+    },
+  },
+
+  journalHiloVerde: {
+    id: 'journalHiloVerde',
+    src: '/media/journal/festival/hilo-verde-poster.webp',
+    width: 719,
+    height: 1280,
+    file: 'hilo-verde.mp4 (still)',
+    author: 'Tejilarte Sutatausa',
+    licence: 'Cortesía del colectivo',
+    licenceUrl: TEJILARTE,
+    sourceUrl: TEJILARTE,
+    alt: {
+      en: 'Close on two hands working dark green wool on two needles, over a yellow flowered apron, a ball of the same wool resting on the lap.',
+      es: 'Primer plano de dos manos trabajando lana verde oscura a dos agujas, sobre un delantal amarillo floreado, con un ovillo de la misma lana reposando en el regazo.',
+    },
+    caption: {
+      en: 'Still from the video filmed at the festival: two needles on dark green wool.',
+      es: 'Fotograma del video filmado en el festival: dos agujas sobre lana verde oscura.',
+    },
+  },
 }
 
 export const CREDITS: Credit[] = Object.values(MEDIA)
+
+/**
+ * The woven grounds, in the order they were registered.
+ *
+ * Kept here rather than on the artisan record: which cloth sits behind a story
+ * is a layout decision, and writing a stock photograph into `artisans.ts` would
+ * file it among the things the artisan supplied and validated.
+ */
+export const BACKDROPS: Credit[] = [
+  MEDIA.tejidoRojoDiamantes,
+  MEDIA.tejidoGeometricoOblicuo,
+  MEDIA.tejidoNudosPolicromo,
+  MEDIA.tejidoRayasNaranja,
+]
+
+/**
+ * The ground for a given profile. Chosen by a hash of the seed so that a
+ * profile keeps its own cloth across reloads and across deploys, and two
+ * neighbouring profiles do not open on the same one.
+ */
+export function backdropFor(seed: string): Credit {
+  let h = 2166136261
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  // FNV leaves its low bits poorly mixed, and a list this short is indexed by
+  // exactly those bits: without this avalanche step every slug of a similar
+  // shape lands on the same cloth.
+  h ^= h >>> 13
+  h = Math.imul(h, 0x5bd1e995)
+  h ^= h >>> 15
+  return BACKDROPS[(h >>> 0) % BACKDROPS.length]
+}
+

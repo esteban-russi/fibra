@@ -26,14 +26,14 @@ price, it contradicts the spec.
 
 ## Information architecture
 
-Four top-level surfaces, navigated non-linearly:
+Four top-level surfaces, navigated non-linearly, plus the journal:
 
 1. **Home / immersive cover** — hero is a micro-narrative (macro photo or silent
    video of hands and fiber + first-person artisan quote), not a catalog or menu.
    A continuous "hilo conductor" thread follows vertical scroll and *frays*
    (`deshilachado`) at mid-page into multiple vector strands, branching to the
    two exploration routes below.
-2. **Atlas Textil de Colombia** — the territory route. Interactive map.
+2. **Mapa Textil de Colombia** — the territory route. Interactive map.
 3. **Técnicas** — the transversal route, organized by the *act of
    making*: urdir, anudar, tinturar, trenzar, hilar. A grid of **photographs**
    of the work, one per gesture (`technique.photo` into `MEDIA`). The drawn
@@ -44,6 +44,20 @@ Four top-level surfaces, navigated non-linearly:
    where its frame comes from and none claims a territory it does not have.
    `technique.focus` tightens a crop in CSS, never in the file.
 4. **Artisan profiles** — sequential editorial chronicles.
+5. **Bitácora** (*Journal* in English) — the magazine. Everything else on the
+   site is written to stand still; this is where what moves goes: a festival on
+   a date, a workshop opening its doors, an encounter that will not repeat. Its
+   masthead is a **section of the cover** (`JOURNAL_ID`, `#bitacora`), not a
+   route — the same treatment About gets, because with one entry an index page
+   would be that masthead printed twice. The header and the footer point at the
+   anchor. Each entry *does* have its own route, `/journal/:slug`.
+
+Beside these sit two standing pages, reachable from the header and the footer
+rather than from the thread: **`/about`** — what the platform does, what the
+word *fibra* means in both its senses, and Valeria León Niño in the first
+person as the person who made it; and **`/credits`**, generated from the media
+registry. The About content was a block at the foot of the cover until it was
+given a route, so `ABOUT_ID` and the header's hash descent are gone.
 
 ## Domain model
 
@@ -80,7 +94,12 @@ A single continuous scroll, explicitly **not** tabs:
   Traceability Seal panel: the same claims, stated once. The first screen is
   kept free of repetition — region, craft and community each appear exactly
   once. The pull quote sits **between acts I and II**, on its own ground, not
-  over the hero.
+  over the hero. The ground of the act is a macro photograph of real cloth
+  (`BACKDROPS` in `media.ts`, picked per slug by `backdropFor`), not a drawn
+  plate. It is texture and never testimony: each frame is registered with its
+  photographer and states that it documents no weaver and no place, which is the
+  only condition on which a photograph may sit behind a named person. The scrim
+  over it is deliberately light enough to read the interlacement.
 - **II. El Territorio y la Memoria** — intergenerational transmission: who taught
   them, what the craft means in their setting.
 - **III. La Materia y la Técnica** — "El ritmo de las manos": the techniques this
@@ -88,11 +107,47 @@ A single continuous scroll, explicitly **not** tabs:
   technique route. The progressive-zoom fibre lens and the pattern hotspots were
   removed from this act; their content (`fibre`, `hotspots`, `glossary`) is still
   in `artisans.ts` and still belongs to the artisans.
-- **IV. Las Obras del Taller** — finished pieces in use context, real scale, and
-  estimated making time in hours/weeks (patience as stated value).
-- **V. El Contacto Directo y el Encargo Ético** — direct WhatsApp/call to the
-  workshop plus a "Guía de Encargo Consciente" on discussing lead times,
-  customization, and fair pay.
+- **IV. Las Obras del Taller** — a grid of the workshop's own photographs of
+  its pieces, and nothing else. The name of a piece appears over the image on
+  hover (and stays visible on a touch screen); there is no caption, no record
+  and no price — nor the line that used to explain the absence of one, which
+  was removed too: the act says it by having nothing to say it about, and the
+  footer still carries the standing commitment. The full records the artisans
+  gave — technique, materials, making time, real scale, use context — stay in
+  `artisans.ts` as `works`, without a surface. `gallery[].named` marks whether
+  the name shown is the workshop's own or our description of what is in the
+  frame; every `false` is a piece still waiting for its workshop to name it.
+  The piece photographs are credited to each workshop ("Cedida por el taller"),
+  not to FIBRA, and only their webp deliveries are versioned — the originals
+  named in each record's `file` are not in the repository.
+- **V. El Contacto Directo y el Encargo Ético** — the workshop's line, with
+  direct WhatsApp/call beneath it and the handles she asked to be listed. The
+  act prints no title of its own (`Act titled={false}`): its content already
+  opens with "Hable con el taller", and the act name identifies it in the rail.
+  The "Guía de Encargo Consciente" accordion and the on-page preview of the
+  pre-written message were both removed; the message itself still travels in
+  the wa.me link (`content/message.ts`), editable before it is sent. The hours
+  and languages she gave stay in `artisans.ts` without a surface.
+
+### Journal entries (`src/content/journal.ts`)
+
+An entry is a headline, a standfirst, a dateline, a region (which gives it its
+accent colour) and a run of sections. A section carries `blocks` — `prose`,
+`quote`, `entries` (a labelled run, `numbered` where the order is the route
+through the town) — and one `aside`, either a photograph or the video, held in
+a sticky rail beside the reading. Every section of a piece should carry an
+aside: a column of type alone on a wide screen reads as a page that was never
+finished. A section marked `feature` leaves the two-column rhythm and is
+centred on its own ground — used for the invitation, which is addressed to the
+reader rather than reported to them. The piece closes with a `gallery` strip
+and `facts`, the practical rows of the traveller's guide.
+
+The first entry is the Tejilarte festival in Sutatausa, Cundinamarca. Its
+photographs and its video were supplied by the collective and are published **by
+courtesy, not under an open licence** — narrower permission than the Commons
+files, so their `licence` and `sourceUrl` both point at the collective rather
+than at a licence deed. The video is `preload="none"` behind a poster frame and
+never autoplays.
 
 ## Sensory / semiotic modules
 
@@ -108,6 +163,11 @@ into the profile's summary card:
   geographic origin, raw material and community affiliation as card rows,
   authorship and informed consent as its footnote. Making time stays with each
   piece in act IV.
+
+The "De dónde viene este material" provenance notice no longer runs inside a
+profile — the act I card already states the same split for the person you are
+reading. `ProvenanceNotice` still opens the artisan index and the region drawer,
+where it covers material the reader has not been given a card for.
 
 Both removals are deliberate, not oversights. The content was kept because it
 was supplied and validated by the artisans; reinstating either module is a
